@@ -3,136 +3,901 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaPeps USA</title>
+
+  <title>NovaPeps USA | Premium Research Compounds</title>
+
+  <meta
+    name="description"
+    content="NovaPeps USA — Premium Research Compounds. For research use only."
+  >
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #222;
+      padding: 0;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #111827;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
-      background: #0b5fa5;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid #dfe5ee;
+      backdrop-filter: blur(12px);
+    }
+
+    .menu-button {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 12px;
+      background: #f0f4fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      color: #075fff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #111827;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #ffffff, #dce4ee);
+      border: 1px solid #c5cfdb;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+      font-weight: 900;
+      font-size: 19px;
+      color: #075fff;
+    }
+
+    .brand-text {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+
+    .brand-text span {
+      display: block;
+      color: #075fff;
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-top: 2px;
+    }
+
+    .cart {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #075fff;
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      box-shadow: 0 8px 20px rgba(7,95,255,0.25);
+    }
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    .mobile-menu {
+      position: fixed;
+      top: 76px;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-bottom: 1px solid #dfe5ee;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      padding: 20px;
+      transform: translateY(-120%);
+      transition: transform .3s ease;
+      z-index: 999;
+    }
+
+    .mobile-menu.open {
+      transform: translateY(0);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px;
+      margin-bottom: 8px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #111827;
+      font-weight: 700;
+      background: #f5f7fb;
+    }
+
+    .mobile-menu a:hover {
+      background: #eaf1ff;
+      color: #075fff;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      min-height: 690px;
+      padding: 90px 24px 70px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 55%, rgba(7,95,255,.13), transparent 35%),
+        linear-gradient(180deg, #ffffff 0%, #eef3f9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 30px 15px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 32px;
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      max-width: 850px;
     }
 
-    header p {
-      margin-top: 8px;
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: #e8f0ff;
+      color: #075fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
     }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 30px;
+    .hero h1 {
+      font-size: clamp(42px, 10vw, 86px);
+      line-height: .92;
+      letter-spacing: -4px;
+      font-weight: 950;
+      color: #101827;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: #075fff;
+      text-shadow: 0 0 30px rgba(7,95,255,.2);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 28px auto;
+      color: #5b6677;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 16px 28px;
+      border-radius: 999px;
+      background: #075fff;
+      color: white;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 1px;
+      box-shadow:
+        0 10px 30px rgba(7,95,255,.3),
+        0 0 30px rgba(7,95,255,.18);
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       VIALS
+    ========================= */
+
+    .vials {
+      position: absolute;
+      left: 50%;
+      bottom: -35px;
+      width: 430px;
+      height: 330px;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .vial {
+      position: absolute;
+      bottom: 20px;
+      width: 115px;
+      height: 215px;
+      border-radius: 15px 15px 23px 23px;
+      background: linear-gradient(
+        90deg,
+        #d8dde4,
+        #ffffff 25%,
+        #e5e9ee 55%,
+        #b8c0ca
+      );
+      border: 1px solid #9ea8b4;
+      box-shadow:
+        0 25px 35px rgba(0,0,0,.2),
+        inset 8px 0 12px rgba(255,255,255,.65);
+    }
+
+    .vial-left {
+      left: 35px;
+      transform: rotate(-9deg);
+    }
+
+    .vial-right {
+      right: 35px;
+      transform: rotate(8deg);
+    }
+
+    .cap {
+      position: absolute;
+      top: -30px;
+      left: 10px;
+      right: 10px;
+      height: 38px;
+      border-radius: 8px 8px 5px 5px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #c4cbd4 0,
+          #c4cbd4 5px,
+          #eef1f5 6px,
+          #eef1f5 9px
+        );
+      border: 1px solid #aab3be;
+    }
+
+    .liquid {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      height: 132px;
+      border-radius: 8px 8px 17px 17px;
+      background: rgba(255,255,255,.25);
+    }
+
+    .liquid.blue {
+      background:
+        linear-gradient(
+          180deg,
+          #0878ff 0%,
+          #004de0 65%,
+          #0035ad 100%
+        );
+      box-shadow:
+        inset 0 10px 18px rgba(255,255,255,.18),
+        0 0 25px rgba(0,89,255,.25);
+    }
+
+    .label {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 65px;
+      height: 78px;
+      border-radius: 5px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid #cbd3dd;
+      padding: 8px 4px;
+      text-align: center;
+      z-index: 3;
+    }
+
+    .label strong {
+      display: block;
+      font-size: 10px;
+      color: #111827;
+      letter-spacing: .8px;
+    }
+
+    .label b {
+      display: block;
+      margin-top: 6px;
+      font-size: 14px;
+      color: #075fff;
+    }
+
+    .label small {
+      display: block;
+      margin-top: 5px;
+      font-size: 6px;
+      color: #555;
+    }
+
+    .splash {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      width: 390px;
+      height: 95px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(7,95,255,.2),
+          transparent 68%
+        );
+      filter: blur(3px);
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    #products {
+      padding: 80px 20px;
+      background: #ffffff;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title span {
+      display: block;
+      color: #075fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 8vw, 54px);
+      letter-spacing: -2px;
+      color: #111827;
+    }
+
+    .section-title p {
+      max-width: 600px;
+      margin: 15px auto 0;
+      color: #687385;
+      line-height: 1.6;
+    }
+
+    .products-grid {
       max-width: 1100px;
       margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
 
-    .product {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      padding: 25px;
+      min-height: 250px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #ffffff, #f0f4f9);
+      border: 1px solid #dce3ec;
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .product h2 {
-      font-size: 20px;
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 38px rgba(0,0,0,.1);
+    }
+
+    .product-number {
+      color: #075fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .product-card h3 {
+      margin-top: 15px;
+      font-size: 22px;
+      line-height: 1.15;
+      color: #111827;
+    }
+
+    .product-card .size {
+      margin-top: 7px;
+      color: #667085;
+      font-size: 13px;
     }
 
     .price {
-      font-size: 22px;
-      font-weight: bold;
+      margin-top: 25px;
+      font-size: 28px;
+      font-weight: 950;
+      color: #075fff;
     }
 
-    footer {
+    .research-tag {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 6px 9px;
+      border-radius: 6px;
+      background: #e9eef6;
+      color: #566273;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .8px;
+    }
+
+    /* =========================
+       INFO
+    ========================= */
+
+    .info {
+      padding: 70px 22px;
+      background: #eef3f8;
       text-align: center;
-      padding: 25px 15px;
+    }
+
+    .info-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px 25px;
+      border-radius: 22px;
+      background: white;
+      border: 1px solid #dce3ec;
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+    }
+
+    .info-box h2 {
+      color: #075fff;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .info-box p {
+      color: #596579;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 45px 20px 35px;
+      text-align: center;
+      background: #0b1220;
+      color: white;
+    }
+
+    .footer-logo {
+      font-size: 25px;
+      font-weight: 950;
+      letter-spacing: 2px;
+    }
+
+    .footer-logo span {
+      color: #2d82ff;
+    }
+
+    .footer-line {
+      width: 60px;
+      height: 3px;
+      margin: 18px auto;
+      background: #075fff;
+      border-radius: 99px;
+    }
+
+    .disclaimer {
+      max-width: 800px;
+      margin: auto;
+      color: #aeb8c7;
       font-size: 11px;
-      color: #666;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .copyright {
+      margin-top: 25px;
+      color: #697589;
+      font-size: 10px;
+    }
+
+    /* =========================
+       DESKTOP
+    ========================= */
+
+    @media (min-width: 800px) {
+      header {
+        padding: 0 45px;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .vials {
+        width: 550px;
+        height: 380px;
+      }
+
+      .vial {
+        width: 135px;
+        height: 245px;
+      }
+
+      .vial-left {
+        left: 65px;
+      }
+
+      .vial-right {
+        right: 65px;
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 799px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 700px;
+        padding-top: 70px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .vials {
+        width: 370px;
+        height: 300px;
+        bottom: -10px;
+      }
+
+      .vial {
+        width: 105px;
+        height: 195px;
+      }
+
+      .vial-left {
+        left: 30px;
+      }
+
+      .vial-right {
+        right: 30px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>NovaPeps USA</h1>
-  <p>Research Product Catalog</p>
-</header>
+  <!-- HEADER -->
+  <header>
 
-<section class="products">
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
 
-  <div class="product">
-    <h2>Product 1</h2>
-    <p>10 mg + Bac Water</p>
-    <p class="price">$90</p>
-  </div>
+    <a href="#top" class="brand">
+      <div class="brand-mark">NP</div>
 
-  <div class="product">
-    <h2>Product 2</h2>
-    <p>20 mg + Bac Water</p>
-    <p class="price">$120</p>
-  </div>
+      <div class="brand-text">
+        NOVAPEPS
+        <span>USA</span>
+      </div>
+    </a>
 
-  <div class="product">
-    <h2>Product 3</h2>
-    <p>10 mg + Bac Water</p>
-    <p class="price">$95</p>
-  </div>
+    <div class="cart" aria-label="Cart">
+      🛒
+    </div>
 
-  <div class="product">
-    <h2>Product 4</h2>
-    <p>20 mg + Bac Water</p>
-    <p class="price">$145</p>
-  </div>
+  </header>
 
-  <div class="product">
-    <h2>Product 5</h2>
-    <p>100 mg + Bac Water</p>
-    <p class="price">$60</p>
-  </div>
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#top">Home</a>
+    <a href="#products">Products</a>
+    <a href="#research">Research Information</a>
+  </nav>
 
-  <div class="product">
-    <h2>Product 6</h2>
-    <p>500 mg + Bac Water</p>
-    <p class="price">$60</p>
-  </div>
+  <!-- HERO -->
+  <main id="top">
 
-  <div class="product">
-    <h2>Product 7</h2>
-    <p>150 mg + Bac Water</p>
-    <p class="price">$65</p>
-  </div>
+    <section class="hero">
 
-  <div class="product">
-    <h2>Product 8</h2>
-    <p>10 mg + Bac Water</p>
-    <p class="price">$60</p>
-  </div>
+      <div class="hero-content">
 
-  <div class="product">
-    <h2>Bac Water</h2>
-    <p>10 mL</p>
-    <p class="price">$15</p>
-  </div>
+        <div class="eyebrow">
+          NOVAPEPS USA
+        </div>
 
-</section>
+        <h1>
+          PREMIUM<br>
+          <span>RESEARCH</span><br>
+          COMPOUNDS
+        </h1>
 
-<footer>
-  21+ ONLY. FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.
-  CONDUCT YOUR OWN RESEARCH BEFORE PURCHASING.
-</footer>
+        <p>
+          Explore the NovaPeps USA research compound catalog.
+          All products are presented strictly for research purposes.
+        </p>
+
+        <a
+          class="hero-button"
+          href="#products"
+        >
+          VIEW CATALOG
+        </a>
+
+      </div>
+
+      <!-- VIALS -->
+      <div class="vials">
+
+        <div class="splash"></div>
+
+        <!-- GHK-CU -->
+        <div class="vial vial-left">
+
+          <div class="cap"></div>
+
+          <div class="liquid blue"></div>
+
+          <div class="label">
+            <strong>NOVAPEPS</strong>
+            <b>GHK-CU</b>
+            <small>100 MG • 99% PURE</small>
+            <small>FOR RESEARCH USE ONLY</small>
+          </div>
+
+        </div>
+
+        <!-- BAC WATER -->
+        <div class="vial vial-right">
+
+          <div class="cap"></div>
+
+          <div class="liquid"></div>
+
+          <div class="label">
+            <strong>NOVAPEPS</strong>
+            <b>BAC WATER</b>
+            <small>10 mL</small>
+            <small>FOR RESEARCH USE ONLY</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+
+      <div class="section-title">
+
+        <span>NOVAPEPS USA</span>
+
+        <h2>Our Products</h2>
+
+        <p>
+          Research-use catalog of NovaPeps USA compounds.
+        </p>
+
+      </div>
+
+      <div class="products-grid">
+
+        <!-- 01 -->
+        <article class="product-card">
+          <div class="product-number">01</div>
+          <h3>GLP-2 + Bac Water</h3>
+          <div class="size">10 mg</div>
+          <div class="price">$90</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 02 -->
+        <article class="product-card">
+          <div class="product-number">02</div>
+          <h3>GLP-2 + Bac Water</h3>
+          <div class="size">20 mg</div>
+          <div class="price">$120</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 03 -->
+        <article class="product-card">
+          <div class="product-number">03</div>
+          <h3>GLP-3 + Bac Water</h3>
+          <div class="size">10 mg</div>
+          <div class="price">$95</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 04 -->
+        <article class="product-card">
+          <div class="product-number">04</div>
+          <h3>GLP-3 + Bac Water</h3>
+          <div class="size">20 mg</div>
+          <div class="price">$145</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 05 -->
+        <article class="product-card">
+          <div class="product-number">05</div>
+          <h3>GHK-CU + Bac Water</h3>
+          <div class="size">100 mg</div>
+          <div class="price">$60</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 06 -->
+        <article class="product-card">
+          <div class="product-number">06</div>
+          <h3>NAD+ + Bac Water</h3>
+          <div class="size">500 mg</div>
+          <div class="price">$60</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 07 -->
+        <article class="product-card">
+          <div class="product-number">07</div>
+          <h3>GLUTATHIONE + Bac Water</h3>
+          <div class="size">150 mg</div>
+          <div class="price">$65</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 08 -->
+        <article class="product-card">
+          <div class="product-number">08</div>
+          <h3>MOTS-C + Bac Water</h3>
+          <div class="size">10 mg</div>
+          <div class="price">$60</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+        <!-- 09 -->
+        <article class="product-card">
+          <div class="product-number">09</div>
+          <h3>Bac Water</h3>
+          <div class="size">10 mL</div>
+          <div class="price">$15</div>
+          <div class="research-tag">FOR RESEARCH USE ONLY</div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- RESEARCH INFORMATION -->
+    <section
+      class="info"
+      id="research"
+    >
+
+      <div class="info-box">
+
+        <h2>Research Use Only</h2>
+
+        <p>
+          NovaPeps USA products displayed on this website are
+          presented for research purposes only. They are not
+          presented as products for human use.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-logo">
+      NOVA<span>PEPS</span> USA
+    </div>
+
+    <div class="footer-line"></div>
+
+    <p class="disclaimer">
+      21+ ONLY. FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.
+      CONDUCT YOUR OWN RESEARCH BEFORE PURCHASING.
+    </p>
+
+    <div class="copyright">
+      © 2026 NovaPeps USA. All rights reserved.
+    </div>
+
+  </footer>
+
+  <!-- MENU SCRIPT -->
+  <script>
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuButton.addEventListener("click", function () {
+      mobileMenu.classList.toggle("open");
+    });
+
+    const menuLinks = mobileMenu.querySelectorAll("a");
+
+    menuLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+
+      if (
+        !mobileMenu.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        mobileMenu.classList.remove("open");
+      }
+
+    });
+
+    document.addEventListener("keydown", function (event) {
+
+      if (event.key === "Escape") {
+        mobileMenu.classList.remove("open");
+      }
+
+    });
+
+  </script>
 
 </body>
 </html>
