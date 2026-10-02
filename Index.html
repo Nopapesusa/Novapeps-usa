@@ -7,10 +7,14 @@
   <title>NovaPeps USA</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f9fc;
+      background: #ffffff;
       color: #222;
     }
 
@@ -18,76 +22,118 @@
       background: #0b6cff;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 45px 20px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 36px;
+      font-size: 38px;
     }
 
     header p {
-      margin-top: 10px;
       font-size: 18px;
+      margin: 12px 0 0;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .producto {
+    nav {
       background: white;
-      padding: 25px;
-      border-radius: 15px;
+      padding: 15px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    .producto h3 {
+    nav a {
       color: #0b6cff;
-    }
-
-    .contacto {
-      text-align: center;
-      margin-top: 50px;
-      padding: 30px;
-      background: white;
-      border-radius: 15px;
-    }
-
-    .boton {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 14px 28px;
-      background: #0b6cff;
-      color: white;
       text-decoration: none;
-      border-radius: 8px;
+      margin: 0 15px;
       font-weight: bold;
     }
 
-    .boton:hover {
-      background: #0957cc;
+    .hero {
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      color: #0b6cff;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 25px;
+      background: #0b6cff;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 45px 20px;
+      text-align: center;
+      background: #f7f9fc;
+    }
+
+    .section h2 {
+      color: #0b6cff;
+      margin-bottom: 15px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 30px auto 0;
+    }
+
+    .card {
+      background: white;
+      width: 280px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #0b6cff;
     }
 
     footer {
+      background: #0b6cff;
+      color: white;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-      color: #777;
+      padding: 25px 15px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      .hero h2 {
+        font-size: 26px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 330px;
+      }
     }
   </style>
 </head>
@@ -96,40 +142,69 @@
 
   <header>
     <h1>NovaPeps USA</h1>
-    <p>Bienvenido a nuestra página</p>
+    <p>Bienvenidos a nuestra página oficial</p>
   </header>
 
-  <div class="container">
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 
+  <section class="hero" id="inicio">
+    <h2>Bienvenidos a NovaPeps USA</h2>
+
+    <p>
+      Explora nuestro catálogo y conoce más sobre nuestra selección
+      de productos.
+    </p>
+
+    <a class="button" href="#productos">Ver productos</a>
+  </section>
+
+  <section class="section" id="productos">
     <h2>Nuestros productos</h2>
 
-    <div class="productos">
+    <div class="cards">
 
-      <div class="producto">
-        <h3>GLP-2 10 mg</h3>
-        <p>Información del producto</p>
+      <div class="card">
+        <h3>Catálogo</h3>
+        <p>
+          Consulta nuestra selección de productos disponibles.
+        </p>
       </div>
 
-      <div class="producto">
-        <h3>GLP-2 20 mg</h3>
-        <p>Información del producto</p>
+      <div class="card">
+        <h3>Información</h3>
+        <p>
+          Encuentra información general y detalles de cada producto.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Contacto</h3>
+        <p>
+          Comunícate con nosotros para obtener información adicional.
+        </p>
       </div>
 
     </div>
+  </section>
 
-    <div class="contacto">
-      <h2>¿Tienes preguntas?</h2>
-      <p>Contáctanos para obtener más información.</p>
+  <section class="hero" id="contacto">
+    <h2>Contáctanos</h2>
 
-      <a class="boton" href="mailto:contacto@ejemplo.com">
-        Contáctanos
-      </a>
-    </div>
+    <p>
+      Gracias por visitar NovaPeps USA.
+    </p>
 
-  </div>
+    <a class="button" href="mailto:contacto@novapeps-usa.com">
+      Enviar mensaje
+    </a>
+  </section>
 
   <footer>
-    © 2026 NovaPeps USA
+    <p>© 2026 NovaPeps USA</p>
   </footer>
 
 </body>
