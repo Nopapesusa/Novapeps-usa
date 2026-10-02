@@ -1,7 +1,136 @@
-<! DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8">
-<meta name="viewport" conter <title›NovaPeps USA</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NovaPeps USA</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      color: #222;
+    }
+
+    header {
+      background: #0b6cff;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .producto {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .producto h3 {
+      color: #0b6cff;
+    }
+
+    .contacto {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+    }
+
+    .boton {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 14px 28px;
+      background: #0b6cff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .boton:hover {
+      background: #0957cc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+      color: #777;
+    }
+  </style>
 </head>
+
 <body>
-<h1>NovaPeps USA</h1>
-<p>Bienvenido a NovaPeps US/ <h2›Nuestros productos</h2>
-<p>GLP-2 10 mg</p>
+
+  <header>
+    <h1>NovaPeps USA</h1>
+    <p>Bienvenido a nuestra página</p>
+  </header>
+
+  <div class="container">
+
+    <h2>Nuestros productos</h2>
+
+    <div class="productos">
+
+      <div class="producto">
+        <h3>GLP-2 10 mg</h3>
+        <p>Información del producto</p>
+      </div>
+
+      <div class="producto">
+        <h3>GLP-2 20 mg</h3>
+        <p>Información del producto</p>
+      </div>
+
+    </div>
+
+    <div class="contacto">
+      <h2>¿Tienes preguntas?</h2>
+      <p>Contáctanos para obtener más información.</p>
+
+      <a class="boton" href="mailto:contacto@ejemplo.com">
+        Contáctanos
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 NovaPeps USA
+  </footer>
+
+</body>
+</html>
