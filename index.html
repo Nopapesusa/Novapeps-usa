@@ -1,211 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NovaPeps USA</title>
+<title>NovaPeps USA</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #222;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+}
 
-    header {
-      background: #0b6cff;
-      color: white;
-      text-align: center;
-      padding: 45px 20px;
-    }
+/* ENCABEZADO */
+header {
+  background: #0b6cff;
+  color: white;
+  text-align: center;
+  padding: 45px 20px;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 38px;
-    }
+header h1 {
+  margin: 0;
+  font-size: 38px;
+}
 
-    header p {
-      font-size: 18px;
-      margin: 12px 0 0;
-    }
+header p {
+  font-size: 18px;
+  margin-top: 12px;
+}
 
-    nav {
-      background: white;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
+/* MENÚ */
+nav {
+  background: white;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-    nav a {
-      color: #0b6cff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
+nav a {
+  color: #0b6cff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
 
-    .hero {
-      text-align: center;
-      padding: 55px 20px;
-    }
+/* INICIO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
 
-    .hero h2 {
-      font-size: 32px;
-      color: #0b6cff;
-      margin-bottom: 15px;
-    }
+.hero h2 {
+  font-size: 32px;
+  color: #0b6cff;
+  margin-bottom: 15px;
+}
 
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.6;
-      font-size: 17px;
-    }
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+  font-size: 17px;
+}
 
-    .button {
-      display: inline-block;
-      margin-top: 25px;
-      background: #0b6cff;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.button {
+  display: inline-block;
+  margin-top: 25px;
+  background: #0b6cff;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .section {
-      padding: 45px 20px;
-      text-align: center;
-      background: #f7f9fc;
-    }
+/* PRODUCTOS */
+.section {
+  padding: 50px 20px;
+  text-align: center;
+  background: #f7f9fc;
+}
 
-    .section h2 {
-      color: #0b6cff;
-      margin-bottom: 15px;
-    }
+.section h2 {
+  color: #0b6cff;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      max-width: 1000px;
-      margin: 30px auto 0;
-    }
+.section > p {
+  margin-bottom: 30px;
+}
 
-    .card {
-      background: white;
-      width: 280px;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+/* TARJETAS */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  max-width: 1100px;
+  margin: 30px auto;
+}
 
-    .card h3 {
-      color: #0b6cff;
-    }
+.card {
+  background: white;
+  width: 280px;
+  padding: 28px 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.10);
+  transition: transform 0.2s;
+}
 
-    footer {
-      background: #0b6cff;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-    }
+.card:hover {
+  transform: translateY(-4px);
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 30px;
-      }
+.card h3 {
+  color: #0b6cff;
+  font-size: 23px;
+  margin-bottom: 8px;
+}
 
-      .hero h2 {
-        font-size: 26px;
-      }
+.card .dose {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 0;
+}
 
-      nav a {
-        margin: 0 7px;
-      }
+.card .price {
+  color: #0b6cff;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 15px 0;
+}
 
-      .card {
-        width: 100%;
-        max-width: 330px;
-      }
-    }
-  </style>
+.research {
+  font-size: 11px;
+  color: #666;
+  margin-top: 15px;
+}
+
+/* CONTACTO */
+.contact {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contact h2 {
+  color: #0b6cff;
+  font-size: 30px;
+}
+
+.contact p {
+  font-size: 17px;
+}
+
+/* PIE DE PÁGINA */
+footer {
+  background: #0b6cff;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* TELÉFONO */
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 30px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  nav a {
+    margin: 0 7px;
+    font-size: 14px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 330px;
+  }
+
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>NovaPeps USA</h1>
-    <p>Bienvenidos a nuestra página oficial</p>
-  </header>
+<!-- ENCABEZADO -->
+<header>
+  <h1>NovaPeps USA</h1>
+  <p>Bienvenidos a nuestra página oficial</p>
+</header>
 
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#productos">Productos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+<!-- MENÚ -->
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#productos">Productos</a>
+  <a href="#contacto">Contacto</a>
+</nav>
 
-  <section class="hero" id="inicio">
-    <h2>Bienvenidos a NovaPeps USA</h2>
+<!-- INICIO -->
+<section class="hero" id="inicio">
 
-    <p>
-      Explora nuestro catálogo y conoce más sobre nuestra selección
-      de productos.
-    </p>
+  <h2>Bienvenidos a NovaPeps USA</h2>
 
-    <a class="button" href="#productos">Ver productos</a>
-  </section>
+  <p>
+    Explora nuestro catálogo y conoce nuestra selección
+    de productos.
+  </p>
 
-  <section class="section" id="productos">
-    <h2>Nuestros productos</h2>
+  <a class="button" href="#productos">
+    Ver productos
+  </a>
 
-    <div class="cards">
+</section>
 
-      <div class="card">
-        <h3>Catálogo</h3>
-        <p>
-          Consulta nuestra selección de productos disponibles.
-        </p>
+<!-- PRODUCTOS -->
+<section class="section" id="productos">
+
+  <h2>Nuestros productos</h2>
+
+  <p>
+    Catálogo de productos disponibles.
+  </p>
+
+  <div class="cards">
+
+    <!-- GLP-2 10 MG -->
+    <div class="card">
+      <h3>GLP-2</h3>
+      <div class="dose">10 mg</div>
+      <div class="price">$90</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
       </div>
-
-      <div class="card">
-        <h3>Información</h3>
-        <p>
-          Encuentra información general y detalles de cada producto.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Contacto</h3>
-        <p>
-          Comunícate con nosotros para obtener información adicional.
-        </p>
-      </div>
-
     </div>
-  </section>
 
-  <section class="hero" id="contacto">
-    <h2>Contáctanos</h2>
+    <!-- GLP-2 20 MG -->
+    <div class="card">
+      <h3>GLP-2</h3>
+      <div class="dose">20 mg</div>
+      <div class="price">$110</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
+      </div>
+    </div>
 
-    <p>
-      Gracias por visitar NovaPeps USA.
-    </p>
+    <!-- GLP-3 20 MG -->
+    <div class="card">
+      <h3>GLP-3</h3>
+      <div class="dose">20 mg</div>
+      <div class="price">$135</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
+      </div>
+    </div>
 
-    <a class="button" href="mailto:contacto@novapeps-usa.com">
-      Enviar mensaje
-    </a>
-  </section>
+    <!-- GHK-CU 100 MG -->
+    <div class="card">
+      <h3>GHK-CU</h3>
+      <div class="dose">100 mg</div>
+      <div class="price">$50</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
+      </div>
+    </div>
 
-  <footer>
-    <p>© 2026 NovaPeps USA</p>
-  </footer>
+    <!-- NAD+ 500 MG -->
+    <div class="card">
+      <h3>NAD+</h3>
+      <div class="dose">500 mg</div>
+      <div class="price">$50</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
+      </div>
+    </div>
+
+    <!-- GLUTATHIONE 1500 MG -->
+    <div class="card">
+      <h3>Glutathione</h3>
+      <div class="dose">1500 mg</div>
+      <div class="price">$60</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
+      </div>
+    </div>
+
+    <!-- BACTERIOSTATIC WATER -->
+    <div class="card">
+      <h3>Bacteriostatic Water</h3>
+      <div class="dose">10 mL</div>
+      <div class="price">$60</div>
+      <div class="research">
+        FOR RESEARCH USE ONLY
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+
+  <h2>Contáctanos</h2>
+
+  <p>
+    Gracias por visitar NovaPeps USA.
+  </p>
+
+  <a class="button" href="mailto:contacto@novapeps-usa.com">
+    Enviar mensaje
+  </a>
+
+</section>
+
+<!-- PIE -->
+<footer>
+  <p>© 2026 NovaPeps USA</p>
+</footer>
 
 </body>
 </html>
