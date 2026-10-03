@@ -59,8 +59,6 @@
     .search-box {
       max-width: 1200px;
       margin: 15px auto 0;
-      display: flex;
-      gap: 8px;
     }
     .search-box input {
       width: 100%;
@@ -69,10 +67,12 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
+    /* PORTADA */
     .hero {
       width: 100%;
       background: #fff;
       text-align: center;
+      overflow: hidden;
     }
     .hero img {
       width: 100%;
@@ -215,6 +215,7 @@
     footer a {
       color: #fff;
     }
+    /* EDAD */
     #ageGate {
       position: fixed;
       inset: 0;
@@ -325,18 +326,20 @@
       >
     </div>
   </header>
-  <!-- HOME / COVER -->
+  <!-- HOME / PORTADA -->
   <section id="home" class="hero">
     <img
-      src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZLOnehlONVAVGC0.jpeg"
-      alt="NovaPeps USA"
+      src="https://raw.githubusercontent.com/Nopapesusa/Novapeps-usa/main/att.tK5Us77ej-aCYPmzLGG1MqUszdTsZLOnehlONVAVGC0.jpeg"
+      alt="NovaPeps USA Cover"
     >
   </section>
   <!-- PRODUCTS -->
   <section id="products" class="container">
     <div class="section-title">
       <h2>Our Products</h2>
-      <p>Research-use products available in our catalog.</p>
+      <p>
+        Research-use products available in our catalog.
+      </p>
     </div>
     <div class="products">
       <!-- MOTS-C -->
@@ -347,7 +350,9 @@
         >
         <h3>NOVAPEPS MOTS-C</h3>
         <div class="price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('NOVAPEPS MOTS-C')">
           Request Information
         </button>
@@ -360,7 +365,9 @@
         >
         <h3>GLP-2 10 MG</h3>
         <div class="price">$90</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('GLP-2 10 MG')">
           Request Information
         </button>
@@ -373,7 +380,9 @@
         >
         <h3>GHK-CU 100 MG</h3>
         <div class="price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('GHK-CU 100 MG')">
           Request Information
         </button>
@@ -386,7 +395,9 @@
         >
         <h3>GLP-3 10 MG</h3>
         <div class="price">$95</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('GLP-3 10 MG')">
           Request Information
         </button>
@@ -399,7 +410,9 @@
         >
         <h3>GLP-2 20 MG</h3>
         <div class="price">$110</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('GLP-2 20 MG')">
           Request Information
         </button>
@@ -412,7 +425,9 @@
         >
         <h3>GLP-3 20 MG</h3>
         <div class="price">$135</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('GLP-3 20 MG')">
           Request Information
         </button>
@@ -425,7 +440,9 @@
         >
         <h3>GLUTATHIONE 1500 MG</h3>
         <div class="price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('GLUTATHIONE 1500 MG')">
           Request Information
         </button>
@@ -438,7 +455,9 @@
         >
         <h3>NAD+ 500 MG</h3>
         <div class="price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
         <button onclick="selectProduct('NAD+ 500 MG')">
           Request Information
         </button>
@@ -577,8 +596,12 @@
         </button>
       </form>
       <div id="requestResult" class="request-result">
-        <strong>Your information request has been prepared.</strong>
-        <p>Your 4-digit reference code is:</p>
+        <strong>
+          Your information request has been prepared.
+        </strong>
+        <p>
+          Your 4-digit reference code is:
+        </p>
         <div id="requestCode" class="request-code"></div>
         <p>
           Your email application will open so you can send the request.
@@ -616,8 +639,14 @@
   <script>
     /* AGE GATE */
     function enterSite() {
-      localStorage.setItem("novaAgeConfirmed", "yes");
-      document.getElementById("ageGate").classList.add("hidden");
+      localStorage.setItem(
+        "novaAgeConfirmed",
+        "yes"
+      );
+      document
+        .getElementById("ageGate")
+        .classList
+        .add("hidden");
     }
     function leaveSite() {
       document.body.innerHTML =
@@ -626,21 +655,29 @@
         "</div>";
     }
     window.addEventListener("load", function() {
-      if (localStorage.getItem("novaAgeConfirmed") === "yes") {
-        document.getElementById("ageGate").classList.add("hidden");
+      if (
+        localStorage.getItem("novaAgeConfirmed") === "yes"
+      ) {
+        document
+          .getElementById("ageGate")
+          .classList
+          .add("hidden");
       }
     });
     /* SEARCH */
     function searchProducts() {
       const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
+        document
+          .getElementById("searchInput")
+          .value
+          .toLowerCase();
       const products =
         document.querySelectorAll(".product");
       products.forEach(function(product) {
         const name =
-          product.getAttribute("data-name").toLowerCase();
+          product
+            .getAttribute("data-name")
+            .toLowerCase();
         if (name.includes(search)) {
           product.style.display = "";
         } else {
@@ -652,11 +689,14 @@
     let selectedProduct = "";
     function selectProduct(productName) {
       selectedProduct = productName;
-      document.getElementById("productSelect").value =
-        productName;
-      document.getElementById("contact").scrollIntoView({
-        behavior: "smooth"
-      });
+      document
+        .getElementById("productSelect")
+        .value = productName;
+      document
+        .getElementById("contact")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
     }
     /* REQUEST CODE */
     function generateRequestCode() {
@@ -668,48 +708,93 @@
     function sendRequest(event) {
       event.preventDefault();
       const firstName =
-        document.getElementById("firstName").value.trim();
+        document
+          .getElementById("firstName")
+          .value
+          .trim();
       const lastName =
-        document.getElementById("lastName").value.trim();
+        document
+          .getElementById("lastName")
+          .value
+          .trim();
       const email =
-        document.getElementById("email").value.trim();
+        document
+          .getElementById("email")
+          .value
+          .trim();
       const phone =
-        document.getElementById("phone").value.trim();
+        document
+          .getElementById("phone")
+          .value
+          .trim();
       const product =
-        document.getElementById("productSelect").value;
+        document
+          .getElementById("productSelect")
+          .value;
       const message =
-        document.getElementById("message").value.trim();
+        document
+          .getElementById("message")
+          .value
+          .trim();
       const code =
         generateRequestCode();
-      document.getElementById("requestCode").textContent =
-        code;
-      document.getElementById("requestResult").style.display =
-        "block";
+      document
+        .getElementById("requestCode")
+        .textContent = code;
+      document
+        .getElementById("requestResult")
+        .style
+        .display = "block";
       const subject =
-        "NovaPeps USA Information Request - " + code;
+        "NovaPeps USA Information Request - " +
+        code;
       const body =
-        "Information Request Reference: " + code + "\n\n" +
-        "First Name: " + firstName + "\n" +
-        "Last Name: " + lastName + "\n" +
-        "Email: " + email + "\n" +
-        "Phone: " + phone + "\n" +
-        "Product: " + product + "\n\n" +
-        "Message:\n" + message + "\n\n" +
+        "Information Request Reference: " +
+        code +
+        "\n\n" +
+        "First Name: " +
+        firstName +
+        "\n" +
+        "Last Name: " +
+        lastName +
+        "\n" +
+        "Email: " +
+        email +
+        "\n" +
+        "Phone: " +
+        phone +
+        "\n" +
+        "Product: " +
+        product +
+        "\n\n" +
+        "Message:\n" +
+        message +
+        "\n\n" +
         "FOR RESEARCH USE ONLY. Not intended for human use.";
       const mailto =
         "mailto:Novalaps22@gmail.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
       window.location.href = mailto;
     }
     /* PROFILE */
     function saveProfile() {
       const name =
-        document.getElementById("profileName").value.trim();
+        document
+          .getElementById("profileName")
+          .value
+          .trim();
       const email =
-        document.getElementById("profileEmail").value.trim();
+        document
+          .getElementById("profileEmail")
+          .value
+          .trim();
       if (!name || !email) {
-        alert("Please enter your name and email.");
+        alert(
+          "Please enter your name and email."
+        );
         return;
       }
       localStorage.setItem(
@@ -723,24 +808,33 @@
     }
     function showProfile() {
       const saved =
-        localStorage.getItem("novaProfile");
+        localStorage.getItem(
+          "novaProfile"
+        );
       if (!saved) {
         return;
       }
       const profile =
         JSON.parse(saved);
-      document.getElementById("profileResult").innerHTML =
+      document
+        .getElementById("profileResult")
+        .innerHTML =
         "<strong>Profile saved</strong><br><br>" +
         "Name: " +
         profile.name +
         "<br>Email: " +
         profile.email;
     }
-    window.addEventListener("load", showProfile);
+    window.addEventListener(
+      "load",
+      showProfile
+    );
     /* WISHLIST */
     function addWishlist() {
       if (!selectedProduct) {
-        document.getElementById("wishlistResult").innerHTML =
+        document
+          .getElementById("wishlistResult")
+          .innerHTML =
           "Please select a product first.";
         return;
       }
@@ -748,7 +842,9 @@
         "novaWishlist",
         selectedProduct
       );
-      document.getElementById("wishlistResult").innerHTML =
+      document
+        .getElementById("wishlistResult")
+        .innerHTML =
         "<strong>Wishlist:</strong><br>" +
         selectedProduct;
     }
