@@ -3,196 +3,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NovaPeps USA</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#111}
-
-header{
-position:sticky;top:0;z-index:1000;height:64px;background:#000;color:#fff;
-display:flex;align-items:center;justify-content:space-between;padding:0 18px
+* {
+  box-sizing: border-box;
 }
 
-.logo{font-size:21px;font-weight:bold;letter-spacing:.5px}
-
-.menu-button{
-border:none;background:transparent;color:white;font-size:31px;
-cursor:pointer;line-height:1
+html {
+  scroll-behavior: smooth;
 }
 
-.side-menu{
-position:fixed;top:0;right:-310px;width:300px;height:100vh;
-background:#111;color:white;z-index:2000;padding:22px;
-transition:right .3s ease;box-shadow:-5px 0 18px rgba(0,0,0,.35);
-overflow-y:auto
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+  color: #111;
 }
 
-.side-menu.open{right:0}
-
-.close-menu{
-display:block;margin-left:auto;border:none;background:transparent;
-color:white;font-size:32px;cursor:pointer
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 64px;
+  background: #000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
 }
 
-.side-menu a{
-display:block;color:white;text-decoration:none;padding:15px 5px;
-border-bottom:1px solid #333;font-size:17px
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
-.search-box{margin:20px 0}
-
-.search-box input{
-width:100%;padding:12px;border-radius:8px;border:1px solid #555;
-background:#222;color:white;font-size:15px
+.menu-button {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 31px;
+  cursor: pointer;
+  line-height: 1;
 }
 
-/* AGE */
-.age-overlay{
-position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:5000;
-display:flex;align-items:center;justify-content:center;padding:20px
+/* SIDE MENU */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -310px;
+  width: 300px;
+  max-width: 85%;
+  height: 100vh;
+  background: white;
+  z-index: 2000;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.25);
+  transition: right 0.3s ease;
+  padding: 75px 22px 25px;
+  overflow-y: auto;
 }
 
-.age-box{
-background:white;width:100%;max-width:430px;padding:32px 24px;
-border-radius:16px;text-align:center
+.side-menu.open {
+  right: 0;
 }
 
-.age-box h2{margin-bottom:15px}
-
-.age-box p{
-color:#555;margin-bottom:24px;line-height:1.5
+.close-menu {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  cursor: pointer;
 }
 
-.age-buttons{display:flex;gap:12px}
-
-.age-buttons button{
-flex:1;padding:13px;border:none;border-radius:8px;
-cursor:pointer;font-weight:bold
+.side-menu a {
+  display: block;
+  padding: 15px 5px;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
 }
 
-.yes-button{background:#000;color:white}
-.no-button{background:#ddd;color:#111}
+.side-menu a:hover {
+  background: #f4f4f4;
+}
+
+.search-box {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1500;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
 
 /* HERO */
-.hero{width:100%;background:#000;text-align:center}
+.hero {
+  background: white;
+  text-align: center;
+  padding: 20px 15px 35px;
+}
 
-.hero img{
-display:block;width:100%;max-height:650px;object-fit:cover
+.hero img {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
 }
 
 /* SECTIONS */
-section{
-padding:55px 18px;max-width:1200px;margin:auto
+section {
+  padding: 45px 18px;
 }
 
-.section-title{
-text-align:center;margin-bottom:12px;font-size:30px
+.container {
+  max-width: 1100px;
+  margin: auto;
 }
 
-.section-subtitle{
-text-align:center;color:#666;margin-bottom:35px
+h1,
+h2 {
+  text-align: center;
+}
+
+.intro {
+  text-align: center;
+  max-width: 750px;
+  margin: 15px auto;
+  line-height: 1.6;
 }
 
 /* PRODUCTS */
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:22px
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
 }
 
-.product-card{
-background:white;border-radius:15px;padding:18px;text-align:center;
-box-shadow:0 3px 15px rgba(0,0,0,.08);
-transition:transform .2s ease
+.product-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
-.product-card:hover{transform:translateY(-4px)}
-
-.product-card img{
-width:100%;height:250px;object-fit:contain;margin-bottom:12px
+.product-card img {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
 }
 
-.product-card h3{
-font-size:19px;margin-bottom:7px
+.product-card h3 {
+  margin: 12px 0 7px;
 }
 
-.product-card .price{
-font-size:22px;font-weight:bold;margin:8px 0
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px 0;
 }
 
-.research{
-color:#777;font-size:12px;margin:10px 0 15px
+.research {
+  font-size: 12px;
+  color: #555;
+  margin-top: 10px;
+  line-height: 1.4;
 }
 
-.info-button{
-display:inline-block;background:#000;color:white;border:none;
-padding:12px 17px;border-radius:8px;cursor:pointer;
-font-weight:bold;text-decoration:none
+/* ABOUT / CONTACT */
+.info-box {
+  background: white;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  line-height: 1.6;
 }
 
-/* ABOUT */
-.about{
-background:white;max-width:100%
-}
-
-.about-inner{
-max-width:900px;margin:auto;text-align:center;line-height:1.7
-}
-
-/* WISHLIST / COMPARE */
-.simple-box{
-background:white;padding:30px;border-radius:15px;text-align:center;
-box-shadow:0 3px 15px rgba(0,0,0,.06)
-}
-
-/* CONTACT */
-.contact-form{
-max-width:700px;margin:auto;background:white;padding:25px;
-border-radius:15px;box-shadow:0 3px 15px rgba(0,0,0,.08)
-}
-
-.contact-form label{
-display:block;margin:13px 0 6px;font-weight:bold
+.contact-form {
+  max-width: 650px;
+  margin: 25px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
 
 .contact-form input,
-.contact-form select,
-.contact-form textarea{
-width:100%;padding:12px;border:1px solid #ccc;
-border-radius:8px;font-size:15px
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
 }
 
-.contact-form textarea{
-min-height:130px;resize:vertical
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
-.submit-button{
-width:100%;margin-top:20px;padding:14px;border:none;
-border-radius:8px;background:#000;color:white;font-size:16px;
-font-weight:bold;cursor:pointer
+.button {
+  display: inline-block;
+  border: none;
+  background: #000;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.code-result{
-display:none;margin-top:20px;padding:15px;background:#f0f0f0;
-border-radius:8px;text-align:center
+.button:hover {
+  opacity: 0.85;
+}
+
+/* WISHLIST */
+.wishlist {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.wishlist-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* COMPARE */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin-top: 25px;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.compare-table th {
+  background: #111;
+  color: white;
+}
+
+/* LOGIN */
+.login-box {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
 }
 
 /* FOOTER */
-footer{
-background:#000;color:white;text-align:center;padding:30px 18px;
-line-height:1.8
+footer {
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  line-height: 1.7;
 }
 
-footer a{color:white}
+footer a {
+  color: white;
+}
+
+/* AGE GATE */
+.age-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.age-box {
+  background: white;
+  max-width: 450px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.age-box h2 {
+  margin-top: 0;
+}
+
+.age-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.age-buttons button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.yes {
+  background: #000;
+  color: white;
+}
+
+.no {
+  background: #ddd;
+}
+
+/* HIDDEN */
+.hidden {
+  display: none !important;
+}
 
 /* MOBILE */
-@media(max-width:600px){
-.hero img{max-height:500px}
-.section-title{font-size:26px}
-.product-card img{height:220px}
-.side-menu{width:285px}
+@media (max-width: 600px) {
+  header {
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .hero {
+    padding: 10px 8px 25px;
+  }
+
+  section {
+    padding: 35px 12px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-table {
+    font-size: 13px;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 8px 5px;
+  }
 }
 </style>
 </head>
@@ -200,796 +404,528 @@ footer a{color:white}
 <body>
 
 <!-- AGE CONFIRMATION -->
-<div class="age-overlay" id="ageOverlay">
-<div class="age-box">
+<div class="age-gate" id="ageGate">
+  <div class="age-box">
+    <h2>Welcome to NovaPeps USA</h2>
+    <p>Are you 21 years of age or older?</p>
+    <p style="font-size:13px;color:#666;">
+      By entering this website, you confirm that you are 21 years of age or older.
+    </p>
 
-<h2>Welcome to NovaPeps USA</h2>
-
-<p>
-Are you 21 years of age or older?
-</p>
-
-<div class="age-buttons">
-
-<button class="yes-button" onclick="confirmAge()">
-YES
-</button>
-
-<button class="no-button" onclick="denyAge()">
-NO
-</button>
-
-</div>
-</div>
+    <div class="age-buttons">
+      <button class="yes" onclick="enterSite()">YES</button>
+      <button class="no" onclick="leaveSite()">NO</button>
+    </div>
+  </div>
 </div>
 
 <!-- HEADER -->
 <header>
+  <div class="logo">NovaPeps USA</div>
 
-<div class="logo">
-NovaPeps USA
-</div>
-
-<button
-class="menu-button"
-onclick="openMenu()"
-aria-label="Open menu">
-☰
-</button>
-
+  <button class="menu-button" onclick="openMenu()" aria-label="Open menu">
+    ☰
+  </button>
 </header>
 
-<!-- SIDE MENU -->
-<div class="side-menu" id="sideMenu">
+<!-- MENU -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<button
-class="close-menu"
-onclick="closeMenu()">
-×
-</button>
+<nav class="side-menu" id="sideMenu">
+  <button class="close-menu" onclick="closeMenu()">×</button>
 
-<div class="search-box">
+  <input
+    type="text"
+    id="searchInput"
+    class="search-box"
+    placeholder="Search for products..."
+    onkeyup="searchProducts()"
+  >
 
-<input
-type="text"
-id="searchInput"
-placeholder="Search for products..."
-onkeyup="searchProducts()">
+  <a href="#home" onclick="closeMenu()">HOME</a>
+  <a href="#products" onclick="closeMenu()">PRODUCTS</a>
+  <a href="#contact" onclick="closeMenu()">CONTACT PAGE</a>
+  <a href="#about" onclick="closeMenu()">ABOUT US</a>
+  <a href="#wishlist" onclick="closeMenu()">WISHLIST</a>
+  <a href="#compare" onclick="closeMenu()">COMPARE</a>
+  <a href="#login" onclick="closeMenu()">LOGIN / REGISTER</a>
+</nav>
 
-</div>
+<!-- COVER IMAGE -->
+<section class="hero" id="home">
+  <img
+    src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg"
+    alt="NovaPeps USA"
+  >
+</section>
 
-<a href="#home" onclick="closeMenu()">HOME</a>
-<a href="#products" onclick="closeMenu()">PRODUCTS</a>
-<a href="#contact" onclick="closeMenu()">CONTACT PAGE</a>
-<a href="#about" onclick="closeMenu()">ABOUT US</a>
-<a href="#wishlist" onclick="closeMenu()">WISHLIST</a>
-<a href="#compare" onclick="closeMenu()">COMPARE</a>
-<a href="#login" onclick="closeMenu()">LOGIN / REGISTER</a>
+<!-- HOME -->
+<section>
+  <div class="container">
+    <h1>Welcome to NovaPeps USA</h1>
 
-</div>
-
-<!-- HOME / COVER -->
-<main id="home">
-
-<section class="hero">
-
-<img
-src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0neh10NVAVGCO.jpeg"
-alt="NovaPeps USA">
-
+    <p class="intro">
+      Explore our catalog and learn more about our selection of research-use products.
+    </p>
+  </div>
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
-
-<h2 class="section-title">
-Our Products
-</h2>
-
-<p class="section-subtitle">
-Research-use products available in our catalog.
-</p>
-
-<div class="products" id="productGrid">
-
-<!-- MOTS-C -->
-<article class="product-card">
-
-<img
-src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-alt="NovaPeps MOTS-C">
-
-<h3>NOVAPEPS MOTS-C</h3>
-
-<div class="price">$60</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('NOVAPEPS MOTS-C')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- GLP-2 10 MG -->
-<article class="product-card">
-
-<img
-src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-alt="GLP-2 10 MG">
-
-<h3>GLP-2 10 MG</h3>
-
-<div class="price">$90</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('GLP-2 10 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- GHK-CU -->
-<article class="product-card">
-
-<img
-src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
-alt="GHK-CU 100 MG">
-
-<h3>GHK-CU 100 MG</h3>
-
-<div class="price">$50</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('GHK-CU 100 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- GLP-3 10 MG -->
-<article class="product-card">
-
-<img
-src="./713BA234-721B-4580-94DF-6677375C7826.png"
-alt="GLP-3 10 MG">
-
-<h3>GLP-3 10 MG</h3>
-
-<div class="price">$95</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('GLP-3 10 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- GLP-2 20 MG -->
-<article class="product-card">
-
-<img
-src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-alt="GLP-2 20 MG">
-
-<h3>GLP-2 20 MG</h3>
-
-<div class="price">$110</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('GLP-2 20 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- GLP-3 20 MG -->
-<article class="product-card">
-
-<img
-src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-alt="GLP-3 20 MG">
-
-<h3>GLP-3 20 MG</h3>
-
-<div class="price">$135</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('GLP-3 20 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- GLUTATHIONE -->
-<article class="product-card">
-
-<img
-src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-alt="Glutathione 1500 MG">
-
-<h3>GLUTATHIONE 1500 MG</h3>
-
-<div class="price">$60</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('GLUTATHIONE 1500 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-<!-- NAD+ -->
-<article class="product-card">
-
-<img
-src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
-alt="NAD+ 500 MG">
-
-<h3>NAD+ 500 MG</h3>
-
-<div class="price">$50</div>
-
-<div class="research">
-FOR RESEARCH USE ONLY
-</div>
-
-<button
-class="info-button"
-onclick="selectProduct('NAD+ 500 MG')">
-
-Request Information
-
-</button>
-
-</article>
-
-</div>
+  <div class="container">
+    <h2>Our Products</h2>
+
+    <p class="intro">
+      Catalog of products available for research use only.
+    </p>
+
+    <div class="products-grid" id="productsGrid">
+
+      <div class="product-card">
+        <img src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="NOVAPEPS MOTS-C">
+        <h3>NOVAPEPS MOTS-C</h3>
+        <div class="price">$60</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
+        <h3>GLP-2 10 MG</h3>
+        <div class="price">$90</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
+        <h3>GHK-CU 100 MG</h3>
+        <div class="price">$50</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
+        <h3>GLP-3 10 MG</h3>
+        <div class="price">$95</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
+        <h3>GLP-2 20 MG</h3>
+        <div class="price">$110</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
+        <h3>GLP-3 20 MG</h3>
+        <div class="price">$135</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
+        <h3>GLUTATHIONE 1500 MG</h3>
+        <div class="price">$60</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+      <div class="product-card">
+        <img src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
+        <h3>NAD+ 500 MG</h3>
+        <div class="price">$50</div>
+        <div class="research">FOR RESEARCH USE ONLY<br>Not intended for human use.</div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="about">
+<section id="about">
+  <div class="container">
+    <h2>About Us</h2>
 
-<div class="about-inner">
+    <div class="info-box">
+      <p>
+        Welcome to NovaPeps USA.
+      </p>
 
-<h2 class="section-title">
-About Us
-</h2>
+      <p>
+        Our website provides information about our catalog of research-use products.
+      </p>
 
-<p>
-Welcome to NovaPeps USA.
-We provide a catalog of products intended for research purposes.
-</p>
-
-<br>
-
-<p>
-For questions about our catalog, products, or general information,
-please contact our team using the contact page.
-</p>
-
-<br>
-
-<strong>
-FOR RESEARCH USE ONLY. Not intended for human use.
-</strong>
-
-</div>
-
-</section>
-
-<!-- WISHLIST -->
-<section id="wishlist">
-
-<h2 class="section-title">
-Wishlist
-</h2>
-
-<div class="simple-box">
-
-<p>
-Your wishlist area will appear here.
-</p>
-
-</div>
-
-</section>
-
-<!-- COMPARE -->
-<section id="compare">
-
-<h2 class="section-title">
-Compare
-</h2>
-
-<div class="simple-box">
-
-<p>
-Product comparison information will appear here.
-</p>
-
-</div>
-
-</section>
-
-<!-- LOGIN / REGISTER -->
-<section id="login">
-
-<h2 class="section-title">
-Login / Register
-</h2>
-
-<div class="contact-form">
-
-<label for="profileName">
-Name
-</label>
-
-<input
-type="text"
-id="profileName"
-placeholder="Your name">
-
-<label for="profileEmail">
-Email
-</label>
-
-<input
-type="email"
-id="profileEmail"
-placeholder="Your email">
-
-<button
-class="submit-button"
-onclick="saveProfile()">
-
-Save Profile
-
-</button>
-
-<div
-id="profileMessage"
-class="code-result">
-</div>
-
-</div>
-
+      <p>
+        All products displayed on this website are labeled
+        <strong>FOR RESEARCH USE ONLY</strong> and are not intended for human use.
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
+  <div class="container">
+    <h2>Contact Page</h2>
 
-<h2 class="section-title">
-Contact Page
-</h2>
+    <div class="info-box">
+      <p><strong>Email:</strong> Novalaps22@gmail.com</p>
+      <p><strong>Phone:</strong> (832) 273-9625</p>
+    </div>
 
-<p class="section-subtitle">
-Send us a request for information.
-</p>
+    <form class="contact-form" onsubmit="sendRequest(event)">
 
-<div class="contact-form">
+      <label>Your Name</label>
+      <input
+        type="text"
+        id="contactName"
+        required
+      >
 
-<label for="firstName">
-First Name
-</label>
+      <label>Your Email</label>
+      <input
+        type="email"
+        id="contactEmail"
+        required
+      >
 
-<input
-type="text"
-id="firstName"
-placeholder="First name">
+      <label>Message</label>
+      <textarea
+        id="contactMessage"
+        placeholder="Write your message..."
+        required
+      ></textarea>
 
-<label for="lastName">
-Last Name
-</label>
+      <button type="submit" class="button">
+        Send Message
+      </button>
 
-<input
-type="text"
-id="lastName"
-placeholder="Last name">
-
-<label for="email">
-Email
-</label>
-
-<input
-type="email"
-id="email"
-placeholder="your@email.com">
-
-<label for="phone">
-Phone
-</label>
-
-<input
-type="tel"
-id="phone"
-placeholder="Phone number">
-
-<label for="product">
-Product
-</label>
-
-<select id="product">
-
-<option value="">
-Select a product
-</option>
-
-<option>NOVAPEPS MOTS-C</option>
-<option>GLP-2 10 MG</option>
-<option>GHK-CU 100 MG</option>
-<option>GLP-3 10 MG</option>
-<option>GLP-2 20 MG</option>
-<option>GLP-3 20 MG</option>
-<option>GLUTATHIONE 1500 MG</option>
-<option>NAD+ 500 MG</option>
-
-</select>
-
-<label for="message">
-Message
-</label>
-
-<textarea
-id="message"
-placeholder="Write your message here...">
-</textarea>
-
-<button
-class="submit-button"
-onclick="sendRequest()">
-
-Send Information Request
-
-</button>
-
-<div
-id="codeResult"
-class="code-result">
-</div>
-
-</div>
-
+    </form>
+  </div>
 </section>
 
-</main>
+<!-- WISHLIST -->
+<section id="wishlist">
+  <div class="container">
+    <h2>Wishlist</h2>
+
+    <div class="wishlist">
+
+      <div class="wishlist-item">
+        NOVAPEPS MOTS-C
+        <button class="button" onclick="addWishlist('NOVAPEPS MOTS-C')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        GLP-2 10 MG
+        <button class="button" onclick="addWishlist('GLP-2 10 MG')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        GHK-CU 100 MG
+        <button class="button" onclick="addWishlist('GHK-CU 100 MG')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        GLP-3 10 MG
+        <button class="button" onclick="addWishlist('GLP-3 10 MG')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        GLP-2 20 MG
+        <button class="button" onclick="addWishlist('GLP-2 20 MG')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        GLP-3 20 MG
+        <button class="button" onclick="addWishlist('GLP-3 20 MG')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        GLUTATHIONE 1500 MG
+        <button class="button" onclick="addWishlist('GLUTATHIONE 1500 MG')">
+          Add
+        </button>
+      </div>
+
+      <div class="wishlist-item">
+        NAD+ 500 MG
+        <button class="button" onclick="addWishlist('NAD+ 500 MG')">
+          Add
+        </button>
+      </div>
+
+      <div id="wishlistMessage" style="margin-top:20px;font-weight:bold;"></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare">
+  <div class="container">
+    <h2>Compare</h2>
+
+    <table class="compare-table">
+      <tr>
+        <th>Product</th>
+        <th>Size</th>
+        <th>Price</th>
+      </tr>
+
+      <tr>
+        <td>NOVAPEPS MOTS-C</td>
+        <td>—</td>
+        <td>$60</td>
+      </tr>
+
+      <tr>
+        <td>GLP-2</td>
+        <td>10 MG</td>
+        <td>$90</td>
+      </tr>
+
+      <tr>
+        <td>GLP-2</td>
+        <td>20 MG</td>
+        <td>$110</td>
+      </tr>
+
+      <tr>
+        <td>GHK-CU</td>
+        <td>100 MG</td>
+        <td>$50</td>
+      </tr>
+
+      <tr>
+        <td>GLP-3</td>
+        <td>10 MG</td>
+        <td>$95</td>
+      </tr>
+
+      <tr>
+        <td>GLP-3</td>
+        <td>20 MG</td>
+        <td>$135</td>
+      </tr>
+
+      <tr>
+        <td>GLUTATHIONE</td>
+        <td>1500 MG</td>
+        <td>$60</td>
+      </tr>
+
+      <tr>
+        <td>NAD+</td>
+        <td>500 MG</td>
+        <td>$50</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- LOGIN / REGISTER -->
+<section id="login">
+  <div class="container">
+    <h2>Login / Register</h2>
+
+    <div class="login-box">
+
+      <label>Name</label>
+      <input
+        type="text"
+        id="profileName"
+        placeholder="Your name"
+      >
+
+      <label>Email</label>
+      <input
+        type="email"
+        id="profileEmail"
+        placeholder="Your email"
+      >
+
+      <button class="button" onclick="registerUser()">
+        Register
+      </button>
+
+      <p id="registerMessage"></p>
+
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
+  <div>
+    <strong>NovaPeps USA</strong>
+  </div>
 
-<p>
-Contact:
-<a href="mailto:Novalaps22@gmail.com">
-Novalaps22@gmail.com
-</a>
-</p>
+  <div>
+    Email:
+    <a href="mailto:Novalaps22@gmail.com">
+      Novalaps22@gmail.com
+    </a>
+  </div>
 
-<p>
-Phone:
-<a href="tel:+18322739625">
-(832) 273-9625
-</a>
-</p>
+  <div>
+    Phone:
+    <a href="tel:+18322739625">
+      (832) 273-9625
+    </a>
+  </div>
 
-<p>
-FOR RESEARCH USE ONLY. Not intended for human use.
-</p>
+  <div style="margin-top:10px;">
+    © 2026 NovaPeps USA
+  </div>
 
-<p>
-© 2026 NovaPeps USA
-</p>
-
+  <div style="font-size:12px;margin-top:10px;">
+    FOR RESEARCH USE ONLY. Not intended for human use.
+  </div>
 </footer>
 
 <script>
 
-/* AGE */
-
-function confirmAge() {
-
-localStorage.setItem(
-"novaAgeConfirmed",
-"yes"
-);
-
-document.getElementById(
-"ageOverlay"
-).style.display = "none";
-
+/* AGE GATE */
+function enterSite() {
+  localStorage.setItem("novaAgeConfirmed", "yes");
+  document.getElementById("ageGate").classList.add("hidden");
 }
 
-function denyAge() {
-
-document.getElementById(
-"ageOverlay"
-).innerHTML = `
-<div class="age-box">
-<h2>Access Restricted</h2>
-<p>You must be 21 or older to enter this website.</p>
-</div>
-`;
-
+function leaveSite() {
+  window.location.href = "https://www.google.com/";
 }
 
-window.addEventListener(
-"load",
-function() {
-
-if (
-localStorage.getItem(
-"novaAgeConfirmed"
-) === "yes"
-) {
-
-document.getElementById(
-"ageOverlay"
-).style.display = "none";
-
+if (localStorage.getItem("novaAgeConfirmed") === "yes") {
+  document.getElementById("ageGate").classList.add("hidden");
 }
-
-}
-);
 
 
 /* MENU */
-
 function openMenu() {
-
-document.getElementById(
-"sideMenu"
-).classList.add("open");
-
+  document.getElementById("sideMenu").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
 }
 
 function closeMenu() {
-
-document.getElementById(
-"sideMenu"
-).classList.remove("open");
-
+  document.getElementById("sideMenu").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
 }
 
 
 /* SEARCH */
-
 function searchProducts() {
 
-const search =
-document.getElementById(
-"searchInput"
-).value.toLowerCase();
+  const search =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
 
-const cards =
-document.querySelectorAll(
-".product-card"
-);
+  const cards =
+    document.querySelectorAll(".product-card");
 
-cards.forEach(
-function(card) {
+  cards.forEach(function(card) {
 
-const text =
-card.innerText.toLowerCase();
+    const text =
+      card.innerText.toLowerCase();
 
-if (text.includes(search)) {
+    if (text.includes(search)) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
 
-card.style.display = "";
-
-} else {
-
-card.style.display = "none";
-
-}
-
-}
-);
-
+  });
 }
 
 
-/* SELECT PRODUCT */
+/* WISHLIST */
+function addWishlist(product) {
 
-function selectProduct(productName) {
+  localStorage.setItem(
+    "novaWishlist",
+    product
+  );
 
-document.getElementById(
-"product"
-).value = productName;
-
-document.getElementById(
-"contact"
-).scrollIntoView({
-behavior:"smooth"
-});
-
+  document.getElementById("wishlistMessage").innerText =
+    product + " added to your wishlist.";
 }
 
 
-/* PROFILE */
+/* REGISTER */
+function registerUser() {
 
-function saveProfile() {
+  const name =
+    document.getElementById("profileName").value.trim();
 
-const name =
-document.getElementById(
-"profileName"
-).value.trim();
+  const email =
+    document.getElementById("profileEmail").value.trim();
 
-const email =
-document.getElementById(
-"profileEmail"
-).value.trim();
+  if (!name || !email) {
 
-const result =
-document.getElementById(
-"profileMessage"
-);
+    document.getElementById("registerMessage").innerText =
+      "Please enter your name and email.";
 
-if (!name || !email) {
+    return;
+  }
 
-result.style.display = "block";
+  localStorage.setItem(
+    "novaProfile",
+    JSON.stringify({
+      name: name,
+      email: email
+    })
+  );
 
-result.innerHTML =
-"Please enter your name and email.";
-
-return;
-
-}
-
-localStorage.setItem(
-"novaProfile",
-JSON.stringify({
-name:name,
-email:email
-})
-);
-
-result.style.display = "block";
-
-result.innerHTML =
-"Profile saved successfully.";
-
+  document.getElementById("registerMessage").innerText =
+    "Registration saved successfully.";
 }
 
 
-/* INFORMATION REQUEST */
+/* CONTACT REQUEST */
+function sendRequest(event) {
 
-function sendRequest() {
+  event.preventDefault();
 
-const firstName =
-document.getElementById(
-"firstName"
-).value.trim();
+  const name =
+    document.getElementById("contactName").value.trim();
 
-const lastName =
-document.getElementById(
-"lastName"
-).value.trim();
+  const email =
+    document.getElementById("contactEmail").value.trim();
 
-const email =
-document.getElementById(
-"email"
-).value.trim();
+  const message =
+    document.getElementById("contactMessage").value.trim();
 
-const phone =
-document.getElementById(
-"phone"
-).value.trim();
+  const reference =
+    Math.floor(1000 + Math.random() * 9000);
 
-const product =
-document.getElementById(
-"product"
-).value;
+  const subject =
+    "NovaPeps USA Information Request #" + reference;
 
-const message =
-document.getElementById(
-"message"
-).value.trim();
+  const body =
+    "Name: " + name +
+    "\nEmail: " + email +
+    "\nReference Code: " + reference +
+    "\n\nMessage:\n" + message;
 
-const result =
-document.getElementById(
-"codeResult"
-);
-
-if (!firstName || !email || !product) {
-
-result.style.display = "block";
-
-result.innerHTML =
-"Please enter your first name, email, and select a product.";
-
-return;
-
-}
-
-const referenceCode =
-Math.floor(
-1000 + Math.random() * 9000
-);
-
-const subject =
-"NovaPeps USA Information Request - "
-+ referenceCode;
-
-const body =
-`NovaPeps USA Information Request
-
-Reference Code: ${referenceCode}
-
-First Name: ${firstName}
-Last Name: ${lastName}
-Email: ${email}
-Phone: ${phone}
-Product: ${product}
-
-Message:
-${message}
-
-FOR RESEARCH USE ONLY. Not intended for human use.
-`;
-
-const mailto =
-"mailto:Novalaps22@gmail.com" +
-"?subject=" +
-encodeURIComponent(subject) +
-"&body=" +
-encodeURIComponent(body);
-
-result.style.display = "block";
-
-result.innerHTML =
-"<strong>Your reference code is: " +
-referenceCode +
-"</strong><br><br>" +
-"Your email application will open so you can send the information request.";
-
-window.location.href = mailto;
-
+  window.location.href =
+    "mailto:Novalaps22@gmail.com" +
+    "?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
 }
 
 </script>
