@@ -1,597 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="NovaPeps USA — research-use-only catalog.">
+  <meta
+    name="description"
+    content="NovaPeps USA - Research materials and laboratory information."
+  >
 
-<title>NovaPeps USA</title>
+  <title>NovaPeps USA</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f5f8fc;
-  color: #10213a;
-  line-height: 1.6;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f8fc;
+      color: #10213a;
+      line-height: 1.6;
+    }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-/* HEADER */
+    /* HEADER */
+    header {
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #e5e7eb;
+    }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: white;
-  border-bottom: 1px solid #dce5ef;
-}
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      min-height: 78px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.nav {
-  max-width: 1100px;
-  margin: auto;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    .logo-text {
+      color: #1261d6;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
 
-.logo {
-  font-size: 24px;
-  font-weight: 900;
-  color: #1264d8;
-  letter-spacing: 1px;
-}
+    .menu-button {
+      background: none;
+      border: none;
+      font-size: 34px;
+      color: #1261d6;
+      cursor: pointer;
+      display: none;
+    }
 
-nav {
-  display: flex;
-  gap: 22px;
-}
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
 
-nav a {
-  font-weight: 700;
-}
+    nav a {
+      font-weight: 700;
+      color: #183b68;
+    }
 
-nav a:hover {
-  color: #1264d8;
-}
+    nav a:hover {
+      color: #1261d6;
+    }
 
-.menu {
-  display: none;
-  border: 0;
-  background: none;
-  font-size: 28px;
-  color: #1264d8;
-}
+    /* HERO */
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(rgba(0, 55, 150, 0.86), rgba(0, 55, 150, 0.90)),
+        url("att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehI0NVAVGC0.jpeg")
+        center / cover no-repeat;
 
-/* HERO */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+    }
 
-.hero {
-  background: linear-gradient(135deg, #071f4d, #1359c7);
-  color: white;
-  text-align: center;
-  padding: 60px 20px;
-}
+    .hero-content {
+      max-width: 850px;
+    }
 
-.hero h1 {
-  font-size: clamp(36px, 7vw, 64px);
-  margin: 0 0 18px;
-  line-height: 1.05;
-  letter-spacing: 2px;
-}
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
 
-.hero p {
-  max-width: 700px;
-  margin: 0 auto 28px;
-  color: #e6efff;
-  font-size: 17px;
-}
+    .hero p {
+      font-size: clamp(19px, 3vw, 28px);
+      margin-bottom: 35px;
+    }
 
-.hero img {
-  width: min(100%, 520px);
-  margin: auto;
-  border-radius: 18px;
-}
+    .button {
+      display: inline-block;
+      background: white;
+      color: #1261d6;
+      padding: 15px 28px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 18px;
+    }
 
-/* PRODUCTS */
+    /* SECTION */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+    }
 
-.section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 55px 20px;
-}
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 15px;
+      color: #123c70;
+    }
 
-.section h2 {
-  text-align: center;
-  font-size: 34px;
-  margin: 0 0 12px;
-}
+    .section-text {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 45px;
+      color: #526173;
+      font-size: 18px;
+    }
 
-.intro {
-  text-align: center;
-  color: #5b6b80;
-  margin: 0 auto 32px;
-  max-width: 700px;
-}
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 22px;
-}
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(20, 50, 90, 0.10);
+      border: 1px solid #e5eaf0;
+    }
 
-.card {
-  background: white;
-  border: 1px solid #dce5ef;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 7px 20px rgba(16, 33, 58, 0.07);
-}
+    .product-image {
+      width: 100%;
+      height: 330px;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 25px;
+    }
 
-.card h3 {
-  margin: 0 0 8px;
-  font-size: 21px;
-}
+    .product-info {
+      padding: 25px;
+    }
 
-.card p {
-  margin: 0;
-  color: #5b6b80;
-}
+    .product-info h3 {
+      font-size: 25px;
+      color: #123c70;
+      margin-bottom: 10px;
+    }
 
-.badge {
-  display: inline-block;
-  background: #e8f1ff;
-  color: #1264d8;
-  border-radius: 999px;
-  padding: 5px 9px;
-  font-size: 12px;
-  font-weight: 800;
-  margin-bottom: 12px;
-}
+    .product-info p {
+      color: #596779;
+      margin-bottom: 12px;
+    }
 
-.card img {
-  width: 100%;
-  height: 230px;
-  object-fit: contain;
-  margin-bottom: 15px;
-  border-radius: 12px;
-}
+    .research-label {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 12px;
+      border-radius: 5px;
+      background: #edf4ff;
+      color: #1261d6;
+      font-size: 13px;
+      font-weight: 800;
+    }
 
-/* CONTACT */
+    /* ABOUT */
+    .about-box {
+      background: white;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(20, 50, 90, 0.08);
+    }
 
-.notice {
-  margin-top: 30px;
-  background: white;
-  border: 1px solid #dce5ef;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  color: #5b6b80;
-}
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
 
-/* FOOTER */
+    .contact-box {
+      background: #123c70;
+      color: white;
+      padding: 45px 25px;
+      border-radius: 16px;
+    }
 
-footer {
-  background: #0a1d3a;
-  color: #dce8fa;
-  text-align: center;
-  padding: 28px 20px;
-  font-size: 14px;
-}
+    .contact-box h2 {
+      margin-bottom: 15px;
+      font-size: 34px;
+    }
 
-/* MOBILE */
+    /* FOOTER */
+    footer {
+      background: #0b1f38;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
 
-@media (max-width: 700px) {
+    footer p {
+      margin: 6px 0;
+    }
 
-  nav {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 64px;
-    background: white;
-    padding: 18px 20px;
-    flex-direction: column;
-    border-bottom: 1px solid #dce5ef;
-  }
+    /* MOBILE */
+    @media (max-width: 700px) {
 
-  nav.open {
-    display: flex;
-  }
+      .header-inner {
+        min-height: 70px;
+      }
 
-  .menu {
-    display: block;
-  }
+      .logo-text {
+        font-size: 25px;
+      }
 
-}
-</style>
+      .menu-button {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 70px;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        padding: 17px 25px;
+        border-top: 1px solid #eee;
+      }
+
+      .hero {
+        min-height: 560px;
+        padding: 55px 18px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero p {
+        font-size: 19px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 300px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
 
-<div class="nav">
+      <a href="#inicio" class="logo-text">
+        NOVAPEPS USA
+      </a>
 
-<a class="logo" href="#home">
-NOVAPEPS USA
-</a>
+      <button
+        id="menuButton"
+        class="menu-button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
 
-<button
-  class="menu"
-  id="menuButton"
-  aria-label="Open menu"
-  aria-expanded="false">
-☰
-</button>
+      <nav id="navLinks">
+        <a href="#inicio">Home</a>
+        <a href="#productos">Products</a>
+        <a href="#nosotros">About</a>
+        <a href="#contacto">Contact</a>
+      </nav>
 
-<nav id="navLinks">
+    </div>
+  </header>
 
-<a href="#home">
-Home
-</a>
 
-<a href="#products">
-Products
-</a>
+  <!-- HERO -->
+  <main>
 
-<a href="#contact">
-Contact
-</a>
+    <section id="inicio" class="hero">
+      <div class="hero-content">
 
-</nav>
+        <h1>
+          PREMIUM<br>
+          RESEARCH<br>
+          COMPOUNDS
+        </h1>
 
-</div>
+        <p>
+          NovaPeps USA provides materials presented
+          for research purposes only.
+        </p>
 
-</header>
+        <a href="#productos" class="button">
+          VIEW CATALOG
+        </a>
 
+      </div>
+    </section>
 
-<main>
 
-<!-- HERO -->
+    <!-- PRODUCTS -->
+    <section id="productos">
 
-<section class="hero" id="home">
+      <h2 class="section-title">
+        Research Catalog
+      </h2>
 
-<h1>
-PREMIUM RESEARCH COMPOUNDS
-</h1>
+      <p class="section-text">
+        Materials presented for laboratory and research purposes only.
+        Review the information associated with each item before use.
+      </p>
 
-<p>
-NovaPeps USA — informational catalog for research-use-only products.
-</p>
+      <div class="products">
 
-<img
-src="att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehI0NVAVGC0.jpeg"
-alt="NovaPeps USA">
+        <!-- GLP-2 -->
+        <article class="product-card">
 
-</section>
+          <img
+            class="product-image"
+            src="F3DAEE1A-64AD-4CD0-819B-B518D6BBCE55.png"
+            alt="NovaPeps GLP-2 10 MG"
+          >
 
+          <div class="product-info">
 
-<!-- PRODUCTS -->
+            <h3>
+              GLP-2 — 10 MG
+            </h3>
 
-<section class="section" id="products">
+            <p>
+              Research material presented for laboratory
+              research purposes only.
+            </p>
 
-<h2>
-Our Products
-</h2>
+            <span class="research-label">
+              FOR RESEARCH USE ONLY
+            </span>
 
-<p class="intro">
-Research-use-only product catalog.
-</p>
+          </div>
 
+        </article>
 
-<div class="grid">
 
+        <!-- BACTERIOSTATIC WATER -->
+        <article class="product-card">
 
-<!-- GLP-2 10 MG -->
+          <img
+            class="product-image"
+            src="att.HEQ8wq1gITYiVsopUPIDwWEL-8elRmsj5V3mOaXzc44.jpeg"
+            alt="NovaPeps Bacteriostatic Water 3 ML"
+          >
 
-<article class="card">
+          <div class="product-info">
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
+            <h3>
+              Bacteriostatic Water — 3 ML
+            </h3>
 
-<img
-src="F3DAEE1A-64AD-4CD0-819B-B518D6BBCE55.png"
-alt="GLP-2 10 mg">
+            <p>
+              Research material presented for laboratory
+              research purposes only.
+            </p>
 
-<h3>
-GLP-2 — 10 mg
-</h3>
+            <span class="research-label">
+              FOR RESEARCH USE ONLY
+            </span>
 
-<p>
-Research-use-only catalog item.
-</p>
+          </div>
 
-</article>
+        </article>
 
+      </div>
 
-<!-- GLP-2 20 MG -->
+    </section>
 
-<article class="card">
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
+    <!-- ABOUT -->
+    <section id="nosotros">
 
-<h3>
-GLP-2 — 20 mg
-</h3>
+      <h2 class="section-title">
+        About NovaPeps USA
+      </h2>
 
-<p>
-Research-use-only catalog item.
-</p>
+      <div class="about-box">
 
-</article>
+        <p>
+          NovaPeps USA presents research materials for
+          laboratory and research purposes.
+        </p>
 
+        <br>
 
-<!-- GLP-3 10 MG -->
+        <p>
+          These materials are not presented as products
+          for human consumption or medical treatment.
+        </p>
 
-<article class="card">
+      </div>
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
+    </section>
 
-<h3>
-GLP-3 — 10 mg
-</h3>
 
-<p>
-Research-use-only catalog item.
-</p>
+    <!-- CONTACT -->
+    <section id="contacto" class="contact">
 
-</article>
+      <div class="contact-box">
 
+        <h2>
+          Contact
+        </h2>
 
-<!-- GLP-3 20 MG -->
+        <p>
+          For research-related information, please contact
+          NovaPeps USA.
+        </p>
 
-<article class="card">
+      </div>
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
+    </section>
 
-<h3>
-GLP-3 — 20 mg
-</h3>
+  </main>
 
-<p>
-Research-use-only catalog item.
-</p>
 
-</article>
+  <!-- FOOTER -->
+  <footer>
 
+    <strong>
+      NovaPeps USA
+    </strong>
 
-<!-- GHK-CU -->
+    <p>
+      For research use only.
+    </p>
 
-<article class="card">
+    <p>
+      Not for human consumption.
+    </p>
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
+  </footer>
 
-<h3>
-GHK-CU — 100 mg
-</h3>
 
-<p>
-Research-use-only catalog item.
-</p>
+  <!-- MENU SCRIPT -->
+  <script>
 
-</article>
+    const menuButton =
+      document.getElementById("menuButton");
 
+    const navLinks =
+      document.getElementById("navLinks");
 
-<!-- NAD+ -->
 
-<article class="card">
+    function closeMenu() {
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
+      navLinks.classList.remove("open");
 
-<h3>
-NAD+ — 500 mg
-</h3>
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
-<p>
-Research-use-only catalog item.
-</p>
+    }
 
-</article>
 
+    menuButton.addEventListener(
+      "click",
+      function () {
 
-<!-- GLUTATHIONE -->
+        const isOpen =
+          navLinks.classList.toggle("open");
 
-<article class="card">
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
 
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
-
-<h3>
-GLUTATHIONE — 150 mg
-</h3>
-
-<p>
-Research-use-only catalog item.
-</p>
-
-</article>
-
-
-<!-- MOTS-C -->
-
-<article class="card">
-
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
-
-<h3>
-MOTS-C — 10 mg
-</h3>
-
-<p>
-Research-use-only catalog item.
-</p>
-
-</article>
-
-
-<!-- BACTERIOSTATIC WATER -->
-
-<article class="card">
-
-<span class="badge">
-FOR RESEARCH USE ONLY
-</span>
-
-<img
-src="att.HEQ8wq1gITYiVsopUIDwWEL-8elRmsj5V3mOaXzc44.jpeg"
-alt="Bacteriostatic Water 3 mL">
-
-<h3>
-Bacteriostatic Water — 3 mL
-</h3>
-
-<p>
-Research-use-only catalog item.
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="notice" id="contact">
-
-<strong>
-For research use only.
-</strong>
-
-<br>
-
-This website is informational and does not provide medical advice or treatment instructions.
-
-</div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-NovaPeps USA
-
-<br>
-
-For research use only. Not for human consumption.
-
-</footer>
-
-
-<script>
-
-const menuButton =
-document.getElementById("menuButton");
-
-const navLinks =
-document.getElementById("navLinks");
-
-
-function closeMenu() {
-
-  navLinks.classList.remove("open");
-
-  menuButton.setAttribute(
-    "aria-expanded",
-    "false"
-  );
-
-}
-
-
-menuButton.addEventListener(
-  "click",
-  function() {
-
-    const isOpen =
-    navLinks.classList.toggle("open");
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      String(isOpen)
+      }
     );
 
-  }
-);
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach(function (link) {
+
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+
+      });
 
 
-navLinks
-.querySelectorAll("a")
-.forEach(function(link) {
+    document.addEventListener(
+      "click",
+      function (event) {
 
-  link.addEventListener(
-    "click",
-    closeMenu
-  );
+        if (
+          navLinks.classList.contains("open") &&
+          !navLinks.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
 
-});
+          closeMenu();
 
+        }
 
-document.addEventListener(
-  "click",
-  function(event) {
-
-    if (
-      navLinks.classList.contains("open") &&
-      !navLinks.contains(event.target) &&
-      !menuButton.contains(event.target)
-    ) {
-
-      closeMenu();
-
-    }
-
-  }
-);
+      }
+    );
 
 
-document.addEventListener(
-  "keydown",
-  function(event) {
+    document.addEventListener(
+      "keydown",
+      function (event) {
 
-    if (event.key === "Escape") {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
 
-      closeMenu();
+      }
+    );
 
-    }
-
-  }
-);
-
-</script>
+  </script>
 
 </body>
 </html>
