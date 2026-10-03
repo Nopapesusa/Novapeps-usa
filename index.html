@@ -1,1430 +1,1085 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NovaPeps USA | Research Compounds</title>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f7fb;
-  color: #172033;
-}
-
-header {
-  background: #071426;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 3px 15px rgba(0,0,0,.18);
-}
-
-.navbar {
-  max-width: 1200px;
-  margin: auto;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-size: 23px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.cart-button {
-  border: 0;
-  background: white;
-  color: #071426;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.hero {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero img {
-  width: 100%;
-  display: block;
-  max-height: 650px;
-  object-fit: cover;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 45px;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,.70),
-    rgba(0,0,0,.08)
-  );
-}
-
-.hero-content {
-  color: white;
-  max-width: 600px;
-}
-
-.hero-content h1 {
-  font-size: 42px;
-  margin: 0 0 12px;
-}
-
-.hero-content p {
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.hero-button {
-  display: inline-block;
-  background: white;
-  color: #071426;
-  padding: 13px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.section {
-  max-width: 1200px;
-  margin: auto;
-  padding: 55px 20px;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.section-title h2 {
-  margin-bottom: 8px;
-  font-size: 32px;
-}
-
-.section-title p {
-  color: #667085;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-}
-
-.product-card {
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 6px 22px rgba(10,30,60,.10);
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: contain;
-  background: white;
-  padding: 10px;
-}
-
-.product-info {
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.product-info h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
-}
-
-.product-info .description {
-  color: #667085;
-  font-size: 14px;
-  line-height: 1.45;
-  flex: 1;
-}
-
-.research-label {
-  font-size: 11px;
-  font-weight: bold;
-  color: #53606f;
-  margin: 10px 0;
-}
-
-.price {
-  font-size: 25px;
-  font-weight: 800;
-  margin: 5px 0 15px;
-}
-
-.add-button {
-  width: 100%;
-  border: 0;
-  border-radius: 10px;
-  padding: 13px;
-  background: #071426;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.add-button:hover {
-  opacity: .88;
-}
-
-.shipping-box {
-  background: white;
-  border-radius: 18px;
-  padding: 25px;
-  margin-top: 40px;
-  box-shadow: 0 6px 22px rgba(10,30,60,.08);
-}
-
-.shipping-box h3 {
-  margin-top: 0;
-}
-
-.shipping-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 12px 0;
-  padding: 12px;
-  border: 1px solid #d8dee8;
-  border-radius: 10px;
-}
-
-.contact {
-  background: #071426;
-  color: white;
-}
-
-.contact-inner {
-  max-width: 1000px;
-  margin: auto;
-  padding: 55px 20px;
-  text-align: center;
-}
-
-.contact-inner h2 {
-  font-size: 30px;
-}
-
-.contact-item {
-  margin: 14px 0;
-  font-size: 17px;
-}
-
-.contact-item a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.disclaimer {
-  background: #fff7df;
-  color: #634b00;
-  max-width: 1000px;
-  margin: 35px auto 0;
-  padding: 18px;
-  border-radius: 12px;
-  line-height: 1.5;
-  font-size: 13px;
-}
-
-footer {
-  background: #030b17;
-  color: #aeb7c5;
-  text-align: center;
-  padding: 25px 15px;
-  font-size: 13px;
-}
-
-/* CART */
-
-.cart-panel {
-  position: fixed;
-  top: 0;
-  right: -430px;
-  width: min(430px, 100%);
-  height: 100vh;
-  background: white;
-  z-index: 2000;
-  box-shadow: -8px 0 30px rgba(0,0,0,.20);
-  transition: right .3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.cart-panel.open {
-  right: 0;
-}
-
-.cart-header {
-  padding: 20px;
-  background: #071426;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cart-header h2 {
-  margin: 0;
-}
-
-.close-cart {
-  border: 0;
-  background: transparent;
-  color: white;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.cart-items {
-  padding: 18px;
-  overflow-y: auto;
-  flex: 1;
-}
-
-.cart-item {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 15px 0;
-}
-
-.cart-item-title {
-  font-weight: bold;
-  margin-bottom: 7px;
-}
-
-.cart-item-price {
-  font-size: 14px;
-  color: #667085;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.quantity-controls button {
-  width: 32px;
-  height: 32px;
-  border: 0;
-  border-radius: 7px;
-  background: #e8edf4;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.remove-button {
-  margin-left: auto;
-  border: 0;
-  background: transparent;
-  color: #b42318;
-  cursor: pointer;
-}
-
-.cart-summary {
-  border-top: 1px solid #ddd;
-  padding: 18px;
-  background: #fafafa;
-}
-
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  margin: 9px 0;
-}
-
-.total-row {
-  font-size: 21px;
-  font-weight: 800;
-  margin-top: 15px;
-}
-
-.checkout-button {
-  width: 100%;
-  margin-top: 15px;
-  padding: 14px;
-  border: 0;
-  border-radius: 10px;
-  background: #071426;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.clear-button {
-  width: 100%;
-  margin-top: 8px;
-  padding: 11px;
-  border: 1px solid #c7ced8;
-  border-radius: 10px;
-  background: white;
-  cursor: pointer;
-}
-
-.order-code {
-  background: #eaf3ff;
-  border-radius: 10px;
-  padding: 12px;
-  margin-top: 12px;
-  text-align: center;
-  font-weight: bold;
-  display: none;
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.45);
-  z-index: 1500;
-  display: none;
-}
-
-.overlay.show {
-  display: block;
-}
-
-.empty-cart {
-  text-align: center;
-  color: #667085;
-  padding: 40px 10px;
-}
-
-@media (max-width: 950px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 650px) {
-  .nav-links a {
-    display: none;
-  }
-
-  .navbar {
-    padding: 13px 15px;
-  }
-
-  .hero img {
-    min-height: 430px;
-    object-fit: cover;
-  }
-
-  .hero-overlay {
-    padding: 25px;
-  }
-
-  .hero-content h1 {
-    font-size: 30px;
-  }
-
-  .hero-content p {
-    font-size: 15px;
-  }
-
-  .products {
-    grid-template-columns: 1fr;
-  }
-
-  .product-card img {
-    height: 300px;
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NovaPeps USA | Research Compounds</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+      line-height: 1.5;
+    }
+
+    .age-bar {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 11px 15px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    header {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      color: #14213d;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #172033;
+      font-weight: bold;
+      margin-left: 15px;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .cart-top {
+      background: #2563eb;
+      color: white !important;
+      padding: 9px 13px;
+      border-radius: 9px;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 25px auto;
+      padding: 0 18px;
+    }
+
+    .hero img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    }
+
+    .notice {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 20px;
+      border-radius: 15px;
+      background: #fff7ed;
+      border: 2px solid #fdba74;
+      text-align: center;
+    }
+
+    .notice strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .notice p {
+      color: #7c2d12;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    .section-title h1,
+    .section-title h2 {
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #64748b;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 270px;
+      object-fit: contain;
+      background: #f8fafc;
+      padding: 12px;
+    }
+
+    .product-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .product .description {
+      font-size: 13px;
+      color: #64748b;
+      min-height: 40px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 23px;
+      font-weight: 900;
+      color: #111827;
+      margin: 8px 0 15px;
+    }
+
+    .research {
+      font-size: 11px;
+      color: #b45309;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .add-btn {
+      background: #2563eb;
+      color: white;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: auto;
+    }
+
+    .add-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .cart-section,
+    .request-section,
+    .contact-section {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      margin-top: 35px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: #64748b;
+      padding: 15px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .qty button {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background: #e5e7eb;
+      font-weight: bold;
+    }
+
+    .remove {
+      background: #fee2e2 !important;
+      color: #b91c1c;
+      padding: 7px 9px;
+      border-radius: 7px;
+      width: auto !important;
+      height: auto !important;
+    }
+
+    .cart-total {
+      text-align: right;
+      font-size: 22px;
+      font-weight: 900;
+      margin-top: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      padding: 12px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #111827;
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background: #1f2937;
+    }
+
+    .request-result {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #ecfdf5;
+      border: 1px solid #86efac;
+      color: #166534;
+    }
+
+    .request-code {
+      font-size: 22px;
+      font-weight: 900;
+      margin: 8px 0;
+    }
+
+    .contact-info {
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .contact-info a {
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 45px;
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+
+    .footer-warning {
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 5px;
+        font-size: 13px;
+      }
+
+      .hero img {
+        max-height: 400px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .cart-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .cart-total {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="navbar">
-
-    <div class="logo">
-      NOVAPEPS USA
-    </div>
-
-    <div class="nav-links">
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
-
-      <button class="cart-button" onclick="openCart()">
-        🛒 Cart (<span id="cartCount">0</span>)
-      </button>
-    </div>
-
+  <div class="age-bar">
+    🔞 SOLO PARA PERSONAS MAYORES DE 21 AÑOS
   </div>
-</header>
 
+  <header>
+    <div class="nav">
+      <div class="logo">NOVAPEPS USA</div>
 
-<!-- HERO -->
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#solicitud">Solicitud</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#carrito" class="cart-top">
+          🛒 Carrito (<span id="cartCount">0</span>)
+        </a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
+  <main id="inicio">
 
-  <img
-    src="att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg"
-    alt="NovaPeps USA"
-  >
+    <!-- PORTADA REAL -->
+    <section class="hero">
+      <img
+        src="att.tK5Us77ej-aCYPmzLGG1MqUszdTsZLOnehlONVAVGC0.jpeg"
+        alt="NovaPeps USA Premium Research Compounds">
+    </section>
 
-  <div class="hero-overlay">
+    <!-- AVISO -->
+    <section class="notice">
+      <strong>SOLO PARA INVESTIGACIÓN</strong>
+      <p>
+        NO DESTINADO PARA USO HUMANO. PRODUCTOS PRESENTADOS
+        EXCLUSIVAMENTE COMO COMPUESTOS PARA INVESTIGACIÓN.
+      </p>
+      <p style="margin-top:8px;">
+        21+ | Al continuar, confirmas que eres mayor de 21 años.
+      </p>
+    </section>
 
-    <div class="hero-content">
+    <!-- PRODUCTOS -->
+    <section id="productos" class="container">
 
-      <h1>PREMIUM RESEARCH COMPOUNDS</h1>
+      <div class="section-title">
+        <h1>Nuestros productos</h1>
+        <p>Catálogo de productos disponibles para solicitud.</p>
+      </div>
+
+      <div class="products">
+
+        <!-- MOTS-C -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
+            alt="NOVAPEPS MOTS-C">
+
+          <div class="product-content">
+            <h3>NOVAPEPS MOTS-C</h3>
+
+            <div class="description">
+              Compuesto de investigación.
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$60</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS MOTS-C', 60)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- GLP-2 10 MG -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
+            alt="NOVAPEPS GLP-2 10 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS GLP-2 — 10 MG</h3>
+
+            <div class="description">
+              10 MG PER VIAL · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$90</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS GLP-2 10 MG', 90)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- GHK-CU -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="6747079A-BB69-4F51-A792-565688C6BC86.png"
+            alt="NOVAPEPS GHK-CU 100 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS GHK-CU — 100 MG</h3>
+
+            <div class="description">
+              100 MG · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$50</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS GHK-CU 100 MG', 50)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- GLP-3 10 MG -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="713BA234-721B-4580-94DF-6677375C7826.png"
+            alt="NOVAPEPS GLP-3 10 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS GLP-3 — 10 MG</h3>
+
+            <div class="description">
+              10 MG PER VIAL · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$95</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS GLP-3 10 MG', 95)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- GLP-2 20 MG -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
+            alt="NOVAPEPS GLP-2 20 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS GLP-2 — 20 MG</h3>
+
+            <div class="description">
+              20 MG · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$110</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS GLP-2 20 MG', 110)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- GLP-3 20 MG -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
+            alt="NOVAPEPS GLP-3 20 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS GLP-3 — 20 MG</h3>
+
+            <div class="description">
+              20 MG PER VIAL · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$135</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS GLP-3 20 MG', 135)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- GLUTATHIONE -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
+            alt="NOVAPEPS GLUTATHIONE 1500 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS GLUTATHIONE — 1500 MG</h3>
+
+            <div class="description">
+              1500 MG · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$60</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS GLUTATHIONE 1500 MG', 60)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+        <!-- NAD+ -->
+        <article class="product">
+          <img
+            class="product-image"
+            src="EB389E57-904B-4E57-953C-407C50FA216A.png"
+            alt="NOVAPEPS NAD+ 500 MG">
+
+          <div class="product-content">
+            <h3>NOVAPEPS NAD+ — 500 MG</h3>
+
+            <div class="description">
+              500 MG · 99% PURE
+            </div>
+
+            <div class="research">
+              FOR RESEARCH USE ONLY
+            </div>
+
+            <div class="price">$50</div>
+
+            <button
+              class="add-btn"
+              onclick="addProduct('NOVAPEPS NAD+ 500 MG', 50)">
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CARRITO -->
+    <section id="carrito" class="container">
+      <div class="cart-section">
+
+        <div class="section-title">
+          <h2>🛒 Tu carrito</h2>
+          <p>Revisa los artículos antes de enviar tu solicitud.</p>
+        </div>
+
+        <div id="cartItems">
+          <div class="cart-empty">
+            Tu carrito está vacío.
+          </div>
+        </div>
+
+        <div class="cart-total">
+          Total de referencia: $<span id="cartTotal">0</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOLICITUD -->
+    <section id="solicitud" class="container">
+
+      <div class="request-section">
+
+        <div class="section-title">
+          <h2>Enviar solicitud</h2>
+          <p>
+            Completa tus datos para preparar una solicitud.
+          </p>
+        </div>
+
+        <form id="requestForm">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="name">Nombre</label>
+              <input
+                id="name"
+                type="text"
+                required
+                placeholder="Tu nombre">
+            </div>
+
+            <div class="field">
+              <label for="email">Correo electrónico</label>
+              <input
+                id="email"
+                type="email"
+                required
+                placeholder="Tu correo">
+            </div>
+
+            <div class="field">
+              <label for="phone">Teléfono</label>
+              <input
+                id="phone"
+                type="tel"
+                placeholder="(832) 273-9625">
+            </div>
+
+            <div class="field">
+              <label for="payment">
+                Preferencia indicada
+              </label>
+
+              <select id="payment">
+                <option value="Zelle">Zelle</option>
+                <option value="PayPal">PayPal</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="comments">Comentarios</label>
+
+              <textarea
+                id="comments"
+                placeholder="Escribe cualquier comentario o pregunta."></textarea>
+            </div>
+
+          </div>
+
+          <button class="submit-btn" type="submit">
+            Generar solicitud
+          </button>
+
+        </form>
+
+        <div id="requestResult" class="request-result">
+
+          <strong>Solicitud preparada</strong>
+
+          <div class="request-code" id="requestCode"></div>
+
+          <p>
+            Guarda este código para identificar tu solicitud.
+          </p>
+
+          <p style="margin-top:10px;">
+            Se abrirá tu aplicación de correo para que puedas
+            revisar y enviar el mensaje.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="container">
+
+      <div class="contact-section">
+
+        <div class="section-title">
+          <h2>Contacto</h2>
+          <p>NovaPeps USA</p>
+        </div>
+
+        <div class="contact-info">
+
+          <p>
+            📧
+            <a href="mailto:Novalaps22@gmail.com">
+              Novalaps22@gmail.com
+            </a>
+          </p>
+
+          <p style="margin-top:10px;">
+            📞
+            <a href="tel:+18322739625">
+              (832) 273-9625
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-warning">
 
       <p>
-        Explore the NovaPeps USA collection of
-        research-use products.
+        <strong>21+ | SOLO PARA INVESTIGACIÓN</strong>
       </p>
 
-      <a href="#products" class="hero-button">
-        VIEW CATALOG
-      </a>
+      <p>
+        Los productos mostrados en este sitio están identificados
+        como destinados exclusivamente para investigación.
+      </p>
+
+      <p>
+        NO DESTINADO PARA USO HUMANO.
+      </p>
+
+      <p style="margin-top:12px;">
+        © 2026 NovaPeps USA
+      </p>
 
     </div>
 
-  </div>
+  </footer>
 
-</section>
+  <script>
 
+    let cart = [];
 
-<!-- PRODUCTS -->
+    function addProduct(name, price) {
 
-<section class="section" id="products">
+      const existing = cart.find(item => item.name === name);
 
-  <div class="section-title">
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({
+          name: name,
+          price: Number(price),
+          quantity: 1
+        });
+      }
 
-    <h2>Our Products</h2>
+      renderCart();
 
-    <p>
-      Research-use products available through NovaPeps USA.
-    </p>
+      document.getElementById("carrito")
+        .scrollIntoView({ behavior: "smooth" });
+    }
 
-  </div>
+    function increaseQuantity(index) {
+      cart[index].quantity++;
+      renderCart();
+    }
 
+    function decreaseQuantity(index) {
 
-  <div class="products">
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        cart.splice(index, 1);
+      }
 
+      renderCart();
+    }
 
-    <!-- GLP-2 10 -->
+    function removeProduct(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
 
-    <div class="product-card">
+    function renderCart() {
 
-      <img
-        src="5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-        alt="GLP-2 10 mg + Bac Water 3 mL"
-      >
+      const container = document.getElementById("cartItems");
+      const count = document.getElementById("cartCount");
+      const totalElement = document.getElementById("cartTotal");
 
-      <div class="product-info">
+      if (cart.length === 0) {
 
-        <h3>GLP-2 + Bac Water</h3>
+        container.innerHTML =
+          '<div class="cart-empty">Tu carrito está vacío.</div>';
 
-        <div class="description">
-          10 mg + Bac Water 3 mL
-        </div>
+        count.textContent = "0";
+        totalElement.textContent = "0";
 
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
+        return;
+      }
 
-        <div class="price">
-          $90
-        </div>
+      let total = 0;
+      let quantityTotal = 0;
 
-        <button
-          class="add-button"
-          onclick="addToCart('GLP-2 + Bac Water — 10 mg + Bac Water 3 mL', 90)"
-        >
-          ADD TO CART
-        </button>
+      let html = "";
 
-      </div>
+      cart.forEach((item, index) => {
 
-    </div>
+        const subtotal = item.price * item.quantity;
 
+        total += subtotal;
+        quantityTotal += item.quantity;
 
-    <!-- GLP-2 20 -->
+        html += `
+          <div class="cart-item">
 
-    <div class="product-card">
+            <div class="cart-item-name">
+              ${item.name}
+            </div>
 
-      <img
-        src="7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-        alt="GLP-2 20 mg + Bac Water 3 mL"
-      >
+            <div>
+              $${item.price}
+            </div>
 
-      <div class="product-info">
+            <div class="qty">
 
-        <h3>GLP-2 + Bac Water</h3>
+              <button
+                type="button"
+                onclick="decreaseQuantity(${index})">
+                −
+              </button>
 
-        <div class="description">
-          20 mg + Bac Water 3 mL
-        </div>
+              <strong>
+                ${item.quantity}
+              </strong>
 
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
+              <button
+                type="button"
+                onclick="increaseQuantity(${index})">
+                +
+              </button>
 
-        <div class="price">
-          $110
-        </div>
+            </div>
 
-        <button
-          class="add-button"
-          onclick="addToCart('GLP-2 + Bac Water — 20 mg + Bac Water 3 mL', 110)"
-        >
-          ADD TO CART
-        </button>
+            <button
+              type="button"
+              class="remove"
+              onclick="removeProduct(${index})">
+              Eliminar
+            </button>
 
-      </div>
+          </div>
+        `;
+      });
 
-    </div>
+      container.innerHTML = html;
 
+      count.textContent = quantityTotal;
+      totalElement.textContent = total;
+    }
 
-    <!-- GLP-3 10 -->
+    function createRequestCode() {
 
-    <div class="product-card">
+      const now = new Date();
 
-      <img
-        src="713BA234-721B-4580-94DF-6677375C7826.png"
-        alt="GLP-3 10 mg + Bac Water 3 mL"
-      >
+      const year = now.getFullYear();
 
-      <div class="product-info">
+      const random =
+        Math.floor(1000 + Math.random() * 9000);
 
-        <h3>GLP-3 + Bac Water</h3>
+      return "NP-" + year + "-" + random;
+    }
 
-        <div class="description">
-          10 mg + Bac Water 3 mL
-        </div>
+    document
+      .getElementById("requestForm")
+      .addEventListener("submit", function(event) {
 
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
+        event.preventDefault();
 
-        <div class="price">
-          $95
-        </div>
+        if (cart.length === 0) {
 
-        <button
-          class="add-button"
-          onclick="addToCart('GLP-3 + Bac Water — 10 mg + Bac Water 3 mL', 95)"
-        >
-          ADD TO CART
-        </button>
+          alert(
+            "Primero agrega al menos un artículo al carrito."
+          );
 
-      </div>
+          document
+            .getElementById("carrito")
+            .scrollIntoView({ behavior: "smooth" });
 
-    </div>
+          return;
+        }
 
+        const name =
+          document.getElementById("name").value.trim();
 
-    <!-- GLP-3 20 -->
+        const email =
+          document.getElementById("email").value.trim();
 
-    <div class="product-card">
+        const phone =
+          document.getElementById("phone").value.trim();
 
-      <img
-        src="96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-        alt="GLP-3 20 mg + Bac Water 3 mL"
-      >
+        const payment =
+          document.getElementById("payment").value;
 
-      <div class="product-info">
+        const comments =
+          document.getElementById("comments").value.trim();
 
-        <h3>GLP-3 + Bac Water</h3>
+        const code = createRequestCode();
 
-        <div class="description">
-          20 mg + Bac Water 3 mL
-        </div>
+        let itemsText = "";
 
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
+        let total = 0;
 
-        <div class="price">
-          $145
-        </div>
+        cart.forEach(item => {
 
-        <button
-          class="add-button"
-          onclick="addToCart('GLP-3 + Bac Water — 20 mg + Bac Water 3 mL', 145)"
-        >
-          ADD TO CART
-        </button>
+          const subtotal =
+            item.price * item.quantity;
 
-      </div>
+          total += subtotal;
 
-    </div>
+          itemsText +=
+            "- " +
+            item.name +
+            " | Cantidad: " +
+            item.quantity +
+            " | $"+subtotal+
+            "\n";
+        });
 
+        const subject =
+          "Solicitud NovaPeps USA " + code;
 
-    <!-- GHK-CU -->
+        const body =
+`Código de solicitud: ${code}
 
-    <div class="product-card">
+Nombre: ${name}
+Correo: ${email}
+Teléfono: ${phone}
 
-      <img
-        src="6747079A-BB69-4F51-A792-565688C6BC86.png"
-        alt="GHK-CU 100 mg + Bac Water 3 mL"
-      >
+Preferencia indicada: ${payment}
 
-      <div class="product-info">
+Artículos solicitados:
+${itemsText}
 
-        <h3>GHK-CU + Bac Water</h3>
+Total de referencia: $${total}
 
-        <div class="description">
-          100 mg + Bac Water 3 mL
-        </div>
+Comentarios:
+${comments || "Sin comentarios"}
 
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
+IMPORTANTE:
+21+.
+SOLO PARA INVESTIGACIÓN.
+NO DESTINADO PARA USO HUMANO.
+`;
 
-        <div class="price">
-          $50
-        </div>
+        document.getElementById("requestCode")
+          .textContent = code;
 
-        <button
-          class="add-button"
-          onclick="addToCart('GHK-CU + Bac Water — 100 mg + Bac Water 3 mL', 50)"
-        >
-          ADD TO CART
-        </button>
+        document.getElementById("requestResult")
+          .style.display = "block";
 
-      </div>
+        const mailto =
+          "mailto:Novalaps22@gmail.com" +
+          "?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(body);
 
-    </div>
+        window.location.href = mailto;
+      });
 
+    renderCart();
 
-    <!-- NAD -->
-
-    <div class="product-card">
-
-      <img
-        src="EB389E57-904B-4E57-953C-407C50FA216A.png"
-        alt="NAD+ 500 mg + Bac Water 10 mL"
-      >
-
-      <div class="product-info">
-
-        <h3>NAD+ + Bac Water</h3>
-
-        <div class="description">
-          500 mg + Bac Water 10 mL
-        </div>
-
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <div class="price">
-          $60
-        </div>
-
-        <button
-          class="add-button"
-          onclick="addToCart('NAD+ + Bac Water — 500 mg + Bac Water 10 mL', 60)"
-        >
-          ADD TO CART
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- GLUTATHIONE -->
-
-    <div class="product-card">
-
-      <img
-        src="A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-        alt="Glutathione 1500 mg + Bac Water 10 mL"
-      >
-
-      <div class="product-info">
-
-        <h3>GLUTATHIONE + Bac Water</h3>
-
-        <div class="description">
-          1500 mg + Bac Water 10 mL
-        </div>
-
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <div class="price">
-          $65
-        </div>
-
-        <button
-          class="add-button"
-          onclick="addToCart('GLUTATHIONE + Bac Water — 1500 mg + Bac Water 10 mL', 65)"
-        >
-          ADD TO CART
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- MOTS-C -->
-
-    <div class="product-card">
-
-      <img
-        src="55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-        alt="MOTS-C 10 mg + Bac Water 3 mL"
-      >
-
-      <div class="product-info">
-
-        <h3>MOTS-C + Bac Water</h3>
-
-        <div class="description">
-          10 mg + Bac Water 3 mL
-        </div>
-
-        <div class="research-label">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <div class="price">
-          $55
-        </div>
-
-        <button
-          class="add-button"
-          onclick="addToCart('MOTS-C + Bac Water — 10 mg + Bac Water 3 mL', 55)"
-        >
-          ADD TO CART
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- SHIPPING -->
-
-  <div class="shipping-box">
-
-    <h3>Shipping</h3>
-
-    <label class="shipping-option">
-
-      <input
-        type="radio"
-        name="shipping"
-        value="9"
-        checked
-        onchange="updateCart()"
-      >
-
-      <span>
-        Standard Shipping — <strong>$9.00</strong>
-      </span>
-
-    </label>
-
-
-    <label class="shipping-option">
-
-      <input
-        type="radio"
-        name="shipping"
-        value="15"
-        onchange="updateCart()"
-      >
-
-      <span>
-        Express Shipping — <strong>$15.00</strong>
-      </span>
-
-    </label>
-
-  </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-  <div class="contact-inner">
-
-    <h2>Contact NovaPeps USA</h2>
-
-    <div class="contact-item">
-      Email:
-      <a href="mailto:novapeps22@gmail.com">
-        novapeps22@gmail.com
-      </a>
-    </div>
-
-    <div class="contact-item">
-      Phone:
-      <a href="tel:+18322739625">
-        (832) 273-9625
-      </a>
-    </div>
-
-    <div class="disclaimer">
-
-      <strong>FOR RESEARCH USE ONLY.</strong><br><br>
-
-      Products listed on this website are presented for
-      research purposes only and are not represented as
-      products for human consumption or medical treatment.
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<footer>
-
-  © 2026 NovaPeps USA. All rights reserved.
-
-</footer>
-
-
-<!-- CART OVERLAY -->
-
-<div
-  class="overlay"
-  id="overlay"
-  onclick="closeCart()"
-></div>
-
-
-<!-- CART -->
-
-<div
-  class="cart-panel"
-  id="cartPanel"
->
-
-  <div class="cart-header">
-
-    <h2>Your Cart</h2>
-
-    <button
-      class="close-cart"
-      onclick="closeCart()"
-    >
-      ×
-    </button>
-
-  </div>
-
-
-  <div
-    class="cart-items"
-    id="cartItems"
-  ></div>
-
-
-  <div class="cart-summary">
-
-    <div class="summary-row">
-
-      <span>Subtotal</span>
-
-      <strong>
-        $<span id="subtotal">0.00</span>
-      </strong>
-
-    </div>
-
-
-    <div class="summary-row">
-
-      <span>Shipping</span>
-
-      <strong>
-        $<span id="shippingCost">9.00</span>
-      </strong>
-
-    </div>
-
-
-    <div class="summary-row total-row">
-
-      <span>Total</span>
-
-      <strong>
-        $<span id="total">9.00</span>
-      </strong>
-
-    </div>
-
-
-    <div
-      class="order-code"
-      id="orderCode"
-    ></div>
-
-
-    <button
-      class="checkout-button"
-      onclick="sendOrder()"
-    >
-      SEND ORDER REQUEST
-    </button>
-
-
-    <button
-      class="clear-button"
-      onclick="clearCart()"
-    >
-      CLEAR CART
-    </button>
-
-  </div>
-
-</div>
-
-
-<script>
-
-let cart = {};
-
-
-/* ADD PRODUCT */
-
-function addToCart(name, price) {
-
-  if (!cart[name]) {
-
-    cart[name] = {
-      price: price,
-      quantity: 1
-    };
-
-  } else {
-
-    cart[name].quantity++;
-
-  }
-
-  updateCart();
-
-  openCart();
-}
-
-
-/* CHANGE QUANTITY */
-
-function changeQuantity(name, amount) {
-
-  if (!cart[name]) return;
-
-  cart[name].quantity += amount;
-
-  if (cart[name].quantity <= 0) {
-
-    delete cart[name];
-
-  }
-
-  updateCart();
-}
-
-
-/* REMOVE */
-
-function removeItem(name) {
-
-  delete cart[name];
-
-  updateCart();
-}
-
-
-/* SHIPPING */
-
-function getShipping() {
-
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
-
-  return selected
-    ? Number(selected.value)
-    : 9;
-
-}
-
-
-/* UPDATE CART */
-
-function updateCart() {
-
-  const cartItems =
-    document.getElementById("cartItems");
-
-  const cartCount =
-    document.getElementById("cartCount");
-
-  const subtotalElement =
-    document.getElementById("subtotal");
-
-  const shippingElement =
-    document.getElementById("shippingCost");
-
-  const totalElement =
-    document.getElementById("total");
-
-
-  let subtotal = 0;
-  let count = 0;
-
-
-  cartItems.innerHTML = "";
-
-
-  const items =
-    Object.keys(cart);
-
-
-  if (items.length === 0) {
-
-    cartItems.innerHTML = `
-      <div class="empty-cart">
-        Your cart is empty.
-      </div>
-    `;
-
-  }
-
-
-  items.forEach(name => {
-
-    const item = cart[name];
-
-    const itemTotal =
-      item.price * item.quantity;
-
-    subtotal += itemTotal;
-
-    count += item.quantity;
-
-
-    const div =
-      document.createElement("div");
-
-    div.className = "cart-item";
-
-
-    div.innerHTML = `
-
-      <div class="cart-item-title">
-        ${name}
-      </div>
-
-      <div class="cart-item-price">
-        $${item.price.toFixed(2)} each
-      </div>
-
-      <div class="quantity-controls">
-
-        <button
-          onclick="changeQuantity('${escapeQuotes(name)}', -1)"
-        >
-          −
-        </button>
-
-        <strong>
-          ${item.quantity}
-        </strong>
-
-        <button
-          onclick="changeQuantity('${escapeQuotes(name)}', 1)"
-        >
-          +
-        </button>
-
-        <button
-          class="remove-button"
-          onclick="removeItem('${escapeQuotes(name)}')"
-        >
-          Remove
-        </button>
-
-      </div>
-
-      <div style="margin-top:8px;font-weight:bold;">
-        $${itemTotal.toFixed(2)}
-      </div>
-
-    `;
-
-
-    cartItems.appendChild(div);
-
-  });
-
-
-  const shipping =
-    getShipping();
-
-
-  const total =
-    subtotal + shipping;
-
-
-  subtotalElement.textContent =
-    subtotal.toFixed(2);
-
-  shippingElement.textContent =
-    shipping.toFixed(2);
-
-  totalElement.textContent =
-    total.toFixed(2);
-
-  cartCount.textContent =
-    count;
-
-}
-
-
-/* ESCAPE QUOTES */
-
-function escapeQuotes(text) {
-
-  return text
-    .replace(/\\/g, "\\\\")
-    .replace(/'/g, "\\'");
-
-}
-
-
-/* OPEN CART */
-
-function openCart() {
-
-  document
-    .getElementById("cartPanel")
-    .classList.add("open");
-
-  document
-    .getElementById("overlay")
-    .classList.add("show");
-
-  updateCart();
-
-}
-
-
-/* CLOSE CART */
-
-function closeCart() {
-
-  document
-    .getElementById("cartPanel")
-    .classList.remove("open");
-
-  document
-    .getElementById("overlay")
-    .classList.remove("show");
-
-}
-
-
-/* CLEAR CART */
-
-function clearCart() {
-
-  cart = {};
-
-  document
-    .getElementById("orderCode")
-    .style.display = "none";
-
-  updateCart();
-
-}
-
-
-/* GENERATE ORDER CODE */
-
-function generateOrderCode() {
-
-  const number =
-    Math.floor(
-      100000 +
-      Math.random() * 900000
-    );
-
-  return "NP-" + number;
-
-}
-
-
-/* SEND ORDER */
-
-function sendOrder() {
-
-  const items =
-    Object.keys(cart);
-
-
-  if (items.length === 0) {
-
-    alert(
-      "Please add at least one product to your cart."
-    );
-
-    return;
-
-  }
-
-
-  const orderCode =
-    generateOrderCode();
-
-
-  const shipping =
-    getShipping();
-
-
-  let subtotal = 0;
-
-  let orderLines = [];
-
-
-  items.forEach(name => {
-
-    const item = cart[name];
-
-    const lineTotal =
-      item.price * item.quantity;
-
-    subtotal += lineTotal;
-
-
-    orderLines.push(
-      `${item.quantity} x ${name} — $${lineTotal.toFixed(2)}`
-    );
-
-  });
-
-
-  const total =
-    subtotal + shipping;
-
-
-  const codeBox =
-    document.getElementById("orderCode");
-
-
-  codeBox.style.display =
-    "block";
-
-
-  codeBox.innerHTML = `
-    Order Code:<br>
-    <strong>${orderCode}</strong>
-  `;
-
-
-  const shippingName =
-    shipping === 15
-      ? "Express Shipping"
-      : "Standard Shipping";
-
-
-  const body =
-
-`Hello NovaPeps USA,
-
-I would like to submit a research product order request.
-
-Order Code: ${orderCode}
-
-Products:
-${orderLines.join("\n")}
-
-Subtotal: $${subtotal.toFixed(2)}
-Shipping: ${shippingName} — $${shipping.toFixed(2)}
-Total: $${total.toFixed(2)}
-
-Please contact me regarding this order request.
-
-Thank you.`;
-
-
-  const mailto =
-    "mailto:novapeps22@gmail.com" +
-    "?subject=" +
-    encodeURIComponent(
-      "NovaPeps USA Order Request " + orderCode
-    ) +
-    "&body=" +
-    encodeURIComponent(body);
-
-
-  window.location.href =
-    mailto;
-
-}
-
-
-/* INITIAL CART */
-
-updateCart();
-
-</script>
+  </script>
 
 </body>
 </html>
