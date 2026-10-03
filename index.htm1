@@ -1,1 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>NovaPeps USA | Premium Research Compounds</title>
+
+<meta name="description"
+content="NovaPeps USA — Premium Research Compounds. For research use only.">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f9fc;
+  color:#111827;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#ffffff;
+  border-bottom:1px solid #e5e7eb;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+}
+
+.logo{
+  text-decoration:none;
+  color:#0757a6;
+  font-weight:900;
+  font-size:24px;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:#111827;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#111827;
+  font-weight:700;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  color:#0757a6;
+}
+
+.cart{
+  font-size:22px;
+  color:#0757a6;
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#061b35,#0757a6);
+  color:white;
+  padding:70px 20px 80px;
+  text-align:center;
+}
+
+.hero-inner{
+  max-width:1200px;
+  margin:auto;
+}
+
+.hero h1{
+  font-size:clamp(34px,6vw,66px);
+  font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:18px;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#dbeafe;
+  font-size:17px;
+  line-height:1.7;
+}
+
+.hero-bottles{
+  margin:45px auto 0;
+  display:flex;
+  justify-content:center;
+  align-items:end;
+  gap:35px;
+  flex-wrap:wrap;
+}
+
+/*
+  IMPORTANT:
+  These are REAL IMAGE FILES.
+  Upload your bottle photos to GitHub using these names:
+  bottle-ghk-cu.png
+  bottle-bac-water.png
+*/
+.hero-bottle{
+  width:210px;
+  height:270px;
+  object-fit:contain;
+  filter:drop-shadow(0 20px 18px rgba(0,0,0,.35));
+}
+
+/* PRODUCTS */
+.products-section{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title small{
+  color:#0757a6;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.section-title h2{
+  font-size:40px;
+  margin-top:8px;
+}
+
+.section-title p{
+  color:#6b7280;
+  margin-top:10px;
+}
+
+/* TWO PRODUCTS PER ROW */
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
+}
+
+.product-card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.07);
+  transition:.25s ease;
+}
+
+.product-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.product-image{
+  height:330px;
+  background:linear-gradient(180deg,#f8fbff,#edf5fc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 16px 15px rgba(0,0,0,.18));
+}
+
+.product-info{
+  padding:24px;
+}
+
+.product-number{
+  color:#0757a6;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.product-info h3{
+  font-size:24px;
+  margin:8px 0;
+}
+
+.product-info .subtitle{
+  color:#6b7280;
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.price{
+  font-size:26px;
+  font-weight:900;
+  color:#0757a6;
+}
+
+.research{
+  display:inline-block;
+  margin-top:14px;
+  padding:7px 10px;
+  border-radius:20px;
+  background:#eff6ff;
+  color:#0757a6;
+  font-size:11px;
+  font-weight:800;
+}
+
+/* INFO */
+.info{
+  background:#061b35;
+  color:white;
+  padding:60px 20px;
+  text-align:center;
+}
+
+.info-inner{
+  max-width:900px;
+  margin:auto;
+}
+
+.info h2{
+  font-size:32px;
+  margin-bottom:18px;
+}
+
+.info p{
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+  background:#020b16;
+  color:#94a3b8;
+  text-align:center;
+  padding:35px 20px;
+  font-size:13px;
+}
+
+footer strong{
+  color:white;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  .nav{
+    height:65px;
+  }
+
+  .logo{
+    font-size:19px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:65px;
+    background:white;
+    flex-direction:column;
+    gap:0;
+    border-bottom:1px solid #ddd;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .nav-links li{
+    border-top:1px solid #eee;
+  }
+
+  .nav-links a{
+    display:block;
+    padding:17px 22px;
+  }
+
+  .hero{
+    padding:50px 18px 60px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .hero-bottle{
+    width:145px;
+    height:200px;
+  }
+
+  .products-section{
+    padding:50px 12px;
+  }
+
+  .section-title h2{
+    font-size:32px;
+  }
+
+  /* TWO COLUMNS ON PHONE */
+  .products-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+
+  .product-image{
+    height:190px;
+    padding:10px;
+  }
+
+  .product-info{
+    padding:15px 12px;
+  }
+
+  .product-info h3{
+    font-size:17px;
+  }
+
+  .product-info .subtitle{
+    font-size:12px;
+    line-height:1.4;
+  }
+
+  .price{
+    font-size:20px;
+  }
+
+  .research{
+    font-size:9px;
+  }
+}
+
+@media(max-width:390px){
+
+  .products-grid{
+    gap:9px;
+  }
+
+  .product-image{
+    height:170px;
+  }
+
+  .product-info h3{
+    font-size:15px;
+  }
+
+  .price{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="nav">
+
+    <a href="#" class="logo">
+      NOVAPEPS <span>USA</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="cart">🛒</div>
+
+  </nav>
+</header>
+
+
+<section class="hero" id="home">
+
+  <div class="hero-inner">
+
+    <h1>PREMIUM RESEARCH COMPOUNDS</h1>
+
+    <p>
+      Explore the NovaPeps USA collection of research-use products.
+    </p>
+
+    <div class="hero-bottles">
+
+      <img
+        class="hero-bottle"
+        src="bottle-ghk-cu.png"
+        alt="NovaPeps GHK-CU bottle">
+
+      <img
+        class="hero-bottle"
+        src="bottle-bac-water.png"
+        alt="NovaPeps Bac Water bottle">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="products-section" id="products">
+
+  <div class="section-title">
+    <small>NOVAPEPS USA</small>
+    <h2>Our Products</h2>
+    <p>Research-use products available in our catalog.</p>
+  </div>
+
+
+  <div class="products-grid">
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="glp2-10mg.png" alt="GLP-2 10 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">01</span>
+        <h3>GLP-2 + Bac Water</h3>
+        <p class="subtitle">10 mg</p>
+        <div class="price">$90</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="glp2-20mg.png" alt="GLP-2 20 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">02</span>
+        <h3>GLP-2 + Bac Water</h3>
+        <p class="subtitle">20 mg</p>
+        <div class="price">$120</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="glp3-10mg.png" alt="GLP-3 10 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">03</span>
+        <h3>GLP-3 + Bac Water</h3>
+        <p class="subtitle">10 mg</p>
+        <div class="price">$95</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="glp3-20mg.png" alt="GLP-3 20 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">04</span>
+        <h3>GLP-3 + Bac Water</h3>
+        <p class="subtitle">20 mg</p>
+        <div class="price">$145</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="ghk-cu-100mg.png" alt="GHK-CU 100 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">05</span>
+        <h3>GHK-CU + Bac Water</h3>
+        <p class="subtitle">100 mg</p>
+        <div class="price">$60</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="nad-500mg.png" alt="NAD+ 500 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">06</span>
+        <h3>NAD+ + Bac Water</h3>
+        <p class="subtitle">500 mg</p>
+        <div class="price">$60</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="glutathione-150mg.png" alt="Glutathione 150 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">07</span>
+        <h3>GLUTATHIONE + Bac Water</h3>
+        <p class="subtitle">150 mg</p>
+        <div class="price">$65</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="mots-c-10mg.png" alt="MOTS-C 10 mg">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">08</span>
+        <h3>MOTS-C + Bac Water</h3>
+        <p class="subtitle">10 mg</p>
+        <div class="price">$60</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <div class="product-image">
+        <img src="bac-water-10ml.png" alt="Bac Water 10 mL">
+      </div>
+
+      <div class="product-info">
+        <span class="product-number">09</span>
+        <h3>Bac Water</h3>
+        <p class="subtitle">10 mL</p>
+        <div class="price">$15</div>
+        <span class="research">FOR RESEARCH USE ONLY</span>
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<section class="info" id="contact">
+
+  <div class="info-inner">
+
+    <h2>Research Use Only</h2>
+
+    <p>
+      All products displayed on this website are presented
+      for research purposes only. These products are not
+      intended for human or veterinary use.
+    </p>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 <strong>NovaPeps USA</strong>.
+    All rights reserved.
+  </p>
+
+  <p style="margin-top:10px;">
+    For research use only.
+  </p>
+
+</footer>
+
+
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function(){
+  navLinks.classList.toggle("active");
+});
+
+document.addEventListener("click", function(event){
+
+  if(
+    !navLinks.contains(event.target) &&
+    !menuBtn.contains(event.target)
+  ){
+    navLinks.classList.remove("active");
+  }
+
+});
+
+document.addEventListener("keydown", function(event){
+
+  if(event.key === "Escape"){
+    navLinks.classList.remove("active");
+  }
+
+});
+
+</script>
+
+</body>
+</html>
