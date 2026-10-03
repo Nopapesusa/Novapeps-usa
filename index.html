@@ -193,6 +193,7 @@ h1,h2,h3{
 }
 
 .product-card{
+  position:relative;
   background:#fff;
   border-radius:14px;
   padding:18px;
@@ -249,12 +250,71 @@ h1,h2,h3{
   opacity:.85;
 }
 
+/* FAVORITES */
 
-/* =========================
-   ADD TO LIST ANIMATION
-========================= */
+.favorite-btn{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  color:#ff4fa3;
+  font-size:27px;
+  cursor:pointer;
+  z-index:5;
+  box-shadow:0 3px 12px rgba(0,0,0,.15);
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    color .2s ease;
+}
+
+.favorite-btn:hover{
+  transform:scale(1.15);
+}
+
+.favorite-btn.active{
+  background:#ff69b4;
+  color:#fff;
+  transform:scale(1.12);
+}
+
+/* ADD TO LIST */
+
+.add-list-wrap{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:18px auto 8px;
+  width:155px;
+  height:70px;
+}
+
+.add-list-wrap::before{
+  content:"ADD • LIST • ADD • LIST •";
+  position:absolute;
+  width:145px;
+  height:145px;
+  border:2px dashed #ff69b4;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ff69b4;
+  font-size:9px;
+  font-weight:bold;
+  letter-spacing:2px;
+  animation:rotateAround 7s linear infinite;
+  pointer-events:none;
+}
 
 .add-list-btn{
+  position:relative;
+  z-index:2;
   animation:addListPulse 1.8s ease-in-out infinite;
   transition:
     transform .2s ease,
@@ -271,18 +331,25 @@ h1,h2,h3{
   transform:scale(.92);
 }
 
-@keyframes addListPulse{
+@keyframes rotateAround{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
 
+@keyframes addListPulse{
   0%,100%{
     transform:scale(1);
   }
-
   50%{
     transform:scale(1.06);
   }
-
 }
 
+/* INFO / SELECTION */
 
 .info-box{
   background:#fff;
@@ -384,6 +451,8 @@ h1,h2,h3{
   resize:vertical;
 }
 
+/* COMPARE */
+
 .compare-table{
   width:100%;
   border-collapse:collapse;
@@ -404,6 +473,8 @@ h1,h2,h3{
   color:#fff;
 }
 
+/* LOGIN */
+
 .login-box{
   max-width:500px;
   margin:auto;
@@ -412,6 +483,8 @@ h1,h2,h3{
   border-radius:14px;
   box-shadow:0 3px 14px rgba(0,0,0,.08);
 }
+
+/* FOOTER */
 
 footer{
   background:#000;
@@ -423,6 +496,8 @@ footer{
 footer a{
   color:#fff;
 }
+
+/* AGE */
 
 .age-gate{
   position:fixed;
@@ -470,7 +545,6 @@ footer a{
   background:#f1f1f1;
   display:none;
 }
-
 
 /* IMAGE ZOOM */
 
@@ -568,10 +642,7 @@ footer a{
   border-radius:20px;
 }
 
-
-/* =========================
-   PINK CART
-========================= */
+/* FLOATING CART */
 
 .cart-floating{
   position:fixed;
@@ -627,29 +698,149 @@ footer a{
   justify-content:center;
 }
 
-
-/* CART BUMP */
-
 .cart-floating.cart-bump{
   animation:cartBump .4s ease;
 }
 
 @keyframes cartBump{
-
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.15);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-
+  0%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+  100%{transform:scale(1);}
 }
 
+/* REAL CART PANEL */
+
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:7000;
+  display:none;
+}
+
+.cart-overlay.open{
+  display:block;
+}
+
+.cart-panel{
+  position:absolute;
+  top:0;
+  right:0;
+  width:430px;
+  max-width:94%;
+  height:100%;
+  background:#fff;
+  box-shadow:-8px 0 30px rgba(0,0,0,.3);
+  display:flex;
+  flex-direction:column;
+  animation:cartSlide .28s ease;
+}
+
+@keyframes cartSlide{
+  from{
+    transform:translateX(100%);
+  }
+  to{
+    transform:translateX(0);
+  }
+}
+
+.cart-header{
+  background:#000;
+  color:#fff;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.cart-header h2{
+  font-size:22px;
+}
+
+.cart-close{
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:32px;
+  cursor:pointer;
+}
+
+.cart-body{
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+}
+
+.cart-empty{
+  text-align:center;
+  color:#666;
+  padding:45px 15px;
+}
+
+.cart-item{
+  border-bottom:1px solid #ddd;
+  padding:16px 0;
+}
+
+.cart-item-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-weight:bold;
+}
+
+.cart-item-price{
+  color:#555;
+  font-size:13px;
+  margin-top:4px;
+}
+
+.cart-item-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:12px;
+}
+
+.cart-qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.cart-qty button{
+  width:32px;
+  height:32px;
+  border:1px solid #bbb;
+  background:#f5f5f5;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.cart-subtotal{
+  font-weight:bold;
+}
+
+.cart-footer{
+  padding:18px 20px;
+  border-top:1px solid #ddd;
+  background:#fff;
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.cart-footer .button{
+  width:100%;
+  margin:4px 0;
+}
 
 /* MOBILE */
 
@@ -707,26 +898,102 @@ footer a{
     font-size:14px;
   }
 
+  .cart-panel{
+    width:100%;
+    max-width:100%;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-
-<!-- PINK CART -->
+<!-- FLOATING CART -->
 
 <button
   id="cartButton"
   class="cart-floating"
   type="button"
-  onclick="goToCart()"
+  onclick="openCart()"
   aria-label="Open selected products"
 >
   <span class="cart-icon">🛒</span>
   <span class="cart-label">CART</span>
   <span id="cartCount" class="cart-count">0</span>
 </button>
+
+
+<!-- REAL CART PANEL -->
+
+<div
+  id="cartOverlay"
+  class="cart-overlay"
+  onclick="closeCart(event)"
+>
+
+  <div
+    class="cart-panel"
+    onclick="event.stopPropagation()"
+  >
+
+    <div class="cart-header">
+
+      <h2>
+        Your Selected Products
+      </h2>
+
+      <button
+        class="cart-close"
+        type="button"
+        onclick="closeCart()"
+        aria-label="Close cart"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="cartBody"
+      class="cart-body"
+    ></div>
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>
+          Informational total
+        </span>
+
+        <span id="cartTotal">
+          $0.00
+        </span>
+
+      </div>
+
+      <button
+        class="button"
+        type="button"
+        onclick="goToInformationRequest()"
+      >
+        SEND INFORMATION REQUEST
+      </button>
+
+      <button
+        class="button"
+        type="button"
+        onclick="clearList();openCart();"
+      >
+        CLEAR LIST
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
 
 <!-- AGE GATE -->
@@ -852,17 +1119,28 @@ footer a{
     <div id="productGrid" class="products">
 
 
+      <!-- MOTS-C 10 MG -->
+
       <div
         class="product-card"
-        data-name="NOVAPEPS MOTS-C"
+        data-name="MOTS-C 10 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-          alt="NOVAPEPS MOTS-C"
+          alt="MOTS-C 10 MG"
         >
 
-        <h3>NOVAPEPS MOTS-C</h3>
+        <h3>MOTS-C 10 MG</h3>
 
         <div class="price">$60</div>
 
@@ -870,20 +1148,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('NOVAPEPS MOTS-C',60)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('MOTS-C 10 MG',60)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- GLP-2 10 MG -->
 
       <div
         class="product-card"
         data-name="GLP-2 10 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
@@ -898,20 +1191,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('GLP-2 10 MG',90)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('GLP-2 10 MG',90)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- GHK-CU 100 MG -->
 
       <div
         class="product-card"
         data-name="GHK-CU 100 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
@@ -926,20 +1234,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('GHK-CU 100 MG',50)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('GHK-CU 100 MG',50)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- GLP-3 10 MG -->
 
       <div
         class="product-card"
         data-name="GLP-3 10 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./713BA234-721B-4580-94DF-6677375C7826.png"
@@ -954,20 +1277,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('GLP-3 10 MG',95)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('GLP-3 10 MG',95)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- GLP-2 20 MG -->
 
       <div
         class="product-card"
         data-name="GLP-2 20 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
@@ -982,20 +1320,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('GLP-2 20 MG',110)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('GLP-2 20 MG',110)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- GLP-3 20 MG -->
 
       <div
         class="product-card"
         data-name="GLP-3 20 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
@@ -1010,20 +1363,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('GLP-3 20 MG',135)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('GLP-3 20 MG',135)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- GLUTATHIONE -->
 
       <div
         class="product-card"
         data-name="GLUTATHIONE 1500 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
@@ -1038,20 +1406,35 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('GLUTATHIONE 1500 MG',60)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('GLUTATHIONE 1500 MG',60)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
+
+      <!-- NAD+ -->
 
       <div
         class="product-card"
         data-name="NAD+ 500 MG"
       >
+
+        <button
+          class="favorite-btn"
+          type="button"
+          onclick="toggleFavorite(this)"
+          aria-label="Add to favorites"
+        >
+          ♡
+        </button>
 
         <img
           src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
@@ -1066,12 +1449,16 @@ footer a{
           FOR RESEARCH USE ONLY
         </div>
 
-        <button
-          class="button add-list-btn"
-          onclick="addToList('NAD+ 500 MG',50)"
-        >
-          Add to list
-        </button>
+        <div class="add-list-wrap">
+
+          <button
+            class="button add-list-btn"
+            onclick="addToList('NAD+ 500 MG',50)"
+          >
+            Add to list
+          </button>
+
+        </div>
 
       </div>
 
@@ -1256,7 +1643,7 @@ footer a{
         <tbody>
 
           <tr>
-            <td>NOVAPEPS MOTS-C</td>
+            <td>MOTS-C 10 MG</td>
             <td>$60</td>
             <td>Research use only</td>
           </tr>
@@ -1474,11 +1861,9 @@ footer a{
   </p>
 
   <p style="margin-top:8px;">
-
     <a href="mailto:Novalaps22@gmail.com">
       Novalaps22@gmail.com
     </a>
-
   </p>
 
   <p style="margin-top:5px;">
@@ -1677,12 +2062,8 @@ function searchProducts(value){
         document.createElement("button");
 
       button.type = "button";
-
-      button.className =
-        "search-result";
-
-      button.textContent =
-        productName;
+      button.className = "search-result";
+      button.textContent = productName;
 
       button.onclick = function(){
 
@@ -1776,7 +2157,52 @@ function selectProductFromSearch(productName){
 }
 
 
-/* SELECTED PRODUCTS / VISUAL CART */
+/* FAVORITES */
+
+let favoriteProducts =
+  JSON.parse(
+    localStorage.getItem(
+      "novaFavoriteProducts"
+    ) || "[]"
+  );
+
+
+function toggleFavorite(button){
+
+  const card =
+    button.closest(".product-card");
+
+  const productName =
+    card.getAttribute("data-name");
+
+  const index =
+    favoriteProducts.indexOf(productName);
+
+  if(index === -1){
+
+    favoriteProducts.push(productName);
+
+    button.classList.add("active");
+    button.textContent = "♥";
+
+  }else{
+
+    favoriteProducts.splice(index,1);
+
+    button.classList.remove("active");
+    button.textContent = "♡";
+
+  }
+
+  localStorage.setItem(
+    "novaFavoriteProducts",
+    JSON.stringify(favoriteProducts)
+  );
+
+}
+
+
+/* SELECTED PRODUCTS */
 
 let selectedProducts =
   JSON.parse(
@@ -1803,11 +2229,10 @@ function addToList(name,price){
 
   saveAndRenderList();
 
-
-  /* CART ANIMATION */
-
   const cartButton =
-    document.getElementById("cartButton");
+    document.getElementById(
+      "cartButton"
+    );
 
   cartButton.classList.remove(
     "cart-bump"
@@ -1819,17 +2244,10 @@ function addToList(name,price){
     "cart-bump"
   );
 
-
-  /* SCROLL TO SELECTED PRODUCTS */
-
-  document
-    .getElementById("selection")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
 }
 
+
+/* QUANTITY */
 
 function changeQuantity(name,change){
 
@@ -1852,6 +2270,8 @@ function changeQuantity(name,change){
 }
 
 
+/* CLEAR */
+
 function clearList(){
 
   selectedProducts = {};
@@ -1860,6 +2280,8 @@ function clearList(){
 
 }
 
+
+/* SAVE + RENDER */
 
 function saveAndRenderList(){
 
@@ -1870,12 +2292,69 @@ function saveAndRenderList(){
 
   renderList();
 
+  renderCartPanel();
+
 }
 
 
 /* OPEN CART */
 
-function goToCart(){
+function openCart(){
+
+  renderCartPanel();
+
+  document
+    .getElementById("cartOverlay")
+    .classList.add("open");
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(event){
+
+  if(
+    event &&
+    event.target !==
+    document.getElementById("cartOverlay")
+  ){
+
+    return;
+
+  }
+
+  document
+    .getElementById("cartOverlay")
+    .classList.remove("open");
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+/* GO TO INFORMATION REQUEST */
+
+function goToInformationRequest(){
+
+  const names =
+    Object.keys(selectedProducts);
+
+  if(names.length === 0){
+
+    alert(
+      "Please select at least one product first."
+    );
+
+    return;
+
+  }
+
+  closeCart();
 
   document
     .getElementById("selection")
@@ -1883,10 +2362,137 @@ function goToCart(){
       behavior:"smooth"
     });
 
+  setTimeout(function(){
+
+    document
+      .getElementById("requestName")
+      .focus();
+
+  },600);
+
 }
 
 
-/* RENDER CART */
+/* RENDER CART PANEL */
+
+function renderCartPanel(){
+
+  const body =
+    document.getElementById(
+      "cartBody"
+    );
+
+  const totalElement =
+    document.getElementById(
+      "cartTotal"
+    );
+
+  const names =
+    Object.keys(selectedProducts);
+
+  if(names.length === 0){
+
+    body.innerHTML = `
+      <div class="cart-empty">
+        <div style="font-size:45px;margin-bottom:12px;">
+          🛒
+        </div>
+
+        <strong>Your selected list is empty.</strong>
+
+        <p style="margin-top:8px;">
+          Add products using the
+          "Add to list" button.
+        </p>
+      </div>
+    `;
+
+    totalElement.textContent =
+      "$0.00";
+
+    return;
+
+  }
+
+  let html = "";
+  let total = 0;
+
+  names.forEach(function(name){
+
+    const item =
+      selectedProducts[name];
+
+    const subtotal =
+      item.price * item.qty;
+
+    total += subtotal;
+
+    html += `
+
+      <div class="cart-item">
+
+        <div class="cart-item-top">
+
+          <span>
+            ${name}
+          </span>
+
+          <span>
+            $${subtotal.toFixed(2)}
+          </span>
+
+        </div>
+
+        <div class="cart-item-price">
+          $${item.price.toFixed(2)} each
+        </div>
+
+        <div class="cart-item-bottom">
+
+          <div class="cart-qty">
+
+            <button
+              type="button"
+              onclick="changeQuantity('${name}',-1)"
+            >
+              −
+            </button>
+
+            <strong>
+              ${item.qty}
+            </strong>
+
+            <button
+              type="button"
+              onclick="changeQuantity('${name}',1)"
+            >
+              +
+            </button>
+
+          </div>
+
+          <div class="cart-subtotal">
+            Quantity: ${item.qty}
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+  body.innerHTML =
+    html;
+
+  totalElement.textContent =
+    "$" + total.toFixed(2);
+
+}
+
+
+/* RENDER SELECTED PRODUCTS */
 
 function renderList(){
 
@@ -2141,7 +2747,7 @@ FOR RESEARCH USE ONLY. Not intended for human use.`;
     "block";
 
   box.textContent =
-    "Your reference code is " +
+    "Your request reference code is " +
     reference +
     ". Your email app will open with the information request.";
 
@@ -2285,7 +2891,6 @@ function registerUser(){
 
 let currentZoom = 1;
 
-
 function openImageZoom(image){
 
   const modal =
@@ -2315,7 +2920,6 @@ function openImageZoom(image){
 
 }
 
-
 function closeImageZoom(event){
 
   if(event){
@@ -2325,9 +2929,7 @@ function closeImageZoom(event){
       event.target.id ===
       "zoomedProductImage"
     ){
-
       return;
-
     }
 
     if(
@@ -2335,9 +2937,7 @@ function closeImageZoom(event){
       event.target.closest &&
       event.target.closest(".zoom-controls")
     ){
-
       return;
-
     }
 
   }
@@ -2350,7 +2950,6 @@ function closeImageZoom(event){
     "";
 
 }
-
 
 function zoomIn(event){
 
@@ -2368,7 +2967,6 @@ function zoomIn(event){
 
 }
 
-
 function zoomOut(event){
 
   if(event){
@@ -2385,7 +2983,6 @@ function zoomOut(event){
 
 }
 
-
 function resetZoom(event){
 
   if(event){
@@ -2397,7 +2994,6 @@ function resetZoom(event){
   updateZoom();
 
 }
-
 
 function updateZoom(){
 
@@ -2428,6 +3024,35 @@ document.addEventListener(
   function(){
 
     renderList();
+    renderCartPanel();
+
+    /* FAVORITES */
+
+    document
+      .querySelectorAll(".favorite-btn")
+      .forEach(function(button){
+
+        const card =
+          button.closest(".product-card");
+
+        const productName =
+          card.getAttribute("data-name");
+
+        if(
+          favoriteProducts.includes(
+            productName
+          )
+        ){
+
+          button.classList.add("active");
+          button.textContent = "♥";
+
+        }
+
+      });
+
+
+    /* IMAGE ZOOM */
 
     document
       .querySelectorAll(
@@ -2449,6 +3074,8 @@ document.addEventListener(
       });
 
 
+    /* ESCAPE */
+
     document.addEventListener(
       "keydown",
       function(event){
@@ -2456,12 +3083,15 @@ document.addEventListener(
         if(event.key === "Escape"){
 
           closeImageZoom();
+          closeCart();
 
         }
 
       }
     );
 
+
+    /* ZOOM WHEEL */
 
     const zoomedImage =
       document.getElementById(
@@ -2473,7 +3103,6 @@ document.addEventListener(
       function(event){
 
         event.preventDefault();
-
         event.stopPropagation();
 
         if(event.deltaY < 0){
