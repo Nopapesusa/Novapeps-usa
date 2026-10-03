@@ -172,6 +172,7 @@ header{
 
 section{
   padding:55px 0;
+  position:relative;
 }
 
 h1,h2,h3{
@@ -182,6 +183,40 @@ h1,h2,h3{
   text-align:center;
   margin-bottom:30px;
   font-size:30px;
+}
+
+/* SECTION X */
+
+.section-close{
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#000;
+  color:#fff;
+  font-size:27px;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.20);
+  z-index:10;
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.section-close:hover{
+  background:#ff69b4;
+  transform:scale(1.08);
+}
+
+.section-close:active{
+  transform:scale(.94);
 }
 
 /* PRODUCTS */
@@ -850,6 +885,14 @@ footer a{
     font-size:25px;
   }
 
+  .section-close{
+    top:12px;
+    right:10px;
+    width:38px;
+    height:38px;
+    font-size:24px;
+  }
+
   .product-card img{
     height:210px;
   }
@@ -924,7 +967,7 @@ footer a{
 </button>
 
 
-<!-- REAL CART PANEL -->
+<!-- CART -->
 
 <div
   id="cartOverlay"
@@ -939,9 +982,7 @@ footer a{
 
     <div class="cart-header">
 
-      <h2>
-        Your Selected Products
-      </h2>
+      <h2>Your Selected Products</h2>
 
       <button
         class="cart-close"
@@ -963,13 +1004,9 @@ footer a{
 
       <div class="cart-total">
 
-        <span>
-          Informational total
-        </span>
+        <span>Informational total</span>
 
-        <span id="cartTotal">
-          $0.00
-        </span>
+        <span id="cartTotal">$0.00</span>
 
       </div>
 
@@ -1110,6 +1147,15 @@ footer a{
 
 <section id="products">
 
+  <button
+    class="section-close"
+    type="button"
+    onclick="goHome()"
+    aria-label="Close products"
+  >
+    ×
+  </button>
+
   <div class="container">
 
     <h2 class="section-title">
@@ -1118,13 +1164,7 @@ footer a{
 
     <div id="productGrid" class="products">
 
-
-      <!-- MOTS-C 10 MG -->
-
-      <div
-        class="product-card"
-        data-name="MOTS-C 10 MG"
-      >
+      <div class="product-card" data-name="MOTS-C 10 MG">
 
         <button
           class="favorite-btn"
@@ -1162,12 +1202,7 @@ footer a{
       </div>
 
 
-      <!-- GLP-2 10 MG -->
-
-      <div
-        class="product-card"
-        data-name="GLP-2 10 MG"
-      >
+      <div class="product-card" data-name="GLP-2 10 MG">
 
         <button
           class="favorite-btn"
@@ -1205,12 +1240,7 @@ footer a{
       </div>
 
 
-      <!-- GHK-CU 100 MG -->
-
-      <div
-        class="product-card"
-        data-name="GHK-CU 100 MG"
-      >
+      <div class="product-card" data-name="GHK-CU 100 MG">
 
         <button
           class="favorite-btn"
@@ -1248,12 +1278,7 @@ footer a{
       </div>
 
 
-      <!-- GLP-3 10 MG -->
-
-      <div
-        class="product-card"
-        data-name="GLP-3 10 MG"
-      >
+      <div class="product-card" data-name="GLP-3 10 MG">
 
         <button
           class="favorite-btn"
@@ -1291,12 +1316,7 @@ footer a{
       </div>
 
 
-      <!-- GLP-2 20 MG -->
-
-      <div
-        class="product-card"
-        data-name="GLP-2 20 MG"
-      >
+      <div class="product-card" data-name="GLP-2 20 MG">
 
         <button
           class="favorite-btn"
@@ -1334,12 +1354,7 @@ footer a{
       </div>
 
 
-      <!-- GLP-3 20 MG -->
-
-      <div
-        class="product-card"
-        data-name="GLP-3 20 MG"
-      >
+      <div class="product-card" data-name="GLP-3 20 MG">
 
         <button
           class="favorite-btn"
@@ -1377,12 +1392,7 @@ footer a{
       </div>
 
 
-      <!-- GLUTATHIONE -->
-
-      <div
-        class="product-card"
-        data-name="GLUTATHIONE 1500 MG"
-      >
+      <div class="product-card" data-name="GLUTATHIONE 1500 MG">
 
         <button
           class="favorite-btn"
@@ -1420,12 +1430,7 @@ footer a{
       </div>
 
 
-      <!-- NAD+ -->
-
-      <div
-        class="product-card"
-        data-name="NAD+ 500 MG"
-      >
+      <div class="product-card" data-name="NAD+ 500 MG">
 
         <button
           class="favorite-btn"
@@ -1472,6 +1477,15 @@ footer a{
 <!-- SELECTED PRODUCTS -->
 
 <section id="selection">
+
+  <button
+    class="section-close"
+    type="button"
+    onclick="goHome()"
+    aria-label="Close selected products"
+  >
+    ×
+  </button>
 
   <div class="container">
 
@@ -1529,6 +1543,7 @@ footer a{
             id="requestName"
             type="text"
             placeholder="Your name"
+            autocomplete="name"
           >
 
         </div>
@@ -1543,6 +1558,97 @@ footer a{
             id="requestEmail"
             type="email"
             placeholder="Your email"
+            autocomplete="email"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="requestPhone">
+            Phone number
+          </label>
+
+          <input
+            id="requestPhone"
+            type="tel"
+            placeholder="Your phone number"
+            autocomplete="tel"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="requestAddress">
+            Address
+          </label>
+
+          <input
+            id="requestAddress"
+            type="text"
+            placeholder="Street address"
+            autocomplete="street-address"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="requestApt">
+            Apt / Unit (optional)
+          </label>
+
+          <input
+            id="requestApt"
+            type="text"
+            placeholder="Apt / Unit"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="requestCity">
+            City
+          </label>
+
+          <input
+            id="requestCity"
+            type="text"
+            placeholder="City"
+            autocomplete="address-level2"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="requestState">
+            State
+          </label>
+
+          <input
+            id="requestState"
+            type="text"
+            placeholder="State"
+            autocomplete="address-level1"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="requestZip">
+            ZIP Code
+          </label>
+
+          <input
+            id="requestZip"
+            type="text"
+            placeholder="ZIP Code"
+            autocomplete="postal-code"
+            inputmode="numeric"
           >
 
         </div>
@@ -1585,6 +1691,15 @@ footer a{
 
 <section id="about">
 
+  <button
+    class="section-close"
+    type="button"
+    onclick="goHome()"
+    aria-label="Close About Us"
+  >
+    ×
+  </button>
+
   <div class="container">
 
     <h2 class="section-title">
@@ -1616,6 +1731,15 @@ footer a{
 <!-- COMPARE -->
 
 <section id="compare">
+
+  <button
+    class="section-close"
+    type="button"
+    onclick="goHome()"
+    aria-label="Close Compare"
+  >
+    ×
+  </button>
 
   <div class="container">
 
@@ -1704,6 +1828,15 @@ footer a{
 <!-- CONTACT -->
 
 <section id="contact">
+
+  <button
+    class="section-close"
+    type="button"
+    onclick="goHome()"
+    aria-label="Close Contact"
+  >
+    ×
+  </button>
 
   <div class="container">
 
@@ -1796,6 +1929,15 @@ footer a{
 <!-- LOGIN / REGISTER -->
 
 <section id="login">
+
+  <button
+    class="section-close"
+    type="button"
+    onclick="goHome()"
+    aria-label="Close Login"
+  >
+    ×
+  </button>
 
   <div class="container">
 
@@ -1975,6 +2117,23 @@ if(
   document
     .getElementById("ageGate")
     .classList.add("hidden");
+
+}
+
+
+/* HOME */
+
+function goHome(){
+
+  closeMenu();
+  closeCart();
+  closeImageZoom();
+
+  document
+    .getElementById("home")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 }
 
@@ -2291,7 +2450,6 @@ function saveAndRenderList(){
   );
 
   renderList();
-
   renderCartPanel();
 
 }
@@ -2337,7 +2495,7 @@ function closeCart(event){
 }
 
 
-/* GO TO INFORMATION REQUEST */
+/* INFORMATION REQUEST */
 
 function goToInformationRequest(){
 
@@ -2373,7 +2531,7 @@ function goToInformationRequest(){
 }
 
 
-/* RENDER CART PANEL */
+/* RENDER CART */
 
 function renderCartPanel(){
 
@@ -2394,16 +2552,25 @@ function renderCartPanel(){
 
     body.innerHTML = `
       <div class="cart-empty">
-        <div style="font-size:45px;margin-bottom:12px;">
+
+        <div
+          style="
+            font-size:45px;
+            margin-bottom:12px;
+          "
+        >
           🛒
         </div>
 
-        <strong>Your selected list is empty.</strong>
+        <strong>
+          Your selected list is empty.
+        </strong>
 
         <p style="margin-top:8px;">
           Add products using the
           "Add to list" button.
         </p>
+
       </div>
     `;
 
@@ -2433,9 +2600,7 @@ function renderCartPanel(){
 
         <div class="cart-item-top">
 
-          <span>
-            ${name}
-          </span>
+          <span>${name}</span>
 
           <span>
             $${subtotal.toFixed(2)}
@@ -2552,7 +2717,6 @@ function renderList(){
       item.price * item.qty;
 
     total += subtotal;
-
     totalQuantity += item.qty;
 
     html += `
@@ -2620,7 +2784,7 @@ function renderList(){
 }
 
 
-/* 4 DIGIT CODE */
+/* 4 DIGIT REFERENCE */
 
 function generateReferenceCode(){
 
@@ -2644,6 +2808,42 @@ function sendInformationRequest(){
   const email =
     document
       .getElementById("requestEmail")
+      .value
+      .trim();
+
+  const phone =
+    document
+      .getElementById("requestPhone")
+      .value
+      .trim();
+
+  const address =
+    document
+      .getElementById("requestAddress")
+      .value
+      .trim();
+
+  const apt =
+    document
+      .getElementById("requestApt")
+      .value
+      .trim();
+
+  const city =
+    document
+      .getElementById("requestCity")
+      .value
+      .trim();
+
+  const state =
+    document
+      .getElementById("requestState")
+      .value
+      .trim();
+
+  const zip =
+    document
+      .getElementById("requestZip")
       .value
       .trim();
 
@@ -2673,13 +2873,21 @@ function sendInformationRequest(){
 
   }
 
-  if(!name || !email){
+  if(
+    !name ||
+    !email ||
+    !phone ||
+    !address ||
+    !city ||
+    !state ||
+    !zip
+  ){
 
     box.style.display =
       "block";
 
     box.textContent =
-      "Please enter your name and email.";
+      "Please complete your name, email, phone, and full address.";
 
     return;
 
@@ -2721,6 +2929,12 @@ Reference code: ${reference}
 
 Name: ${name}
 Email: ${email}
+Phone: ${phone}
+
+Address:
+${address}
+${apt ? "Apt / Unit: " + apt : ""}
+${city}, ${state} ${zip}
 
 Selected products:
 ${productText}
@@ -3026,6 +3240,7 @@ document.addEventListener(
     renderList();
     renderCartPanel();
 
+
     /* FAVORITES */
 
     document
@@ -3074,7 +3289,7 @@ document.addEventListener(
       });
 
 
-    /* ESCAPE */
+    /* ESCAPE KEY */
 
     document.addEventListener(
       "keydown",
@@ -3084,6 +3299,7 @@ document.addEventListener(
 
           closeImageZoom();
           closeCart();
+          closeMenu();
 
         }
 
