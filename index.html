@@ -96,8 +96,6 @@ header{
   font-size:16px;
 }
 
-/* SEARCH */
-
 .search-box{
   display:flex;
   gap:8px;
@@ -149,8 +147,6 @@ header{
   padding:8px 5px;
 }
 
-/* HERO */
-
 .hero{
   background:#fff;
   text-align:center;
@@ -185,8 +181,6 @@ h1,h2,h3{
   font-size:30px;
 }
 
-/* SECTION X */
-
 .section-close{
   position:absolute;
   top:18px;
@@ -205,9 +199,7 @@ h1,h2,h3{
   justify-content:center;
   box-shadow:0 3px 12px rgba(0,0,0,.20);
   z-index:10;
-  transition:
-    background .2s ease,
-    transform .2s ease;
+  transition:background .2s ease,transform .2s ease;
 }
 
 .section-close:hover{
@@ -285,6 +277,11 @@ h1,h2,h3{
   opacity:.85;
 }
 
+.button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
 /* FAVORITES */
 
 .favorite-btn{
@@ -301,10 +298,7 @@ h1,h2,h3{
   cursor:pointer;
   z-index:5;
   box-shadow:0 3px 12px rgba(0,0,0,.15);
-  transition:
-    transform .2s ease,
-    background .2s ease,
-    color .2s ease;
+  transition:transform .2s ease,background .2s ease,color .2s ease;
 }
 
 .favorite-btn:hover{
@@ -351,10 +345,7 @@ h1,h2,h3{
   position:relative;
   z-index:2;
   animation:addListPulse 1.8s ease-in-out infinite;
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
 }
 
 .add-list-btn:hover{
@@ -367,21 +358,58 @@ h1,h2,h3{
 }
 
 @keyframes rotateAround{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 @keyframes addListPulse{
-  0%,100%{
-    transform:scale(1);
-  }
-  50%{
-    transform:scale(1.06);
-  }
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.06);}
+}
+
+/* SHIPPING CARD */
+
+.shipping-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:360px;
+}
+
+.shipping-icon{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.shipping-card h3{
+  font-size:22px;
+  margin-bottom:18px;
+}
+
+.shipping-option{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:13px 5px;
+  border-bottom:1px solid #ddd;
+  text-align:left;
+}
+
+.shipping-option strong{
+  font-size:14px;
+}
+
+.shipping-price{
+  font-weight:bold;
+  font-size:16px;
+  white-space:nowrap;
+}
+
+.shipping-note{
+  margin-top:16px;
+  font-size:12px;
+  color:#666;
 }
 
 /* INFO / SELECTION */
@@ -581,6 +609,16 @@ footer a{
   display:none;
 }
 
+.message.success{
+  background:#e9f8ee;
+  color:#176b34;
+}
+
+.message.error{
+  background:#ffecec;
+  color:#a40000;
+}
+
 /* IMAGE ZOOM */
 
 .image-modal{
@@ -699,9 +737,7 @@ footer a{
   gap:9px;
   font-weight:bold;
   font-size:16px;
-  transition:
-    transform .2s ease,
-    background .2s ease;
+  transition:transform .2s ease,background .2s ease;
 }
 
 .cart-floating:hover{
@@ -743,7 +779,7 @@ footer a{
   100%{transform:scale(1);}
 }
 
-/* REAL CART PANEL */
+/* CART PANEL */
 
 .cart-overlay{
   position:fixed;
@@ -772,12 +808,8 @@ footer a{
 }
 
 @keyframes cartSlide{
-  from{
-    transform:translateX(100%);
-  }
-  to{
-    transform:translateX(0);
-  }
+  from{transform:translateX(100%);}
+  to{transform:translateX(0);}
 }
 
 .cart-header{
@@ -1003,11 +1035,8 @@ footer a{
     <div class="cart-footer">
 
       <div class="cart-total">
-
         <span>Informational total</span>
-
         <span id="cartTotal">$0.00</span>
-
       </div>
 
       <button
@@ -1467,6 +1496,64 @@ footer a{
 
       </div>
 
+
+      <!-- SHIPPING INFORMATION CARD -->
+
+      <div
+        class="product-card shipping-card"
+        data-name="SHIPPING INFORMATION"
+      >
+
+        <div class="shipping-icon">
+          🚚
+        </div>
+
+        <h3>
+          Shipping Information
+        </h3>
+
+        <div class="shipping-option">
+
+          <strong>
+            Standard Shipping
+          </strong>
+
+          <span class="shipping-price">
+            $9
+          </span>
+
+        </div>
+
+        <div class="shipping-option">
+
+          <strong>
+            Express Shipping
+          </strong>
+
+          <span class="shipping-price">
+            $15
+          </span>
+
+        </div>
+
+        <div class="shipping-option">
+
+          <strong>
+            Free Shipping
+          </strong>
+
+          <span class="shipping-price">
+            $200+
+          </span>
+
+        </div>
+
+        <p class="shipping-note">
+          Shipping information shown for reference only.
+        </p>
+
+      </div>
+
     </div>
 
   </div>
@@ -1530,7 +1617,7 @@ footer a{
 
         <p style="margin-bottom:18px;color:#555;">
           Submit your selected products as an information request.
-          A unique 4-digit reference code will be generated.
+          A 4-digit reference code will be generated.
         </p>
 
         <div class="form-group">
@@ -1541,6 +1628,7 @@ footer a{
 
           <input
             id="requestName"
+            name="name"
             type="text"
             placeholder="Your name"
             autocomplete="name"
@@ -1556,6 +1644,7 @@ footer a{
 
           <input
             id="requestEmail"
+            name="email"
             type="email"
             placeholder="Your email"
             autocomplete="email"
@@ -1571,6 +1660,7 @@ footer a{
 
           <input
             id="requestPhone"
+            name="phone"
             type="tel"
             placeholder="Your phone number"
             autocomplete="tel"
@@ -1586,6 +1676,7 @@ footer a{
 
           <input
             id="requestAddress"
+            name="address"
             type="text"
             placeholder="Street address"
             autocomplete="street-address"
@@ -1601,6 +1692,7 @@ footer a{
 
           <input
             id="requestApt"
+            name="apt_unit"
             type="text"
             placeholder="Apt / Unit"
           >
@@ -1615,6 +1707,7 @@ footer a{
 
           <input
             id="requestCity"
+            name="city"
             type="text"
             placeholder="City"
             autocomplete="address-level2"
@@ -1630,6 +1723,7 @@ footer a{
 
           <input
             id="requestState"
+            name="state"
             type="text"
             placeholder="State"
             autocomplete="address-level1"
@@ -1645,6 +1739,7 @@ footer a{
 
           <input
             id="requestZip"
+            name="zip"
             type="text"
             placeholder="ZIP Code"
             autocomplete="postal-code"
@@ -1661,13 +1756,16 @@ footer a{
 
           <textarea
             id="requestMessage"
+            name="message"
             placeholder="Your message"
           ></textarea>
 
         </div>
 
         <button
+          id="informationRequestButton"
           class="button"
+          type="button"
           onclick="sendInformationRequest()"
         >
           Send information request
@@ -1874,6 +1972,7 @@ footer a{
 
         <input
           id="contactName"
+          name="contact_name"
           type="text"
           placeholder="Your name"
         >
@@ -1888,6 +1987,7 @@ footer a{
 
         <input
           id="contactEmail"
+          name="contact_email"
           type="email"
           placeholder="Your email"
         >
@@ -1902,13 +2002,16 @@ footer a{
 
         <textarea
           id="contactText"
+          name="contact_message"
           placeholder="Your message"
         ></textarea>
 
       </div>
 
       <button
+        id="contactButton"
         class="button"
+        type="button"
         onclick="sendContactRequest()"
       >
         Send message
@@ -2086,6 +2189,12 @@ footer a{
 
 
 <script>
+
+/* FORMspree */
+
+const FORMSPREE_ENDPOINT =
+  "https://formspree.io/f/myezrady";
+
 
 /* AGE GATE */
 
@@ -2795,9 +2904,9 @@ function generateReferenceCode(){
 }
 
 
-/* INFORMATION REQUEST */
+/* INFORMATION REQUEST - FORMSPREE */
 
-function sendInformationRequest(){
+async function sendInformationRequest(){
 
   const name =
     document
@@ -2858,13 +2967,21 @@ function sendInformationRequest(){
       "requestMessageBox"
     );
 
+  const submitButton =
+    document.getElementById(
+      "informationRequestButton"
+    );
+
   const names =
     Object.keys(selectedProducts);
 
+  box.className = "message";
+
   if(names.length === 0){
 
-    box.style.display =
-      "block";
+    box.style.display = "block";
+
+    box.classList.add("error");
 
     box.textContent =
       "Please select at least one product first.";
@@ -2883,8 +3000,9 @@ function sendInformationRequest(){
     !zip
   ){
 
-    box.style.display =
-      "block";
+    box.style.display = "block";
+
+    box.classList.add("error");
 
     box.textContent =
       "Please complete your name, email, phone, and full address.";
@@ -2896,84 +3014,188 @@ function sendInformationRequest(){
   const reference =
     generateReferenceCode();
 
+  /*
+    Only product names and quantities are
+    sent with the information request.
+    The displayed prices remain visual
+    information on the page.
+  */
+
   let productText = "";
-  let total = 0;
 
   names.forEach(function(productName){
 
     const item =
       selectedProducts[productName];
 
-    const subtotal =
-      item.price * item.qty;
-
-    total += subtotal;
-
     productText +=
       "- " +
       productName +
       " | Quantity: " +
       item.qty +
-      " | Price: $" +
-      item.price.toFixed(2) +
-      " | Subtotal: $" +
-      subtotal.toFixed(2) +
       "\n";
 
   });
 
-  const body =
-`NovaPeps USA - Information Request
+  const shippingInfo =
+`Shipping information shown on website:
+Standard Shipping: $9
+Express Shipping: $15
+Free Shipping: $200+`;
 
-Reference code: ${reference}
+  const formData = {
 
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
+    _subject:
+      "NovaPeps USA Information Request #" +
+      reference,
 
-Address:
-${address}
-${apt ? "Apt / Unit: " + apt : ""}
-${city}, ${state} ${zip}
+    _replyto:
+      email,
 
-Selected products:
-${productText}
+    reference_code:
+      reference,
 
-Informational total: $${total.toFixed(2)}
+    name:
+      name,
 
-Message:
-${message || "No additional message."}
+    email:
+      email,
 
-FOR RESEARCH USE ONLY. Not intended for human use.`;
+    phone:
+      phone,
 
-  const subject =
-    "NovaPeps USA Information Request #" +
-    reference;
+    address:
+      address,
 
-  const mailto =
-    "mailto:Novalaps22@gmail.com" +
-    "?subject=" +
-    encodeURIComponent(subject) +
-    "&body=" +
-    encodeURIComponent(body);
+    apt_unit:
+      apt || "Not provided",
 
-  box.style.display =
-    "block";
+    city:
+      city,
+
+    state:
+      state,
+
+    zip:
+      zip,
+
+    selected_products:
+      productText,
+
+    shipping_information:
+      shippingInfo,
+
+    message:
+      message || "No additional message.",
+
+    information_notice:
+      "Informational request only. FOR RESEARCH USE ONLY. Not intended for human use."
+
+  };
+
+  submitButton.disabled = true;
+
+  submitButton.textContent =
+    "Sending...";
+
+  box.style.display = "block";
+
+  box.className = "message";
 
   box.textContent =
-    "Your request reference code is " +
-    reference +
-    ". Your email app will open with the information request.";
+    "Sending your information request...";
 
-  window.location.href =
-    mailto;
+  try{
+
+    const response =
+      await fetch(
+        FORMSPREE_ENDPOINT,
+        {
+          method:"POST",
+
+          headers:{
+            "Accept":
+              "application/json",
+
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(formData)
+        }
+      );
+
+    let result = {};
+
+    try{
+
+      result =
+        await response.json();
+
+    }catch(error){
+
+      result = {};
+
+    }
+
+    if(!response.ok){
+
+      throw new Error(
+        result.error ||
+        "Unable to send the request."
+      );
+
+    }
+
+    box.className =
+      "message success";
+
+    box.style.display =
+      "block";
+
+    box.textContent =
+      "Your information request was sent successfully. Your reference code is " +
+      reference +
+      ".";
+
+    /*
+      Keep the selected products on the page.
+      The user can clear them manually.
+    */
+
+  }catch(error){
+
+    console.error(
+      "Formspree error:",
+      error
+    );
+
+    box.className =
+      "message error";
+
+    box.style.display =
+      "block";
+
+    box.textContent =
+      "There was a problem sending the request. Please try again.";
+
+  }finally{
+
+    submitButton.disabled =
+      false;
+
+    submitButton.textContent =
+      "Send information request";
+
+  }
 
 }
 
 
-/* CONTACT */
+/* CONTACT - FORMSPREE */
 
-function sendContactRequest(){
+async function sendContactRequest(){
 
   const name =
     document
@@ -2998,10 +3220,19 @@ function sendContactRequest(){
       "contactMessage"
     );
 
+  const button =
+    document.getElementById(
+      "contactButton"
+    );
+
+  box.className = "message";
+
   if(!name || !email || !message){
 
     box.style.display =
       "block";
+
+    box.classList.add("error");
 
     box.textContent =
       "Please complete all fields.";
@@ -3013,40 +3244,126 @@ function sendContactRequest(){
   const reference =
     generateReferenceCode();
 
-  const subject =
-    "NovaPeps USA Contact Request #" +
-    reference;
+  const formData = {
 
-  const body =
-`NovaPeps USA Contact Request
+    _subject:
+      "NovaPeps USA Contact Request #" +
+      reference,
 
-Reference code: ${reference}
+    _replyto:
+      email,
 
-Name: ${name}
-Email: ${email}
+    reference_code:
+      reference,
 
-Message:
-${message}
+    name:
+      name,
 
-FOR RESEARCH USE ONLY. Not intended for human use.`;
+    email:
+      email,
 
-  const mailto =
-    "mailto:Novalaps22@gmail.com" +
-    "?subject=" +
-    encodeURIComponent(subject) +
-    "&body=" +
-    encodeURIComponent(body);
+    message:
+      message,
+
+    information_notice:
+      "FOR RESEARCH USE ONLY. Not intended for human use."
+
+  };
+
+  button.disabled = true;
+
+  button.textContent =
+    "Sending...";
 
   box.style.display =
     "block";
 
   box.textContent =
-    "Your reference code is " +
-    reference +
-    ". Your email app will open.";
+    "Sending your message...";
 
-  window.location.href =
-    mailto;
+  try{
+
+    const response =
+      await fetch(
+        FORMSPREE_ENDPOINT,
+        {
+          method:"POST",
+
+          headers:{
+            "Accept":
+              "application/json",
+
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(formData)
+        }
+      );
+
+    let result = {};
+
+    try{
+
+      result =
+        await response.json();
+
+    }catch(error){
+
+      result = {};
+
+    }
+
+    if(!response.ok){
+
+      throw new Error(
+        result.error ||
+        "Unable to send the message."
+      );
+
+    }
+
+    box.className =
+      "message success";
+
+    box.style.display =
+      "block";
+
+    box.textContent =
+      "Your message was sent successfully. Your reference code is " +
+      reference +
+      ".";
+
+    document
+      .getElementById("contactText")
+      .value = "";
+
+  }catch(error){
+
+    console.error(
+      "Formspree contact error:",
+      error
+    );
+
+    box.className =
+      "message error";
+
+    box.style.display =
+      "block";
+
+    box.textContent =
+      "There was a problem sending your message. Please try again.";
+
+  }finally{
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      "Send message";
+
+  }
 
 }
 
@@ -3143,7 +3460,9 @@ function closeImageZoom(event){
       event.target.id ===
       "zoomedProductImage"
     ){
+
       return;
+
     }
 
     if(
@@ -3151,7 +3470,9 @@ function closeImageZoom(event){
       event.target.closest &&
       event.target.closest(".zoom-controls")
     ){
+
       return;
+
     }
 
   }
