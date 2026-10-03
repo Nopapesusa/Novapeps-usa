@@ -249,6 +249,41 @@ h1,h2,h3{
   opacity:.85;
 }
 
+
+/* =========================
+   ADD TO LIST ANIMATION
+========================= */
+
+.add-list-btn{
+  animation:addListPulse 1.8s ease-in-out infinite;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+.add-list-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 6px 18px rgba(255,105,180,.45);
+}
+
+.add-list-btn:active{
+  transform:scale(.92);
+}
+
+@keyframes addListPulse{
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.06);
+  }
+
+}
+
+
 .info-box{
   background:#fff;
   border-radius:14px;
@@ -436,6 +471,7 @@ footer a{
   display:none;
 }
 
+
 /* IMAGE ZOOM */
 
 .image-modal{
@@ -532,6 +568,91 @@ footer a{
   border-radius:20px;
 }
 
+
+/* =========================
+   PINK CART
+========================= */
+
+.cart-floating{
+  position:fixed;
+  right:18px;
+  bottom:20px;
+  min-width:118px;
+  height:58px;
+  padding:0 16px;
+  border:0;
+  border-radius:30px;
+  background:#ff69b4;
+  color:#fff;
+  cursor:pointer;
+  z-index:1500;
+  box-shadow:0 6px 20px rgba(0,0,0,.28);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-weight:bold;
+  font-size:16px;
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+.cart-floating:hover{
+  transform:scale(1.06);
+  background:#ff4fa3;
+}
+
+.cart-icon{
+  font-size:27px;
+  line-height:1;
+}
+
+.cart-label{
+  font-size:15px;
+  letter-spacing:.5px;
+}
+
+.cart-count{
+  min-width:24px;
+  height:24px;
+  padding:0 6px;
+  border-radius:50%;
+  background:#000;
+  color:#fff;
+  font-size:12px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+/* CART BUMP */
+
+.cart-floating.cart-bump{
+  animation:cartBump .4s ease;
+}
+
+@keyframes cartBump{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.15);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+
+/* MOBILE */
+
 @media(max-width:600px){
 
   .section-title{
@@ -569,12 +690,44 @@ footer a{
     height:43px;
   }
 
-}
+  .cart-floating{
+    right:12px;
+    bottom:14px;
+    min-width:108px;
+    height:54px;
+    padding:0 13px;
+    font-size:15px;
+  }
 
+  .cart-icon{
+    font-size:25px;
+  }
+
+  .cart-label{
+    font-size:14px;
+  }
+
+}
 </style>
 </head>
 
 <body>
+
+
+<!-- PINK CART -->
+
+<button
+  id="cartButton"
+  class="cart-floating"
+  type="button"
+  onclick="goToCart()"
+  aria-label="Open selected products"
+>
+  <span class="cart-icon">🛒</span>
+  <span class="cart-label">CART</span>
+  <span id="cartCount" class="cart-count">0</span>
+</button>
+
 
 <!-- AGE GATE -->
 
@@ -664,17 +817,11 @@ footer a{
   ></div>
 
   <a href="#home" onclick="closeMenu()">HOME</a>
-
   <a href="#products" onclick="closeMenu()">PRODUCTS</a>
-
   <a href="#selection" onclick="closeMenu()">LISTA</a>
-
   <a href="#contact" onclick="closeMenu()">CONTACT PAGE</a>
-
   <a href="#about" onclick="closeMenu()">ABOUT US</a>
-
   <a href="#compare" onclick="closeMenu()">COMPARE</a>
-
   <a href="#login" onclick="closeMenu()">LOGIN / REGISTER</a>
 
 </div>
@@ -704,6 +851,7 @@ footer a{
 
     <div id="productGrid" class="products">
 
+
       <div
         class="product-card"
         data-name="NOVAPEPS MOTS-C"
@@ -723,7 +871,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('NOVAPEPS MOTS-C',60)"
         >
           Add to list
@@ -751,7 +899,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('GLP-2 10 MG',90)"
         >
           Add to list
@@ -779,7 +927,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('GHK-CU 100 MG',50)"
         >
           Add to list
@@ -807,7 +955,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('GLP-3 10 MG',95)"
         >
           Add to list
@@ -835,7 +983,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('GLP-2 20 MG',110)"
         >
           Add to list
@@ -863,7 +1011,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('GLP-3 20 MG',135)"
         >
           Add to list
@@ -891,7 +1039,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('GLUTATHIONE 1500 MG',60)"
         >
           Add to list
@@ -919,7 +1067,7 @@ footer a{
         </div>
 
         <button
-          class="button"
+          class="button add-list-btn"
           onclick="addToList('NAD+ 500 MG',50)"
         >
           Add to list
@@ -1628,7 +1776,7 @@ function selectProductFromSearch(productName){
 }
 
 
-/* SELECTED PRODUCTS */
+/* SELECTED PRODUCTS / VISUAL CART */
 
 let selectedProducts =
   JSON.parse(
@@ -1654,6 +1802,25 @@ function addToList(name,price){
   }
 
   saveAndRenderList();
+
+
+  /* CART ANIMATION */
+
+  const cartButton =
+    document.getElementById("cartButton");
+
+  cartButton.classList.remove(
+    "cart-bump"
+  );
+
+  void cartButton.offsetWidth;
+
+  cartButton.classList.add(
+    "cart-bump"
+  );
+
+
+  /* SCROLL TO SELECTED PRODUCTS */
 
   document
     .getElementById("selection")
@@ -1706,6 +1873,21 @@ function saveAndRenderList(){
 }
 
 
+/* OPEN CART */
+
+function goToCart(){
+
+  document
+    .getElementById("selection")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* RENDER CART */
+
 function renderList(){
 
   const emptyList =
@@ -1723,6 +1905,11 @@ function renderList(){
       "selectionTotal"
     );
 
+  const cartCount =
+    document.getElementById(
+      "cartCount"
+    );
+
   const names =
     Object.keys(selectedProducts);
 
@@ -1736,6 +1923,9 @@ function renderList(){
     totalBox.textContent =
       "Informational total: $0.00";
 
+    cartCount.textContent =
+      "0";
+
     return;
 
   }
@@ -1745,6 +1935,7 @@ function renderList(){
 
   let html = "";
   let total = 0;
+  let totalQuantity = 0;
 
   names.forEach(function(name){
 
@@ -1755,6 +1946,8 @@ function renderList(){
       item.price * item.qty;
 
     total += subtotal;
+
+    totalQuantity += item.qty;
 
     html += `
 
@@ -1780,6 +1973,7 @@ function renderList(){
 
           <button
             onclick="changeQuantity('${name}',-1)"
+            aria-label="Decrease quantity"
           >
             −
           </button>
@@ -1790,6 +1984,7 @@ function renderList(){
 
           <button
             onclick="changeQuantity('${name}',1)"
+            aria-label="Increase quantity"
           >
             +
           </button>
@@ -1808,6 +2003,9 @@ function renderList(){
 
   selectedItems.innerHTML =
     html;
+
+  cartCount.textContent =
+    totalQuantity;
 
   totalBox.textContent =
     "Informational total: $" +
