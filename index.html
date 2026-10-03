@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
@@ -11,7 +17,9 @@
 
   <title>NovaPeps USA</title>
 
+
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -39,7 +47,9 @@
       color: inherit;
     }
 
+
     /* HEADER */
+
     header {
       background: #ffffff;
       position: sticky;
@@ -51,8 +61,9 @@
     .header-inner {
       max-width: 1100px;
       margin: auto;
-      min-height: 78px;
+      min-height: 75px;
       padding: 0 20px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -60,18 +71,9 @@
 
     .logo-text {
       color: #1261d6;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 800;
       letter-spacing: 1px;
-    }
-
-    .menu-button {
-      background: none;
-      border: none;
-      font-size: 34px;
-      color: #1261d6;
-      cursor: pointer;
-      display: none;
     }
 
     nav {
@@ -89,50 +91,32 @@
       color: #1261d6;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 620px;
-      background:
-        linear-gradient(rgba(0, 55, 150, 0.86), rgba(0, 55, 150, 0.90)),
-        url("att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehI0NVAVGC0.jpeg")
-        center / cover no-repeat;
-
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 70px 20px;
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.05;
-      margin-bottom: 28px;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    .hero p {
-      font-size: clamp(19px, 3vw, 28px);
-      margin-bottom: 35px;
-    }
-
-    .button {
-      display: inline-block;
-      background: white;
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 32px;
       color: #1261d6;
-      padding: 15px 28px;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 18px;
+      cursor: pointer;
     }
 
-    /* SECTION */
+
+    /* PORTADA */
+
+    .hero {
+      width: 100%;
+      background: #ffffff;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    /* SECTIONS */
+
     section {
       max-width: 1100px;
       margin: auto;
@@ -142,8 +126,8 @@
     .section-title {
       text-align: center;
       font-size: 38px;
-      margin-bottom: 15px;
       color: #123c70;
+      margin-bottom: 15px;
     }
 
     .section-text {
@@ -154,7 +138,9 @@
       font-size: 18px;
     }
 
+
     /* PRODUCTS */
+
     .products {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -162,10 +148,13 @@
     }
 
     .product-card {
-      background: white;
+      background: #ffffff;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(20, 50, 90, 0.10);
+
+      box-shadow:
+        0 8px 25px rgba(20, 50, 90, 0.10);
+
       border: 1px solid #e5eaf0;
     }
 
@@ -197,28 +186,36 @@
       margin-top: 10px;
       padding: 7px 12px;
       border-radius: 5px;
+
       background: #edf4ff;
       color: #1261d6;
+
       font-size: 13px;
       font-weight: 800;
     }
 
+
     /* ABOUT */
+
     .about-box {
-      background: white;
+      background: #ffffff;
       padding: 35px;
       border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(20, 50, 90, 0.08);
+
+      box-shadow:
+        0 8px 25px rgba(20, 50, 90, 0.08);
     }
 
+
     /* CONTACT */
+
     .contact {
       text-align: center;
     }
 
     .contact-box {
       background: #123c70;
-      color: white;
+      color: #ffffff;
       padding: 45px 25px;
       border-radius: 16px;
     }
@@ -228,10 +225,12 @@
       font-size: 34px;
     }
 
+
     /* FOOTER */
+
     footer {
       background: #0b1f38;
-      color: white;
+      color: #ffffff;
       text-align: center;
       padding: 35px 20px;
     }
@@ -240,15 +239,17 @@
       margin: 6px 0;
     }
 
+
     /* MOBILE */
+
     @media (max-width: 700px) {
 
       .header-inner {
-        min-height: 70px;
+        min-height: 68px;
       }
 
       .logo-text {
-        font-size: 25px;
+        font-size: 23px;
       }
 
       .menu-button {
@@ -257,15 +258,20 @@
 
       nav {
         display: none;
+
         position: absolute;
         left: 0;
         right: 0;
-        top: 70px;
-        background: white;
+        top: 68px;
+
+        background: #ffffff;
+
         flex-direction: column;
         align-items: stretch;
+
         gap: 0;
-        border-bottom: 1px solid #ddd;
+
+        border-bottom: 1px solid #dddddd;
       }
 
       nav.open {
@@ -274,20 +280,12 @@
 
       nav a {
         padding: 17px 25px;
-        border-top: 1px solid #eee;
+        border-top: 1px solid #eeeeee;
       }
 
-      .hero {
-        min-height: 560px;
-        padding: 55px 18px;
-      }
-
-      .hero h1 {
-        font-size: 43px;
-      }
-
-      .hero p {
-        font-size: 19px;
+      .hero-image {
+        width: 100%;
+        height: auto;
       }
 
       .products {
@@ -301,19 +299,30 @@
       .section-title {
         font-size: 32px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <!-- HEADER -->
+
   <header>
+
     <div class="header-inner">
 
-      <a href="#inicio" class="logo-text">
+      <a
+        href="#inicio"
+        class="logo-text"
+      >
         NOVAPEPS USA
       </a>
+
 
       <button
         id="menuButton"
@@ -324,43 +333,54 @@
         ☰
       </button>
 
+
       <nav id="navLinks">
-        <a href="#inicio">Home</a>
-        <a href="#productos">Products</a>
-        <a href="#nosotros">About</a>
-        <a href="#contacto">Contact</a>
+
+        <a href="#inicio">
+          Home
+        </a>
+
+        <a href="#productos">
+          Products
+        </a>
+
+        <a href="#nosotros">
+          About
+        </a>
+
+        <a href="#contacto">
+          Contact
+        </a>
+
       </nav>
 
     </div>
+
   </header>
 
 
-  <!-- HERO -->
+
+  <!-- PORTADA PRINCIPAL -->
+
   <main>
 
-    <section id="inicio" class="hero">
-      <div class="hero-content">
+    <section
+      id="inicio"
+      class="hero"
+    >
 
-        <h1>
-          PREMIUM<br>
-          RESEARCH<br>
-          COMPOUNDS
-        </h1>
+      <img
+        class="hero-image"
+        src="att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehI0NVAVGC0.jpeg"
+        alt="NovaPeps USA Premium Research Compounds"
+      >
 
-        <p>
-          NovaPeps USA provides materials presented
-          for research purposes only.
-        </p>
-
-        <a href="#productos" class="button">
-          VIEW CATALOG
-        </a>
-
-      </div>
     </section>
 
 
-    <!-- PRODUCTS -->
+
+    <!-- CATALOGO -->
+
     <section id="productos">
 
       <h2 class="section-title">
@@ -369,12 +389,14 @@
 
       <p class="section-text">
         Materials presented for laboratory and research purposes only.
-        Review the information associated with each item before use.
       </p>
+
 
       <div class="products">
 
+
         <!-- GLP-2 -->
+
         <article class="product-card">
 
           <img
@@ -403,7 +425,9 @@
         </article>
 
 
+
         <!-- BACTERIOSTATIC WATER -->
+
         <article class="product-card">
 
           <img
@@ -431,17 +455,21 @@
 
         </article>
 
+
       </div>
 
     </section>
 
 
+
     <!-- ABOUT -->
+
     <section id="nosotros">
 
       <h2 class="section-title">
         About NovaPeps USA
       </h2>
+
 
       <div class="about-box">
 
@@ -462,8 +490,13 @@
     </section>
 
 
+
     <!-- CONTACT -->
-    <section id="contacto" class="contact">
+
+    <section
+      id="contacto"
+      class="contact"
+    >
 
       <div class="contact-box">
 
@@ -483,7 +516,9 @@
   </main>
 
 
+
   <!-- FOOTER -->
+
   <footer>
 
     <strong>
@@ -501,7 +536,9 @@
   </footer>
 
 
-  <!-- MENU SCRIPT -->
+
+  <!-- MENU -->
+
   <script>
 
     const menuButton =
@@ -509,18 +546,6 @@
 
     const navLinks =
       document.getElementById("navLinks");
-
-
-    function closeMenu() {
-
-      navLinks.classList.remove("open");
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-    }
 
 
     menuButton.addEventListener(
@@ -545,42 +570,23 @@
 
         link.addEventListener(
           "click",
-          closeMenu
+          function () {
+
+            navLinks.classList.remove("open");
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
         );
 
       });
 
-
-    document.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          navLinks.classList.contains("open") &&
-          !navLinks.contains(event.target) &&
-          !menuButton.contains(event.target)
-        ) {
-
-          closeMenu();
-
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (event.key === "Escape") {
-          closeMenu();
-        }
-
-      }
-    );
-
   </script>
 
+
 </body>
+
 </html>
