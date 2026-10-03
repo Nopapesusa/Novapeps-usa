@@ -96,10 +96,12 @@ header{
   font-size:16px;
 }
 
+/* SEARCH */
+
 .search-box{
   display:flex;
   gap:8px;
-  margin:15px 0 18px;
+  margin:15px 0 8px;
 }
 
 .search-box input{
@@ -119,6 +121,35 @@ header{
   font-size:20px;
   cursor:pointer;
 }
+
+.search-results{
+  margin-bottom:15px;
+}
+
+.search-result{
+  display:block;
+  width:100%;
+  background:#222;
+  color:#fff;
+  border:0;
+  border-bottom:1px solid #444;
+  padding:11px 6px;
+  text-align:left;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.search-result:hover{
+  background:#333;
+}
+
+.search-no-result{
+  color:#aaa;
+  font-size:13px;
+  padding:8px 5px;
+}
+
+/* HERO */
 
 .hero{
   background:#fff;
@@ -153,6 +184,8 @@ h1,h2,h3{
   font-size:30px;
 }
 
+/* PRODUCTS */
+
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -174,6 +207,12 @@ h1,h2,h3{
   object-fit:contain;
   display:block;
   margin:0 auto 15px;
+  cursor:zoom-in;
+  transition:transform .2s ease;
+}
+
+.product-card img:hover{
+  transform:scale(1.03);
 }
 
 .product-card h3{
@@ -397,7 +436,104 @@ footer a{
   display:none;
 }
 
+/* IMAGE ZOOM */
+
+.image-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.92);
+  z-index:6000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  overflow:hidden;
+}
+
+.image-modal.open{
+  display:flex;
+}
+
+.image-modal-content{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.image-modal img{
+  max-width:90%;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:10px;
+  cursor:grab;
+  transform-origin:center center;
+  transition:transform .15s ease;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+}
+
+.image-modal img:active{
+  cursor:grabbing;
+}
+
+.image-modal-close{
+  position:absolute;
+  top:8px;
+  right:10px;
+  background:rgba(0,0,0,.65);
+  border:0;
+  color:#fff;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  font-size:32px;
+  cursor:pointer;
+  z-index:5;
+  line-height:40px;
+}
+
+.zoom-controls{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:5;
+}
+
+.zoom-controls button{
+  width:45px;
+  height:45px;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  color:#000;
+  font-size:22px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 3px 12px rgba(0,0,0,.35);
+}
+
+.zoom-level{
+  position:absolute;
+  bottom:76px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#fff;
+  font-size:13px;
+  background:rgba(0,0,0,.55);
+  padding:5px 10px;
+  border-radius:20px;
+}
+
 @media(max-width:600px){
+
   .section-title{
     font-size:25px;
   }
@@ -418,190 +554,425 @@ footer a{
   .compare-table{
     font-size:13px;
   }
+
+  .image-modal{
+    padding:10px;
+  }
+
+  .image-modal img{
+    max-width:96%;
+    max-height:75vh;
+  }
+
+  .zoom-controls button{
+    width:43px;
+    height:43px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- AGE GATE -->
+
 <div id="ageGate" class="age-gate">
+
   <div class="age-box">
-    <h2>Are you 21 years of age or older?</h2>
-    <p>You must confirm that you are 21 or older to enter this website.</p>
-    <button class="button" onclick="confirmAge()">YES</button>
-    <button class="button" onclick="denyAge()">NO</button>
+
+    <h2>
+      Are you 21 years of age or older?
+    </h2>
+
+    <p>
+      You must confirm that you are 21 or older to enter this website.
+    </p>
+
+    <button class="button" onclick="confirmAge()">
+      YES
+    </button>
+
+    <button class="button" onclick="denyAge()">
+      NO
+    </button>
+
   </div>
+
 </div>
 
+
 <!-- HEADER -->
+
 <header>
-  <div class="logo">NovaPeps USA</div>
-  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+
+  <div class="logo">
+    NovaPeps USA
+  </div>
+
+  <button
+    class="menu-btn"
+    onclick="openMenu()"
+    aria-label="Open menu"
+  >
+    ☰
+  </button>
+
 </header>
 
+
 <!-- SIDE MENU -->
+
 <div id="sideMenu" class="side-menu">
 
-  <button class="close-btn" onclick="closeMenu()">×</button>
+  <button
+    class="close-btn"
+    onclick="closeMenu()"
+    aria-label="Close menu"
+  >
+    ×
+  </button>
 
-  <h3>NovaPeps USA</h3>
+  <h3>
+    NovaPeps USA
+  </h3>
 
-  <!-- SEARCH -->
   <div class="search-box">
+
     <input
       id="menuSearch"
       type="search"
       placeholder="Search products..."
+      autocomplete="off"
       oninput="searchProducts(this.value)"
     >
-    <button onclick="searchProducts(document.getElementById('menuSearch').value)">🔍</button>
+
+    <button
+      type="button"
+      onclick="searchProducts(document.getElementById('menuSearch').value)"
+      aria-label="Search"
+    >
+      🔍
+    </button>
+
   </div>
 
+  <div
+    id="searchResults"
+    class="search-results"
+  ></div>
+
   <a href="#home" onclick="closeMenu()">HOME</a>
+
   <a href="#products" onclick="closeMenu()">PRODUCTS</a>
+
   <a href="#selection" onclick="closeMenu()">LISTA</a>
+
   <a href="#contact" onclick="closeMenu()">CONTACT PAGE</a>
+
   <a href="#about" onclick="closeMenu()">ABOUT US</a>
+
   <a href="#compare" onclick="closeMenu()">COMPARE</a>
+
   <a href="#login" onclick="closeMenu()">LOGIN / REGISTER</a>
 
 </div>
 
-<!-- HOME / COVER -->
+
+<!-- HOME -->
+
 <section id="home" class="hero">
+
   <img
     src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg"
     alt="NovaPeps USA"
   >
+
 </section>
 
+
 <!-- PRODUCTS -->
+
 <section id="products">
+
   <div class="container">
 
-    <h2 class="section-title">Our Products</h2>
+    <h2 class="section-title">
+      Our Products
+    </h2>
 
     <div id="productGrid" class="products">
 
-      <!-- MOTS-C -->
-      <div class="product-card" data-name="NOVAPEPS MOTS-C">
-        <img src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="NOVAPEPS MOTS-C">
+      <div
+        class="product-card"
+        data-name="NOVAPEPS MOTS-C"
+      >
+
+        <img
+          src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
+          alt="NOVAPEPS MOTS-C"
+        >
+
         <h3>NOVAPEPS MOTS-C</h3>
+
         <div class="price">$60</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('NOVAPEPS MOTS-C',60)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('NOVAPEPS MOTS-C',60)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- GLP-2 10 MG -->
-      <div class="product-card" data-name="GLP-2 10 MG">
-        <img src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
+
+      <div
+        class="product-card"
+        data-name="GLP-2 10 MG"
+      >
+
+        <img
+          src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
+          alt="GLP-2 10 MG"
+        >
+
         <h3>GLP-2 10 MG</h3>
+
         <div class="price">$90</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('GLP-2 10 MG',90)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('GLP-2 10 MG',90)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- GHK-CU -->
-      <div class="product-card" data-name="GHK-CU 100 MG">
-        <img src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
+
+      <div
+        class="product-card"
+        data-name="GHK-CU 100 MG"
+      >
+
+        <img
+          src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
+          alt="GHK-CU 100 MG"
+        >
+
         <h3>GHK-CU 100 MG</h3>
+
         <div class="price">$50</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('GHK-CU 100 MG',50)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('GHK-CU 100 MG',50)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- GLP-3 10 MG -->
-      <div class="product-card" data-name="GLP-3 10 MG">
-        <img src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
+
+      <div
+        class="product-card"
+        data-name="GLP-3 10 MG"
+      >
+
+        <img
+          src="./713BA234-721B-4580-94DF-6677375C7826.png"
+          alt="GLP-3 10 MG"
+        >
+
         <h3>GLP-3 10 MG</h3>
+
         <div class="price">$95</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('GLP-3 10 MG',95)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('GLP-3 10 MG',95)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- GLP-2 20 MG -->
-      <div class="product-card" data-name="GLP-2 20 MG">
-        <img src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
+
+      <div
+        class="product-card"
+        data-name="GLP-2 20 MG"
+      >
+
+        <img
+          src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
+          alt="GLP-2 20 MG"
+        >
+
         <h3>GLP-2 20 MG</h3>
+
         <div class="price">$110</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('GLP-2 20 MG',110)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('GLP-2 20 MG',110)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- GLP-3 20 MG -->
-      <div class="product-card" data-name="GLP-3 20 MG">
-        <img src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
+
+      <div
+        class="product-card"
+        data-name="GLP-3 20 MG"
+      >
+
+        <img
+          src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
+          alt="GLP-3 20 MG"
+        >
+
         <h3>GLP-3 20 MG</h3>
+
         <div class="price">$135</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('GLP-3 20 MG',135)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('GLP-3 20 MG',135)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- GLUTATHIONE -->
-      <div class="product-card" data-name="GLUTATHIONE 1500 MG">
-        <img src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
+
+      <div
+        class="product-card"
+        data-name="GLUTATHIONE 1500 MG"
+      >
+
+        <img
+          src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
+          alt="GLUTATHIONE 1500 MG"
+        >
+
         <h3>GLUTATHIONE 1500 MG</h3>
+
         <div class="price">$60</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('GLUTATHIONE 1500 MG',60)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('GLUTATHIONE 1500 MG',60)"
+        >
           Add to list
         </button>
+
       </div>
 
-      <!-- NAD+ -->
-      <div class="product-card" data-name="NAD+ 500 MG">
-        <img src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
+
+      <div
+        class="product-card"
+        data-name="NAD+ 500 MG"
+      >
+
+        <img
+          src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
+          alt="NAD+ 500 MG"
+        >
+
         <h3>NAD+ 500 MG</h3>
+
         <div class="price">$50</div>
-        <div class="notice">FOR RESEARCH USE ONLY</div>
-        <button class="button" onclick="addToList('NAD+ 500 MG',50)">
+
+        <div class="notice">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="button"
+          onclick="addToList('NAD+ 500 MG',50)"
+        >
           Add to list
         </button>
+
       </div>
 
     </div>
 
   </div>
+
 </section>
 
-<!-- SELECTED PRODUCTS / LIST -->
+
+<!-- SELECTED PRODUCTS -->
+
 <section id="selection">
+
   <div class="container">
 
-    <h2 class="section-title">Selected Products</h2>
+    <h2 class="section-title">
+      Selected Products
+    </h2>
 
     <div class="selection-box">
 
-      <div id="emptyList" class="empty-list">
+      <div
+        id="emptyList"
+        class="empty-list"
+      >
         No products selected yet.
       </div>
 
       <div id="selectedItems"></div>
 
-      <div id="selectionTotal" class="total-box">
+      <div
+        id="selectionTotal"
+        class="total-box"
+      >
         Informational total: $0.00
       </div>
 
       <div style="text-align:center;margin-top:15px;">
-        <button class="button" onclick="clearList()">
+
+        <button
+          class="button"
+          onclick="clearList()"
+        >
           Clear list
         </button>
+
       </div>
 
-      <!-- INFORMATION REQUEST -->
       <div class="request-box">
 
         <h3 style="margin-bottom:15px;">
@@ -614,39 +985,79 @@ footer a{
         </p>
 
         <div class="form-group">
-          <label for="requestName">Name</label>
-          <input id="requestName" type="text" placeholder="Your name">
+
+          <label for="requestName">
+            Name
+          </label>
+
+          <input
+            id="requestName"
+            type="text"
+            placeholder="Your name"
+          >
+
         </div>
 
         <div class="form-group">
-          <label for="requestEmail">Email</label>
-          <input id="requestEmail" type="email" placeholder="Your email">
+
+          <label for="requestEmail">
+            Email
+          </label>
+
+          <input
+            id="requestEmail"
+            type="email"
+            placeholder="Your email"
+          >
+
         </div>
 
         <div class="form-group">
-          <label for="requestMessage">Message</label>
-          <textarea id="requestMessage" placeholder="Your message"></textarea>
+
+          <label for="requestMessage">
+            Message
+          </label>
+
+          <textarea
+            id="requestMessage"
+            placeholder="Your message"
+          ></textarea>
+
         </div>
 
-        <button class="button" onclick="sendInformationRequest()">
+        <button
+          class="button"
+          onclick="sendInformationRequest()"
+        >
           Send information request
         </button>
 
-        <div id="requestMessageBox" class="message"></div>
+        <div
+          id="requestMessageBox"
+          class="message"
+        ></div>
 
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- ABOUT -->
+
 <section id="about">
+
   <div class="container">
 
-    <h2 class="section-title">About Us</h2>
+    <h2 class="section-title">
+      About Us
+    </h2>
 
     <div class="info-box">
+
       <p>
         Welcome to NovaPeps USA. Explore our product catalog and
         contact us for additional information.
@@ -659,30 +1070,43 @@ footer a{
         <strong>FOR RESEARCH USE ONLY</strong> and are
         <strong>not intended for human use.</strong>
       </p>
+
     </div>
 
   </div>
+
 </section>
 
+
 <!-- COMPARE -->
+
 <section id="compare">
+
   <div class="container">
 
-    <h2 class="section-title">Compare</h2>
+    <h2 class="section-title">
+      Compare
+    </h2>
 
-    <div class="info-box" style="overflow-x:auto;">
+    <div
+      class="info-box"
+      style="overflow-x:auto;"
+    >
 
       <table class="compare-table">
 
         <thead>
+
           <tr>
             <th>Product</th>
             <th>Price</th>
             <th>Research Use</th>
           </tr>
+
         </thead>
 
         <tbody>
+
           <tr>
             <td>NOVAPEPS MOTS-C</td>
             <td>$60</td>
@@ -738,96 +1162,175 @@ footer a{
     </div>
 
   </div>
+
 </section>
 
+
 <!-- CONTACT -->
+
 <section id="contact">
+
   <div class="container">
 
-    <h2 class="section-title">Contact Page</h2>
+    <h2 class="section-title">
+      Contact Page
+    </h2>
 
     <div class="info-box">
 
-      <p><strong>Email:</strong>
+      <p>
+        <strong>Email:</strong>
+
         <a href="mailto:Novalaps22@gmail.com">
           Novalaps22@gmail.com
         </a>
       </p>
 
       <p style="margin-top:8px;">
+
         <strong>Phone:</strong>
+
         <a href="tel:+18322739625">
           (832) 273-9625
         </a>
+
       </p>
 
       <br>
 
       <div class="form-group">
-        <label for="contactName">Name</label>
-        <input id="contactName" type="text" placeholder="Your name">
+
+        <label for="contactName">
+          Name
+        </label>
+
+        <input
+          id="contactName"
+          type="text"
+          placeholder="Your name"
+        >
+
       </div>
 
       <div class="form-group">
-        <label for="contactEmail">Email</label>
-        <input id="contactEmail" type="email" placeholder="Your email">
+
+        <label for="contactEmail">
+          Email
+        </label>
+
+        <input
+          id="contactEmail"
+          type="email"
+          placeholder="Your email"
+        >
+
       </div>
 
       <div class="form-group">
-        <label for="contactText">Message</label>
-        <textarea id="contactText" placeholder="Your message"></textarea>
+
+        <label for="contactText">
+          Message
+        </label>
+
+        <textarea
+          id="contactText"
+          placeholder="Your message"
+        ></textarea>
+
       </div>
 
-      <button class="button" onclick="sendContactRequest()">
+      <button
+        class="button"
+        onclick="sendContactRequest()"
+      >
         Send message
       </button>
 
-      <div id="contactMessage" class="message"></div>
+      <div
+        id="contactMessage"
+        class="message"
+      ></div>
 
     </div>
 
   </div>
+
 </section>
 
+
 <!-- LOGIN / REGISTER -->
+
 <section id="login">
+
   <div class="container">
 
-    <h2 class="section-title">Login / Register</h2>
+    <h2 class="section-title">
+      Login / Register
+    </h2>
 
     <div class="login-box">
 
       <div class="form-group">
-        <label for="registerName">Name</label>
-        <input id="registerName" type="text" placeholder="Your name">
+
+        <label for="registerName">
+          Name
+        </label>
+
+        <input
+          id="registerName"
+          type="text"
+          placeholder="Your name"
+        >
+
       </div>
 
       <div class="form-group">
-        <label for="registerEmail">Email</label>
-        <input id="registerEmail" type="email" placeholder="Your email">
+
+        <label for="registerEmail">
+          Email
+        </label>
+
+        <input
+          id="registerEmail"
+          type="email"
+          placeholder="Your email"
+        >
+
       </div>
 
-      <button class="button" onclick="registerUser()">
+      <button
+        class="button"
+        onclick="registerUser()"
+      >
         Register
       </button>
 
-      <div id="registerMessage" class="message"></div>
+      <div
+        id="registerMessage"
+        class="message"
+      ></div>
 
     </div>
 
   </div>
+
 </section>
 
+
 <!-- FOOTER -->
+
 <footer>
+
   <p>
     <strong>NovaPeps USA</strong>
   </p>
 
   <p style="margin-top:8px;">
+
     <a href="mailto:Novalaps22@gmail.com">
       Novalaps22@gmail.com
     </a>
+
   </p>
 
   <p style="margin-top:5px;">
@@ -841,85 +1344,305 @@ footer a{
   <p style="font-size:12px;margin-top:10px;">
     FOR RESEARCH USE ONLY. Not intended for human use.
   </p>
+
 </footer>
+
+
+<!-- IMAGE ZOOM -->
+
+<div
+  id="imageModal"
+  class="image-modal"
+  onclick="closeImageZoom(event)"
+>
+
+  <div class="image-modal-content">
+
+    <button
+      class="image-modal-close"
+      onclick="closeImageZoom(event)"
+      aria-label="Close enlarged image"
+    >
+      ×
+    </button>
+
+    <img
+      id="zoomedProductImage"
+      src=""
+      alt="Enlarged product image"
+      draggable="false"
+    >
+
+    <div class="zoom-level">
+      Zoom: <span id="zoomLevelText">100%</span>
+    </div>
+
+    <div class="zoom-controls">
+
+      <button
+        type="button"
+        onclick="zoomOut(event)"
+        aria-label="Zoom out"
+      >
+        −
+      </button>
+
+      <button
+        type="button"
+        onclick="resetZoom(event)"
+        aria-label="Reset zoom"
+      >
+        ↺
+      </button>
+
+      <button
+        type="button"
+        onclick="zoomIn(event)"
+        aria-label="Zoom in"
+      >
+        +
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <script>
 
-/* =========================
-   AGE GATE
-========================= */
+/* AGE GATE */
 
 function confirmAge(){
-  localStorage.setItem("novaAgeConfirmed","true");
-  document.getElementById("ageGate").classList.add("hidden");
+
+  localStorage.setItem(
+    "novaAgeConfirmed",
+    "true"
+  );
+
+  document
+    .getElementById("ageGate")
+    .classList.add("hidden");
+
 }
 
 function denyAge(){
-  window.location.href="https://www.google.com/";
+
+  window.location.href =
+    "https://www.google.com/";
+
 }
 
-if(localStorage.getItem("novaAgeConfirmed")==="true"){
-  document.getElementById("ageGate").classList.add("hidden");
+if(
+  localStorage.getItem("novaAgeConfirmed")
+  === "true"
+){
+
+  document
+    .getElementById("ageGate")
+    .classList.add("hidden");
+
 }
 
 
-/* =========================
-   SIDE MENU
-========================= */
+/* SIDE MENU */
 
 function openMenu(){
-  document.getElementById("sideMenu").classList.add("open");
+
+  document
+    .getElementById("sideMenu")
+    .classList.add("open");
+
 }
 
 function closeMenu(){
-  document.getElementById("sideMenu").classList.remove("open");
+
+  document
+    .getElementById("sideMenu")
+    .classList.remove("open");
+
 }
 
 
-/* =========================
-   PRODUCT SEARCH
-========================= */
+/* SEARCH */
 
 function searchProducts(value){
 
-  const search=value.toLowerCase().trim();
-  const cards=document.querySelectorAll(".product-card");
+  const search =
+    value.toLowerCase().trim();
+
+  const cards =
+    document.querySelectorAll(".product-card");
+
+  const resultsBox =
+    document.getElementById("searchResults");
+
+  let results = [];
 
   cards.forEach(function(card){
 
-    const name=card.getAttribute("data-name").toLowerCase();
+    const name =
+      (
+        card.getAttribute("data-name")
+        || ""
+      ).toLowerCase();
 
-    if(name.includes(search)){
-      card.style.display="";
+    const title =
+      (
+        card.querySelector("h3")?.textContent
+        || ""
+      ).toLowerCase();
+
+    const matches =
+      search === "" ||
+      name.includes(search) ||
+      title.includes(search);
+
+    if(matches){
+
+      card.style.display = "";
+
+      if(search){
+
+        results.push(
+          card.getAttribute("data-name")
+        );
+
+      }
+
     }else{
-      card.style.display="none";
+
+      card.style.display = "none";
+
     }
 
   });
 
-  closeMenu();
+  resultsBox.innerHTML = "";
 
-  if(search){
-    document.getElementById("products").scrollIntoView({
-      behavior:"smooth"
+  if(search && results.length > 0){
+
+    results.forEach(function(productName){
+
+      const button =
+        document.createElement("button");
+
+      button.type = "button";
+
+      button.className =
+        "search-result";
+
+      button.textContent =
+        productName;
+
+      button.onclick = function(){
+
+        selectProductFromSearch(
+          productName
+        );
+
+      };
+
+      resultsBox.appendChild(button);
+
     });
+
   }
+
+  if(search && results.length === 0){
+
+    resultsBox.innerHTML =
+      '<div class="search-no-result">' +
+      'No products found.' +
+      '</div>';
+
+  }
+
 }
 
 
-/* =========================
-   SELECTED PRODUCTS LIST
-========================= */
+/* SELECT SEARCH RESULT */
+
+function selectProductFromSearch(productName){
+
+  const cards =
+    document.querySelectorAll(
+      ".product-card"
+    );
+
+  let foundCard = null;
+
+  cards.forEach(function(card){
+
+    const name =
+      (
+        card.getAttribute("data-name")
+        || ""
+      ).toLowerCase();
+
+    if(
+      name === productName.toLowerCase()
+    ){
+
+      foundCard = card;
+
+    }
+
+  });
+
+  if(foundCard){
+
+    closeMenu();
+
+    document
+      .getElementById("menuSearch")
+      .value = "";
+
+    document
+      .getElementById("searchResults")
+      .innerHTML = "";
+
+    searchProducts("");
+
+    foundCard.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+    foundCard.style.transition =
+      "box-shadow .3s ease";
+
+    foundCard.style.boxShadow =
+      "0 0 0 3px #000, 0 8px 25px rgba(0,0,0,.20)";
+
+    setTimeout(function(){
+
+      foundCard.style.boxShadow =
+        "0 3px 14px rgba(0,0,0,.10)";
+
+    },1800);
+
+  }
+
+}
+
+
+/* SELECTED PRODUCTS */
 
 let selectedProducts =
-  JSON.parse(localStorage.getItem("novaSelectedProducts") || "{}");
+  JSON.parse(
+    localStorage.getItem(
+      "novaSelectedProducts"
+    ) || "{}"
+  );
 
 
 function addToList(name,price){
 
   if(!selectedProducts[name]){
 
-    selectedProducts[name]={
+    selectedProducts[name] = {
       price:price,
       qty:1
     };
@@ -932,9 +1655,12 @@ function addToList(name,price){
 
   saveAndRenderList();
 
-  document.getElementById("selection").scrollIntoView({
-    behavior:"smooth"
-  });
+  document
+    .getElementById("selection")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
 }
 
 
@@ -946,19 +1672,25 @@ function changeQuantity(name,change){
 
   selectedProducts[name].qty += change;
 
-  if(selectedProducts[name].qty<=0){
+  if(
+    selectedProducts[name].qty <= 0
+  ){
+
     delete selectedProducts[name];
+
   }
 
   saveAndRenderList();
+
 }
 
 
 function clearList(){
 
-  selectedProducts={};
+  selectedProducts = {};
 
   saveAndRenderList();
+
 }
 
 
@@ -970,57 +1702,95 @@ function saveAndRenderList(){
   );
 
   renderList();
+
 }
 
 
 function renderList(){
 
-  const emptyList=document.getElementById("emptyList");
-  const selectedItems=document.getElementById("selectedItems");
-  const totalBox=document.getElementById("selectionTotal");
+  const emptyList =
+    document.getElementById(
+      "emptyList"
+    );
 
-  const names=Object.keys(selectedProducts);
+  const selectedItems =
+    document.getElementById(
+      "selectedItems"
+    );
 
-  if(names.length===0){
+  const totalBox =
+    document.getElementById(
+      "selectionTotal"
+    );
 
-    emptyList.style.display="block";
-    selectedItems.innerHTML="";
-    totalBox.textContent="Informational total: $0.00";
+  const names =
+    Object.keys(selectedProducts);
+
+  if(names.length === 0){
+
+    emptyList.style.display =
+      "block";
+
+    selectedItems.innerHTML = "";
+
+    totalBox.textContent =
+      "Informational total: $0.00";
+
     return;
 
   }
 
-  emptyList.style.display="none";
+  emptyList.style.display =
+    "none";
 
-  let html="";
-  let total=0;
+  let html = "";
+  let total = 0;
 
   names.forEach(function(name){
 
-    const item=selectedProducts[name];
-    const subtotal=item.price * item.qty;
+    const item =
+      selectedProducts[name];
+
+    const subtotal =
+      item.price * item.qty;
 
     total += subtotal;
 
     html += `
+
       <div class="selection-item">
 
         <div class="selection-name">
+
           ${name}
-          <div style="font-weight:normal;font-size:13px;color:#666;">
+
+          <div
+            style="
+              font-weight:normal;
+              font-size:13px;
+              color:#666;
+            "
+          >
             $${item.price.toFixed(2)} each
           </div>
+
         </div>
 
         <div class="quantity-controls">
 
-          <button onclick="changeQuantity('${name}',-1)">
+          <button
+            onclick="changeQuantity('${name}',-1)"
+          >
             −
           </button>
 
-          <strong>${item.qty}</strong>
+          <strong>
+            ${item.qty}
+          </strong>
 
-          <button onclick="changeQuantity('${name}',1)">
+          <button
+            onclick="changeQuantity('${name}',1)"
+          >
             +
           </button>
 
@@ -1031,20 +1801,22 @@ function renderList(){
         </div>
 
       </div>
+
     `;
 
   });
 
-  selectedItems.innerHTML=html;
+  selectedItems.innerHTML =
+    html;
 
-  totalBox.textContent=
-    "Informational total: $" + total.toFixed(2);
+  totalBox.textContent =
+    "Informational total: $" +
+    total.toFixed(2);
+
 }
 
 
-/* =========================
-   4-DIGIT INFORMATION CODE
-========================= */
+/* 4 DIGIT CODE */
 
 function generateReferenceCode(){
 
@@ -1055,54 +1827,72 @@ function generateReferenceCode(){
 }
 
 
-/* =========================
-   INFORMATION REQUEST
-========================= */
+/* INFORMATION REQUEST */
 
 function sendInformationRequest(){
 
-  const name=
-    document.getElementById("requestName").value.trim();
+  const name =
+    document
+      .getElementById("requestName")
+      .value
+      .trim();
 
-  const email=
-    document.getElementById("requestEmail").value.trim();
+  const email =
+    document
+      .getElementById("requestEmail")
+      .value
+      .trim();
 
-  const message=
-    document.getElementById("requestMessage").value.trim();
+  const message =
+    document
+      .getElementById("requestMessage")
+      .value
+      .trim();
 
-  const box=
-    document.getElementById("requestMessageBox");
+  const box =
+    document.getElementById(
+      "requestMessageBox"
+    );
 
-  const names=Object.keys(selectedProducts);
+  const names =
+    Object.keys(selectedProducts);
 
-  if(names.length===0){
+  if(names.length === 0){
 
-    box.style.display="block";
-    box.textContent=
+    box.style.display =
+      "block";
+
+    box.textContent =
       "Please select at least one product first.";
 
     return;
+
   }
 
   if(!name || !email){
 
-    box.style.display="block";
-    box.textContent=
+    box.style.display =
+      "block";
+
+    box.textContent =
       "Please enter your name and email.";
 
     return;
+
   }
 
-  const reference=generateReferenceCode();
+  const reference =
+    generateReferenceCode();
 
-  let productText="";
-  let total=0;
+  let productText = "";
+  let total = 0;
 
   names.forEach(function(productName){
 
-    const item=selectedProducts[productName];
+    const item =
+      selectedProducts[productName];
 
-    const subtotal=
+    const subtotal =
       item.price * item.qty;
 
     total += subtotal;
@@ -1120,7 +1910,7 @@ function sendInformationRequest(){
 
   });
 
-  const body=
+  const body =
 `NovaPeps USA - Information Request
 
 Reference code: ${reference}
@@ -1138,59 +1928,78 @@ ${message || "No additional message."}
 
 FOR RESEARCH USE ONLY. Not intended for human use.`;
 
-  const subject=
-    "NovaPeps USA Information Request #" + reference;
+  const subject =
+    "NovaPeps USA Information Request #" +
+    reference;
 
-  const mailto=
+  const mailto =
     "mailto:Novalaps22@gmail.com" +
     "?subject=" +
     encodeURIComponent(subject) +
     "&body=" +
     encodeURIComponent(body);
 
-  box.style.display="block";
-  box.textContent=
+  box.style.display =
+    "block";
+
+  box.textContent =
     "Your reference code is " +
     reference +
     ". Your email app will open with the information request.";
 
-  window.location.href=mailto;
+  window.location.href =
+    mailto;
+
 }
 
 
-/* =========================
-   CONTACT REQUEST
-========================= */
+/* CONTACT */
 
 function sendContactRequest(){
 
-  const name=
-    document.getElementById("contactName").value.trim();
+  const name =
+    document
+      .getElementById("contactName")
+      .value
+      .trim();
 
-  const email=
-    document.getElementById("contactEmail").value.trim();
+  const email =
+    document
+      .getElementById("contactEmail")
+      .value
+      .trim();
 
-  const message=
-    document.getElementById("contactText").value.trim();
+  const message =
+    document
+      .getElementById("contactText")
+      .value
+      .trim();
 
-  const box=
-    document.getElementById("contactMessage");
+  const box =
+    document.getElementById(
+      "contactMessage"
+    );
 
   if(!name || !email || !message){
 
-    box.style.display="block";
-    box.textContent=
+    box.style.display =
+      "block";
+
+    box.textContent =
       "Please complete all fields.";
 
     return;
+
   }
 
-  const reference=generateReferenceCode();
+  const reference =
+    generateReferenceCode();
 
-  const subject=
-    "NovaPeps USA Contact Request #" + reference;
+  const subject =
+    "NovaPeps USA Contact Request #" +
+    reference;
 
-  const body=
+  const body =
 `NovaPeps USA Contact Request
 
 Reference code: ${reference}
@@ -1203,45 +2012,58 @@ ${message}
 
 FOR RESEARCH USE ONLY. Not intended for human use.`;
 
-  const mailto=
+  const mailto =
     "mailto:Novalaps22@gmail.com" +
     "?subject=" +
     encodeURIComponent(subject) +
     "&body=" +
     encodeURIComponent(body);
 
-  box.style.display="block";
-  box.textContent=
+  box.style.display =
+    "block";
+
+  box.textContent =
     "Your reference code is " +
     reference +
     ". Your email app will open.";
 
-  window.location.href=mailto;
+  window.location.href =
+    mailto;
+
 }
 
 
-/* =========================
-   REGISTER
-========================= */
+/* REGISTER */
 
 function registerUser(){
 
-  const name=
-    document.getElementById("registerName").value.trim();
+  const name =
+    document
+      .getElementById("registerName")
+      .value
+      .trim();
 
-  const email=
-    document.getElementById("registerEmail").value.trim();
+  const email =
+    document
+      .getElementById("registerEmail")
+      .value
+      .trim();
 
-  const box=
-    document.getElementById("registerMessage");
+  const box =
+    document.getElementById(
+      "registerMessage"
+    );
 
   if(!name || !email){
 
-    box.style.display="block";
-    box.textContent=
+    box.style.display =
+      "block";
+
+    box.textContent =
       "Please enter your name and email.";
 
     return;
+
   }
 
   localStorage.setItem(
@@ -1252,20 +2074,234 @@ function registerUser(){
     })
   );
 
-  box.style.display="block";
-  box.textContent=
+  box.style.display =
+    "block";
+
+  box.textContent =
     "Registration information saved on this device.";
+
 }
 
 
-/* =========================
-   INITIALIZE
-========================= */
+/* IMAGE ZOOM */
+
+let currentZoom = 1;
+
+
+function openImageZoom(image){
+
+  const modal =
+    document.getElementById(
+      "imageModal"
+    );
+
+  const zoomedImage =
+    document.getElementById(
+      "zoomedProductImage"
+    );
+
+  zoomedImage.src =
+    image.src;
+
+  zoomedImage.alt =
+    image.alt;
+
+  currentZoom = 1;
+
+  updateZoom();
+
+  modal.classList.add("open");
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closeImageZoom(event){
+
+  if(event){
+
+    if(
+      event.target &&
+      event.target.id ===
+      "zoomedProductImage"
+    ){
+
+      return;
+
+    }
+
+    if(
+      event.target &&
+      event.target.closest &&
+      event.target.closest(".zoom-controls")
+    ){
+
+      return;
+
+    }
+
+  }
+
+  document
+    .getElementById("imageModal")
+    .classList.remove("open");
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+function zoomIn(event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  currentZoom += .25;
+
+  if(currentZoom > 3){
+    currentZoom = 3;
+  }
+
+  updateZoom();
+
+}
+
+
+function zoomOut(event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  currentZoom -= .25;
+
+  if(currentZoom < 1){
+    currentZoom = 1;
+  }
+
+  updateZoom();
+
+}
+
+
+function resetZoom(event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  currentZoom = 1;
+
+  updateZoom();
+
+}
+
+
+function updateZoom(){
+
+  const image =
+    document.getElementById(
+      "zoomedProductImage"
+    );
+
+  const level =
+    document.getElementById(
+      "zoomLevelText"
+    );
+
+  image.style.transform =
+    "scale(" + currentZoom + ")";
+
+  level.textContent =
+    Math.round(currentZoom * 100) +
+    "%";
+
+}
+
+
+/* INITIALIZE */
 
 document.addEventListener(
   "DOMContentLoaded",
   function(){
+
     renderList();
+
+    document
+      .querySelectorAll(
+        ".product-card img"
+      )
+      .forEach(function(image){
+
+        image.addEventListener(
+          "click",
+          function(event){
+
+            event.stopPropagation();
+
+            openImageZoom(this);
+
+          }
+        );
+
+      });
+
+
+    document.addEventListener(
+      "keydown",
+      function(event){
+
+        if(event.key === "Escape"){
+
+          closeImageZoom();
+
+        }
+
+      }
+    );
+
+
+    const zoomedImage =
+      document.getElementById(
+        "zoomedProductImage"
+      );
+
+    zoomedImage.addEventListener(
+      "wheel",
+      function(event){
+
+        event.preventDefault();
+
+        event.stopPropagation();
+
+        if(event.deltaY < 0){
+
+          currentZoom += .15;
+
+        }else{
+
+          currentZoom -= .15;
+
+        }
+
+        if(currentZoom < 1){
+          currentZoom = 1;
+        }
+
+        if(currentZoom > 3){
+          currentZoom = 3;
+        }
+
+        updateZoom();
+
+      },
+      {passive:false}
+    );
+
   }
 );
 
