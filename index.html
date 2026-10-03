@@ -1,279 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaPeps USA | Premium Research Compounds</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
-      color: #17202a;
-    }
-    header {
-      background: #111827;
-      color: #ffffff;
-      text-align: center;
-      padding: 24px 16px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-    header p {
-      margin: 8px 0 0;
-      font-size: 16px;
-    }
-    nav {
-      background: #ffffff;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
-      padding: 13px;
-    }
-    nav a {
-      color: #111827;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-    }
-    .hero {
-      width: 100%;
-      background: #ffffff;
-      text-align: center;
-    }
-    .hero img {
-      display: block;
-      width: 100%;
-      max-width: 1200px;
-      height: auto;
-      margin: 0 auto;
-    }
-    .notice {
-      width: 92%;
-      max-width: 1100px;
-      margin: 25px auto;
-      padding: 20px;
-      background: #fff7ed;
-      border: 1px solid #fdba74;
-      border-radius: 12px;
-      text-align: center;
-    }
-    .notice strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-    .container {
-      width: 92%;
-      max-width: 1100px;
-      margin: 0 auto 40px;
-    }
-    .title {
-      text-align: center;
-      margin: 35px 0 22px;
-    }
-    .title h2 {
-      margin-bottom: 8px;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .product {
-      background: #ffffff;
-      border-radius: 15px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
-    }
-    .product img {
-      width: 100%;
-      max-height: 270px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    .product h3 {
-      margin: 15px 0 8px;
-      font-size: 18px;
-    }
-    .product p {
-      margin: 5px 0;
-      line-height: 1.4;
-    }
-    .price {
-      font-size: 21px;
-      font-weight: bold;
-      margin-top: 12px !important;
-    }
-    .research {
-      color: #b91c1c;
-      font-size: 12px;
-      font-weight: bold;
-      margin-top: 10px !important;
-    }
-    .contact {
-      margin-top: 40px;
-      background: #111827;
-      color: #ffffff;
-      border-radius: 15px;
-      padding: 28px 20px;
-      text-align: center;
-    }
-    .contact h2 {
-      margin-top: 0;
-    }
-    .contact a {
-      display: block;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 12px 0;
-    }
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      color: #666666;
-      font-size: 13px;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 26px;
-      }
-      nav a {
-        margin: 0 6px;
-        font-size: 13px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NovaPeps USA</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+header {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 22px 15px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+header p {
+  margin: 8px 0 0;
+}
+
+.hero {
+  width: 100%;
+  background: white;
+  text-align: center;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px 15px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+
+.product img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+}
+
+.product h3 {
+  margin: 12px 0 6px;
+}
+
+.price {
+  font-size: 21px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.add-btn {
+  background: #111;
+  color: white;
+}
+
+.cart {
+  margin-top: 40px;
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.cart-name {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.qty-controls button {
+  background: #ddd;
+}
+
+.shipping-box {
+  margin-top: 25px;
+  padding: 18px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.shipping-option {
+  margin: 12px 0;
+}
+
+.shipping-option label {
+  cursor: pointer;
+}
+
+.summary {
+  margin-top: 20px;
+  border-top: 2px solid #222;
+  padding-top: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.total {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.reference {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.email-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+}
+
+.notice {
+  margin-top: 25px;
+  padding: 15px;
+  background: #fff8dc;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.contact {
+  margin-top: 35px;
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.contact a {
+  color: white;
+}
+
+footer {
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>NovaPeps USA</h1>
-    <p>Premium Research Compounds</p>
-  </header>
-  <nav>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <!-- COVER IMAGE -->
-  <section class="hero">
-    <img
-      src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg"
-      alt="NovaPeps USA Premium Research Compounds">
-  </section>
-  <div class="notice">
-    <strong>FOR RESEARCH USE ONLY</strong>
-    Not intended for human use.
-    <br>
-    Information provided for research and informational purposes only.
+
+<header>
+  <h1>NovaPeps USA</h1>
+  <p>Research Use Only</p>
+</header>
+
+<!-- COVER IMAGE -->
+<section class="hero">
+  <img
+    src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg"
+    alt="NovaPeps USA Premium Research Compounds">
+</section>
+
+<div class="container">
+
+<h2>Our Products</h2>
+
+<div class="products">
+
+  <div class="product">
+    <img src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="NOVAPEPS MOTS-C">
+    <h3>NOVAPEPS MOTS-C</h3>
+    <div class="price">$60</div>
+    <button class="add-btn" onclick="addToCart('NOVAPEPS MOTS-C',60)">
+      Add to Cart
+    </button>
   </div>
-  <main class="container">
-    <section id="products">
-      <div class="title">
-        <h2>Our Products</h2>
-        <p>Research catalog</p>
+
+  <div class="product">
+    <img src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
+    <h3>GLP-2 10 MG</h3>
+    <div class="price">$90</div>
+    <button class="add-btn" onclick="addToCart('GLP-2 10 MG',90)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="product">
+    <img src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
+    <h3>GHK-CU 100 MG</h3>
+    <div class="price">$50</div>
+    <button class="add-btn" onclick="addToCart('GHK-CU 100 MG',50)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="product">
+    <img src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
+    <h3>GLP-3 10 MG</h3>
+    <div class="price">$95</div>
+    <button class="add-btn" onclick="addToCart('GLP-3 10 MG',95)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="product">
+    <img src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
+    <h3>GLP-2 20 MG</h3>
+    <div class="price">$110</div>
+    <button class="add-btn" onclick="addToCart('GLP-2 20 MG',110)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="product">
+    <img src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
+    <h3>GLP-3 20 MG</h3>
+    <div class="price">$135</div>
+    <button class="add-btn" onclick="addToCart('GLP-3 20 MG',135)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="product">
+    <img src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
+    <h3>GLUTATHIONE 1500 MG</h3>
+    <div class="price">$60</div>
+    <button class="add-btn" onclick="addToCart('GLUTATHIONE 1500 MG',60)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="product">
+    <img src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
+    <h3>NAD+ 500 MG</h3>
+    <div class="price">$50</div>
+    <button class="add-btn" onclick="addToCart('NAD+ 500 MG',50)">
+      Add to Cart
+    </button>
+  </div>
+
+</div>
+
+<!-- CART -->
+
+<div class="cart">
+
+<h2>🛒 Your Cart</h2>
+
+<div id="cartItems">
+  <p>Your cart is empty.</p>
+</div>
+
+<!-- SHIPPING -->
+
+<div class="shipping-box">
+
+<h3>🚚 Shipping</h3>
+
+<div class="shipping-option">
+  <label>
+    <input
+      type="radio"
+      name="shipping"
+      value="standard"
+      checked
+      onchange="renderCart()">
+    Standard Shipping — $9
+  </label>
+</div>
+
+<div class="shipping-option">
+  <label>
+    <input
+      type="radio"
+      name="shipping"
+      value="express"
+      onchange="renderCart()">
+    Express Shipping — $15
+  </label>
+</div>
+
+<p id="freeShippingMessage"></p>
+
+</div>
+
+<!-- TOTAL -->
+
+<div class="summary">
+
+  <div class="summary-row">
+    <span>Subtotal:</span>
+    <span id="subtotal">$0.00</span>
+  </div>
+
+  <div class="summary-row">
+    <span>Shipping:</span>
+    <span id="shipping">$0.00</span>
+  </div>
+
+  <div class="summary-row total">
+    <span>Total:</span>
+    <span id="total">$0.00</span>
+  </div>
+
+</div>
+
+<!-- REFERENCE -->
+
+<div id="referenceBox"
+     class="reference"
+     style="display:none;">
+
+  <strong>Order Reference:</strong>
+  <span id="reference"></span>
+
+  <br><br>
+
+  This reference can be used when contacting NovaPeps USA regarding your request.
+
+  <br>
+
+  <a
+    id="emailButton"
+    class="email-btn"
+    href="#">
+    Request Order Information
+  </a>
+
+</div>
+
+<div class="notice">
+  FOR RESEARCH USE ONLY. Not intended for human use.
+  This cart is for preparing an order/information request only
+  and does not process payments.
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+<h2>Contact NovaPeps USA</h2>
+
+<p>
+Email:
+<a href="mailto:Novalaps22@gmail.com">
+Novalaps22@gmail.com
+</a>
+</p>
+
+<p>
+Phone:
+<a href="tel:+18322739625">
+(832) 273-9625
+</a>
+</p>
+
+</section>
+
+<footer>
+© 2026 NovaPeps USA
+</footer>
+
+<script>
+
+let cart = [];
+
+let orderReference = "";
+
+function addToCart(name, price) {
+
+  const existing = cart.find(
+    item => item.name === name
+  );
+
+  if (existing) {
+
+    existing.quantity++;
+
+  } else {
+
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+
+  }
+
+  renderCart();
+
+  document.querySelector(".cart").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function increase(index) {
+
+  cart[index].quantity++;
+
+  renderCart();
+}
+
+function decrease(index) {
+
+  if (cart[index].quantity > 1) {
+
+    cart[index].quantity--;
+
+  } else {
+
+    cart.splice(index, 1);
+
+  }
+
+  renderCart();
+}
+
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  renderCart();
+}
+
+function getShipping(subtotal) {
+
+  /*
+    Orders over $200:
+    FREE SHIPPING
+  */
+
+  if (subtotal > 200) {
+
+    return 0;
+
+  }
+
+  const selected =
+    document.querySelector(
+      'input[name="shipping"]:checked'
+    );
+
+  if (!selected) {
+
+    return 9;
+
+  }
+
+  if (selected.value === "express") {
+
+    return 15;
+
+  }
+
+  return 9;
+}
+
+function renderCart() {
+
+  const cartItems =
+    document.getElementById("cartItems");
+
+  if (cart.length === 0) {
+
+    cartItems.innerHTML =
+      "<p>Your cart is empty.</p>";
+
+    document.getElementById("subtotal")
+      .textContent = "$0.00";
+
+    document.getElementById("shipping")
+      .textContent = "$0.00";
+
+    document.getElementById("total")
+      .textContent = "$0.00";
+
+    document.getElementById("referenceBox")
+      .style.display = "none";
+
+    document.getElementById("freeShippingMessage")
+      .textContent = "";
+
+    return;
+  }
+
+  let html = "";
+
+  let subtotal = 0;
+
+  cart.forEach((item,index) => {
+
+    const itemTotal =
+      item.price * item.quantity;
+
+    subtotal += itemTotal;
+
+    html += `
+
+      <div class="cart-item">
+
+        <div class="cart-name">
+          ${item.name}
+        </div>
+
+        <div>
+          $${item.price.toFixed(2)} each
+        </div>
+
+        <div class="qty-controls">
+
+          <button
+            onclick="decrease(${index})">
+            −
+          </button>
+
+          <strong>
+            ${item.quantity}
+          </strong>
+
+          <button
+            onclick="increase(${index})">
+            +
+          </button>
+
+          <button
+            onclick="removeItem(${index})">
+            Remove
+          </button>
+
+        </div>
+
+        <strong>
+          Item total:
+          $${itemTotal.toFixed(2)}
+        </strong>
+
       </div>
-      <div class="products">
-        <article class="product">
-          <img
-            src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-            alt="NOVAPEPS MOTS-C">
-          <h3>NOVAPEPS MOTS-C</h3>
-          <p class="price">$60</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-            alt="NOVAPEPS GLP-2 10 MG">
-          <h3>NOVAPEPS GLP-2</h3>
-          <p>10 MG PER VIAL</p>
-          <p>99% PURE</p>
-          <p class="price">$90</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
-            alt="NOVAPEPS GHK-CU 100 MG">
-          <h3>NOVAPEPS GHK-CU</h3>
-          <p>100 MG</p>
-          <p>99% PURE</p>
-          <p class="price">$50</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./713BA234-721B-4580-94DF-6677375C7826.png"
-            alt="NOVAPEPS GLP-3 10 MG">
-          <h3>NOVAPEPS GLP-3</h3>
-          <p>10 MG PER VIAL</p>
-          <p>99% PURE</p>
-          <p class="price">$95</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-            alt="NOVAPEPS GLP-2 20 MG">
-          <h3>NOVAPEPS GLP-2</h3>
-          <p>20 MG</p>
-          <p>99% PURE</p>
-          <p class="price">$110</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-            alt="NOVAPEPS GLP-3 20 MG">
-          <h3>NOVAPEPS GLP-3</h3>
-          <p>20 MG PER VIAL</p>
-          <p>99% PURE</p>
-          <p class="price">$135</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-            alt="NOVAPEPS GLUTATHIONE 1500 MG">
-          <h3>NOVAPEPS GLUTATHIONE</h3>
-          <p>1500 MG</p>
-          <p>99% PURE</p>
-          <p class="price">$60</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-        <article class="product">
-          <img
-            src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
-            alt="NOVAPEPS NAD+ 500 MG">
-          <h3>NOVAPEPS NAD+</h3>
-          <p>500 MG</p>
-          <p>99% PURE</p>
-          <p class="price">$50</p>
-          <p class="research">FOR RESEARCH USE ONLY</p>
-        </article>
-      </div>
-    </section>
-    <section id="contact" class="contact">
-      <h2>Contact Us</h2>
-      <p>For general information, please contact us:</p>
-      <a href="mailto:Novalaps22@gmail.com">
-        Email: Novalaps22@gmail.com
-      </a>
-      <a href="tel:+18322739625">
-        Phone: (832) 273-9625
-      </a>
-    </section>
-  </main>
-  <footer>
-    © 2026 NovaPeps USA
-    <br>
-    For research use only. Not intended for human use.
-  </footer>
+
+    `;
+  });
+
+  cartItems.innerHTML = html;
+
+  const shipping =
+    getShipping(subtotal);
+
+  const total =
+    subtotal + shipping;
+
+  document.getElementById("subtotal")
+    .textContent =
+    "$" + subtotal.toFixed(2);
+
+  if (subtotal > 200) {
+
+    document.getElementById("shipping")
+      .textContent = "FREE";
+
+    document.getElementById("freeShippingMessage")
+      .textContent =
+      "🎉 Your order qualifies for FREE shipping.";
+
+  } else {
+
+    document.getElementById("shipping")
+      .textContent =
+      "$" + shipping.toFixed(2);
+
+    document.getElementById("freeShippingMessage")
+      .textContent = "";
+  }
+
+  document.getElementById("total")
+    .textContent =
+    "$" + total.toFixed(2);
+
+  createReference(
+    subtotal,
+    shipping,
+    total
+  );
+}
+
+function createReference(
+  subtotal,
+  shipping,
+  total
+) {
+
+  if (!orderReference) {
+
+    const number =
+      Math.floor(
+        100000 +
+        Math.random() * 900000
+      );
+
+    orderReference =
+      "NOVA-" + number;
+  }
+
+  document.getElementById("reference")
+    .textContent =
+    orderReference;
+
+  document.getElementById("referenceBox")
+    .style.display = "block";
+
+  let itemsText = "";
+
+  cart.forEach(item => {
+
+    itemsText +=
+      item.name +
+      " x " +
+      item.quantity +
+      " = $" +
+      (
+        item.price *
+        item.quantity
+      ).toFixed(2) +
+      "\n";
+
+  });
+
+  const shippingName =
+    shipping === 0
+      ? "FREE"
+      : "$" + shipping.toFixed(2);
+
+  const subject =
+    encodeURIComponent(
+      "NovaPeps USA Information Request - " +
+      orderReference
+    );
+
+  const body =
+    "Order Reference: " +
+    orderReference +
+    "\n\n" +
+
+    "Items:\n" +
+    itemsText +
+    "\n" +
+
+    "Subtotal: $" +
+    subtotal.toFixed(2) +
+    "\n" +
+
+    "Shipping: " +
+    shippingName +
+    "\n" +
+
+    "Total: $" +
+    total.toFixed(2) +
+    "\n\n" +
+
+    "Please contact me regarding this request.";
+
+  document.getElementById("emailButton")
+    .href =
+    "mailto:Novalaps22@gmail.com" +
+    "?subject=" +
+    subject +
+    "&body=" +
+    encodeURIComponent(body);
+}
+
+</script>
+
 </body>
 </html>
