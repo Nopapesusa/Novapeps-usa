@@ -339,7 +339,7 @@ section{
 }
 
 /* =========================
-   SEARCH — MOBILE FIX
+   SEARCH — MENU
 ========================= */
 
 .search-box{
@@ -360,6 +360,82 @@ section{
   min-height:48px;
   -webkit-appearance:none;
   appearance:none;
+}
+
+/* =========================
+   SEARCH RESULTS INSIDE MENU
+========================= */
+
+.menu-search-results{
+  display:none;
+  width:100%;
+  margin-top:8px;
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(0,0,0,.35);
+  max-height:55vh;
+  overflow-y:auto;
+}
+
+.menu-search-result{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border:none;
+  border-bottom:1px solid #eee;
+  background:#fff;
+  color:#111;
+  text-align:left;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.menu-search-result:last-child{
+  border-bottom:none;
+}
+
+.menu-search-result:active{
+  background:#f2f2f2;
+}
+
+.menu-search-result img{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+  border-radius:8px;
+  background:#f5f5f5;
+  flex-shrink:0;
+}
+
+.menu-search-result-info{
+  min-width:0;
+  flex:1;
+}
+
+.menu-search-result-name{
+  font-size:14px;
+  font-weight:900;
+  line-height:1.3;
+  color:#111;
+}
+
+.menu-search-result-price{
+  margin-top:5px;
+  font-size:14px;
+  font-weight:900;
+  color:#ff1493;
+}
+
+.menu-search-empty{
+  padding:14px 10px;
+  background:#fff;
+  color:#666;
+  text-align:center;
+  font-size:14px;
+  font-weight:700;
 }
 
 /* =========================
@@ -1041,6 +1117,12 @@ footer{
       autocomplete="off"
       oninput="searchProducts(this.value)"
     >
+
+    <!-- RESULTADOS DE BÚSQUEDA -->
+    <div
+      id="menuSearchResults"
+      class="menu-search-results"
+    ></div>
 
   </div>
 
@@ -4250,8 +4332,7 @@ function loadFavorites(){
 
 
 /* =====================================================
-   SEARCH — FIXED
-   SHOWS COMPLETE PRODUCT CARD
+   SEARCH — RESULTS INSIDE MENU
 ===================================================== */
 
 function normalizeSearchText(value){
@@ -4274,10 +4355,39 @@ function searchProducts(value){
   const search =
     normalizeSearchText(rawSearch);
 
+  const resultsBox =
+    document.getElementById(
+      "menuSearchResults"
+    );
+
+
+  if(!resultsBox){
+    return;
+  }
+
+
+  resultsBox.innerHTML="";
+
+
+  /*
+    Si el buscador está vacío,
+    no mostramos resultados.
+  */
+
+  if(!search){
+
+    resultsBox.style.display="none";
+
+    return;
+
+  }
+
+
   const cards =
     document.querySelectorAll(
       ".product-card"
     );
+
 
   let matchesFound=0;
 
@@ -4289,122 +4399,258 @@ function searchProducts(value){
         card.querySelector("h3");
 
       const image =
-        card.querySelector("img");
+        card.querySelector(".product-image");
+
+      const addButton =
+        card.querySelector(".add-btn");
+
+
+      if(
+        !heading ||
+        !addButton
+      ){
+
+        return;
+
+      }
+
+
+      const name =
+        (
+          card.dataset.name ||
+          heading.textContent ||
+          ""
+        ).trim();
+
+
+      const price =
+        Number(
+          addButton.dataset.price
+        );
 
 
       /*
-        Busca el producto usando:
-        - data-name
-        - nombre del producto
-        - alt de la imagen
-        - contenido completo de la tarjeta
+        Usamos la imagen que ya
+        pertenece a cada producto.
       */
 
-      const productName =
-        (card.dataset.name || "") +
-        " " +
-        (heading
-          ? heading.textContent
-          : "") +
-        " " +
-        (image
-          ? image.alt
-          : "") +
-        " " +
-        card.textContent;
+      const imageSrc =
+        addButton.dataset.image ||
+        (
+          image
+            ? image.getAttribute("src")
+            : ""
+        );
 
 
-      const normalizedName =
+      const searchableText =
         normalizeSearchText(
-          productName
+          name +
+          " " +
+          (
+            image
+              ? image.alt
+              : ""
+          )
         );
 
 
-      const matches =
-        !search ||
-        normalizedName.includes(
+      if(
+        !searchableText.includes(
           search
-        );
+        )
+      ){
 
-
-      if(matches){
-
-        /*
-          MUESTRA LA TARJETA COMPLETA:
-          imagen + nombre + precio +
-          botón + favorito.
-        */
-
-        card.style.display="";
-
-        card.hidden=false;
-
-        matchesFound++;
-
-      }else{
-
-        /*
-          OCULTA LA TARJETA COMPLETA.
-        */
-
-        card.style.display="none";
-
-        card.hidden=true;
+        return;
 
       }
+
+
+      matchesFound++;
+
+
+      /*
+        CREAR RESULTADO
+        DIRECTAMENTE DEBAJO
+        DEL BUSCADOR
+      */
+
+      const result =
+        document.createElement(
+          "button"
+        );
+
+
+      result.type="button";
+
+      result.className =
+        "menu-search-result";
+
+
+      const resultImage =
+        document.createElement(
+          "img"
+        );
+
+
+      resultImage.src =
+        imageSrc;
+
+      resultImage.alt =
+        name;
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "menu-search-result-info";
+
+
+      const nameElement =
+        document.createElement(
+          "div"
+        );
+
+
+      nameElement.className =
+        "menu-search-result-name";
+
+      nameElement.textContent =
+        name;
+
+
+      const priceElement =
+        document.createElement(
+          "div"
+        );
+
+
+      priceElement.className =
+        "menu-search-result-price";
+
+      priceElement.textContent =
+        "$" + price;
+
+
+      info.appendChild(
+        nameElement
+      );
+
+      info.appendChild(
+        priceElement
+      );
+
+
+      result.appendChild(
+        resultImage
+      );
+
+      result.appendChild(
+        info
+      );
+
+
+      /*
+        AL TOCAR:
+        - agrega a la lista
+        - aumenta el carrito
+        - NO cierra el menú
+        - NO hace scroll
+        - NO mueve la página
+      */
+
+      result.addEventListener(
+        "click",
+        function(event){
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+
+          addToList(
+            name,
+            price,
+            imageSrc
+          );
+
+
+          /*
+            Limpiar solamente
+            la búsqueda.
+          */
+
+          const searchInput =
+            document.getElementById(
+              "menuSearch"
+            );
+
+
+          if(searchInput){
+
+            searchInput.value="";
+
+          }
+
+
+          resultsBox.innerHTML="";
+
+          resultsBox.style.display="none";
+
+        }
+      );
+
+
+      resultsBox.appendChild(
+        result
+      );
 
     }
   );
 
 
-  const resultMessage =
-    document.getElementById(
-      "searchResultMessage"
+  /*
+    Si no encuentra productos.
+  */
+
+  if(matchesFound===0){
+
+    const empty =
+      document.createElement(
+        "div"
+      );
+
+
+    empty.className =
+      "menu-search-empty";
+
+
+    empty.textContent =
+      'No products found for "' +
+      rawSearch +
+      '".';
+
+
+    resultsBox.appendChild(
+      empty
     );
 
-
-  if(resultMessage){
-
-    if(!rawSearch){
-
-      resultMessage.style.display =
-        "none";
-
-      resultMessage.textContent =
-        "";
-
-    }else if(matchesFound===0){
-
-      resultMessage.style.display =
-        "block";
-
-      resultMessage.textContent =
-        'No products found for "' +
-        rawSearch +
-        '".';
-
-    }else{
-
-      resultMessage.style.display =
-        "block";
-
-      resultMessage.textContent =
-        matchesFound +
-        (
-          matchesFound===1
-            ? " product found."
-            : " products found."
-        );
-
-    }
-
   }
+
+
+  resultsBox.style.display="block";
 
 }
 
 
 /* =====================================================
-   SEARCH ENTER — SHOW PRODUCT
+   SEARCH ENTER
+   DOES NOT CLOSE MENU
+   DOES NOT SCROLL
 ===================================================== */
 
 function connectSearch(){
@@ -4413,6 +4659,7 @@ function connectSearch(){
     document.getElementById(
       "menuSearch"
     );
+
 
   if(!searchInput){
     return;
@@ -4425,6 +4672,7 @@ function connectSearch(){
     return;
   }
 
+
   window.__novaSearchConnected=true;
 
 
@@ -4432,85 +4680,32 @@ function connectSearch(){
     "keydown",
     function(event){
 
-      if(event.key!=="Enter"){
+      if(
+        event.key!=="Enter"
+      ){
+
         return;
+
       }
 
 
       event.preventDefault();
 
 
-      const value =
-        searchInput.value.trim();
-
-
-      if(!value){
-        return;
-      }
-
-
-      searchProducts(value);
-
-
       /*
-        El menú solamente se cierra
-        cuando la búsqueda termina
-        con ENTER.
+        ENTER selecciona
+        el primer resultado.
       */
 
-      closeMenu();
-
-
-      const overlay =
-        document.getElementById(
-          "globalOverlay"
-        );
-
-      if(overlay){
-
-        overlay.classList.remove(
-          "show"
-        );
-
-      }
-
-
-      const products =
-        document.getElementById(
-          "products"
+      const firstResult =
+        document.querySelector(
+          "#menuSearchResults .menu-search-result"
         );
 
 
-      if(products){
+      if(firstResult){
 
-        setTimeout(
-          function(){
-
-            const header =
-              document.querySelector(
-                "header"
-              );
-
-            const headerHeight =
-              header
-                ? header.offsetHeight
-                : 60;
-
-
-            const position =
-              products.getBoundingClientRect().top +
-              window.pageYOffset -
-              headerHeight;
-
-
-            window.scrollTo({
-              top:position,
-              behavior:"smooth"
-            });
-
-          },
-          100
-        );
+        firstResult.click();
 
       }
 
