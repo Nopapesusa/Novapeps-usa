@@ -397,7 +397,7 @@ section{
   padding:18px;
   border-radius:12px;
   background:#f7f7f7;
-  font-size:20px;
+  font-size:16px;
   font-weight:900;
 }
 
@@ -405,6 +405,7 @@ section{
   margin-top:10px;
   font-size:12px;
   color:#666;
+  line-height:1.5;
 }
 
 .primary-btn{
@@ -479,6 +480,56 @@ section{
   margin-top:10px;
   font-size:12px;
   color:#777;
+  line-height:1.5;
+}
+
+.payment-options{
+  margin-top:18px;
+  padding:18px;
+  border:1px solid #ddd;
+  border-radius:15px;
+  background:#fafafa;
+}
+
+.payment-options h3{
+  margin-bottom:14px;
+}
+
+.payment-option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  margin:8px 0;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.payment-option:hover{
+  border-color:#ff1493;
+}
+
+.payment-option input{
+  width:20px;
+  height:20px;
+  accent-color:#ff1493;
+}
+
+.payment-option strong{
+  display:block;
+}
+
+.payment-option small{
+  color:#666;
+}
+
+.payment-warning{
+  margin-top:10px;
+  font-size:12px;
+  color:#777;
+  line-height:1.5;
 }
 
 .form-group{
@@ -736,6 +787,7 @@ footer{
 }
 
 @media(max-width:600px){
+
   header{
     height:60px;
   }
@@ -785,37 +837,64 @@ footer{
 
 <!-- AGE GATE -->
 <div class="age-gate" id="ageGate">
+
   <div class="age-box">
+
     <h2>Age Confirmation</h2>
-    <p>This website contains products presented for research purposes only.</p>
-    <p>Please confirm that you are of legal age to enter this website.</p>
+
+    <p>
+      This website contains products presented for research purposes only.
+    </p>
+
+    <p>
+      Please confirm that you are of legal age to enter this website.
+    </p>
 
     <div class="age-buttons">
-      <button class="age-yes" onclick="enterSite()">I AM OF LEGAL AGE</button>
-      <button class="age-no" onclick="leaveSite()">EXIT</button>
+
+      <button class="age-yes" onclick="enterSite()">
+        I AM OF LEGAL AGE
+      </button>
+
+      <button class="age-no" onclick="leaveSite()">
+        EXIT
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
 <!-- HEADER -->
 <header>
-  <div class="logo">NOVAPEPS USA</div>
 
-  <button class="menu-btn" onclick="openMenu()">☰</button>
+  <div class="logo">
+    NOVAPEPS USA
+  </div>
+
+  <button class="menu-btn" onclick="openMenu()">
+    ☰
+  </button>
+
 </header>
 
 <!-- SIDE MENU -->
 <div class="side-menu" id="sideMenu">
 
-  <button class="menu-close" onclick="closeMenu()">×</button>
+  <button class="menu-close" onclick="closeMenu()">
+    ×
+  </button>
 
   <div class="search-box">
+
     <input
       type="text"
       id="menuSearch"
       placeholder="Search products..."
       oninput="searchProducts(this.value)"
     >
+
   </div>
 
   <a href="#home" onclick="closeMenu()">HOME</a>
@@ -826,28 +905,43 @@ footer{
   <a href="#about" onclick="closeMenu()">ABOUT US</a>
   <a href="#compare" onclick="closeMenu()">COMPARE</a>
   <a href="#login" onclick="closeMenu()">LOGIN / REGISTER</a>
+
 </div>
 
-<div class="overlay" id="globalOverlay" onclick="closeAllPanels()"></div>
+<div
+  class="overlay"
+  id="globalOverlay"
+  onclick="closeAllPanels()"
+></div>
 
 <!-- HERO -->
 <section id="home" style="padding:0;">
+
   <div class="hero">
+
     <img
       src="./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg"
       alt="NovaPeps USA"
     >
+
   </div>
+
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
-  <h2 class="section-title">PRODUCTS</h2>
+
+  <h2 class="section-title">
+    PRODUCTS
+  </h2>
 
   <div class="products-grid" id="productsGrid">
 
+    <!-- MOTS-C -->
     <div class="product-card" data-name="MOTS-C 10 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
@@ -859,28 +953,44 @@ footer{
           class="favorite-btn"
           data-product="MOTS-C 10 MG"
           onclick="toggleFavorite('MOTS-C 10 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>MOTS-C 10 MG</h3>
+
         <div class="price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('MOTS-C 10 MG',60,'./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- GLP-2 10 -->
     <div class="product-card" data-name="GLP-2 10 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
@@ -892,28 +1002,44 @@ footer{
           class="favorite-btn"
           data-product="GLP-2 10 MG"
           onclick="toggleFavorite('GLP-2 10 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-2 10 MG</h3>
+
         <div class="price">$90</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('GLP-2 10 MG',90,'./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- GHK-CU -->
     <div class="product-card" data-name="GHK-CU 100 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
@@ -925,28 +1051,44 @@ footer{
           class="favorite-btn"
           data-product="GHK-CU 100 MG"
           onclick="toggleFavorite('GHK-CU 100 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GHK-CU 100 MG</h3>
+
         <div class="price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('GHK-CU 100 MG',50,'./6747079A-BB69-4F51-A792-565688C6BC86.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- GLP-3 10 -->
     <div class="product-card" data-name="GLP-3 10 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./713BA234-721B-4580-94DF-6677375C7826.png"
@@ -958,28 +1100,44 @@ footer{
           class="favorite-btn"
           data-product="GLP-3 10 MG"
           onclick="toggleFavorite('GLP-3 10 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-3 10 MG</h3>
+
         <div class="price">$95</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('GLP-3 10 MG',95,'./713BA234-721B-4580-94DF-6677375C7826.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- GLP-2 20 -->
     <div class="product-card" data-name="GLP-2 20 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
@@ -991,28 +1149,44 @@ footer{
           class="favorite-btn"
           data-product="GLP-2 20 MG"
           onclick="toggleFavorite('GLP-2 20 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-2 20 MG</h3>
+
         <div class="price">$110</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('GLP-2 20 MG',110,'./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- GLP-3 20 -->
     <div class="product-card" data-name="GLP-3 20 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
@@ -1024,28 +1198,44 @@ footer{
           class="favorite-btn"
           data-product="GLP-3 20 MG"
           onclick="toggleFavorite('GLP-3 20 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-3 20 MG</h3>
+
         <div class="price">$135</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('GLP-3 20 MG',135,'./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- GLUTATHIONE -->
     <div class="product-card" data-name="GLUTATHIONE 1500 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
@@ -1057,28 +1247,44 @@ footer{
           class="favorite-btn"
           data-product="GLUTATHIONE 1500 MG"
           onclick="toggleFavorite('GLUTATHIONE 1500 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLUTATHIONE 1500 MG</h3>
+
         <div class="price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('GLUTATHIONE 1500 MG',60,'./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
+    <!-- NAD -->
     <div class="product-card" data-name="NAD+ 500 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
@@ -1090,34 +1296,52 @@ footer{
           class="favorite-btn"
           data-product="NAD+ 500 MG"
           onclick="toggleFavorite('NAD+ 500 MG',this)"
-        >♡</button>
+        >
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
+
         <h3>NAD+ 500 MG</h3>
+
         <div class="price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             class="add-btn"
             onclick="addToList('NAD+ 500 MG',50,'./EB389E57-904B-4E57-953C-407C50FA216A.png')"
           >
             ADD TO LIST
           </button>
+
         </div>
+
       </div>
+
     </div>
 
   </div>
+
 </section>
 
 <!-- SHIPPING INFORMATION -->
 <section id="shipping" class="shipping-section">
-  <h2 class="section-title">SHIPPING INFORMATION</h2>
+
+  <h2 class="section-title">
+    SHIPPING INFORMATION
+  </h2>
 
   <div class="shipping-card">
+
     <div class="shipping-line">
       <strong>Standard</strong>
       <strong>$9</strong>
@@ -1136,20 +1360,41 @@ footer{
     <p class="info-note">
       Shipping information shown for informational purposes only.
     </p>
+
   </div>
+
 </section>
 
 <!-- SELECTED PRODUCTS -->
 <section id="selection" class="selected-section">
-  <h2 class="section-title">SELECTED PRODUCTS</h2>
+
+  <h2 class="section-title">
+    SELECTED PRODUCTS
+  </h2>
 
   <div class="selected-box" id="selectedBox">
+
     <div id="selectedProducts">
       <p>No products selected.</p>
     </div>
 
     <div id="selectedTotal" class="cart-total">
-      Informational total: $0
+
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span>Subtotal:</span>
+        <span>$0</span>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span>Shipping:</span>
+        <span>Select shipping</span>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;border-top:1px solid #ddd;padding-top:10px;">
+        <strong>Informational Total:</strong>
+        <strong>$0</strong>
+      </div>
+
     </div>
 
     <button class="clear-btn" onclick="clearList()">
@@ -1159,75 +1404,187 @@ footer{
     <button class="primary-btn" onclick="openInformationPanel()">
       REQUEST INFORMATION
     </button>
+
   </div>
+
 </section>
 
 <!-- CART PANEL -->
 <div class="panel" id="cartPanel">
 
-  <button class="panel-close" onclick="closeCart()">×</button>
+  <button class="panel-close" onclick="closeCart()">
+    ×
+  </button>
 
-  <h2>🛒 CART</h2>
+  <h2>
+    🛒 CART
+  </h2>
 
   <div id="cartPanelItems"></div>
 
-  <!-- SHIPPING INSIDE CART -->
-  <div class="shipping-options">
+  <!-- SHIPPING NOW INSIDE CART -->
+  <div class="shipping-options" id="cartShippingOptions">
 
-    <h3>Shipping Information</h3>
+    <h3>
+      Shipping Information
+    </h3>
 
-    <label class="shipping-option">
+    <label class="shipping-option" id="standardShippingOption">
+
       <input
         type="radio"
-        name="cartShipping"
-        value="standard"
-        onchange="selectShipping('standard')"
+        name="shipping"
+        value="Standard"
+        data-cost="9"
       >
 
       <span>
-        <strong>Standard — $9</strong>
-        <small>Standard shipping option</small>
+
+        <strong>
+          Standard — $9
+        </strong>
+
+        <small>
+          Standard shipping option
+        </small>
+
       </span>
+
     </label>
 
-    <label class="shipping-option">
+    <label class="shipping-option" id="expressShippingOption">
+
       <input
         type="radio"
-        name="cartShipping"
-        value="express"
-        onchange="selectShipping('express')"
+        name="shipping"
+        value="Express"
+        data-cost="15"
       >
 
       <span>
-        <strong>Express — $15</strong>
-        <small>Express shipping option</small>
+
+        <strong>
+          Express — $15
+        </strong>
+
+        <small>
+          Express shipping option
+        </small>
+
       </span>
+
     </label>
 
     <label class="shipping-option" id="freeShippingOption">
+
       <input
         type="radio"
-        name="cartShipping"
-        value="free"
-        onchange="selectShipping('free')"
+        name="shipping"
+        value="Free Shipping"
+        data-cost="0"
       >
 
       <span>
-        <strong>Free Shipping — $200+</strong>
-        <small>Available when subtotal is $200 or more</small>
+
+        <strong>
+          Free Shipping — $0
+        </strong>
+
+        <small>
+          Available when subtotal is $200+
+        </small>
+
       </span>
+
     </label>
 
     <p class="shipping-warning" id="shippingWarning">
-      Select a shipping option.
+      Free Shipping becomes available when the informational subtotal reaches $200.
+    </p>
+
+  </div>
+
+  <!-- PAYMENT OPTIONS -->
+  <div class="payment-options" id="paymentOptions">
+
+    <h3>
+      Payment Method
+    </h3>
+
+    <label class="payment-option">
+
+      <input
+        type="radio"
+        name="payment_method_choice"
+        value="Zelle"
+      >
+
+      <span>
+
+        <strong>
+          Zelle
+        </strong>
+
+        <small>
+          Manual payment option
+        </small>
+
+      </span>
+
+    </label>
+
+    <label class="payment-option">
+
+      <input
+        type="radio"
+        name="payment_method_choice"
+        value="PayPal"
+      >
+
+      <span>
+
+        <strong>
+          PayPal
+        </strong>
+
+        <small>
+          Manual payment option
+        </small>
+
+      </span>
+
+    </label>
+
+    <p class="payment-warning">
+      No payment is processed automatically on this website.
     </p>
 
   </div>
 
   <div class="cart-total" id="cartPanelTotal">
-    Subtotal: $0<br>
-    Shipping: Standard — $9<br>
-    Total: $9
+
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+      <span>Subtotal:</span>
+      <span id="cartSubtotal">$0</span>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+      <span>Shipping:</span>
+      <span id="cartShipping">Select shipping</span>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;border-top:1px solid #ddd;padding-top:10px;margin-top:10px;font-size:22px;">
+
+      <strong>
+        Total:
+      </strong>
+
+      <strong id="cartGrandTotal">
+        $0
+      </strong>
+
+    </div>
+
   </div>
 
   <p class="info-note">
@@ -1253,11 +1610,14 @@ footer{
 <!-- INFORMATION REQUEST PANEL -->
 <div class="panel" id="informationPanel">
 
-  <button class="panel-close" onclick="closeInformationPanel()">×</button>
+  <button class="panel-close" onclick="closeInformationPanel()">
+    ×
+  </button>
 
-  <h2>Information Request</h2>
+  <h2>
+    Information Request
+  </h2>
 
-  <!-- DIRECT FORMSPREE FORM -->
   <form
     id="informationForm"
     action="https://formspree.io/f/myezrady"
@@ -1285,8 +1645,14 @@ footer{
 
     <input
       type="hidden"
-      name="shipping"
-      id="shippingInput"
+      name="subtotal"
+      id="subtotalInput"
+    >
+
+    <input
+      type="hidden"
+      name="shipping_method"
+      id="shippingMethodInput"
     >
 
     <input
@@ -1297,8 +1663,8 @@ footer{
 
     <input
       type="hidden"
-      name="subtotal"
-      id="subtotalInput"
+      name="payment_method"
+      id="paymentMethodInput"
     >
 
     <input
@@ -1313,8 +1679,13 @@ footer{
       value="This request is informational only. No payment was processed."
     >
 
+    <!-- NAME -->
     <div class="form-group">
-      <label for="name">Name</label>
+
+      <label for="name">
+        Name
+      </label>
+
       <input
         type="text"
         id="name"
@@ -1322,10 +1693,16 @@ footer{
         placeholder="Your name"
         required
       >
+
     </div>
 
+    <!-- EMAIL -->
     <div class="form-group">
-      <label for="email">Email</label>
+
+      <label for="email">
+        Email
+      </label>
+
       <input
         type="email"
         id="email"
@@ -1333,10 +1710,16 @@ footer{
         placeholder="Your email"
         required
       >
+
     </div>
 
+    <!-- PHONE -->
     <div class="form-group">
-      <label for="phone">Phone number</label>
+
+      <label for="phone">
+        Phone number
+      </label>
+
       <input
         type="tel"
         id="phone"
@@ -1344,10 +1727,16 @@ footer{
         placeholder="Your phone number"
         required
       >
+
     </div>
 
+    <!-- ADDRESS -->
     <div class="form-group">
-      <label for="address">Address</label>
+
+      <label for="address">
+        Address
+      </label>
+
       <input
         type="text"
         id="address"
@@ -1355,22 +1744,40 @@ footer{
         placeholder="Street address"
         required
       >
+
     </div>
 
+    <!-- APT -->
     <div class="form-group">
-      <label for="apt">Apt / Unit <span style="font-weight:normal;">(optional)</span></label>
+
+      <label for="apt">
+
+        Apt / Unit
+
+        <span style="font-weight:normal;">
+          (optional)
+        </span>
+
+      </label>
+
       <input
         type="text"
         id="apt"
         name="apt_unit"
         placeholder="Apartment or unit"
       >
+
     </div>
 
+    <!-- CITY + STATE -->
     <div class="form-row">
 
       <div class="form-group">
-        <label for="city">City</label>
+
+        <label for="city">
+          City
+        </label>
+
         <input
           type="text"
           id="city"
@@ -1378,10 +1785,15 @@ footer{
           placeholder="City"
           required
         >
+
       </div>
 
       <div class="form-group">
-        <label for="state">State</label>
+
+        <label for="state">
+          State
+        </label>
+
         <input
           type="text"
           id="state"
@@ -1389,12 +1801,18 @@ footer{
           placeholder="State"
           required
         >
+
       </div>
 
     </div>
 
+    <!-- ZIP -->
     <div class="form-group">
-      <label for="zip">ZIP Code</label>
+
+      <label for="zip">
+        ZIP Code
+      </label>
+
       <input
         type="text"
         id="zip"
@@ -1402,18 +1820,73 @@ footer{
         placeholder="ZIP Code"
         required
       >
+
     </div>
 
-    <div class="form-group" style="margin-top:18px;">
-      <label for="message">Message</label>
+    <!-- INFORMATIONAL TOTAL -->
+    <div class="cart-total" id="informationTotalBox">
+
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+
+        <span>
+          Subtotal:
+        </span>
+
+        <span id="informationSubtotal">
+          $0
+        </span>
+
+      </div>
+
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+
+        <span>
+          Shipping:
+        </span>
+
+        <span id="informationShipping">
+          Select shipping
+        </span>
+
+      </div>
+
+      <div style="display:flex;justify-content:space-between;border-top:1px solid #ddd;padding-top:10px;margin-top:10px;font-size:22px;">
+
+        <strong>
+          Total:
+        </strong>
+
+        <strong id="informationGrandTotal">
+          $0
+        </strong>
+
+      </div>
+
+      <div class="info-note">
+        Informational total only. No payment is processed here.
+      </div>
+
+    </div>
+
+    <!-- MESSAGE -->
+    <div
+      class="form-group"
+      style="margin-top:18px;"
+    >
+
+      <label for="message">
+        Message
+      </label>
 
       <textarea
         id="message"
         name="message"
         placeholder="Your message"
       ></textarea>
+
     </div>
 
+    <!-- SUBMIT -->
     <button
       type="submit"
       class="primary-btn"
@@ -1429,58 +1902,105 @@ footer{
 
   </form>
 
+  <!-- REFERENCE -->
   <div
     id="referenceDisplay"
     class="reference-code"
   >
-    <div>Your reference code</div>
+
+    <div>
+      Your reference code
+    </div>
+
     <strong id="referenceCodeDisplay"></strong>
+
   </div>
 
 </div>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2 class="section-title">CONTACT</h2>
+
+  <h2 class="section-title">
+    CONTACT
+  </h2>
 
   <div class="contact">
+
     <p style="text-align:center;">
-      Email: <strong>Novalaps22@gmail.com</strong>
+      Email:
+      <strong>
+        Novalaps22@gmail.com
+      </strong>
     </p>
 
     <p style="text-align:center;margin-top:10px;">
-      Phone: <strong>(832) 273-9625</strong>
+      Phone:
+      <strong>
+        (832) 273-9625
+      </strong>
     </p>
+
   </div>
+
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <h2 class="section-title">ABOUT US</h2>
+
+  <h2 class="section-title">
+    ABOUT US
+  </h2>
 
   <div class="about">
-    <p style="line-height:1.8;text-align:center;">
+
+    <p
+      style="
+        line-height:1.8;
+        text-align:center;
+      "
+    >
       Welcome to NovaPeps USA. Our website provides information
       about products presented for research purposes only.
     </p>
+
   </div>
+
 </section>
 
 <!-- COMPARE -->
 <section id="compare">
-  <h2 class="section-title">COMPARE</h2>
+
+  <h2 class="section-title">
+    COMPARE
+  </h2>
 
   <div class="compare">
+
     <table class="compare-table">
+
       <thead>
+
         <tr>
-          <th>Product</th>
-          <th>Size</th>
-          <th>Informational Price</th>
+
+          <th>
+            Product
+          </th>
+
+          <th>
+            Size
+          </th>
+
+          <th>
+            Informational Price
+          </th>
+
         </tr>
+
       </thead>
 
       <tbody>
+
         <tr>
           <td>MOTS-C</td>
           <td>10 MG</td>
@@ -1528,42 +2048,80 @@ footer{
           <td>500 MG</td>
           <td>$50</td>
         </tr>
+
       </tbody>
+
     </table>
+
   </div>
+
 </section>
 
 <!-- LOGIN -->
 <section id="login">
-  <h2 class="section-title">LOGIN / REGISTER</h2>
+
+  <h2 class="section-title">
+    LOGIN / REGISTER
+  </h2>
 
   <div class="login">
 
     <div class="form-group">
-      <label>Email</label>
-      <input type="email" placeholder="Email">
+
+      <label>
+        Email
+      </label>
+
+      <input
+        type="email"
+        placeholder="Email"
+      >
+
     </div>
 
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" placeholder="Password">
+
+      <label>
+        Password
+      </label>
+
+      <input
+        type="password"
+        placeholder="Password"
+      >
+
     </div>
 
-    <button class="primary-btn" type="button">
+    <button
+      class="primary-btn"
+      type="button"
+    >
       LOGIN
     </button>
 
-    <button class="secondary-btn" type="button">
+    <button
+      class="secondary-btn"
+      type="button"
+    >
       REGISTER
     </button>
 
   </div>
+
 </section>
 
 <!-- IMAGE MODAL -->
-<div class="modal" id="imageModal">
+<div
+  class="modal"
+  id="imageModal"
+>
 
-  <button class="modal-close" onclick="closeImage()">×</button>
+  <button
+    class="modal-close"
+    onclick="closeImage()"
+  >
+    ×
+  </button>
 
   <img
     id="modalImage"
@@ -1574,14 +2132,29 @@ footer{
 </div>
 
 <!-- FLOATING CART -->
-<button class="floating-cart" id="floatingCart" onclick="openCart()">
+<button
+  class="floating-cart"
+  id="floatingCart"
+  onclick="openCart()"
+>
+
   🛒 CART
-  <span class="cart-count" id="cartCount">0</span>
+
+  <span
+    class="cart-count"
+    id="cartCount"
+  >
+    0
+  </span>
+
 </button>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 NovaPeps USA</p>
+
+  <p>
+    © 2026 NovaPeps USA
+  </p>
 
   <p style="margin-top:8px;">
     Novalaps22@gmail.com
@@ -1590,6 +2163,7 @@ footer{
   <p style="margin-top:5px;">
     (832) 273-9625
   </p>
+
 </footer>
 
 <script>
@@ -1605,21 +2179,33 @@ function enterSite(){
     "yes"
   );
 
-  const gate=document.getElementById("ageGate");
+  const gate=
+    document.getElementById("ageGate");
 
   if(gate){
     gate.style.display="none";
   }
+
 }
+
 
 function leaveSite(){
-  window.location.href="https://www.google.com";
+
+  window.location.href=
+    "https://www.google.com";
+
 }
 
+
 if(
-  localStorage.getItem("novaAgeConfirmed")==="yes"
+  localStorage.getItem("novaAgeConfirmed")
+  ===
+  "yes"
 ){
-  document.getElementById("ageGate").style.display="none";
+
+  document.getElementById("ageGate")
+    .style.display="none";
+
 }
 
 
@@ -1634,7 +2220,9 @@ function openMenu(){
 
   document.getElementById("globalOverlay")
     .classList.add("show");
+
 }
+
 
 function closeMenu(){
 
@@ -1643,6 +2231,7 @@ function closeMenu(){
 
   document.getElementById("globalOverlay")
     .classList.remove("show");
+
 }
 
 
@@ -1650,99 +2239,52 @@ function closeMenu(){
    LOCAL STORAGE
 ========================= */
 
-let selectedProducts =
+let selectedProducts=
   JSON.parse(
-    localStorage.getItem("novaSelectedProducts") || "[]"
+    localStorage.getItem(
+      "novaSelectedProducts"
+    ) || "[]"
   );
 
-let favorites =
+
+let favorites=
   JSON.parse(
-    localStorage.getItem("novaFavoriteProducts") || "[]"
+    localStorage.getItem(
+      "novaFavoriteProducts"
+    ) || "[]"
   );
 
 
-/* =========================
-   SHIPPING
-========================= */
-
-let shippingOption =
-  localStorage.getItem("novaShippingOption") || "standard";
+let shippingOption=
+  localStorage.getItem(
+    "novaShippingOption"
+  ) || "";
 
 
-function getShippingCost(subtotal){
-
-  if(
-    shippingOption === "free" &&
-    subtotal >= 200
-  ){
-    return 0;
-  }
-
-  if(shippingOption === "express"){
-    return 15;
-  }
-
-  return 9;
-}
+let paymentOption=
+  localStorage.getItem(
+    "novaPaymentOption"
+  ) || "";
 
 
-function getShippingLabel(subtotal){
-
-  if(
-    shippingOption === "free" &&
-    subtotal >= 200
-  ){
-    return "Free Shipping — $0";
-  }
-
-  if(shippingOption === "express"){
-    return "Express — $15";
-  }
-
-  return "Standard — $9";
-}
-
-
-function selectShipping(option){
-
-  const subtotal =
-    selectedProducts.reduce(
-      (sum,item)=>
-        sum + (item.price * item.quantity),
-      0
-    );
-
-  if(
-    option === "free" &&
-    subtotal < 200
-  ){
-
-    shippingOption="standard";
-
-  }else{
-
-    shippingOption=option;
-  }
-
-  localStorage.setItem(
-    "novaShippingOption",
-    shippingOption
-  );
-
-  renderCartPanel();
-}
+let currentReferenceCode="";
 
 
 /* =========================
    ADD TO LIST
 ========================= */
 
-function addToList(name,price,image){
+function addToList(
+  name,
+  price,
+  image
+){
 
   const existing=
     selectedProducts.find(
       item=>item.name===name
     );
+
 
   if(existing){
 
@@ -1758,7 +2300,9 @@ function addToList(name,price,image){
       quantity:1
 
     });
+
   }
+
 
   saveProducts();
 
@@ -1768,14 +2312,25 @@ function addToList(name,price,image){
 
   updateCartCount();
 
-  const cart=
-    document.getElementById("floatingCart");
 
-  cart.classList.remove("cart-bump");
+  const cart=
+    document.getElementById(
+      "floatingCart"
+    );
+
+
+  cart.classList.remove(
+    "cart-bump"
+  );
+
 
   void cart.offsetWidth;
 
-  cart.classList.add("cart-bump");
+
+  cart.classList.add(
+    "cart-bump"
+  );
+
 }
 
 
@@ -1787,8 +2342,259 @@ function saveProducts(){
 
   localStorage.setItem(
     "novaSelectedProducts",
-    JSON.stringify(selectedProducts)
+    JSON.stringify(
+      selectedProducts
+    )
   );
+
+}
+
+
+/* =========================
+   GET SUBTOTAL
+========================= */
+
+function getProductsSubtotal(){
+
+  return selectedProducts.reduce(
+    (sum,item)=>
+      sum + (
+        item.price *
+        item.quantity
+      ),
+    0
+  );
+
+}
+
+
+/* =========================
+   SELECTED SHIPPING
+========================= */
+
+function getSelectedShipping(){
+
+  if(
+    shippingOption ===
+    "Free Shipping"
+    &&
+    getProductsSubtotal() < 200
+  ){
+
+    shippingOption="";
+
+    localStorage.removeItem(
+      "novaShippingOption"
+    );
+
+  }
+
+
+  if(
+    shippingOption ===
+    "Standard"
+  ){
+
+    return {
+      name:"Standard",
+      cost:9
+    };
+
+  }
+
+
+  if(
+    shippingOption ===
+    "Express"
+  ){
+
+    return {
+      name:"Express",
+      cost:15
+    };
+
+  }
+
+
+  if(
+    shippingOption ===
+    "Free Shipping"
+  ){
+
+    return {
+      name:"Free Shipping",
+      cost:0
+    };
+
+  }
+
+
+  return {
+    name:"Not selected",
+    cost:0
+  };
+
+}
+
+
+/* =========================
+   SELECT SHIPPING
+========================= */
+
+function selectShipping(value){
+
+  const subtotal=
+    getProductsSubtotal();
+
+
+  if(
+    value ===
+    "Free Shipping"
+    &&
+    subtotal < 200
+  ){
+
+    alert(
+      "Free Shipping is available only when the informational subtotal is $200 or more."
+    );
+
+    shippingOption="";
+
+    localStorage.removeItem(
+      "novaShippingOption"
+    );
+
+    updateShippingRadios();
+
+    updateShippingTotal();
+
+    return;
+
+  }
+
+
+  shippingOption=value;
+
+
+  localStorage.setItem(
+    "novaShippingOption",
+    shippingOption
+  );
+
+
+  updateShippingRadios();
+
+  updateShippingTotal();
+
+}
+
+
+/* =========================
+   UPDATE SHIPPING RADIOS
+========================= */
+
+function updateShippingRadios(){
+
+  document
+    .querySelectorAll(
+      'input[name="shipping"]'
+    )
+    .forEach(
+      radio=>{
+
+        radio.checked=
+          radio.value ===
+          shippingOption;
+
+      }
+    );
+
+}
+
+
+/* =========================
+   PAYMENT
+========================= */
+
+function selectPayment(value){
+
+  paymentOption=value;
+
+
+  localStorage.setItem(
+    "novaPaymentOption",
+    paymentOption
+  );
+
+
+  updatePaymentRadios();
+
+  updatePaymentHiddenField();
+
+}
+
+
+function updatePaymentRadios(){
+
+  document
+    .querySelectorAll(
+      'input[name="payment_method_choice"]'
+    )
+    .forEach(
+      radio=>{
+
+        radio.checked=
+          radio.value ===
+          paymentOption;
+
+      }
+    );
+
+}
+
+
+function getSelectedPayment(){
+
+  if(
+    paymentOption ===
+    "Zelle"
+  ){
+
+    return "Zelle";
+
+  }
+
+
+  if(
+    paymentOption ===
+    "PayPal"
+  ){
+
+    return "PayPal";
+
+  }
+
+
+  return "Not selected";
+
+}
+
+
+function updatePaymentHiddenField(){
+
+  const input=
+    document.getElementById(
+      "paymentMethodInput"
+    );
+
+
+  if(input){
+
+    input.value=
+      getSelectedPayment();
+
+  }
+
 }
 
 
@@ -1799,65 +2605,181 @@ function saveProducts(){
 function renderSelected(){
 
   const box=
-    document.getElementById("selectedProducts");
+    document.getElementById(
+      "selectedProducts"
+    );
+
 
   if(!box) return;
 
-  if(selectedProducts.length===0){
+
+  if(
+    selectedProducts.length===0
+  ){
 
     box.innerHTML=
       "<p>No products selected.</p>";
 
-    document.getElementById(
-      "selectedTotal"
-    ).textContent=
-      "Informational total: $0";
+    updateSelectedTotal();
 
     return;
+
   }
 
-  let total=0;
 
   box.innerHTML="";
 
-  selectedProducts.forEach((item,index)=>{
 
-    total +=
-      item.price * item.quantity;
+  selectedProducts.forEach(
+    item=>{
 
-    const row=
-      document.createElement("div");
+      const row=
+        document.createElement(
+          "div"
+        );
 
-    row.className="selected-row";
 
-    row.innerHTML=`
+      row.className=
+        "selected-row";
 
-      <div>
 
-        <strong>${item.name}</strong>
+      row.innerHTML=`
 
-        <div
-          style="font-size:13px;color:#666;"
-        >
-          Quantity: ${item.quantity}
+        <div>
+
+          <strong>
+            ${item.name}
+          </strong>
+
+          <div
+            style="
+              font-size:13px;
+              color:#666;
+              margin-top:4px;
+            "
+          >
+            Quantity: ${item.quantity}
+          </div>
+
         </div>
 
-      </div>
+        <div>
+          $${item.price * item.quantity}
+        </div>
 
-      <div>
-        $${item.price * item.quantity}
-      </div>
+      `;
 
-    `;
 
-    box.appendChild(row);
+      box.appendChild(row);
 
-  });
+    }
+  );
 
-  document.getElementById(
-    "selectedTotal"
-  ).textContent=
-    "Informational total: $" + total;
+
+  updateSelectedTotal();
+
+}
+
+
+/* =========================
+   SELECTED TOTAL
+========================= */
+
+function updateSelectedTotal(){
+
+  const subtotal=
+    getProductsSubtotal();
+
+
+  const shipping=
+    getSelectedShipping();
+
+
+  const total=
+    subtotal + shipping.cost;
+
+
+  const box=
+    document.getElementById(
+      "selectedTotal"
+    );
+
+
+  if(!box) return;
+
+
+  box.innerHTML=`
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:8px;
+      "
+    >
+
+      <span>
+        Subtotal:
+      </span>
+
+      <span>
+        $${subtotal}
+      </span>
+
+    </div>
+
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:8px;
+      "
+    >
+
+      <span>
+        Shipping:
+      </span>
+
+      <span>
+
+        ${
+          shipping.name ===
+          "Not selected"
+
+          ? "Select shipping"
+
+          : shipping.name +
+            " — $" +
+            shipping.cost
+        }
+
+      </span>
+
+    </div>
+
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        border-top:1px solid #ddd;
+        padding-top:10px;
+      "
+    >
+
+      <strong>
+        Informational Total:
+      </strong>
+
+      <strong>
+        $${total}
+      </strong>
+
+    </div>
+
+  `;
+
 }
 
 
@@ -1874,27 +2796,32 @@ function updateCartCount(){
       0
     );
 
+
   document.getElementById(
     "cartCount"
   ).textContent=count;
+
 }
 
 
 /* =========================
-   CART PANEL
+   OPEN CART
 ========================= */
 
 function openCart(){
 
   renderCartPanel();
 
+
   document.getElementById(
     "cartPanel"
   ).classList.add("open");
 
+
   document.getElementById(
     "globalOverlay"
   ).classList.add("show");
+
 }
 
 
@@ -1904,11 +2831,17 @@ function closeCart(){
     "cartPanel"
   ).classList.remove("open");
 
+
   document.getElementById(
     "globalOverlay"
   ).classList.remove("show");
+
 }
 
+
+/* =========================
+   RENDER CART
+========================= */
 
 function renderCartPanel(){
 
@@ -1917,256 +2850,147 @@ function renderCartPanel(){
       "cartPanelItems"
     );
 
+
   if(!box) return;
+
 
   box.innerHTML="";
 
-  let subtotal=0;
-
-  selectedProducts.forEach(item=>{
-
-    subtotal +=
-      item.price * item.quantity;
-
-  });
-
-
-  /*
-    If Free Shipping was selected
-    but subtotal is below $200,
-    return to Standard.
-  */
 
   if(
-    shippingOption === "free" &&
-    subtotal < 200
+    selectedProducts.length===0
   ){
-
-    shippingOption="standard";
-
-    localStorage.setItem(
-      "novaShippingOption",
-      shippingOption
-    );
-  }
-
-
-  if(selectedProducts.length===0){
 
     box.innerHTML=
       "<p>Your cart is empty.</p>";
 
-    document.getElementById(
-      "cartPanelTotal"
-    ).innerHTML=`
+  }else{
 
-      Subtotal: $0<br>
+    selectedProducts.forEach(
+      (item,index)=>{
 
-      <span style="font-size:16px;">
-        Shipping: Standard — $9
-      </span>
-
-      <div style="margin-top:10px;">
-        Total: $9
-      </div>
-
-    `;
-
-    const warning=
-      document.getElementById(
-        "shippingWarning"
-      );
-
-    if(warning){
-
-      warning.textContent=
-        "Add products to see shipping options.";
-
-    }
-
-    updateShippingInputs();
-
-    return;
-  }
+        const div=
+          document.createElement(
+            "div"
+          );
 
 
-  selectedProducts.forEach(
-    (item,index)=>{
+        div.className=
+          "cart-item";
 
-      const div=
-        document.createElement("div");
 
-      div.className="cart-item";
+        div.innerHTML=`
 
-      div.innerHTML=`
-
-        <img
-          src="${item.image}"
-          alt="${item.name}"
-        >
-
-        <div class="cart-item-info">
-
-          <strong>
-            ${item.name}
-          </strong>
-
-          <div>
-            $${item.price} each
-          </div>
-
-          <div
-            style="
-              font-size:13px;
-              color:#666;
-              margin-top:4px;
-            "
+          <img
+            src="${item.image}"
+            alt="${item.name}"
           >
-            Quantity: ${item.quantity}
-          </div>
 
-          <div class="qty-controls">
 
-            <button
-              onclick="changeQuantity(${index},-1)"
-            >
-              −
-            </button>
+          <div class="cart-item-info">
 
-            <span>
-              ${item.quantity}
-            </span>
+            <strong>
+              ${item.name}
+            </strong>
 
-            <button
-              onclick="changeQuantity(${index},1)"
-            >
-              +
-            </button>
 
-            <button
-              onclick="removeProduct(${index})"
+            <div>
+              $${item.price} each
+            </div>
+
+
+            <div
               style="
-                margin-left:5px;
-                background:#ff1493;
+                font-size:13px;
+                color:#666;
+                margin-top:4px;
               "
             >
-              ×
-            </button>
+              Quantity: ${item.quantity}
+            </div>
+
+
+            <div
+              style="
+                font-weight:900;
+                margin-top:4px;
+              "
+            >
+              Product total:
+              $${item.price * item.quantity}
+            </div>
+
+
+            <div class="qty-controls">
+
+              <button
+                onclick="
+                  changeQuantity(
+                    ${index},
+                    -1
+                  )
+                "
+              >
+                −
+              </button>
+
+
+              <span>
+                ${item.quantity}
+              </span>
+
+
+              <button
+                onclick="
+                  changeQuantity(
+                    ${index},
+                    1
+                  )
+                "
+              >
+                +
+              </button>
+
+
+              <button
+                onclick="
+                  removeProduct(
+                    ${index}
+                  )
+                "
+                style="
+                  margin-left:5px;
+                  background:#ff1493;
+                "
+              >
+                ×
+              </button>
+
+            </div>
 
           </div>
 
-          <div
-            style="
-              font-weight:900;
-              margin-top:7px;
-            "
-          >
-            Product total:
-            $${item.price * item.quantity}
-          </div>
-
-        </div>
-
-      `;
-
-      box.appendChild(div);
-
-    }
-  );
+        `;
 
 
-  const shippingCost=
-    getShippingCost(subtotal);
+        box.appendChild(div);
 
-  const shippingLabel=
-    getShippingLabel(subtotal);
-
-  const total=
-    subtotal + shippingCost;
-
-
-  document.getElementById(
-    "cartPanelTotal"
-  ).innerHTML=`
-
-    <div>
-      Subtotal: $${subtotal}
-    </div>
-
-    <div
-      style="
-        margin-top:8px;
-        font-size:16px;
-      "
-    >
-      Shipping: ${shippingLabel}
-    </div>
-
-    <div
-      style="
-        margin-top:10px;
-        font-size:23px;
-      "
-    >
-      Total: $${total}
-    </div>
-
-  `;
-
-
-  const warning=
-    document.getElementById(
-      "shippingWarning"
+      }
     );
 
-  if(warning){
-
-    if(subtotal >= 200){
-
-      warning.textContent=
-        "Free Shipping is available because the subtotal is $200 or more.";
-
-    }else{
-
-      warning.textContent=
-        "Free Shipping becomes available at $200 or more.";
-
-    }
   }
 
 
-  updateShippingInputs();
-}
+  updateShippingAvailability();
 
+  updateShippingRadios();
 
-/* =========================
-   UPDATE SHIPPING BUTTONS
-========================= */
+  updatePaymentRadios();
 
-function updateShippingInputs(){
+  updateShippingTotal();
 
-  document.querySelectorAll(
-    'input[name="cartShipping"]'
-  ).forEach(input=>{
+  updatePaymentHiddenField();
 
-    input.checked=
-      input.value === shippingOption;
-
-
-    if(input.value === "free"){
-
-      const subtotal=
-        selectedProducts.reduce(
-          (sum,item)=>
-            sum + (item.price * item.quantity),
-          0
-        );
-
-      input.disabled=
-        subtotal < 200;
-    }
-
-  });
 }
 
 
@@ -2174,27 +2998,61 @@ function updateShippingInputs(){
    QUANTITY
 ========================= */
 
-function changeQuantity(index,change){
-
-  if(!selectedProducts[index]) return;
-
-  selectedProducts[index].quantity +=
-    change;
+function changeQuantity(
+  index,
+  change
+){
 
   if(
-    selectedProducts[index].quantity <= 0
+    !selectedProducts[index]
   ){
-
-    selectedProducts.splice(index,1);
+    return;
   }
 
+
+  selectedProducts[index]
+    .quantity += change;
+
+
+  if(
+    selectedProducts[index]
+      .quantity <= 0
+  ){
+
+    selectedProducts.splice(
+      index,
+      1
+    );
+
+  }
+
+
   saveProducts();
+
+  if(
+    selectedProducts.length===0
+  ){
+
+    shippingOption="";
+    paymentOption="";
+
+    localStorage.removeItem(
+      "novaShippingOption"
+    );
+
+    localStorage.removeItem(
+      "novaPaymentOption"
+    );
+
+  }
+
 
   renderSelected();
 
   renderCartPanel();
 
   updateCartCount();
+
 }
 
 
@@ -2209,13 +3067,34 @@ function removeProduct(index){
     1
   );
 
+
   saveProducts();
+
+
+  if(
+    selectedProducts.length===0
+  ){
+
+    shippingOption="";
+    paymentOption="";
+
+    localStorage.removeItem(
+      "novaShippingOption"
+    );
+
+    localStorage.removeItem(
+      "novaPaymentOption"
+    );
+
+  }
+
 
   renderSelected();
 
   renderCartPanel();
 
   updateCartCount();
+
 }
 
 
@@ -2227,13 +3106,374 @@ function clearList(){
 
   selectedProducts=[];
 
-  saveProducts();
+  shippingOption="";
+
+  paymentOption="";
+
+
+  localStorage.removeItem(
+    "novaSelectedProducts"
+  );
+
+  localStorage.removeItem(
+    "novaShippingOption"
+  );
+
+  localStorage.removeItem(
+    "novaPaymentOption"
+  );
+
 
   renderSelected();
 
   renderCartPanel();
 
   updateCartCount();
+
+  updatePaymentHiddenField();
+
+}
+
+
+/* =========================
+   SHIPPING AVAILABILITY
+========================= */
+
+function updateShippingAvailability(){
+
+  const subtotal=
+    getProductsSubtotal();
+
+
+  const freeOption=
+    document.querySelector(
+      'input[name="shipping"][value="Free Shipping"]'
+    );
+
+
+  const freeLabel=
+    document.getElementById(
+      "freeShippingOption"
+    );
+
+
+  const warning=
+    document.getElementById(
+      "shippingWarning"
+    );
+
+
+  const standardOption=
+    document.querySelector(
+      'input[name="shipping"][value="Standard"]'
+    );
+
+
+  const expressOption=
+    document.querySelector(
+      'input[name="shipping"][value="Express"]'
+    );
+
+
+  if(!freeOption) return;
+
+
+  if(
+    selectedProducts.length===0
+  ){
+
+    if(standardOption){
+      standardOption.disabled=true;
+    }
+
+    if(expressOption){
+      expressOption.disabled=true;
+    }
+
+    freeOption.disabled=true;
+
+    if(freeLabel){
+      freeLabel.style.opacity=".55";
+    }
+
+    if(warning){
+      warning.textContent=
+        "Add a product before selecting shipping.";
+    }
+
+    shippingOption="";
+
+    return;
+
+  }
+
+
+  if(standardOption){
+    standardOption.disabled=false;
+  }
+
+  if(expressOption){
+    expressOption.disabled=false;
+  }
+
+
+  if(subtotal >= 200){
+
+    freeOption.disabled=false;
+
+
+    if(freeLabel){
+      freeLabel.style.opacity="1";
+    }
+
+
+    if(warning){
+
+      warning.textContent=
+        "Free Shipping is available because the informational subtotal is $200 or more.";
+
+    }
+
+  }else{
+
+    if(
+      shippingOption ===
+      "Free Shipping"
+    ){
+
+      shippingOption="";
+
+      localStorage.removeItem(
+        "novaShippingOption"
+      );
+
+    }
+
+
+    freeOption.checked=false;
+
+    freeOption.disabled=true;
+
+
+    if(freeLabel){
+      freeLabel.style.opacity=".55";
+    }
+
+
+    if(warning){
+
+      warning.textContent=
+        "Free Shipping becomes available when the informational subtotal reaches $200.";
+
+    }
+
+  }
+
+}
+
+
+/* =========================
+   SHIPPING TOTAL
+========================= */
+
+function updateShippingTotal(){
+
+  updateShippingAvailability();
+
+
+  const subtotal=
+    getProductsSubtotal();
+
+
+  const shipping=
+    getSelectedShipping();
+
+
+  const total=
+    subtotal + shipping.cost;
+
+
+  /* INFORMATION PANEL */
+
+  const subtotalDisplay=
+    document.getElementById(
+      "informationSubtotal"
+    );
+
+
+  const shippingDisplay=
+    document.getElementById(
+      "informationShipping"
+    );
+
+
+  const totalDisplay=
+    document.getElementById(
+      "informationGrandTotal"
+    );
+
+
+  if(subtotalDisplay){
+
+    subtotalDisplay.textContent=
+      "$" + subtotal;
+
+  }
+
+
+  if(shippingDisplay){
+
+    if(
+      shipping.name ===
+      "Not selected"
+    ){
+
+      shippingDisplay.textContent=
+        "Select shipping";
+
+    }else{
+
+      shippingDisplay.textContent=
+        shipping.name +
+        " — $" +
+        shipping.cost;
+
+    }
+
+  }
+
+
+  if(totalDisplay){
+
+    totalDisplay.textContent=
+      "$" + total;
+
+  }
+
+
+  /* CART */
+
+  const cartSubtotal=
+    document.getElementById(
+      "cartSubtotal"
+    );
+
+
+  const cartShipping=
+    document.getElementById(
+      "cartShipping"
+    );
+
+
+  const cartGrandTotal=
+    document.getElementById(
+      "cartGrandTotal"
+    );
+
+
+  if(cartSubtotal){
+
+    cartSubtotal.textContent=
+      "$" + subtotal;
+
+  }
+
+
+  if(cartShipping){
+
+    if(
+      shipping.name ===
+      "Not selected"
+    ){
+
+      cartShipping.textContent=
+        "Select shipping";
+
+    }else{
+
+      cartShipping.textContent=
+        shipping.name +
+        " — $" +
+        shipping.cost;
+
+    }
+
+  }
+
+
+  if(cartGrandTotal){
+
+    cartGrandTotal.textContent=
+      "$" + total;
+
+  }
+
+
+  /* SELECTED PRODUCTS */
+
+  updateSelectedTotal();
+
+
+  /* FORMSPREE HIDDEN FIELDS */
+
+  const subtotalInput=
+    document.getElementById(
+      "subtotalInput"
+    );
+
+
+  const shippingMethodInput=
+    document.getElementById(
+      "shippingMethodInput"
+    );
+
+
+  const shippingCostInput=
+    document.getElementById(
+      "shippingCostInput"
+    );
+
+
+  const totalInput=
+    document.getElementById(
+      "informationalTotalInput"
+    );
+
+
+  if(subtotalInput){
+
+    subtotalInput.value=
+      "$" + subtotal;
+
+  }
+
+
+  if(shippingMethodInput){
+
+    shippingMethodInput.value=
+      shipping.name;
+
+  }
+
+
+  if(shippingCostInput){
+
+    shippingCostInput.value=
+      "$" + shipping.cost;
+
+  }
+
+
+  if(totalInput){
+
+    totalInput.value=
+      "$" + total;
+
+  }
+
+
+  updatePaymentHiddenField();
+
 }
 
 
@@ -2243,31 +3483,84 @@ function clearList(){
 
 function openInformationPanel(){
 
-  if(selectedProducts.length===0){
+  if(
+    selectedProducts.length===0
+  ){
 
     alert(
-      "Please add a product to the list first."
+      "Please add at least one product to your cart."
     );
 
     return;
+
   }
 
-  prepareInformationForm();
+
+  const shipping=
+    getSelectedShipping();
+
+
+  if(
+    shipping.name ===
+    "Not selected"
+  ){
+
+    alert(
+      "Please select a shipping option in the cart."
+    );
+
+    openCart();
+
+    return;
+
+  }
+
+
+  const payment=
+    getSelectedPayment();
+
+
+  if(
+    payment ===
+    "Not selected"
+  ){
+
+    alert(
+      "Please select Zelle or PayPal in the cart."
+    );
+
+    openCart();
+
+    return;
+
+  }
+
 
   closeCart();
+
 
   const panel=
     document.getElementById(
       "informationPanel"
     );
 
+
   panel.classList.add("open");
+
 
   document.getElementById(
     "globalOverlay"
   ).classList.add("show");
+
+
+  prepareInformationForm();
+
 }
 
+
+/* =========================
+   CLOSE INFORMATION
+========================= */
 
 function closeInformationPanel(){
 
@@ -2275,9 +3568,25 @@ function closeInformationPanel(){
     "informationPanel"
   ).classList.remove("open");
 
+
   document.getElementById(
     "globalOverlay"
   ).classList.remove("show");
+
+}
+
+
+/* =========================
+   REFERENCE CODE
+========================= */
+
+function generateReferenceCode(){
+
+  return Math.floor(
+    1000 +
+    Math.random()*9000
+  ).toString();
+
 }
 
 
@@ -2285,85 +3594,70 @@ function closeInformationPanel(){
    PREPARE FORM
 ========================= */
 
-function generateReferenceCode(){
-
-  return Math.floor(
-    1000 + Math.random()*9000
-  ).toString();
-}
-
-
 function prepareInformationForm(){
 
-  const code=
-    generateReferenceCode();
+  if(
+    !currentReferenceCode
+  ){
+
+    currentReferenceCode=
+      generateReferenceCode();
+
+  }
+
 
   document.getElementById(
     "referenceCodeInput"
-  ).value=code;
+  ).value=
+    currentReferenceCode;
+
 
   document.getElementById(
     "referenceCodeDisplay"
-  ).textContent=code;
+  ).textContent=
+    currentReferenceCode;
 
 
   const productsText=
     selectedProducts.length
 
-    ? selectedProducts.map(
-        item =>
-          `${item.name} — Quantity: ${item.quantity}`
-      ).join("\n")
+      ?
 
-    : "No products selected.";
+        selectedProducts
+          .map(item =>
+
+            `${item.name} — Quantity: ${item.quantity} — Unit price: $${item.price} — Product total: $${item.price * item.quantity}`
+
+          )
+          .join("\n")
+
+      :
+
+        "No products selected.";
 
 
   document.getElementById(
     "selectedProductsInput"
-  ).value=productsText;
+  ).value=
+    productsText;
 
 
-  const subtotal=
-    selectedProducts.reduce(
-      (sum,item)=>
-        sum + (item.price * item.quantity),
-      0
-    );
+  updateShippingAvailability();
 
+  updateShippingRadios();
 
-  const shippingCost=
-    getShippingCost(subtotal);
+  updatePaymentRadios();
 
-  const shippingLabel=
-    getShippingLabel(subtotal);
+  updateShippingTotal();
 
-  const total=
-    subtotal + shippingCost;
-
-
-  document.getElementById(
-    "shippingInput"
-  ).value=shippingLabel;
-
-
-  document.getElementById(
-    "shippingCostInput"
-  ).value="$" + shippingCost;
-
-
-  document.getElementById(
-    "subtotalInput"
-  ).value="$" + subtotal;
-
-
-  document.getElementById(
-    "informationalTotalInput"
-  ).value="$" + total;
+  updatePaymentHiddenField();
 
 
   document.getElementById(
     "referenceDisplay"
-  ).style.display="block";
+  ).style.display=
+    "block";
+
 }
 
 
@@ -2381,31 +3675,118 @@ informationForm.addEventListener(
   "submit",
   function(event){
 
-    /*
-      Native Formspree POST continues.
-      We only disable the button to prevent
-      accidental double submissions.
-    */
+    updateShippingTotal();
+
+
+    const shipping=
+      getSelectedShipping();
+
+
+    const payment=
+      getSelectedPayment();
+
+
+    const subtotal=
+      getProductsSubtotal();
+
+
+    if(
+      selectedProducts.length===0
+    ){
+
+      event.preventDefault();
+
+      alert(
+        "Please add at least one product."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      shipping.name ===
+      "Not selected"
+    ){
+
+      event.preventDefault();
+
+      alert(
+        "Please select a shipping option in the cart."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      shipping.name ===
+      "Free Shipping"
+      &&
+      subtotal < 200
+    ){
+
+      event.preventDefault();
+
+      alert(
+        "Free Shipping is available only when the informational subtotal is $200 or more."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      payment ===
+      "Not selected"
+    ){
+
+      event.preventDefault();
+
+      alert(
+        "Please select Zelle or PayPal in the cart."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      !currentReferenceCode
+    ){
+
+      currentReferenceCode=
+        generateReferenceCode();
+
+    }
+
+
+    document.getElementById(
+      "referenceCodeInput"
+    ).value=
+      currentReferenceCode;
+
+
+    document.getElementById(
+      "paymentMethodInput"
+    ).value=
+      payment;
+
 
     const submitButton=
       document.getElementById(
         "informationSubmit"
       );
 
+
     submitButton.disabled=true;
 
     submitButton.textContent=
       "SENDING...";
-
-    const status=
-      document.getElementById(
-        "formStatus"
-      );
-
-    status.className=
-      "message-status";
-
-    status.textContent="";
 
   }
 );
@@ -2415,18 +3796,25 @@ informationForm.addEventListener(
    FAVORITES
 ========================= */
 
-function toggleFavorite(name,button){
+function toggleFavorite(
+  name,
+  button
+){
 
-  if(favorites.includes(name)){
+  if(
+    favorites.includes(name)
+  ){
 
     favorites=
       favorites.filter(
         item=>item!==name
       );
 
+
     button.classList.remove(
       "active"
     );
+
 
     button.textContent="♡";
 
@@ -2434,17 +3822,24 @@ function toggleFavorite(name,button){
 
     favorites.push(name);
 
+
     button.classList.add(
       "active"
     );
 
+
     button.textContent="♥";
+
   }
+
 
   localStorage.setItem(
     "novaFavoriteProducts",
-    JSON.stringify(favorites)
+    JSON.stringify(
+      favorites
+    )
   );
+
 }
 
 
@@ -2454,31 +3849,40 @@ function toggleFavorite(name,button){
 
 function loadFavorites(){
 
-  document.querySelectorAll(
-    ".favorite-btn"
-  ).forEach(button=>{
+  document
+    .querySelectorAll(
+      ".favorite-btn"
+    )
+    .forEach(
+      button=>{
 
-    const name=
-      button.dataset.product;
+        const name=
+          button.dataset.product;
 
-    if(favorites.includes(name)){
 
-      button.classList.add(
-        "active"
-      );
+        if(
+          favorites.includes(name)
+        ){
 
-      button.textContent="♥";
+          button.classList.add(
+            "active"
+          );
 
-    }else{
+          button.textContent="♥";
 
-      button.classList.remove(
-        "active"
-      );
+        }else{
 
-      button.textContent="♡";
-    }
+          button.classList.remove(
+            "active"
+          );
 
-  });
+          button.textContent="♡";
+
+        }
+
+      }
+    );
+
 }
 
 
@@ -2489,36 +3893,51 @@ function loadFavorites(){
 function searchProducts(value){
 
   const search=
-    value.trim().toLowerCase();
+    value
+      .trim()
+      .toLowerCase();
 
-  document.querySelectorAll(
-    ".product-card"
-  ).forEach(card=>{
 
-    const name=
-      card.dataset.name.toLowerCase();
+  document
+    .querySelectorAll(
+      ".product-card"
+    )
+    .forEach(
+      card=>{
 
-    if(name.includes(search)){
+        const name=
+          card.dataset.name
+            .toLowerCase();
 
-      card.style.display="";
 
-    }else{
+        if(
+          name.includes(search)
+        ){
 
-      card.style.display="none";
-    }
+          card.style.display="";
 
-  });
+        }else{
+
+          card.style.display="none";
+
+        }
+
+      }
+    );
 
 
   if(search){
 
-    document.getElementById(
-      "products"
-    ).scrollIntoView({
-      behavior:"smooth"
-    });
+    document
+      .getElementById(
+        "products"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
 
   }
+
 }
 
 
@@ -2532,9 +3951,11 @@ function openImage(src){
     "modalImage"
   ).src=src;
 
+
   document.getElementById(
     "imageModal"
   ).classList.add("show");
+
 }
 
 
@@ -2543,6 +3964,7 @@ function closeImage(){
   document.getElementById(
     "imageModal"
   ).classList.remove("show");
+
 }
 
 
@@ -2558,10 +3980,64 @@ function closeAllPanels(){
 
   closeInformationPanel();
 
+
   document.getElementById(
     "globalOverlay"
   ).classList.remove("show");
+
 }
+
+
+/* =========================
+   SHIPPING RADIO EVENTS
+========================= */
+
+document
+  .querySelectorAll(
+    'input[name="shipping"]'
+  )
+  .forEach(
+    radio=>{
+
+      radio.addEventListener(
+        "change",
+        function(){
+
+          selectShipping(
+            this.value
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================
+   PAYMENT RADIO EVENTS
+========================= */
+
+document
+  .querySelectorAll(
+    'input[name="payment_method_choice"]'
+  )
+  .forEach(
+    radio=>{
+
+      radio.addEventListener(
+        "change",
+        function(){
+
+          selectPayment(
+            this.value
+          );
+
+        }
+      );
+
+    }
+  );
 
 
 /* =========================
@@ -2575,6 +4051,16 @@ renderCartPanel();
 updateCartCount();
 
 loadFavorites();
+
+updateShippingAvailability();
+
+updateShippingRadios();
+
+updatePaymentRadios();
+
+updateShippingTotal();
+
+updatePaymentHiddenField();
 
 </script>
 
