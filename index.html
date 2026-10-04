@@ -215,16 +215,10 @@ section{
 }
 
 @keyframes spinRing{
-  from{
-    transform:rotate(0deg);
-  }
-
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
-/* NEGRO */
 .add-btn{
   position:relative;
   z-index:30;
@@ -245,18 +239,11 @@ section{
 }
 
 @keyframes addPulse{
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.06);
-  }
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.06);}
 }
 
-.add-btn:hover{
-  background:#222;
-}
+.add-btn:hover{background:#222;}
 
 .add-btn:active{
   transform:scale(.94);
@@ -301,9 +288,7 @@ section{
 }
 
 @keyframes cartBump{
-  50%{
-    transform:scale(1.15);
-  }
+  50%{transform:scale(1.15);}
 }
 
 /* =========================
@@ -324,9 +309,7 @@ section{
   overflow-y:auto;
 }
 
-.side-menu.open{
-  left:0;
-}
+.side-menu.open{left:0;}
 
 .menu-close{
   position:absolute;
@@ -378,9 +361,7 @@ section{
   z-index:1500;
 }
 
-.overlay.show{
-  display:block;
-}
+.overlay.show{display:block;}
 
 /* =========================
    PANELS
@@ -401,9 +382,7 @@ section{
   padding:25px;
 }
 
-.panel.open{
-  right:0;
-}
+.panel.open{right:0;}
 
 .panel-close{
   position:absolute;
@@ -442,9 +421,7 @@ section{
   border-radius:10px;
 }
 
-.cart-item-info{
-  flex:1;
-}
+.cart-item-info{flex:1;}
 
 .qty-controls{
   display:flex;
@@ -533,9 +510,7 @@ section{
   background:#fafafa;
 }
 
-.shipping-options h3{
-  margin-bottom:14px;
-}
+.shipping-options h3{margin-bottom:14px;}
 
 .shipping-option{
   display:flex;
@@ -570,13 +545,9 @@ section{
   cursor:not-allowed;
 }
 
-.shipping-option strong{
-  display:block;
-}
+.shipping-option strong{display:block;}
 
-.shipping-option small{
-  color:#666;
-}
+.shipping-option small{color:#666;}
 
 .shipping-warning{
   margin-top:10px;
@@ -584,9 +555,7 @@ section{
   color:#777;
 }
 
-.payment-options{
-  margin-top:15px;
-}
+.payment-options{margin-top:15px;}
 
 .payment-manual-note{
   margin-top:10px;
@@ -601,9 +570,7 @@ section{
    FORM
 ========================= */
 
-.form-group{
-  margin-bottom:14px;
-}
+.form-group{margin-bottom:14px;}
 
 .form-group label{
   display:block;
@@ -652,12 +619,40 @@ section{
 }
 
 /* =========================
+   ZELLE CONFIRMATION
+========================= */
+
+.zelle-confirmation{
+  display:none;
+  margin-top:18px;
+  padding:20px;
+  border-radius:15px;
+  background:#f7f7f7;
+  border:2px solid #ff1493;
+}
+
+.zelle-confirmation h3{
+  margin-bottom:12px;
+}
+
+.zelle-line{
+  margin-bottom:8px;
+}
+
+.zelle-important{
+  margin-top:15px;
+  padding:14px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #ddd;
+  line-height:1.6;
+}
+
+/* =========================
    SELECTED
 ========================= */
 
-.selected-section{
-  background:#f8f8f8;
-}
+.selected-section{background:#f8f8f8;}
 
 .selected-box{
   max-width:900px;
@@ -690,9 +685,7 @@ section{
    SHIPPING SECTION
 ========================= */
 
-.shipping-section{
-  background:#fff;
-}
+.shipping-section{background:#fff;}
 
 .shipping-card{
   max-width:650px;
@@ -764,9 +757,7 @@ footer{
   justify-content:center;
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.show{display:flex;}
 
 .modal img{
   max-width:90%;
@@ -810,13 +801,9 @@ footer{
   text-align:center;
 }
 
-.age-box h2{
-  margin-bottom:15px;
-}
+.age-box h2{margin-bottom:15px;}
 
-.age-box p{
-  margin-bottom:20px;
-}
+.age-box p{margin-bottom:20px;}
 
 .age-buttons{
   display:flex;
@@ -854,9 +841,7 @@ footer{
   font-weight:700;
 }
 
-.message-status.show{
-  display:block;
-}
+.message-status.show{display:block;}
 
 .status-success{
   background:#e8ffe8;
@@ -882,13 +867,9 @@ footer{
 
 @media(max-width:600px){
 
-  header{
-    height:60px;
-  }
+  header{height:60px;}
 
-  .logo{
-    font-size:20px;
-  }
+  .logo{font-size:20px;}
 
   .hero{
     width:100%;
@@ -903,30 +884,20 @@ footer{
     object-fit:contain;
   }
 
-  section{
-    padding:40px 14px;
-  }
+  section{padding:40px 14px;}
 
-  .section-title{
-    font-size:26px;
-  }
+  .section-title{font-size:26px;}
 
-  .products-grid{
-    grid-template-columns:1fr;
-  }
+  .products-grid{grid-template-columns:1fr;}
 
-  .product-image-wrap{
-    height:290px;
-  }
+  .product-image-wrap{height:290px;}
 
   .panel{
     width:100%;
     max-width:100%;
   }
 
-  .form-row{
-    grid-template-columns:1fr;
-  }
+  .form-row{grid-template-columns:1fr;}
 
   .floating-cart{
     right:12px;
@@ -939,9 +910,7 @@ footer{
 
 <body>
 
-<!-- =========================
-     AGE GATE
-========================= -->
+<!-- AGE GATE -->
 
 <div class="age-gate" id="ageGate">
 
@@ -982,9 +951,7 @@ footer{
 </div>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -1003,9 +970,7 @@ footer{
 </header>
 
 
-<!-- =========================
-     SIDE MENU
-========================= -->
+<!-- SIDE MENU -->
 
 <div class="side-menu" id="sideMenu">
 
@@ -1047,9 +1012,7 @@ footer{
 ></div>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <section id="home" style="padding:0;">
 
@@ -1065,9 +1028,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     PRODUCTS
-========================= -->
+<!-- PRODUCTS -->
 
 <section id="products">
 
@@ -1079,8 +1040,6 @@ footer{
     class="products-grid"
     id="productsGrid"
   >
-
-    <!-- PRODUCT 1 -->
 
     <div
       class="product-card"
@@ -1111,9 +1070,7 @@ footer{
 
         <h3>MOTS-C 10 MG</h3>
 
-        <div class="price">
-          $60
-        </div>
+        <div class="price">$60</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1139,8 +1096,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 2 -->
 
     <div
       class="product-card"
@@ -1171,9 +1126,7 @@ footer{
 
         <h3>GLP-2 10 MG</h3>
 
-        <div class="price">
-          $90
-        </div>
+        <div class="price">$90</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1199,8 +1152,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 3 -->
 
     <div
       class="product-card"
@@ -1231,9 +1182,7 @@ footer{
 
         <h3>GHK-CU 100 MG</h3>
 
-        <div class="price">
-          $50
-        </div>
+        <div class="price">$50</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1259,8 +1208,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 4 -->
 
     <div
       class="product-card"
@@ -1291,9 +1238,7 @@ footer{
 
         <h3>GLP-3 10 MG</h3>
 
-        <div class="price">
-          $95
-        </div>
+        <div class="price">$95</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1319,8 +1264,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 5 -->
 
     <div
       class="product-card"
@@ -1351,9 +1294,7 @@ footer{
 
         <h3>GLP-2 20 MG</h3>
 
-        <div class="price">
-          $110
-        </div>
+        <div class="price">$110</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1379,8 +1320,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 6 -->
 
     <div
       class="product-card"
@@ -1411,9 +1350,7 @@ footer{
 
         <h3>GLP-3 20 MG</h3>
 
-        <div class="price">
-          $135
-        </div>
+        <div class="price">$135</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1439,8 +1376,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 7 -->
 
     <div
       class="product-card"
@@ -1471,9 +1406,7 @@ footer{
 
         <h3>GLUTATHIONE 1500 MG</h3>
 
-        <div class="price">
-          $60
-        </div>
+        <div class="price">$60</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1499,8 +1432,6 @@ footer{
 
     </div>
 
-
-    <!-- PRODUCT 8 -->
 
     <div
       class="product-card"
@@ -1531,9 +1462,7 @@ footer{
 
         <h3>NAD+ 500 MG</h3>
 
-        <div class="price">
-          $50
-        </div>
+        <div class="price">$50</div>
 
         <div class="research">
           FOR RESEARCH USE ONLY
@@ -1564,14 +1493,9 @@ footer{
 </section>
 
 
-<!-- =========================
-     SHIPPING INFORMATION
-========================= -->
+<!-- SHIPPING INFORMATION -->
 
-<section
-  id="shipping"
-  class="shipping-section"
->
+<section id="shipping" class="shipping-section">
 
   <h2 class="section-title">
     SHIPPING INFORMATION
@@ -1603,32 +1527,21 @@ footer{
 </section>
 
 
-<!-- =========================
-     SELECTED PRODUCTS
-========================= -->
+<!-- SELECTED PRODUCTS -->
 
-<section
-  id="selection"
-  class="selected-section"
->
+<section id="selection" class="selected-section">
 
   <h2 class="section-title">
     SELECTED PRODUCTS
   </h2>
 
-  <div
-    class="selected-box"
-    id="selectedBox"
-  >
+  <div class="selected-box" id="selectedBox">
 
     <div id="selectedProducts">
       <p>No products selected.</p>
     </div>
 
-    <div
-      id="selectedTotal"
-      class="cart-total"
-    >
+    <div id="selectedTotal" class="cart-total">
       Informational total: $0
     </div>
 
@@ -1653,14 +1566,9 @@ footer{
 </section>
 
 
-<!-- =========================
-     CART PANEL
-========================= -->
+<!-- CART PANEL -->
 
-<div
-  class="panel"
-  id="cartPanel"
->
+<div class="panel" id="cartPanel">
 
   <button
     type="button"
@@ -1670,21 +1578,13 @@ footer{
     ×
   </button>
 
-  <h2>
-    🛒 CART
-  </h2>
+  <h2>🛒 CART</h2>
 
   <div id="cartPanelItems"></div>
 
+  <div class="shipping-options" id="cartShippingOptions">
 
-  <div
-    class="shipping-options"
-    id="cartShippingOptions"
-  >
-
-    <h3>
-      Shipping Information
-    </h3>
+    <h3>Shipping Information</h3>
 
     <label class="shipping-option">
 
@@ -1701,7 +1601,6 @@ footer{
 
     </label>
 
-
     <label class="shipping-option">
 
       <input
@@ -1716,7 +1615,6 @@ footer{
       </span>
 
     </label>
-
 
     <label class="shipping-option">
 
@@ -1733,23 +1631,16 @@ footer{
 
     </label>
 
-    <p
-      class="shipping-warning"
-      id="cartShippingWarning"
-    >
+    <p class="shipping-warning" id="cartShippingWarning">
       Add a product before selecting shipping.
     </p>
 
   </div>
 
 
-  <div
-    class="shipping-options payment-options"
-  >
+  <div class="shipping-options payment-options">
 
-    <h3>
-      Payment Method
-    </h3>
+    <h3>Payment Method</h3>
 
     <label class="shipping-option">
 
@@ -1766,7 +1657,6 @@ footer{
 
     </label>
 
-
     <label class="shipping-option">
 
       <input
@@ -1782,7 +1672,6 @@ footer{
 
     </label>
 
-
     <div class="payment-manual-note">
       Payment is not processed automatically.
       No card information is collected here.
@@ -1791,10 +1680,7 @@ footer{
   </div>
 
 
-  <div
-    class="cart-total"
-    id="cartPanelTotal"
-  >
+  <div class="cart-total" id="cartPanelTotal">
 
     <div class="total-line">
       <span>Subtotal</span>
@@ -1813,12 +1699,10 @@ footer{
 
   </div>
 
-
   <p class="info-note">
     This list is informational only.
     No payment is processed here.
   </p>
-
 
   <button
     type="button"
@@ -1827,7 +1711,6 @@ footer{
   >
     CONTINUE TO INFORMATION
   </button>
-
 
   <button
     type="button"
@@ -1840,14 +1723,9 @@ footer{
 </div>
 
 
-<!-- =========================
-     INFORMATION PANEL
-========================= -->
+<!-- INFORMATION PANEL -->
 
-<div
-  class="panel"
-  id="informationPanel"
->
+<div class="panel" id="informationPanel">
 
   <button
     type="button"
@@ -1857,9 +1735,7 @@ footer{
     ×
   </button>
 
-  <h2>
-    Information Request
-  </h2>
+  <h2>Information Request</h2>
 
 
   <form
@@ -1926,9 +1802,7 @@ footer{
 
     <div class="form-group">
 
-      <label for="name">
-        Name
-      </label>
+      <label for="name">Name</label>
 
       <input
         type="text"
@@ -1943,9 +1817,7 @@ footer{
 
     <div class="form-group">
 
-      <label for="email">
-        Email
-      </label>
+      <label for="email">Email</label>
 
       <input
         type="email"
@@ -1960,9 +1832,7 @@ footer{
 
     <div class="form-group">
 
-      <label for="phone">
-        Phone number
-      </label>
+      <label for="phone">Phone number</label>
 
       <input
         type="tel"
@@ -1977,9 +1847,7 @@ footer{
 
     <div class="form-group">
 
-      <label for="address">
-        Address
-      </label>
+      <label for="address">Address</label>
 
       <input
         type="text"
@@ -2015,9 +1883,7 @@ footer{
 
       <div class="form-group">
 
-        <label for="city">
-          City
-        </label>
+        <label for="city">City</label>
 
         <input
           type="text"
@@ -2032,9 +1898,7 @@ footer{
 
       <div class="form-group">
 
-        <label for="state">
-          State
-        </label>
+        <label for="state">State</label>
 
         <input
           type="text"
@@ -2051,9 +1915,7 @@ footer{
 
     <div class="form-group">
 
-      <label for="zip">
-        ZIP Code
-      </label>
+      <label for="zip">ZIP Code</label>
 
       <input
         type="text"
@@ -2068,9 +1930,7 @@ footer{
 
     <div class="shipping-options">
 
-      <h3>
-        Order Summary
-      </h3>
+      <h3>Order Summary</h3>
 
       <div class="total-line">
         <span>Subtotal</span>
@@ -2102,9 +1962,7 @@ footer{
       style="margin-top:18px;"
     >
 
-      <label for="message">
-        Message
-      </label>
+      <label for="message">Message</label>
 
       <textarea
         id="message"
@@ -2137,20 +1995,66 @@ footer{
     class="reference-code"
   >
 
-    <div>
-      Your reference code
-    </div>
+    <div>Your reference code</div>
 
     <strong id="referenceCodeDisplay"></strong>
+
+  </div>
+
+
+  <!-- ZELLE INSTRUCTIONS -->
+
+  <div
+    id="zelleConfirmation"
+    class="zelle-confirmation"
+  >
+
+    <h3>
+      PAGA TU PEDIDO CON ZELLE
+    </h3>
+
+    <p class="zelle-line">
+      <strong>Nombre:</strong>
+      Araceli Hernández
+    </p>
+
+    <p class="zelle-line">
+      <strong>Teléfono:</strong>
+      (832) 273-9625
+    </p>
+
+    <p class="zelle-line">
+      <strong>Monto a enviar:</strong>
+      <span id="zelleAmount">$0.00</span>
+    </p>
+
+    <p class="zelle-line">
+      <strong>Número de pedido:</strong>
+      <span id="zelleOrderNumber"></span>
+    </p>
+
+    <div class="zelle-important">
+
+      <strong>IMPORTANTE:</strong><br><br>
+
+      Cuando hagas tu pago por Zelle,
+      escribe el
+      <strong>número de pedido de 4 dígitos</strong>
+      en la <strong>nota o memo</strong>
+      del pago.
+
+      <br><br>
+
+      Esto nos ayudará a identificar correctamente tu pedido.
+
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -2179,9 +2083,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ABOUT -->
 
 <section id="about">
 
@@ -2191,13 +2093,13 @@ footer{
 
   <div class="about">
 
-    <p
-      style="line-height:1.8;text-align:center;"
-    >
+    <p style="line-height:1.8;text-align:center;">
+
       Welcome to NovaPeps USA.
       Our website provides information
       about products presented for
       research purposes only.
+
     </p>
 
   </div>
@@ -2205,9 +2107,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     COMPARE
-========================= -->
+<!-- COMPARE -->
 
 <section id="compare">
 
@@ -2288,9 +2188,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- LOGIN -->
 
 <section id="login">
 
@@ -2302,9 +2200,7 @@ footer{
 
     <div class="form-group">
 
-      <label>
-        Email
-      </label>
+      <label>Email</label>
 
       <input
         type="email"
@@ -2316,9 +2212,7 @@ footer{
 
     <div class="form-group">
 
-      <label>
-        Password
-      </label>
+      <label>Password</label>
 
       <input
         type="password"
@@ -2348,9 +2242,7 @@ footer{
 </section>
 
 
-<!-- =========================
-     IMAGE MODAL
-========================= -->
+<!-- IMAGE MODAL -->
 
 <div
   class="modal"
@@ -2374,9 +2266,7 @@ footer{
 </div>
 
 
-<!-- =========================
-     FLOATING CART
-========================= -->
+<!-- FLOATING CART -->
 
 <button
   type="button"
@@ -2397,9 +2287,7 @@ footer{
 </button>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -2428,7 +2316,7 @@ function getStoredArray(key){
 
   try{
 
-    const value=
+    const value =
       JSON.parse(
         localStorage.getItem(key) || "[]"
       );
@@ -2453,13 +2341,15 @@ function getStoredArray(key){
 function enterSite(){
 
   try{
+
     localStorage.setItem(
       "novaAgeConfirmed",
       "yes"
     );
+
   }catch(error){}
 
-  const gate=
+  const gate =
     document.getElementById("ageGate");
 
   if(gate){
@@ -2471,7 +2361,7 @@ function enterSite(){
 
 function leaveSite(){
 
-  window.location.href=
+  window.location.href =
     "https://www.google.com";
 
 }
@@ -2485,7 +2375,7 @@ try{
     )==="yes"
   ){
 
-    const gate=
+    const gate =
       document.getElementById("ageGate");
 
     if(gate){
@@ -2503,10 +2393,10 @@ try{
 
 function openMenu(){
 
-  const menu=
+  const menu =
     document.getElementById("sideMenu");
 
-  const overlay=
+  const overlay =
     document.getElementById("globalOverlay");
 
   if(menu){
@@ -2522,7 +2412,7 @@ function openMenu(){
 
 function closeMenu(){
 
-  const menu=
+  const menu =
     document.getElementById("sideMenu");
 
   if(menu){
@@ -2536,29 +2426,28 @@ function closeMenu(){
    DATA
 ===================================================== */
 
-let selectedProducts=
+let selectedProducts =
   getStoredArray(
     "novaSelectedProducts"
   );
 
-let favorites=
+let favorites =
   getStoredArray(
     "novaFavoriteProducts"
   );
 
 let shippingOption="";
-
 let paymentOption="";
 
 
 try{
 
-  shippingOption=
+  shippingOption =
     localStorage.getItem(
       "novaShippingOption"
     ) || "";
 
-  paymentOption=
+  paymentOption =
     localStorage.getItem(
       "novaPaymentOption"
     ) || "";
@@ -2575,14 +2464,14 @@ function getSubtotal(){
   return selectedProducts.reduce(
     function(sum,item){
 
-      const price=
+      const price =
         Number(item.price) || 0;
 
-      const quantity=
+      const quantity =
         Number(item.quantity) || 0;
 
-      return sum+
-        price*quantity;
+      return sum +
+        price * quantity;
 
     },
     0
@@ -2593,12 +2482,12 @@ function getSubtotal(){
 
 function getShipping(){
 
-  const subtotal=
+  const subtotal =
     getSubtotal();
 
   if(!shippingOption){
 
-    return{
+    return {
       name:"",
       cost:0
     };
@@ -2608,7 +2497,7 @@ function getShipping(){
 
   if(shippingOption==="Standard"){
 
-    return{
+    return {
       name:"Standard",
       cost:9
     };
@@ -2618,7 +2507,7 @@ function getShipping(){
 
   if(shippingOption==="Express"){
 
-    return{
+    return {
       name:"Express",
       cost:15
     };
@@ -2631,7 +2520,7 @@ function getShipping(){
     subtotal>=200
   ){
 
-    return{
+    return {
       name:"Free Shipping",
       cost:0
     };
@@ -2639,7 +2528,7 @@ function getShipping(){
   }
 
 
-  return{
+  return {
     name:"",
     cost:0
   };
@@ -2649,7 +2538,7 @@ function getShipping(){
 
 function getGrandTotal(){
 
-  return getSubtotal()+
+  return getSubtotal() +
     getShipping().cost;
 
 }
@@ -2729,7 +2618,7 @@ function addToList(
   image
 ){
 
-  const existing=
+  const existing =
     selectedProducts.find(
       function(item){
         return item.name===name;
@@ -2739,7 +2628,7 @@ function addToList(
 
   if(existing){
 
-    existing.quantity=
+    existing.quantity =
       Number(existing.quantity || 0)+1;
 
   }else{
@@ -2747,11 +2636,8 @@ function addToList(
     selectedProducts.push({
 
       name:name,
-
       price:Number(price),
-
       image:image,
-
       quantity:1
 
     });
@@ -2768,7 +2654,7 @@ function addToList(
   updateCartCount();
 
 
-  const cart=
+  const cart =
     document.getElementById(
       "floatingCart"
     );
@@ -2792,7 +2678,6 @@ function addToList(
 
 /* =====================================================
    PRODUCT BUTTON CONNECTION
-   ROBUST CLICK / TOUCH FIX
 ===================================================== */
 
 function connectProductButtons(){
@@ -2810,30 +2695,28 @@ function connectProductButtons(){
     "click",
     function(event){
 
-      const button=
+      const button =
         event.target.closest(
           ".add-btn"
         );
-
 
       if(!button){
         return;
       }
 
-
       event.preventDefault();
       event.stopPropagation();
 
 
-      const name=
+      const name =
         button.dataset.name;
 
-      const price=
+      const price =
         Number(
           button.dataset.price
         );
 
-      const image=
+      const image =
         button.dataset.image;
 
 
@@ -2862,17 +2745,17 @@ function connectProductButtons(){
 
 
 /* =====================================================
-   RENDER SELECTED PRODUCTS
+   RENDER SELECTED
 ===================================================== */
 
 function renderSelected(){
 
-  const box=
+  const box =
     document.getElementById(
       "selectedProducts"
     );
 
-  const totalBox=
+  const totalBox =
     document.getElementById(
       "selectedTotal"
     );
@@ -2887,12 +2770,12 @@ function renderSelected(){
     selectedProducts.length===0
   ){
 
-    box.innerHTML=
+    box.innerHTML =
       "<p>No products selected.</p>";
 
     if(totalBox){
 
-      totalBox.textContent=
+      totalBox.textContent =
         "Informational total: $0";
 
     }
@@ -2908,21 +2791,21 @@ function renderSelected(){
   selectedProducts.forEach(
     function(item){
 
-      const row=
+      const row =
         document.createElement(
           "div"
         );
 
-      row.className=
+      row.className =
         "selected-row";
 
 
-      const itemTotal=
-        Number(item.price)*
+      const itemTotal =
+        Number(item.price) *
         Number(item.quantity);
 
 
-      row.innerHTML=`
+      row.innerHTML = `
 
         <div>
 
@@ -2957,8 +2840,8 @@ function renderSelected(){
 
   if(totalBox){
 
-    totalBox.textContent=
-      "Informational total: $"+
+    totalBox.textContent =
+      "Informational total: $" +
       getSubtotal();
 
   }
@@ -2972,11 +2855,11 @@ function renderSelected(){
 
 function updateCartCount(){
 
-  const count=
+  const count =
     selectedProducts.reduce(
       function(sum,item){
 
-        return sum+
+        return sum +
           (
             Number(item.quantity) || 0
           );
@@ -2986,7 +2869,7 @@ function updateCartCount(){
     );
 
 
-  const element=
+  const element =
     document.getElementById(
       "cartCount"
     );
@@ -2994,7 +2877,7 @@ function updateCartCount(){
 
   if(element){
 
-    element.textContent=
+    element.textContent =
       count;
 
   }
@@ -3008,27 +2891,27 @@ function updateCartCount(){
 
 function updateShippingAvailability(){
 
-  const subtotal=
+  const subtotal =
     getSubtotal();
 
 
-  const freeRadio=
+  const freeRadio =
     document.querySelector(
       'input[name="cart_shipping"][value="Free"]'
     );
 
-  const standardRadio=
+  const standardRadio =
     document.querySelector(
       'input[name="cart_shipping"][value="Standard"]'
     );
 
-  const expressRadio=
+  const expressRadio =
     document.querySelector(
       'input[name="cart_shipping"][value="Express"]'
     );
 
 
-  const warning=
+  const warning =
     document.getElementById(
       "cartShippingWarning"
     );
@@ -3059,7 +2942,7 @@ function updateShippingAvailability(){
 
     if(warning){
 
-      warning.textContent=
+      warning.textContent =
         "Add a product before selecting shipping.";
 
     }
@@ -3078,10 +2961,8 @@ function updateShippingAvailability(){
   }
 
   if(freeRadio){
-
-    freeRadio.disabled=
+    freeRadio.disabled =
       subtotal<200;
-
   }
 
 
@@ -3105,12 +2986,12 @@ function updateShippingAvailability(){
 
     if(subtotal>=200){
 
-      warning.textContent=
+      warning.textContent =
         "Free shipping is available for this order.";
 
     }else{
 
-      warning.textContent=
+      warning.textContent =
         "Free shipping is available at $200 or more.";
 
     }
@@ -3129,166 +3010,136 @@ function updateShippingTotal(){
   updateShippingAvailability();
 
 
-  const subtotal=
+  const subtotal =
     getSubtotal();
 
-  const shipping=
+  const shipping =
     getShipping();
 
-  const grandTotal=
-    subtotal+
+  const grandTotal =
+    subtotal +
     shipping.cost;
 
 
-  const cartSubtotal=
+  const cartSubtotal =
     document.getElementById(
       "cartSubtotalDisplay"
     );
 
-  const cartShipping=
+  const cartShipping =
     document.getElementById(
       "cartShippingDisplay"
     );
 
-  const cartGrand=
+  const cartGrand =
     document.getElementById(
       "cartGrandTotalDisplay"
     );
 
 
   if(cartSubtotal){
-
-    cartSubtotal.textContent=
+    cartSubtotal.textContent =
       "$"+subtotal;
-
   }
 
-
   if(cartShipping){
-
-    cartShipping.textContent=
+    cartShipping.textContent =
       shipping.name
         ? "$"+shipping.cost
         : "Not selected";
-
   }
-
 
   if(cartGrand){
-
-    cartGrand.textContent=
+    cartGrand.textContent =
       "$"+grandTotal;
-
   }
 
 
-  const formSubtotal=
+  const formSubtotal =
     document.getElementById(
       "formSubtotalDisplay"
     );
 
-  const formShipping=
+  const formShipping =
     document.getElementById(
       "formShippingDisplay"
     );
 
-  const formGrand=
+  const formGrand =
     document.getElementById(
       "formGrandTotalDisplay"
     );
 
 
   if(formSubtotal){
-
-    formSubtotal.textContent=
+    formSubtotal.textContent =
       "$"+subtotal;
-
   }
 
-
   if(formShipping){
-
-    formShipping.textContent=
+    formShipping.textContent =
       shipping.name
         ? "$"+shipping.cost
         : "Not selected";
-
   }
-
 
   if(formGrand){
-
-    formGrand.textContent=
+    formGrand.textContent =
       "$"+grandTotal;
-
   }
 
 
-  const subtotalInput=
+  const subtotalInput =
     document.getElementById(
       "subtotalInput"
     );
 
-  const shippingMethodInput=
+  const shippingMethodInput =
     document.getElementById(
       "shippingMethodInput"
     );
 
-  const shippingCostInput=
+  const shippingCostInput =
     document.getElementById(
       "shippingCostInput"
     );
 
-  const informationalTotalInput=
+  const informationalTotalInput =
     document.getElementById(
       "informationalTotalInput"
     );
 
-  const paymentMethodInput=
+  const paymentMethodInput =
     document.getElementById(
       "paymentMethodInput"
     );
 
 
   if(subtotalInput){
-
-    subtotalInput.value=
+    subtotalInput.value =
       "$"+subtotal;
-
   }
-
 
   if(shippingMethodInput){
-
-    shippingMethodInput.value=
+    shippingMethodInput.value =
       shipping.name ||
       "Not selected";
-
   }
-
 
   if(shippingCostInput){
-
-    shippingCostInput.value=
+    shippingCostInput.value =
       "$"+shipping.cost;
-
   }
-
 
   if(informationalTotalInput){
-
-    informationalTotalInput.value=
+    informationalTotalInput.value =
       "$"+grandTotal;
-
   }
 
-
   if(paymentMethodInput){
-
-    paymentMethodInput.value=
+    paymentMethodInput.value =
       paymentOption ||
       "Not selected";
-
   }
 
 }
@@ -3300,12 +3151,12 @@ function updateShippingTotal(){
 
 function restoreCartOptions(){
 
-  const shippingRadios=
+  const shippingRadios =
     document.querySelectorAll(
       'input[name="cart_shipping"]'
     );
 
-  const paymentRadios=
+  const paymentRadios =
     document.querySelectorAll(
       'input[name="cart_payment"]'
     );
@@ -3314,8 +3165,8 @@ function restoreCartOptions(){
   shippingRadios.forEach(
     function(radio){
 
-      radio.checked=
-        radio.value===
+      radio.checked =
+        radio.value ===
         shippingOption;
 
     }
@@ -3325,8 +3176,8 @@ function restoreCartOptions(){
   paymentRadios.forEach(
     function(radio){
 
-      radio.checked=
-        radio.value===
+      radio.checked =
+        radio.value ===
         paymentOption;
 
     }
@@ -3347,32 +3198,23 @@ function openCart(){
   renderCartPanel();
 
 
-  const panel=
+  const panel =
     document.getElementById(
       "cartPanel"
     );
 
-  const overlay=
+  const overlay =
     document.getElementById(
       "globalOverlay"
     );
 
 
   if(panel){
-
-    panel.classList.add(
-      "open"
-    );
-
+    panel.classList.add("open");
   }
 
-
   if(overlay){
-
-    overlay.classList.add(
-      "show"
-    );
-
+    overlay.classList.add("show");
   }
 
 }
@@ -3380,17 +3222,13 @@ function openCart(){
 
 function closeCart(){
 
-  const panel=
+  const panel =
     document.getElementById(
       "cartPanel"
     );
 
   if(panel){
-
-    panel.classList.remove(
-      "open"
-    );
-
+    panel.classList.remove("open");
   }
 
 }
@@ -3398,7 +3236,7 @@ function closeCart(){
 
 function renderCartPanel(){
 
-  const box=
+  const box =
     document.getElementById(
       "cartPanelItems"
     );
@@ -3416,7 +3254,7 @@ function renderCartPanel(){
     selectedProducts.length===0
   ){
 
-    box.innerHTML=
+    box.innerHTML =
       "<p>Your cart is empty.</p>";
 
     shippingOption="";
@@ -3434,16 +3272,16 @@ function renderCartPanel(){
   selectedProducts.forEach(
     function(item,index){
 
-      const div=
+      const div =
         document.createElement(
           "div"
         );
 
-      div.className=
+      div.className =
         "cart-item";
 
 
-      div.innerHTML=`
+      div.innerHTML = `
 
         <img
           src="${item.image}"
@@ -3525,10 +3363,10 @@ function changeQuantity(
   }
 
 
-  selectedProducts[index].quantity=
+  selectedProducts[index].quantity =
     Number(
       selectedProducts[index].quantity || 0
-    )+
+    ) +
     Number(change);
 
 
@@ -3647,7 +3485,7 @@ function connectShippingEvents(){
 
             }else{
 
-              shippingOption=
+              shippingOption =
                 this.value;
 
             }
@@ -3675,7 +3513,7 @@ function connectShippingEvents(){
           "change",
           function(){
 
-            paymentOption=
+            paymentOption =
               this.value;
 
             saveCartOptions();
@@ -3697,7 +3535,7 @@ function connectShippingEvents(){
 
 function updatePaymentDisplay(){
 
-  const paymentInput=
+  const paymentInput =
     document.getElementById(
       "paymentMethodInput"
     );
@@ -3705,7 +3543,7 @@ function updatePaymentDisplay(){
 
   if(paymentInput){
 
-    paymentInput.value=
+    paymentInput.value =
       paymentOption ||
       "";
 
@@ -3736,7 +3574,7 @@ function openInformationPanel(){
   updateShippingAvailability();
 
 
-  const shipping=
+  const shipping =
     getShipping();
 
 
@@ -3769,32 +3607,23 @@ function openInformationPanel(){
   closeCart();
 
 
-  const panel=
+  const panel =
     document.getElementById(
       "informationPanel"
     );
 
-  const overlay=
+  const overlay =
     document.getElementById(
       "globalOverlay"
     );
 
 
   if(panel){
-
-    panel.classList.add(
-      "open"
-    );
-
+    panel.classList.add("open");
   }
 
-
   if(overlay){
-
-    overlay.classList.add(
-      "show"
-    );
-
+    overlay.classList.add("show");
   }
 
 
@@ -3805,17 +3634,13 @@ function openInformationPanel(){
 
 function closeInformationPanel(){
 
-  const panel=
+  const panel =
     document.getElementById(
       "informationPanel"
     );
 
   if(panel){
-
-    panel.classList.remove(
-      "open"
-    );
-
+    panel.classList.remove("open");
   }
 
 }
@@ -3828,7 +3653,7 @@ function closeInformationPanel(){
 function generateReferenceCode(){
 
   return Math.floor(
-    1000+
+    1000 +
     Math.random()*9000
   ).toString();
 
@@ -3837,48 +3662,43 @@ function generateReferenceCode(){
 
 function prepareInformationForm(){
 
-  const code=
+  const code =
     generateReferenceCode();
 
 
-  const referenceInput=
+  const referenceInput =
     document.getElementById(
       "referenceCodeInput"
     );
 
-  const referenceDisplay=
+  const referenceDisplay =
     document.getElementById(
       "referenceCodeDisplay"
     );
 
-  const selectedInput=
+  const selectedInput =
     document.getElementById(
       "selectedProductsInput"
     );
 
-  const referenceBox=
+  const referenceBox =
     document.getElementById(
       "referenceDisplay"
     );
 
 
   if(referenceInput){
-
-    referenceInput.value=
+    referenceInput.value =
       code;
-
   }
-
 
   if(referenceDisplay){
-
-    referenceDisplay.textContent=
+    referenceDisplay.textContent =
       code;
-
   }
 
 
-  const productsText=
+  const productsText =
     selectedProducts
       .map(
         function(item){
@@ -3895,10 +3715,8 @@ function prepareInformationForm(){
 
 
   if(selectedInput){
-
-    selectedInput.value=
+    selectedInput.value =
       productsText;
-
   }
 
 
@@ -3908,11 +3726,175 @@ function prepareInformationForm(){
 
 
   if(referenceBox){
-
-    referenceBox.style.display=
+    referenceBox.style.display =
       "block";
-
   }
+
+}
+
+
+/* =====================================================
+   SAVE LAST ORDER BEFORE FORMSPREE
+===================================================== */
+
+function saveLastOrder(){
+
+  try{
+
+    const referenceCode =
+      document.getElementById(
+        "referenceCodeInput"
+      ).value;
+
+
+    localStorage.setItem(
+      "novaLastOrder",
+      JSON.stringify({
+
+        referenceCode:
+          referenceCode,
+
+        paymentMethod:
+          paymentOption,
+
+        total:
+          getGrandTotal(),
+
+        products:
+          selectedProducts
+
+      })
+    );
+
+  }catch(error){}
+
+}
+
+
+/* =====================================================
+   SHOW ZELLE AFTER RETURN
+===================================================== */
+
+function showZelleConfirmationAfterReturn(){
+
+  try{
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    if(
+      params.get(
+        "orderSubmitted"
+      ) !== "1"
+    ){
+
+      return;
+
+    }
+
+
+    const savedOrder =
+      JSON.parse(
+        localStorage.getItem(
+          "novaLastOrder"
+        ) || "null"
+      );
+
+
+    if(
+      !savedOrder ||
+      savedOrder.paymentMethod !== "Zelle"
+    ){
+
+      return;
+
+    }
+
+
+    const zelleBox =
+      document.getElementById(
+        "zelleConfirmation"
+      );
+
+    const orderNumber =
+      document.getElementById(
+        "zelleOrderNumber"
+      );
+
+    const amount =
+      document.getElementById(
+        "zelleAmount"
+      );
+
+
+    if(zelleBox){
+      zelleBox.style.display =
+        "block";
+    }
+
+
+    if(orderNumber){
+
+      orderNumber.textContent =
+        savedOrder.referenceCode;
+
+    }
+
+
+    if(amount){
+
+      amount.textContent =
+        "$" +
+        Number(
+          savedOrder.total
+        ).toFixed(2);
+
+    }
+
+
+    const informationPanel =
+      document.getElementById(
+        "informationPanel"
+      );
+
+    const overlay =
+      document.getElementById(
+        "globalOverlay"
+      );
+
+
+    if(informationPanel){
+      informationPanel.classList.add(
+        "open"
+      );
+    }
+
+    if(overlay){
+      overlay.classList.add(
+        "show"
+      );
+    }
+
+
+    /*
+      Remove the query from the visible URL
+      after the confirmation has been shown.
+    */
+
+    try{
+
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
+
+    }catch(error){}
+
+  }catch(error){}
 
 }
 
@@ -3923,7 +3905,7 @@ function prepareInformationForm(){
 
 function connectInformationForm(){
 
-  const informationForm=
+  const informationForm =
     document.getElementById(
       "informationForm"
     );
@@ -3958,7 +3940,7 @@ function connectInformationForm(){
       }
 
 
-      const shipping=
+      const shipping =
         getShipping();
 
 
@@ -3996,7 +3978,15 @@ function connectInformationForm(){
       }
 
 
-      const submitButton=
+      /*
+        Save everything BEFORE native Formspree
+        submission redirects the browser.
+      */
+
+      saveLastOrder();
+
+
+      const submitButton =
         document.getElementById(
           "informationSubmit"
         );
@@ -4006,10 +3996,16 @@ function connectInformationForm(){
 
         submitButton.disabled=true;
 
-        submitButton.textContent=
+        submitButton.textContent =
           "SENDING...";
 
       }
+
+      /*
+        IMPORTANT:
+        Do NOT use preventDefault() here.
+        Formspree receives the normal HTML POST.
+      */
 
     }
   );
@@ -4030,7 +4026,7 @@ function toggleFavorite(
     favorites.includes(name)
   ){
 
-    favorites=
+    favorites =
       favorites.filter(
         function(item){
           return item!==name;
@@ -4042,7 +4038,7 @@ function toggleFavorite(
       "active"
     );
 
-    button.textContent=
+    button.textContent =
       "♡";
 
   }else{
@@ -4053,7 +4049,7 @@ function toggleFavorite(
       "active"
     );
 
-    button.textContent=
+    button.textContent =
       "♥";
 
   }
@@ -4086,7 +4082,7 @@ function loadFavorites(){
     .forEach(
       function(button){
 
-        const name=
+        const name =
           button.dataset.product;
 
 
@@ -4098,7 +4094,7 @@ function loadFavorites(){
             "active"
           );
 
-          button.textContent=
+          button.textContent =
             "♥";
 
         }else{
@@ -4107,7 +4103,7 @@ function loadFavorites(){
             "active"
           );
 
-          button.textContent=
+          button.textContent =
             "♡";
 
         }
@@ -4124,7 +4120,7 @@ function loadFavorites(){
 
 function searchProducts(value){
 
-  const search=
+  const search =
     value.trim().toLowerCase();
 
 
@@ -4135,7 +4131,7 @@ function searchProducts(value){
     .forEach(
       function(card){
 
-        const name=
+        const name =
           (
             card.dataset.name ||
             ""
@@ -4160,7 +4156,7 @@ function searchProducts(value){
 
   if(search){
 
-    const products=
+    const products =
       document.getElementById(
         "products"
       );
@@ -4185,30 +4181,23 @@ function searchProducts(value){
 
 function openImage(src){
 
-  const modal=
+  const modal =
     document.getElementById(
       "imageModal"
     );
 
-  const image=
+  const image =
     document.getElementById(
       "modalImage"
     );
 
 
   if(image){
-
     image.src=src;
-
   }
 
-
   if(modal){
-
-    modal.classList.add(
-      "show"
-    );
-
+    modal.classList.add("show");
   }
 
 }
@@ -4216,18 +4205,14 @@ function openImage(src){
 
 function closeImage(){
 
-  const modal=
+  const modal =
     document.getElementById(
       "imageModal"
     );
 
 
   if(modal){
-
-    modal.classList.remove(
-      "show"
-    );
-
+    modal.classList.remove("show");
   }
 
 }
@@ -4246,18 +4231,14 @@ function closeAllPanels(){
   closeInformationPanel();
 
 
-  const overlay=
+  const overlay =
     document.getElementById(
       "globalOverlay"
     );
 
 
   if(overlay){
-
-    overlay.classList.remove(
-      "show"
-    );
-
+    overlay.classList.remove("show");
   }
 
 }
@@ -4286,6 +4267,14 @@ function initializeNovaPeps(){
   restoreCartOptions();
 
   updateShippingTotal();
+
+  /*
+    If Formspree sends the visitor back to:
+    https://novapepsusa.com/?orderSubmitted=1
+    this will show Zelle instructions.
+  */
+
+  showZelleConfirmationAfterReturn();
 
 }
 
