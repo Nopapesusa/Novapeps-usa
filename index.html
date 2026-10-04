@@ -4449,11 +4449,11 @@ function searchProducts(value){
 
       /*
         SOLO MOSTRAR SI EL TEXTO
-        ES PARTE DEL NOMBRE.
+        COMIENZA EL NOMBRE DEL PRODUCTO.
       */
 
       if(
-        !normalizedName.includes(
+        !normalizedName.startsWith(
           search
         )
       ){
