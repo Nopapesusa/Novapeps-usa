@@ -4250,7 +4250,8 @@ function loadFavorites(){
 
 
 /* =====================================================
-   SEARCH — FIXED FOR MOBILE
+   SEARCH — FIXED
+   SHOWS COMPLETE PRODUCT CARD
 ===================================================== */
 
 function normalizeSearchText(value){
@@ -4284,20 +4285,33 @@ function searchProducts(value){
   cards.forEach(
     function(card){
 
-      const dataName =
-        card.dataset.name || "";
-
       const heading =
         card.querySelector("h3");
 
       const image =
         card.querySelector("img");
 
+
+      /*
+        Busca el producto usando:
+        - data-name
+        - nombre del producto
+        - alt de la imagen
+        - contenido completo de la tarjeta
+      */
+
       const productName =
-        dataName ||
-        (heading ? heading.textContent : "") ||
-        (image ? image.alt : "") ||
-        "";
+        (card.dataset.name || "") +
+        " " +
+        (heading
+          ? heading.textContent
+          : "") +
+        " " +
+        (image
+          ? image.alt
+          : "") +
+        " " +
+        card.textContent;
 
 
       const normalizedName =
@@ -4308,17 +4322,34 @@ function searchProducts(value){
 
       const matches =
         !search ||
-        normalizedName.includes(search);
+        normalizedName.includes(
+          search
+        );
 
 
       if(matches){
 
+        /*
+          MUESTRA LA TARJETA COMPLETA:
+          imagen + nombre + precio +
+          botón + favorito.
+        */
+
         card.style.display="";
+
+        card.hidden=false;
+
         matchesFound++;
 
       }else{
 
+        /*
+          OCULTA LA TARJETA COMPLETA.
+        */
+
         card.style.display="none";
+
+        card.hidden=true;
 
       }
 
@@ -4336,12 +4367,16 @@ function searchProducts(value){
 
     if(!rawSearch){
 
-      resultMessage.style.display="none";
-      resultMessage.textContent="";
+      resultMessage.style.display =
+        "none";
+
+      resultMessage.textContent =
+        "";
 
     }else if(matchesFound===0){
 
-      resultMessage.style.display="block";
+      resultMessage.style.display =
+        "block";
 
       resultMessage.textContent =
         'No products found for "' +
@@ -4350,7 +4385,8 @@ function searchProducts(value){
 
     }else{
 
-      resultMessage.style.display="block";
+      resultMessage.style.display =
+        "block";
 
       resultMessage.textContent =
         matchesFound +
@@ -4418,7 +4454,8 @@ function connectSearch(){
 
       /*
         El menú solamente se cierra
-        cuando la búsqueda termina con ENTER.
+        cuando la búsqueda termina
+        con ENTER.
       */
 
       closeMenu();
