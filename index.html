@@ -67,12 +67,16 @@ header{
   height:430px;
   overflow:hidden;
   background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .hero img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
+  object-position:center;
   display:block;
 }
 
@@ -120,7 +124,9 @@ section{
   width:100%;
   height:100%;
   object-fit:contain;
+  object-position:center;
   cursor:zoom-in;
+  display:block;
 }
 
 .favorite-btn{
@@ -192,7 +198,7 @@ section{
   position:relative;
   z-index:2;
   border:none;
-  background:#ff1493;
+  background:#000;
   color:#fff;
   padding:14px 23px;
   border-radius:30px;
@@ -207,7 +213,7 @@ section{
 }
 
 .add-btn:hover{
-  background:#e60078;
+  background:#111;
 }
 
 .add-btn:active{
@@ -401,6 +407,22 @@ section{
   font-weight:900;
 }
 
+.total-line{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin:7px 0;
+  font-size:15px;
+  font-weight:700;
+}
+
+.total-line.grand{
+  border-top:1px solid #ddd;
+  padding-top:12px;
+  margin-top:12px;
+  font-size:20px;
+}
+
 .info-note{
   margin-top:10px;
   font-size:12px;
@@ -461,6 +483,7 @@ section{
   width:20px;
   height:20px;
   accent-color:#ff1493;
+  flex-shrink:0;
 }
 
 .shipping-option strong{
@@ -475,6 +498,19 @@ section{
   margin-top:10px;
   font-size:12px;
   color:#777;
+}
+
+.payment-options{
+  margin-top:15px;
+}
+
+.payment-manual-note{
+  margin-top:10px;
+  padding:10px;
+  background:#f1f1f1;
+  border-radius:8px;
+  font-size:12px;
+  color:#555;
 }
 
 .form-group{
@@ -741,7 +777,14 @@ footer{
   }
 
   .hero{
-    height:270px;
+    height:auto;
+    min-height:180px;
+  }
+
+  .hero img{
+    height:auto;
+    max-height:430px;
+    object-fit:contain;
   }
 
   section{
@@ -787,8 +830,8 @@ footer{
     <p>Please confirm that you are of legal age to enter this website.</p>
 
     <div class="age-buttons">
-      <button class="age-yes" onclick="enterSite()">I AM OF LEGAL AGE</button>
-      <button class="age-no" onclick="leaveSite()">EXIT</button>
+      <button type="button" class="age-yes" onclick="enterSite()">I AM OF LEGAL AGE</button>
+      <button type="button" class="age-no" onclick="leaveSite()">EXIT</button>
     </div>
   </div>
 </div>
@@ -797,13 +840,13 @@ footer{
 <header>
   <div class="logo">NOVAPEPS USA</div>
 
-  <button class="menu-btn" onclick="openMenu()">☰</button>
+  <button type="button" class="menu-btn" onclick="openMenu()">☰</button>
 </header>
 
 <!-- SIDE MENU -->
 <div class="side-menu" id="sideMenu">
 
-  <button class="menu-close" onclick="closeMenu()">×</button>
+  <button type="button" class="menu-close" onclick="closeMenu()">×</button>
 
   <div class="search-box">
     <input
@@ -852,6 +895,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="MOTS-C 10 MG"
           onclick="toggleFavorite('MOTS-C 10 MG',this)"
@@ -866,6 +910,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('MOTS-C 10 MG',60,'./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png')"
           >
@@ -886,6 +931,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="GLP-2 10 MG"
           onclick="toggleFavorite('GLP-2 10 MG',this)"
@@ -900,6 +946,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('GLP-2 10 MG',90,'./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png')"
           >
@@ -920,6 +967,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="GHK-CU 100 MG"
           onclick="toggleFavorite('GHK-CU 100 MG',this)"
@@ -934,6 +982,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('GHK-CU 100 MG',50,'./6747079A-BB69-4F51-A792-565688C6BC86.png')"
           >
@@ -954,6 +1003,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="GLP-3 10 MG"
           onclick="toggleFavorite('GLP-3 10 MG',this)"
@@ -968,6 +1018,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('GLP-3 10 MG',95,'./713BA234-721B-4580-94DF-6677375C7826.png')"
           >
@@ -988,6 +1039,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="GLP-2 20 MG"
           onclick="toggleFavorite('GLP-2 20 MG',this)"
@@ -1002,6 +1054,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('GLP-2 20 MG',110,'./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png')"
           >
@@ -1022,6 +1075,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="GLP-3 20 MG"
           onclick="toggleFavorite('GLP-3 20 MG',this)"
@@ -1036,6 +1090,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('GLP-3 20 MG',135,'./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png')"
           >
@@ -1056,6 +1111,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="GLUTATHIONE 1500 MG"
           onclick="toggleFavorite('GLUTATHIONE 1500 MG',this)"
@@ -1070,6 +1126,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('GLUTATHIONE 1500 MG',60,'./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png')"
           >
@@ -1090,6 +1147,7 @@ footer{
         >
 
         <button
+          type="button"
           class="favorite-btn"
           data-product="NAD+ 500 MG"
           onclick="toggleFavorite('NAD+ 500 MG',this)"
@@ -1104,6 +1162,7 @@ footer{
         <div class="add-wrap">
           <div class="add-ring"></div>
           <button
+            type="button"
             class="add-btn"
             onclick="addToList('NAD+ 500 MG',50,'./EB389E57-904B-4E57-953C-407C50FA216A.png')"
           >
@@ -1157,11 +1216,11 @@ footer{
       Informational total: $0
     </div>
 
-    <button class="clear-btn" onclick="clearList()">
+    <button type="button" class="clear-btn" onclick="clearList()">
       CLEAR LIST
     </button>
 
-    <button class="primary-btn" onclick="openInformationPanel()">
+    <button type="button" class="primary-btn" onclick="openInformationPanel()">
       REQUEST INFORMATION
     </button>
   </div>
@@ -1170,14 +1229,116 @@ footer{
 
 <!-- CART PANEL -->
 <div class="panel" id="cartPanel">
-  <button class="panel-close" onclick="closeCart()">×</button>
+  <button type="button" class="panel-close" onclick="closeCart()">×</button>
 
   <h2>🛒 CART</h2>
 
   <div id="cartPanelItems"></div>
 
+  <!-- SHIPPING INSIDE CART -->
+  <div class="shipping-options" id="cartShippingOptions">
+
+    <h3>Shipping Information</h3>
+
+    <label class="shipping-option">
+      <input
+        type="radio"
+        name="cart_shipping"
+        value="Standard"
+      >
+
+      <span>
+        <strong>Standard — $9</strong>
+        <small>Standard shipping option</small>
+      </span>
+    </label>
+
+    <label class="shipping-option">
+      <input
+        type="radio"
+        name="cart_shipping"
+        value="Express"
+      >
+
+      <span>
+        <strong>Express — $15</strong>
+        <small>Express shipping option</small>
+      </span>
+    </label>
+
+    <label class="shipping-option">
+      <input
+        type="radio"
+        name="cart_shipping"
+        value="Free"
+      >
+
+      <span>
+        <strong>Free Shipping — $200+</strong>
+        <small>Available on qualifying orders</small>
+      </span>
+    </label>
+
+    <p class="shipping-warning" id="cartShippingWarning">
+      Please select a shipping option.
+    </p>
+
+  </div>
+
+
+  <!-- PAYMENT INSIDE CART -->
+  <div class="shipping-options payment-options">
+
+    <h3>Payment Method</h3>
+
+    <label class="shipping-option">
+      <input
+        type="radio"
+        name="cart_payment"
+        value="Zelle"
+      >
+
+      <span>
+        <strong>Zelle</strong>
+        <small>Manual payment option</small>
+      </span>
+    </label>
+
+    <label class="shipping-option">
+      <input
+        type="radio"
+        name="cart_payment"
+        value="PayPal"
+      >
+
+      <span>
+        <strong>PayPal</strong>
+        <small>Manual payment option</small>
+      </span>
+    </label>
+
+    <div class="payment-manual-note">
+      Payment is not processed automatically. Payment instructions can be provided manually after the information request.
+    </div>
+
+  </div>
+
+
   <div class="cart-total" id="cartPanelTotal">
-    Informational total: $0
+    <div class="total-line">
+      <span>Subtotal</span>
+      <span id="cartSubtotalDisplay">$0</span>
+    </div>
+
+    <div class="total-line">
+      <span>Shipping</span>
+      <span id="cartShippingDisplay">$0</span>
+    </div>
+
+    <div class="total-line grand">
+      <span>Total</span>
+      <span id="cartGrandTotalDisplay">$0</span>
+    </div>
   </div>
 
   <p class="info-note">
@@ -1185,6 +1346,7 @@ footer{
   </p>
 
   <button
+    type="button"
     class="primary-btn"
     onclick="openInformationPanel()"
   >
@@ -1192,6 +1354,7 @@ footer{
   </button>
 
   <button
+    type="button"
     class="secondary-btn"
     onclick="closeCart()"
   >
@@ -1202,11 +1365,10 @@ footer{
 
 <!-- INFORMATION REQUEST PANEL -->
 <div class="panel" id="informationPanel">
-  <button class="panel-close" onclick="closeInformationPanel()">×</button>
+  <button type="button" class="panel-close" onclick="closeInformationPanel()">×</button>
 
   <h2>Information Request</h2>
 
-  <!-- DIRECT FORMSPREE FORM -->
   <form
     id="informationForm"
     action="https://formspree.io/f/myezrady"
@@ -1230,6 +1392,36 @@ footer{
       type="hidden"
       name="selected_products"
       id="selectedProductsInput"
+    >
+
+    <input
+      type="hidden"
+      name="subtotal"
+      id="subtotalInput"
+    >
+
+    <input
+      type="hidden"
+      name="shipping_method"
+      id="shippingMethodInput"
+    >
+
+    <input
+      type="hidden"
+      name="shipping_cost"
+      id="shippingCostInput"
+    >
+
+    <input
+      type="hidden"
+      name="informational_total"
+      id="informationalTotalInput"
+    >
+
+    <input
+      type="hidden"
+      name="payment_method"
+      id="paymentMethodInput"
     >
 
     <input
@@ -1329,60 +1521,30 @@ footer{
       >
     </div>
 
-
-    <!-- SHIPPING OPTIONS INSIDE FORM -->
     <div class="shipping-options">
 
-      <h3>Shipping Information</h3>
+      <h3>Order Summary</h3>
 
-      <label class="shipping-option">
-        <input
-          type="radio"
-          name="shipping"
-          value="Standard - $9"
-          required
-        >
+      <div class="total-line">
+        <span>Subtotal</span>
+        <span id="formSubtotalDisplay">$0</span>
+      </div>
 
-        <span>
-          <strong>Standard — $9</strong>
-          <small>Standard shipping option</small>
-        </span>
-      </label>
+      <div class="total-line">
+        <span>Shipping</span>
+        <span id="formShippingDisplay">$0</span>
+      </div>
 
+      <div class="total-line grand">
+        <span>Total</span>
+        <span id="formGrandTotalDisplay">$0</span>
+      </div>
 
-      <label class="shipping-option">
-        <input
-          type="radio"
-          name="shipping"
-          value="Express - $15"
-        >
-
-        <span>
-          <strong>Express — $15</strong>
-          <small>Express shipping option</small>
-        </span>
-      </label>
-
-
-      <label class="shipping-option">
-        <input
-          type="radio"
-          name="shipping"
-          value="Free Shipping - $200+"
-        >
-
-        <span>
-          <strong>Free Shipping — $200+</strong>
-          <small>Informational free-shipping option</small>
-        </span>
-      </label>
-
-      <p class="shipping-warning">
-        Please select one shipping option before submitting.
+      <p class="shipping-warning" id="formSelectionWarning">
+        Shipping and payment are selected in the cart.
       </p>
 
     </div>
-
 
     <div class="form-group" style="margin-top:18px;">
       <label for="message">Message</label>
@@ -1393,7 +1555,6 @@ footer{
         placeholder="Your message"
       ></textarea>
     </div>
-
 
     <button
       type="submit"
@@ -1548,7 +1709,7 @@ footer{
 
 <!-- IMAGE MODAL -->
 <div class="modal" id="imageModal">
-  <button class="modal-close" onclick="closeImage()">×</button>
+  <button type="button" class="modal-close" onclick="closeImage()">×</button>
 
   <img
     id="modalImage"
@@ -1559,7 +1720,7 @@ footer{
 
 
 <!-- FLOATING CART -->
-<button class="floating-cart" id="floatingCart" onclick="openCart()">
+<button type="button" class="floating-cart" id="floatingCart" onclick="openCart()">
   🛒 CART
   <span class="cart-count" id="cartCount">0</span>
 </button>
@@ -1627,6 +1788,76 @@ let selectedProducts =
 let favorites =
   JSON.parse(localStorage.getItem("novaFavoriteProducts") || "[]");
 
+let shippingOption =
+  localStorage.getItem("novaShippingOption") || "";
+
+let paymentOption =
+  localStorage.getItem("novaPaymentOption") || "";
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function getSubtotal(){
+
+  return selectedProducts.reduce(
+    (sum,item)=>{
+      const price=Number(item.price) || 0;
+      const quantity=Number(item.quantity) || 0;
+
+      return sum + (price * quantity);
+    },
+    0
+  );
+}
+
+function getShipping(){
+
+  const subtotal=getSubtotal();
+
+  if(!shippingOption){
+    return {
+      name:"",
+      cost:0
+    };
+  }
+
+  if(shippingOption==="Standard"){
+    return {
+      name:"Standard",
+      cost:9
+    };
+  }
+
+  if(shippingOption==="Express"){
+    return {
+      name:"Express",
+      cost:15
+    };
+  }
+
+  if(shippingOption==="Free" && subtotal>=200){
+    return {
+      name:"Free Shipping",
+      cost:0
+    };
+  }
+
+  return {
+    name:"",
+    cost:0
+  };
+}
+
+function getGrandTotal(){
+
+  const subtotal=getSubtotal();
+  const shipping=getShipping();
+
+  return subtotal + shipping.cost;
+}
+
 
 /* =========================
    ADD TO LIST
@@ -1639,28 +1870,36 @@ function addToList(name,price,image){
   );
 
   if(existing){
-    existing.quantity++;
+
+    existing.quantity=
+      Number(existing.quantity || 0)+1;
+
   }else{
+
     selectedProducts.push({
       name:name,
-      price:price,
+      price:Number(price),
       image:image,
       quantity:1
     });
   }
 
   saveProducts();
+
   renderSelected();
   renderCartPanel();
   updateCartCount();
 
   const cart=document.getElementById("floatingCart");
 
-  cart.classList.remove("cart-bump");
+  if(cart){
 
-  void cart.offsetWidth;
+    cart.classList.remove("cart-bump");
 
-  cart.classList.add("cart-bump");
+    void cart.offsetWidth;
+
+    cart.classList.add("cart-bump");
+  }
 }
 
 
@@ -1678,7 +1917,7 @@ function saveProducts(){
 
 
 /* =========================
-   RENDER SELECTED
+   SELECTED PRODUCTS
 ========================= */
 
 function renderSelected(){
@@ -1697,13 +1936,11 @@ function renderSelected(){
     return;
   }
 
-  let total=0;
+  const total=getSubtotal();
 
   box.innerHTML="";
 
   selectedProducts.forEach((item,index)=>{
-
-    total += item.price * item.quantity;
 
     const row=document.createElement("div");
 
@@ -1712,13 +1949,14 @@ function renderSelected(){
     row.innerHTML=`
       <div>
         <strong>${item.name}</strong>
+
         <div style="font-size:13px;color:#666;">
           Quantity: ${item.quantity}
         </div>
       </div>
 
       <div>
-        $${item.price * item.quantity}
+        $${Number(item.price)*Number(item.quantity)}
       </div>
     `;
 
@@ -1737,11 +1975,294 @@ function renderSelected(){
 function updateCartCount(){
 
   const count=selectedProducts.reduce(
-    (sum,item)=>sum+item.quantity,
+    (sum,item)=>sum+(Number(item.quantity)||0),
     0
   );
 
-  document.getElementById("cartCount").textContent=count;
+  const element=document.getElementById("cartCount");
+
+  if(element){
+    element.textContent=count;
+  }
+}
+
+
+/* =========================
+   SHIPPING / PAYMENT STORAGE
+========================= */
+
+function saveCartOptions(){
+
+  if(shippingOption){
+
+    localStorage.setItem(
+      "novaShippingOption",
+      shippingOption
+    );
+
+  }else{
+
+    localStorage.removeItem("novaShippingOption");
+  }
+
+  if(paymentOption){
+
+    localStorage.setItem(
+      "novaPaymentOption",
+      paymentOption
+    );
+
+  }else{
+
+    localStorage.removeItem("novaPaymentOption");
+  }
+}
+
+
+/* =========================
+   SHIPPING RADIO
+========================= */
+
+function restoreCartOptions(){
+
+  const shippingRadios=
+    document.querySelectorAll(
+      'input[name="cart_shipping"]'
+    );
+
+  const paymentRadios=
+    document.querySelectorAll(
+      'input[name="cart_payment"]'
+    );
+
+  shippingRadios.forEach(radio=>{
+
+    radio.checked=
+      radio.value===shippingOption;
+  });
+
+  paymentRadios.forEach(radio=>{
+
+    radio.checked=
+      radio.value===paymentOption;
+  });
+
+  updateShippingAvailability();
+}
+
+function updateShippingAvailability(){
+
+  const subtotal=getSubtotal();
+
+  const freeRadio=
+    document.querySelector(
+      'input[name="cart_shipping"][value="Free"]'
+    );
+
+  const standardRadio=
+    document.querySelector(
+      'input[name="cart_shipping"][value="Standard"]'
+    );
+
+  const expressRadio=
+    document.querySelector(
+      'input[name="cart_shipping"][value="Express"]'
+    );
+
+  const warning=
+    document.getElementById(
+      "cartShippingWarning"
+    );
+
+  if(selectedProducts.length===0){
+
+    if(standardRadio){
+      standardRadio.disabled=true;
+    }
+
+    if(expressRadio){
+      expressRadio.disabled=true;
+    }
+
+    if(freeRadio){
+      freeRadio.disabled=true;
+    }
+
+    shippingOption="";
+
+    saveCartOptions();
+
+    if(warning){
+      warning.textContent=
+        "Add a product before selecting shipping.";
+    }
+
+    return;
+  }
+
+  if(standardRadio){
+    standardRadio.disabled=false;
+  }
+
+  if(expressRadio){
+    expressRadio.disabled=false;
+  }
+
+  if(freeRadio){
+    freeRadio.disabled=subtotal<200;
+  }
+
+  if(subtotal<200 && shippingOption==="Free"){
+
+    shippingOption="";
+
+    if(freeRadio){
+      freeRadio.checked=false;
+    }
+
+    saveCartOptions();
+  }
+
+  if(warning){
+
+    if(subtotal>=200){
+
+      warning.textContent=
+        "Free shipping is available for this order.";
+
+    }else{
+
+      warning.textContent=
+        "Free shipping is available at $200 or more.";
+    }
+  }
+}
+
+
+/* =========================
+   UPDATE TOTALS
+========================= */
+
+function updateShippingTotal(){
+
+  updateShippingAvailability();
+
+  const subtotal=getSubtotal();
+  const shipping=getShipping();
+  const grandTotal=subtotal+shipping.cost;
+
+
+  /* CART */
+
+  const cartSubtotal=
+    document.getElementById("cartSubtotalDisplay");
+
+  const cartShipping=
+    document.getElementById("cartShippingDisplay");
+
+  const cartGrand=
+    document.getElementById("cartGrandTotalDisplay");
+
+  if(cartSubtotal){
+    cartSubtotal.textContent="$"+subtotal;
+  }
+
+  if(cartShipping){
+
+    cartShipping.textContent=
+      shipping.name
+        ? "$"+shipping.cost
+        : "Not selected";
+  }
+
+  if(cartGrand){
+    cartGrand.textContent="$"+grandTotal;
+  }
+
+
+  /* FORM */
+
+  const formSubtotal=
+    document.getElementById("formSubtotalDisplay");
+
+  const formShipping=
+    document.getElementById("formShippingDisplay");
+
+  const formGrand=
+    document.getElementById("formGrandTotalDisplay");
+
+  if(formSubtotal){
+    formSubtotal.textContent="$"+subtotal;
+  }
+
+  if(formShipping){
+
+    formShipping.textContent=
+      shipping.name
+        ? "$"+shipping.cost
+        : "Not selected";
+  }
+
+  if(formGrand){
+    formGrand.textContent="$"+grandTotal;
+  }
+
+
+  /* HIDDEN FORMSPREE FIELDS */
+
+  const subtotalInput=
+    document.getElementById("subtotalInput");
+
+  const shippingMethodInput=
+    document.getElementById("shippingMethodInput");
+
+  const shippingCostInput=
+    document.getElementById("shippingCostInput");
+
+  const informationalTotalInput=
+    document.getElementById("informationalTotalInput");
+
+  const paymentMethodInput=
+    document.getElementById("paymentMethodInput");
+
+  if(subtotalInput){
+    subtotalInput.value="$"+subtotal;
+  }
+
+  if(shippingMethodInput){
+    shippingMethodInput.value=
+      shipping.name || "Not selected";
+  }
+
+  if(shippingCostInput){
+    shippingCostInput.value="$"+shipping.cost;
+  }
+
+  if(informationalTotalInput){
+    informationalTotalInput.value="$"+grandTotal;
+  }
+
+  if(paymentMethodInput){
+    paymentMethodInput.value=
+      paymentOption || "Not selected";
+  }
+}
+
+
+/* =========================
+   PAYMENT
+========================= */
+
+function updatePaymentDisplay(){
+
+  const paymentInput=
+    document.getElementById("paymentMethodInput");
+
+  if(paymentInput){
+
+    paymentInput.value=
+      paymentOption || "";
+  }
 }
 
 
@@ -1779,19 +2300,21 @@ function renderCartPanel(){
 
   if(selectedProducts.length===0){
 
-    box.innerHTML="<p>Your cart is empty.</p>";
+    box.innerHTML=
+      "<p>Your cart is empty.</p>";
 
-    document.getElementById("cartPanelTotal")
-      .textContent="Informational total: $0";
+    shippingOption="";
+
+    paymentOption="";
+
+    saveCartOptions();
+
+    updateShippingTotal();
 
     return;
   }
 
-  let total=0;
-
   selectedProducts.forEach((item,index)=>{
-
-    total += item.price * item.quantity;
 
     const div=document.createElement("div");
 
@@ -1807,17 +2330,24 @@ function renderCartPanel(){
 
         <div class="qty-controls">
 
-          <button onclick="changeQuantity(${index},-1)">
+          <button
+            type="button"
+            onclick="changeQuantity(${index},-1)"
+          >
             −
           </button>
 
           <span>${item.quantity}</span>
 
-          <button onclick="changeQuantity(${index},1)">
+          <button
+            type="button"
+            onclick="changeQuantity(${index},1)"
+          >
             +
           </button>
 
           <button
+            type="button"
             onclick="removeProduct(${index})"
             style="margin-left:5px;background:#ff1493;"
           >
@@ -1831,8 +2361,8 @@ function renderCartPanel(){
     box.appendChild(div);
   });
 
-  document.getElementById("cartPanelTotal")
-    .textContent="Informational total: $" + total;
+  restoreCartOptions();
+  updateShippingTotal();
 }
 
 
@@ -1844,13 +2374,17 @@ function changeQuantity(index,change){
 
   if(!selectedProducts[index]) return;
 
-  selectedProducts[index].quantity += change;
+  selectedProducts[index].quantity=
+    Number(selectedProducts[index].quantity || 0)
+    + Number(change);
 
   if(selectedProducts[index].quantity<=0){
+
     selectedProducts.splice(index,1);
   }
 
   saveProducts();
+
   renderSelected();
   renderCartPanel();
   updateCartCount();
@@ -1863,9 +2397,20 @@ function changeQuantity(index,change){
 
 function removeProduct(index){
 
+  if(!selectedProducts[index]) return;
+
   selectedProducts.splice(index,1);
 
+  if(selectedProducts.length===0){
+
+    shippingOption="";
+    paymentOption="";
+
+    saveCartOptions();
+  }
+
   saveProducts();
+
   renderSelected();
   renderCartPanel();
   updateCartCount();
@@ -1880,7 +2425,11 @@ function clearList(){
 
   selectedProducts=[];
 
+  shippingOption="";
+  paymentOption="";
+
   saveProducts();
+  saveCartOptions();
 
   renderSelected();
   renderCartPanel();
@@ -1889,14 +2438,91 @@ function clearList(){
 
 
 /* =========================
+   CART OPTION EVENTS
+========================= */
+
+document
+  .querySelectorAll('input[name="cart_shipping"]')
+  .forEach(radio=>{
+
+    radio.addEventListener("change",function(){
+
+      if(this.value==="Free" && getSubtotal()<200){
+
+        this.checked=false;
+
+        shippingOption="";
+
+      }else{
+
+        shippingOption=this.value;
+      }
+
+      saveCartOptions();
+      updateShippingTotal();
+    });
+  });
+
+
+document
+  .querySelectorAll('input[name="cart_payment"]')
+  .forEach(radio=>{
+
+    radio.addEventListener("change",function(){
+
+      paymentOption=this.value;
+
+      saveCartOptions();
+      updatePaymentDisplay();
+    });
+  });
+
+
+/* =========================
    INFORMATION PANEL
 ========================= */
 
 function openInformationPanel(){
 
+  if(selectedProducts.length===0){
+
+    alert(
+      "Please add at least one product to the cart."
+    );
+
+    return;
+  }
+
+  updateShippingAvailability();
+
+  const shipping=getShipping();
+
+  if(!shipping.name){
+
+    alert(
+      "Please select a shipping option in the cart."
+    );
+
+    openCart();
+
+    return;
+  }
+
+  if(!paymentOption){
+
+    alert(
+      "Please select Zelle or PayPal in the cart."
+    );
+
+    openCart();
+
+    return;
+  }
+
   closeCart();
 
-  const panel=document.getElementById("informationPanel");
+  const panel=
+    document.getElementById("informationPanel");
 
   panel.classList.add("open");
 
@@ -1946,6 +2572,9 @@ function prepareInformationForm(){
   document.getElementById("selectedProductsInput")
     .value=productsText;
 
+  updateShippingTotal();
+  updatePaymentDisplay();
+
   document.getElementById("referenceDisplay")
     .style.display="block";
 }
@@ -1958,33 +2587,70 @@ function prepareInformationForm(){
 const informationForm=
   document.getElementById("informationForm");
 
-informationForm.addEventListener("submit",function(event){
+if(informationForm){
 
-  /*
-    The form uses Formspree directly with POST.
-    We only disable the button here to prevent
-    accidental double taps.
-  */
+  informationForm.addEventListener(
+    "submit",
+    function(event){
 
-  const submitButton=
-    document.getElementById("informationSubmit");
+      updateShippingTotal();
 
-  submitButton.disabled=true;
+      if(selectedProducts.length===0){
 
-  submitButton.textContent="SENDING...";
+        event.preventDefault();
 
-  const status=
-    document.getElementById("formStatus");
+        alert(
+          "Please add at least one product."
+        );
 
-  status.className="message-status";
-  status.textContent="";
+        return;
+      }
 
-  /*
-    Native browser submission continues to Formspree.
-    Formspree receives all fields that have a name.
-  */
+      const shipping=getShipping();
 
-});
+      if(!shipping.name){
+
+        event.preventDefault();
+
+        alert(
+          "Please select a shipping option in the cart."
+        );
+
+        closeInformationPanel();
+        openCart();
+
+        return;
+      }
+
+      if(!paymentOption){
+
+        event.preventDefault();
+
+        alert(
+          "Please select Zelle or PayPal in the cart."
+        );
+
+        closeInformationPanel();
+        openCart();
+
+        return;
+      }
+
+      const submitButton=
+        document.getElementById("informationSubmit");
+
+      submitButton.disabled=true;
+
+      submitButton.textContent="SENDING...";
+
+      const status=
+        document.getElementById("formStatus");
+
+      status.className="message-status";
+      status.textContent="";
+    }
+  );
+}
 
 
 /* =========================
@@ -2064,6 +2730,7 @@ function searchProducts(value){
     });
 
   if(search){
+
     document.getElementById("products")
       .scrollIntoView({
         behavior:"smooth"
@@ -2114,6 +2781,8 @@ renderSelected();
 renderCartPanel();
 updateCartCount();
 loadFavorites();
+restoreCartOptions();
+updateShippingTotal();
 
 </script>
 
