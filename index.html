@@ -619,16 +619,38 @@ section{
 }
 
 /* =========================
-   ZELLE CONFIRMATION
+   ZELLE / ORDER CONFIRMATION
 ========================= */
 
 .zelle-confirmation{
   display:none;
   margin-top:18px;
-  padding:20px;
+  padding:24px;
   border-radius:15px;
-  background:#f7f7f7;
-  border:2px solid #ff1493;
+  background:#f4fff4;
+  border:2px solid #20a83a;
+}
+
+.zelle-check{
+  width:70px;
+  height:70px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background:#20a83a;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  font-weight:900;
+}
+
+.zelle-success-title{
+  text-align:center;
+  color:#16852d;
+  font-size:25px;
+  font-weight:900;
+  margin-bottom:18px;
 }
 
 .zelle-confirmation h3{
@@ -644,7 +666,7 @@ section{
   padding:14px;
   border-radius:10px;
   background:#fff;
-  border:1px solid #ddd;
+  border:1px solid #c9e9cd;
   line-height:1.6;
 }
 
@@ -1041,451 +1063,283 @@ footer{
     id="productsGrid"
   >
 
-    <div
-      class="product-card"
-      data-name="MOTS-C 10 MG"
-    >
-
+    <div class="product-card" data-name="MOTS-C 10 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
           alt="MOTS-C 10 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="MOTS-C 10 MG"
           onclick="toggleFavorite('MOTS-C 10 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>MOTS-C 10 MG</h3>
-
         <div class="price">$60</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="MOTS-C 10 MG"
             data-price="60"
             data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="GLP-2 10 MG"
-    >
-
+    <div class="product-card" data-name="GLP-2 10 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
           alt="GLP-2 10 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-2 10 MG"
           onclick="toggleFavorite('GLP-2 10 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>GLP-2 10 MG</h3>
-
         <div class="price">$90</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="GLP-2 10 MG"
             data-price="90"
             data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="GHK-CU 100 MG"
-    >
-
+    <div class="product-card" data-name="GHK-CU 100 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
           alt="GHK-CU 100 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="GHK-CU 100 MG"
           onclick="toggleFavorite('GHK-CU 100 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>GHK-CU 100 MG</h3>
-
         <div class="price">$50</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="GHK-CU 100 MG"
             data-price="50"
             data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="GLP-3 10 MG"
-    >
-
+    <div class="product-card" data-name="GLP-3 10 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./713BA234-721B-4580-94DF-6677375C7826.png"
           alt="GLP-3 10 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-3 10 MG"
           onclick="toggleFavorite('GLP-3 10 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>GLP-3 10 MG</h3>
-
         <div class="price">$95</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="GLP-3 10 MG"
             data-price="95"
             data-image="./713BA234-721B-4580-94DF-6677375C7826.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="GLP-2 20 MG"
-    >
-
+    <div class="product-card" data-name="GLP-2 20 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
           alt="GLP-2 20 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-2 20 MG"
           onclick="toggleFavorite('GLP-2 20 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>GLP-2 20 MG</h3>
-
         <div class="price">$110</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="GLP-2 20 MG"
             data-price="110"
             data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="GLP-3 20 MG"
-    >
-
+    <div class="product-card" data-name="GLP-3 20 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
           alt="GLP-3 20 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-3 20 MG"
           onclick="toggleFavorite('GLP-3 20 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>GLP-3 20 MG</h3>
-
         <div class="price">$135</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="GLP-3 20 MG"
             data-price="135"
             data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="GLUTATHIONE 1500 MG"
-    >
-
+    <div class="product-card" data-name="GLUTATHIONE 1500 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
           alt="GLUTATHIONE 1500 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="GLUTATHIONE 1500 MG"
           onclick="toggleFavorite('GLUTATHIONE 1500 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>GLUTATHIONE 1500 MG</h3>
-
         <div class="price">$60</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="GLUTATHIONE 1500 MG"
             data-price="60"
             data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
 
-    <div
-      class="product-card"
-      data-name="NAD+ 500 MG"
-    >
-
+    <div class="product-card" data-name="NAD+ 500 MG">
       <div class="product-image-wrap">
-
         <img
           class="product-image"
           src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
           alt="NAD+ 500 MG"
           onclick="openImage(this.src)"
         >
-
         <button
           type="button"
           class="favorite-btn"
           data-product="NAD+ 500 MG"
           onclick="toggleFavorite('NAD+ 500 MG',this)"
-        >
-          ♡
-        </button>
-
+        >♡</button>
       </div>
 
       <div class="product-info">
-
         <h3>NAD+ 500 MG</h3>
-
         <div class="price">$50</div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
 
         <div class="add-wrap">
-
           <div class="add-ring"></div>
-
           <button
             type="button"
             class="add-btn"
             data-name="NAD+ 500 MG"
             data-price="50"
             data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png"
-          >
-            ADD TO LIST
-          </button>
-
+          >ADD TO LIST</button>
         </div>
-
       </div>
-
     </div>
 
   </div>
@@ -1574,9 +1428,7 @@ footer{
     type="button"
     class="panel-close"
     onclick="closeCart()"
-  >
-    ×
-  </button>
+  >×</button>
 
   <h2>🛒 CART</h2>
 
@@ -1587,48 +1439,39 @@ footer{
     <h3>Shipping Information</h3>
 
     <label class="shipping-option">
-
       <input
         type="radio"
         name="cart_shipping"
         value="Standard"
       >
-
       <span>
         <strong>Standard — $9</strong>
         <small>Standard shipping option</small>
       </span>
-
     </label>
 
     <label class="shipping-option">
-
       <input
         type="radio"
         name="cart_shipping"
         value="Express"
       >
-
       <span>
         <strong>Express — $15</strong>
         <small>Express shipping option</small>
       </span>
-
     </label>
 
     <label class="shipping-option">
-
       <input
         type="radio"
         name="cart_shipping"
         value="Free"
       >
-
       <span>
         <strong>Free Shipping — $200+</strong>
         <small>Available on qualifying orders</small>
       </span>
-
     </label>
 
     <p class="shipping-warning" id="cartShippingWarning">
@@ -1643,33 +1486,27 @@ footer{
     <h3>Payment Method</h3>
 
     <label class="shipping-option">
-
       <input
         type="radio"
         name="cart_payment"
         value="Zelle"
       >
-
       <span>
         <strong>Zelle</strong>
         <small>Manual payment option</small>
       </span>
-
     </label>
 
     <label class="shipping-option">
-
       <input
         type="radio"
         name="cart_payment"
         value="PayPal"
       >
-
       <span>
         <strong>PayPal</strong>
         <small>Manual payment option</small>
       </span>
-
     </label>
 
     <div class="payment-manual-note">
@@ -1731,9 +1568,7 @@ footer{
     type="button"
     class="panel-close"
     onclick="closeInformationPanel()"
-  >
-    ×
-  </button>
+  >×</button>
 
   <h2>Information Request</h2>
 
@@ -2002,50 +1837,113 @@ footer{
   </div>
 
 
-  <!-- ZELLE INSTRUCTIONS -->
+  <!-- ORDER COMPLETION -->
 
   <div
     id="zelleConfirmation"
     class="zelle-confirmation"
   >
 
-    <h3>
-      PAGA TU PEDIDO CON ZELLE
-    </h3>
+    <div class="zelle-check">
+      ✓
+    </div>
 
-    <p class="zelle-line">
-      <strong>Nombre:</strong>
-      Araceli Hernández
-    </p>
+    <div class="zelle-success-title">
+      PEDIDO COMPLETADO
+    </div>
 
-    <p class="zelle-line">
-      <strong>Teléfono:</strong>
-      (832) 273-9625
-    </p>
 
-    <p class="zelle-line">
-      <strong>Monto a enviar:</strong>
-      <span id="zelleAmount">$0.00</span>
-    </p>
+    <!-- ZELLE INSTRUCTIONS -->
 
-    <p class="zelle-line">
-      <strong>Número de pedido:</strong>
-      <span id="zelleOrderNumber"></span>
-    </p>
+    <div id="zellePaymentDetails">
 
-    <div class="zelle-important">
+      <h3>
+        PAGA TU PEDIDO CON ZELLE
+      </h3>
 
-      <strong>IMPORTANTE:</strong><br><br>
+      <p class="zelle-line">
+        <strong>Nombre:</strong>
+        Araceli Hernández
+      </p>
 
-      Cuando hagas tu pago por Zelle,
-      escribe el
-      <strong>número de pedido de 4 dígitos</strong>
-      en la <strong>nota o memo</strong>
-      del pago.
+      <p class="zelle-line">
+        <strong>Teléfono:</strong>
+        (832) 273-9625
+      </p>
 
-      <br><br>
+      <p class="zelle-line">
+        <strong>Monto a enviar:</strong>
+        <span id="zelleAmount">$0.00</span>
+      </p>
 
-      Esto nos ayudará a identificar correctamente tu pedido.
+      <p class="zelle-line">
+        <strong>Número de pedido:</strong>
+        <span id="zelleOrderNumber"></span>
+      </p>
+
+
+      <div class="zelle-important">
+
+        <strong>¿CÓMO HACER EL PAGO?</strong>
+
+        <br><br>
+
+        1. Abre Zelle desde la aplicación de tu banco.
+
+        <br><br>
+
+        2. Envía el pago a:
+
+        <br>
+
+        <strong>Araceli Hernández</strong>
+
+        <br>
+
+        <strong>(832) 273-9625</strong>
+
+        <br><br>
+
+        3. Envía exactamente el monto que aparece arriba.
+
+        <br><br>
+
+        4. En la sección
+        <strong>Nota / Memo</strong>,
+        escribe tu número de pedido de 4 dígitos.
+
+        <br><br>
+
+        <strong>EJEMPLO:</strong>
+
+        <br><br>
+
+        Si tu número de pedido es
+        <strong>
+          <span id="zelleExampleNumber"></span>
+        </strong>,
+
+        <br>
+
+        en la Nota / Memo debes escribir:
+
+        <br><br>
+
+        <strong style="font-size:20px;">
+          <span id="zelleExampleNumber2"></span>
+        </strong>
+
+        <br><br>
+
+        <strong>IMPORTANTE:</strong>
+
+        <br>
+
+        Escribe exactamente el número de pedido que aparece
+        arriba en la Nota / Memo de Zelle.
+        Esto nos permite identificar correctamente tu pago.
+
+      </div>
 
     </div>
 
@@ -2494,7 +2392,6 @@ function getShipping(){
 
   }
 
-
   if(shippingOption==="Standard"){
 
     return {
@@ -2504,7 +2401,6 @@ function getShipping(){
 
   }
 
-
   if(shippingOption==="Express"){
 
     return {
@@ -2513,7 +2409,6 @@ function getShipping(){
     };
 
   }
-
 
   if(
     shippingOption==="Free" &&
@@ -2526,7 +2421,6 @@ function getShipping(){
     };
 
   }
-
 
   return {
     name:"",
@@ -2586,7 +2480,6 @@ function saveCartOptions(){
       );
 
     }
-
 
     if(paymentOption){
 
@@ -3725,9 +3618,34 @@ function prepareInformationForm(){
   updatePaymentDisplay();
 
 
+  /*
+    The reference code is kept hidden
+    until the order has actually been submitted.
+  */
+
   if(referenceBox){
     referenceBox.style.display =
-      "block";
+      "none";
+  }
+
+
+  const confirmationBox =
+    document.getElementById(
+      "zelleConfirmation"
+    );
+
+  if(confirmationBox){
+    confirmationBox.style.display="none";
+  }
+
+
+  const zelleDetails =
+    document.getElementById(
+      "zellePaymentDetails"
+    );
+
+  if(zelleDetails){
+    zelleDetails.style.display="block";
   }
 
 }
@@ -3757,11 +3675,23 @@ function saveLastOrder(){
         paymentMethod:
           paymentOption,
 
+        subtotal:
+          getSubtotal(),
+
+        shipping:
+          getShipping().cost,
+
+        shippingMethod:
+          getShipping().name,
+
         total:
           getGrandTotal(),
 
         products:
-          selectedProducts
+          selectedProducts,
+
+        createdAt:
+          new Date().toISOString()
 
       })
     );
@@ -3772,7 +3702,7 @@ function saveLastOrder(){
 
 
 /* =====================================================
-   SHOW ZELLE AFTER RETURN
+   SHOW CONFIRMATION AFTER RETURN
 ===================================================== */
 
 function showZelleConfirmationAfterReturn(){
@@ -3804,53 +3734,9 @@ function showZelleConfirmationAfterReturn(){
       );
 
 
-    if(
-      !savedOrder ||
-      savedOrder.paymentMethod !== "Zelle"
-    ){
+    if(!savedOrder){
 
       return;
-
-    }
-
-
-    const zelleBox =
-      document.getElementById(
-        "zelleConfirmation"
-      );
-
-    const orderNumber =
-      document.getElementById(
-        "zelleOrderNumber"
-      );
-
-    const amount =
-      document.getElementById(
-        "zelleAmount"
-      );
-
-
-    if(zelleBox){
-      zelleBox.style.display =
-        "block";
-    }
-
-
-    if(orderNumber){
-
-      orderNumber.textContent =
-        savedOrder.referenceCode;
-
-    }
-
-
-    if(amount){
-
-      amount.textContent =
-        "$" +
-        Number(
-          savedOrder.total
-        ).toFixed(2);
 
     }
 
@@ -3865,6 +3751,30 @@ function showZelleConfirmationAfterReturn(){
         "globalOverlay"
       );
 
+    const form =
+      document.getElementById(
+        "informationForm"
+      );
+
+    const referenceBox =
+      document.getElementById(
+        "referenceDisplay"
+      );
+
+    const confirmationBox =
+      document.getElementById(
+        "zelleConfirmation"
+      );
+
+    const zelleDetails =
+      document.getElementById(
+        "zellePaymentDetails"
+      );
+
+
+    /*
+      Open the information panel.
+    */
 
     if(informationPanel){
       informationPanel.classList.add(
@@ -3880,8 +3790,146 @@ function showZelleConfirmationAfterReturn(){
 
 
     /*
+      Hide the form after the order
+      has been submitted.
+    */
+
+    if(form){
+
+      form.style.display =
+        "none";
+
+    }
+
+
+    /*
+      Hide the old reference-code box.
+    */
+
+    if(referenceBox){
+
+      referenceBox.style.display =
+        "none";
+
+    }
+
+
+    /*
+      Show the green completion screen
+      after successful submission.
+    */
+
+    if(confirmationBox){
+
+      confirmationBox.style.display =
+        "block";
+
+    }
+
+
+    /*
+      Only show Zelle instructions
+      when Zelle was selected.
+    */
+
+    if(
+      savedOrder.paymentMethod === "Zelle"
+    ){
+
+      if(zelleDetails){
+
+        zelleDetails.style.display =
+          "block";
+
+      }
+
+
+      const orderNumber =
+        document.getElementById(
+          "zelleOrderNumber"
+        );
+
+      const amount =
+        document.getElementById(
+          "zelleAmount"
+        );
+
+      const exampleNumber =
+        document.getElementById(
+          "zelleExampleNumber"
+        );
+
+      const exampleNumber2 =
+        document.getElementById(
+          "zelleExampleNumber2"
+        );
+
+
+      if(orderNumber){
+
+        orderNumber.textContent =
+          savedOrder.referenceCode;
+
+      }
+
+
+      if(amount){
+
+        amount.textContent =
+          "$" +
+          Number(
+            savedOrder.total
+          ).toFixed(2);
+
+      }
+
+
+      /*
+        The example automatically uses
+        the actual order number.
+
+        Example:
+        If the order number is 4827,
+        the customer will see 4827
+        in the Note / Memo example.
+      */
+
+      if(exampleNumber){
+
+        exampleNumber.textContent =
+          savedOrder.referenceCode;
+
+      }
+
+
+      if(exampleNumber2){
+
+        exampleNumber2.textContent =
+          savedOrder.referenceCode;
+
+      }
+
+    }else{
+
+      /*
+        PayPal selected:
+        show only the green completion
+        confirmation and no Zelle details.
+      */
+
+      if(zelleDetails){
+
+        zelleDetails.style.display =
+          "none";
+
+      }
+
+    }
+
+
+    /*
       Remove the query from the visible URL
-      after the confirmation has been shown.
+      after the confirmation is shown.
     */
 
     try{
@@ -4001,10 +4049,15 @@ function connectInformationForm(){
 
       }
 
+
       /*
         IMPORTANT:
         Do NOT use preventDefault() here.
-        Formspree receives the normal HTML POST.
+
+        Formspree receives the normal
+        HTML POST and redirects the visitor
+        back to the site according to the
+        Formspree redirect setting.
       */
 
     }
@@ -4268,10 +4321,20 @@ function initializeNovaPeps(){
 
   updateShippingTotal();
 
+
   /*
     If Formspree sends the visitor back to:
     https://novapepsusa.com/?orderSubmitted=1
-    this will show Zelle instructions.
+
+    this will show the green confirmation.
+
+    If Zelle was selected:
+    the Zelle instructions and dynamic
+    order-number example will appear.
+
+    If PayPal was selected:
+    only the green completion screen
+    will appear.
   */
 
   showZelleConfirmationAfterReturn();
