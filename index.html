@@ -1,131 +1,382 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagos</title>
+  <title>Nova Peps - Order</title>
   <style>
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
       color: #222;
     }
     .container {
-      max-width: 500px;
-      margin: 40px auto;
+      max-width: 600px;
+      margin: 30px auto;
       padding: 20px;
     }
     .card {
       background: white;
+      padding: 25px;
       border-radius: 18px;
-      padding: 30px 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
     }
-    h1 {
+    h1, h2 {
       text-align: center;
-      margin-top: 0;
-      margin-bottom: 10px;
     }
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 30px;
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
     }
-    .payment {
-      border: 1px solid #e5e5e5;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 16px;
-    }
-    .payment h2 {
-      margin: 0 0 12px;
-      font-size: 20px;
-    }
-    .payment p {
-      margin: 7px 0;
+    input, textarea, select {
+      width: 100%;
+      padding: 13px;
+      margin-top: 7px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
       font-size: 16px;
     }
-    .venmo h2 {
-      color: #008cff;
+    textarea {
+      min-height: 90px;
+      resize: vertical;
     }
-    .zelle h2 {
-      color: #6d1ed4;
-    }
-    .paypal h2 {
-      color: #003087;
-    }
-    .copy-btn {
-      border: none;
-      border-radius: 8px;
-      padding: 9px 13px;
-      margin-top: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      background: #222;
-      color: white;
-    }
-    .copy-btn:hover {
-      opacity: 0.85;
-    }
-    .notice {
-      text-align: center;
+    .payment-box {
       margin-top: 20px;
-      font-size: 14px;
-      color: #777;
+      padding: 18px;
+      background: #f3f7ff;
+      border-radius: 12px;
+    }
+    .payment-info {
+      display: none;
+      margin-top: 12px;
+      padding: 14px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #111;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #333;
+    }
+    #thankYou {
+      display: none;
+      text-align: center;
+    }
+    .order-number {
+      font-size: 30px;
+      font-weight: bold;
+      color: #111;
+      margin: 20px 0;
+    }
+    .important {
+      background: #fff4d6;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .payment-detail {
+      margin: 8px 0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Información de Pago</h1>
-      <div class="subtitle">
-        Elige el método de pago que prefieras.
+<div class="container">
+  <!-- ORDER FORM -->
+  <div class="card" id="orderForm">
+    <h1>Place Your Order</h1>
+    <form id="purchaseForm">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+      >
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+      >
+      <label for="phone">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        required
+      >
+      <label for="orderDetails">Order Details</label>
+      <textarea
+        id="orderDetails"
+        name="orderDetails"
+        placeholder="What would you like to order?"
+        required
+      ></textarea>
+      <label for="total">Order Total</label>
+      <input
+        type="number"
+        id="total"
+        name="total"
+        step="0.01"
+        min="0"
+        placeholder="0.00"
+        required
+      >
+      <div class="payment-box">
+        <h2>Payment Method</h2>
+        <label for="paymentMethod">Choose Payment Method</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="">Select one</option>
+          <option value="Zelle">Zelle</option>
+          <option value="Venmo">Venmo</option>
+          <option value="PayPal">PayPal</option>
+        </select>
+        <!-- ZELLE -->
+        <div class="payment-info" id="zelleInfo">
+          <strong>ZELLE</strong>
+          <div class="payment-detail">
+            Araceli Hernández
+          </div>
+          <div class="payment-detail">
+            (832) 273-9625
+          </div>
+          <div class="important">
+            <strong>IMPORTANT:</strong><br><br>
+            After sending your Zelle payment,
+            please write your <strong>ORDER NUMBER</strong>
+            in the <strong>Notes</strong> of your payment.
+          </div>
+        </div>
+        <!-- VENMO -->
+        <div class="payment-info" id="venmoInfo">
+          <strong>VENMO</strong>
+          <div class="payment-detail">
+            @novapeps22
+          </div>
+          <div class="payment-detail">
+            Araceli Hernández
+          </div>
+          <div class="important">
+            Please include your
+            <strong>ORDER NUMBER</strong>
+            in the payment description if possible.
+          </div>
+        </div>
+        <!-- PAYPAL -->
+        <div class="payment-info" id="paypalInfo">
+          <strong>PAYPAL</strong>
+          <div class="payment-detail">
+            Add your PayPal email here.
+          </div>
+          <div class="important">
+            Please include your
+            <strong>ORDER NUMBER</strong>
+            with your payment.
+          </div>
+        </div>
       </div>
-      <!-- PAYPAL -->
-      <div class="payment paypal">
-        <h2>PayPal</h2>
-        <p><strong>PayPal:</strong> Agrega aquí tu información de PayPal</p>
-      </div>
-      <!-- VENMO -->
-      <div class="payment venmo">
-        <h2>Venmo</h2>
-        <p><strong>Usuario:</strong> @novapeps22</p>
-        <p><strong>Nombre:</strong> Araceli Hernández</p>
-        <button class="copy-btn"
-          onclick="copiar('@novapeps22')">
-          Copiar Venmo
-        </button>
-      </div>
-      <!-- ZELLE -->
-      <div class="payment zelle">
-        <h2>Zelle</h2>
-        <p><strong>Nombre:</strong> Araceli Hernández</p>
-        <p><strong>Teléfono:</strong> (832) 273-9625</p>
-        <button class="copy-btn"
-          onclick="copiar('(832) 273-9625')">
-          Copiar teléfono
-        </button>
-      </div>
-      <div class="notice">
-        Por favor verifica la información antes de enviar tu pago.
-      </div>
-    </div>
+      <button type="submit">
+        PLACE ORDER
+      </button>
+    </form>
   </div>
-  <script>
-    function copiar(texto) {
-      navigator.clipboard.writeText(texto)
-        .then(function() {
-          alert("Información copiada");
-        })
-        .catch(function() {
-          alert("No se pudo copiar la información.");
-        });
+  <!-- THANK YOU PAGE -->
+  <div class="card" id="thankYou">
+    <h1>THANK YOU! 🎉</h1>
+    <p>
+      Thank you for your order!
+    </p>
+    <p>
+      Your order has been received.
+    </p>
+    <div class="order-number" id="displayOrderNumber">
+      #1001
+    </div>
+    <p>
+      Please save this order number.
+    </p>
+    <div class="important">
+      <strong>PAYMENT INSTRUCTIONS</strong>
+      <p id="thankYouPaymentText"></p>
+    </div>
+    <p>
+      A confirmation with your order information
+      will be sent to your email.
+    </p>
+  </div>
+</div>
+<script>
+  /*
+    ORDER NUMBER
+    Each new order gets a new number.
+    The number is saved in the browser so it
+    continues increasing.
+  */
+  function createOrderNumber() {
+    let lastOrder =
+      localStorage.getItem("lastOrderNumber");
+    if (!lastOrder) {
+      lastOrder = 1000;
     }
-  </script>
+    let newOrder =
+      parseInt(lastOrder) + 1;
+    localStorage.setItem(
+      "lastOrderNumber",
+      newOrder
+    );
+    return newOrder;
+  }
+  /*
+    PAYMENT INFORMATION
+  */
+  const paymentMethod =
+    document.getElementById("paymentMethod");
+  const zelleInfo =
+    document.getElementById("zelleInfo");
+  const venmoInfo =
+    document.getElementById("venmoInfo");
+  const paypalInfo =
+    document.getElementById("paypalInfo");
+  paymentMethod.addEventListener("change", function() {
+    zelleInfo.style.display = "none";
+    venmoInfo.style.display = "none";
+    paypalInfo.style.display = "none";
+    if (this.value === "Zelle") {
+      zelleInfo.style.display = "block";
+    }
+    if (this.value === "Venmo") {
+      venmoInfo.style.display = "block";
+    }
+    if (this.value === "PayPal") {
+      paypalInfo.style.display = "block";
+    }
+  });
+  /*
+    SUBMIT ORDER
+  */
+  document
+    .getElementById("purchaseForm")
+    .addEventListener("submit", function(event) {
+      event.preventDefault();
+      const orderNumber =
+        createOrderNumber();
+      const name =
+        document.getElementById("name").value;
+      const email =
+        document.getElementById("email").value;
+      const phone =
+        document.getElementById("phone").value;
+      const orderDetails =
+        document.getElementById("orderDetails").value;
+      const total =
+        document.getElementById("total").value;
+      const payment =
+        document.getElementById("paymentMethod").value;
+      /*
+        SHOW ORDER NUMBER
+      */
+      document.getElementById(
+        "displayOrderNumber"
+      ).textContent =
+        "#" + orderNumber;
+      /*
+        PAYMENT MESSAGE
+      */
+      let paymentMessage = "";
+      if (payment === "Zelle") {
+        paymentMessage =
+          "Send your payment through Zelle to " +
+          "Araceli Hernández at (832) 273-9625. " +
+          "IMPORTANT: write order #" +
+          orderNumber +
+          " in the Notes of your Zelle payment.";
+      }
+      if (payment === "Venmo") {
+        paymentMessage =
+          "Send your payment through Venmo to " +
+          "@novapeps22 (Araceli Hernández). " +
+          "Please include order #" +
+          orderNumber +
+          " with your payment.";
+      }
+      if (payment === "PayPal") {
+        paymentMessage =
+          "Complete your payment through PayPal. " +
+          "Please include order #" +
+          orderNumber +
+          " with your payment.";
+      }
+      document.getElementById(
+        "thankYouPaymentText"
+      ).textContent =
+        paymentMessage;
+      /*
+        SAVE ORDER INFORMATION
+        This keeps the order information locally.
+      */
+      const order = {
+        orderNumber:
+          "#" + orderNumber,
+        customerName:
+          name,
+        email:
+          email,
+        phone:
+          phone,
+        orderDetails:
+          orderDetails,
+        total:
+          total,
+        paymentMethod:
+          payment,
+        date:
+          new Date().toLocaleString()
+      };
+      localStorage.setItem(
+        "order_" + orderNumber,
+        JSON.stringify(order)
+      );
+      /*
+        HIDE FORM
+        SHOW THANK YOU
+      */
+      document.getElementById(
+        "orderForm"
+      ).style.display = "none";
+      document.getElementById(
+        "thankYou"
+      ).style.display = "block";
+      /*
+        IMPORTANT:
+        To actually send this information
+        automatically to your email, connect
+        this form to your email service or
+        website backend.
+        The order object contains all the
+        information that should be emailed.
+      */
+      console.log(
+        "NEW ORDER:",
+        order
+      );
+    });
+</script>
 </body>
 </html>
