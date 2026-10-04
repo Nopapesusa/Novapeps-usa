@@ -350,6 +350,21 @@ section{
 }
 
 /* =========================
+   SEARCH MESSAGE
+========================= */
+
+.search-result-message{
+  display:none;
+  max-width:1200px;
+  margin:0 auto 20px;
+  padding:12px 15px;
+  background:#f8f8f8;
+  border-radius:10px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* =========================
    OVERLAY
 ========================= */
 
@@ -1010,6 +1025,7 @@ footer{
       type="text"
       id="menuSearch"
       placeholder="Search products..."
+      autocomplete="off"
       oninput="searchProducts(this.value)"
     >
 
@@ -1057,6 +1073,11 @@ footer{
   <h2 class="section-title">
     PRODUCTS
   </h2>
+
+  <div
+    id="searchResultMessage"
+    class="search-result-message"
+  ></div>
 
   <div
     class="products-grid"
@@ -1505,6 +1526,20 @@ footer{
       >
       <span>
         <strong>PayPal</strong>
+        <small>Manual payment option</small>
+      </span>
+    </label>
+
+    <!-- VENMO ADDED -->
+
+    <label class="shipping-option">
+      <input
+        type="radio"
+        name="cart_payment"
+        value="Venmo"
+      >
+      <span>
+        <strong>Venmo</strong>
         <small>Manual payment option</small>
       </span>
     </label>
@@ -3487,7 +3522,7 @@ function openInformationPanel(){
   if(!paymentOption){
 
     alert(
-      "Please select Zelle or PayPal in the cart."
+      "Please select Zelle, PayPal, or Venmo in the cart."
     );
 
     openCart();
@@ -3898,14 +3933,6 @@ function connectInformationForm(){
     "submit",
     async function(event){
 
-      /*
-        IMPORTANT:
-        Prevent the normal browser navigation.
-
-        Formspree receives the information
-        in the background instead.
-      */
-
       event.preventDefault();
 
 
@@ -3949,7 +3976,7 @@ function connectInformationForm(){
       if(!paymentOption){
 
         alert(
-          "Please select Zelle or PayPal in the cart."
+          "Please select Zelle, PayPal, or Venmo in the cart."
         );
 
         closeInformationPanel();
@@ -3961,18 +3988,7 @@ function connectInformationForm(){
       }
 
 
-      /*
-        Generate the order number and
-        prepare every hidden field.
-      */
-
       prepareInformationForm();
-
-
-      /*
-        Save the exact order information
-        locally before sending it.
-      */
 
       saveLastOrder();
 
@@ -4017,19 +4033,12 @@ function connectInformationForm(){
           );
 
 
-        /*
-          Formspree supports AJAX submissions
-          with an Accept: application/json header.
-        */
-
         const response =
           await fetch(
             informationForm.action,
             {
               method:"POST",
-
               body:formData,
-
               headers:{
                 "Accept":"application/json"
               }
@@ -4088,25 +4097,7 @@ function connectInformationForm(){
         }
 
 
-        /*
-          The request was successfully
-          accepted by Formspree.
-
-          The customer remains on NovaPeps.
-        */
-
         saveLastOrder();
-
-
-        /*
-          Show the final green confirmation.
-
-          Zelle:
-          show only Zelle instructions.
-
-          PayPal:
-          show only completion confirmation.
-        */
 
         showOrderConfirmation();
 
@@ -4250,46 +4241,144 @@ function loadFavorites(){
 
 
 /* =====================================================
-   SEARCH
+   SEARCH — FIXED
 ===================================================== */
+
+function normalizeSearchText(value){
+
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^a-z0-9+]/g,"");
+
+}
+
 
 function searchProducts(value){
 
+  const rawSearch =
+    String(value || "").trim();
+
   const search =
-    value.trim().toLowerCase();
+    normalizeSearchText(rawSearch);
 
-
-  document
-    .querySelectorAll(
+  const cards =
+    document.querySelectorAll(
       ".product-card"
-    )
-    .forEach(
-      function(card){
+    );
 
-        const name =
-          (
-            card.dataset.name ||
-            ""
-          ).toLowerCase();
+  let matchesFound=0;
 
 
-        if(
-          name.includes(search)
-        ){
+  cards.forEach(
+    function(card){
 
-          card.style.display="";
+      const dataName =
+        card.dataset.name || "";
 
-        }else{
+      const heading =
+        card.querySelector("h3");
 
-          card.style.display="none";
+      const image =
+        card.querySelector("img");
 
-        }
+      const productName =
+        dataName ||
+        (heading ? heading.textContent : "") ||
+        (image ? image.alt : "") ||
+        "";
+
+
+      const normalizedName =
+        normalizeSearchText(
+          productName
+        );
+
+
+      const matches =
+        !search ||
+        normalizedName.includes(search);
+
+
+      if(matches){
+
+        card.style.display="";
+        matchesFound++;
+
+      }else{
+
+        card.style.display="none";
 
       }
+
+    }
+  );
+
+
+  const resultMessage =
+    document.getElementById(
+      "searchResultMessage"
     );
 
 
-  if(search){
+  if(resultMessage){
+
+    if(!rawSearch){
+
+      resultMessage.style.display="none";
+      resultMessage.textContent="";
+
+    }else if(matchesFound===0){
+
+      resultMessage.style.display="block";
+
+      resultMessage.textContent =
+        'No products found for "' +
+        rawSearch +
+        '".';
+
+    }else{
+
+      resultMessage.style.display="block";
+
+      resultMessage.textContent =
+        matchesFound +
+        (
+          matchesFound===1
+            ? " product found."
+            : " products found."
+        );
+
+    }
+
+  }
+
+
+  /*
+    When the user starts searching,
+    close the menu and remove the overlay
+    so the products are completely visible.
+  */
+
+  if(rawSearch){
+
+    closeMenu();
+
+    const overlay =
+      document.getElementById(
+        "globalOverlay"
+      );
+
+    if(overlay){
+
+      overlay.classList.remove(
+        "show"
+      );
+
+    }
+
 
     const products =
       document.getElementById(
@@ -4299,9 +4388,17 @@ function searchProducts(value){
 
     if(products){
 
-      products.scrollIntoView({
-        behavior:"smooth"
-      });
+      setTimeout(
+        function(){
+
+          products.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+
+        },
+        50
+      );
 
     }
 
