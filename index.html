@@ -363,7 +363,7 @@ section{
 }
 
 /* =========================
-   SEARCH RESULTS INSIDE MENU
+   SEARCH RESULTS
 ========================= */
 
 .menu-search-results{
@@ -870,7 +870,7 @@ footer{
 }
 
 /* =========================
-   IMAGE MODAL
+   PRODUCT DETAIL MODAL
 ========================= */
 
 .modal{
@@ -881,14 +881,11 @@ footer{
   z-index:3000;
   align-items:center;
   justify-content:center;
+  padding:20px;
 }
 
-.modal.show{display:flex;}
-
-.modal img{
-  max-width:90%;
-  max-height:85%;
-  object-fit:contain;
+.modal.show{
+  display:flex;
 }
 
 .modal-close{
@@ -902,6 +899,108 @@ footer{
   background:#fff;
   color:#000;
   font-size:25px;
+  z-index:20;
+}
+
+.product-detail-modal{
+  width:430px;
+  max-width:92%;
+  max-height:90vh;
+  overflow-y:auto;
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+  text-align:center;
+}
+
+.product-detail-image{
+  width:100%;
+  height:300px;
+  object-fit:contain;
+  background:#f7f7f7;
+  border-radius:15px;
+  display:block;
+  margin-bottom:20px;
+}
+
+.product-detail-info h2{
+  font-size:25px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.modal-product-price{
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.modal-research{
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:22px;
+}
+
+.modal-quantity-title{
+  font-size:15px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.modal-quantity{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:20px;
+}
+
+.modal-quantity button{
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:9px;
+  background:#111;
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+}
+
+.modal-quantity span{
+  min-width:35px;
+  font-size:20px;
+  font-weight:900;
+}
+
+.modal-add-cart,
+.modal-go-cart{
+  width:100%;
+  border:none;
+  border-radius:12px;
+  padding:15px;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.modal-add-cart{
+  background:#ff1493;
+  color:#fff;
+}
+
+.modal-add-cart:hover{
+  background:#e6007e;
+}
+
+.modal-go-cart{
+  background:#000;
+  color:#fff;
+  margin-top:10px;
+}
+
+.modal-go-cart:hover{
+  background:#222;
 }
 
 /* =========================
@@ -1030,6 +1129,15 @@ footer{
     bottom:12px;
   }
 
+  .product-detail-modal{
+    width:94%;
+    padding:20px;
+  }
+
+  .product-detail-image{
+    height:250px;
+  }
+
 }
 </style>
 </head>
@@ -1118,7 +1226,6 @@ footer{
       oninput="searchProducts(this.value)"
     >
 
-    <!-- RESULTADOS DE BÚSQUEDA -->
     <div
       id="menuSearchResults"
       class="menu-search-results"
@@ -1179,283 +1286,427 @@ footer{
     id="productsGrid"
   >
 
+    <!-- MOTS-C -->
+
     <div class="product-card" data-name="MOTS-C 10 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
           alt="MOTS-C 10 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('MOTS-C 10 MG',60,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="MOTS-C 10 MG"
           onclick="toggleFavorite('MOTS-C 10 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>MOTS-C 10 MG</h3>
+
         <div class="price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="MOTS-C 10 MG"
             data-price="60"
             data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- GLP-2 10 MG -->
+
     <div class="product-card" data-name="GLP-2 10 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
           alt="GLP-2 10 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('GLP-2 10 MG',90,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-2 10 MG"
           onclick="toggleFavorite('GLP-2 10 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-2 10 MG</h3>
+
         <div class="price">$90</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="GLP-2 10 MG"
             data-price="90"
             data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- GHK-CU -->
+
     <div class="product-card" data-name="GHK-CU 100 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
           alt="GHK-CU 100 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('GHK-CU 100 MG',50,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="GHK-CU 100 MG"
           onclick="toggleFavorite('GHK-CU 100 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GHK-CU 100 MG</h3>
+
         <div class="price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="GHK-CU 100 MG"
             data-price="50"
             data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- GLP-3 10 MG -->
+
     <div class="product-card" data-name="GLP-3 10 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./713BA234-721B-4580-94DF-6677375C7826.png"
           alt="GLP-3 10 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('GLP-3 10 MG',95,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-3 10 MG"
           onclick="toggleFavorite('GLP-3 10 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-3 10 MG</h3>
+
         <div class="price">$95</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="GLP-3 10 MG"
             data-price="95"
             data-image="./713BA234-721B-4580-94DF-6677375C7826.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- GLP-2 20 MG -->
+
     <div class="product-card" data-name="GLP-2 20 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
           alt="GLP-2 20 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('GLP-2 20 MG',110,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-2 20 MG"
           onclick="toggleFavorite('GLP-2 20 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-2 20 MG</h3>
+
         <div class="price">$110</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="GLP-2 20 MG"
             data-price="110"
             data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- GLP-3 20 MG -->
+
     <div class="product-card" data-name="GLP-3 20 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
           alt="GLP-3 20 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('GLP-3 20 MG',135,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="GLP-3 20 MG"
           onclick="toggleFavorite('GLP-3 20 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLP-3 20 MG</h3>
+
         <div class="price">$135</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="GLP-3 20 MG"
             data-price="135"
             data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- GLUTATHIONE -->
+
     <div class="product-card" data-name="GLUTATHIONE 1500 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
           alt="GLUTATHIONE 1500 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('GLUTATHIONE 1500 MG',60,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="GLUTATHIONE 1500 MG"
           onclick="toggleFavorite('GLUTATHIONE 1500 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>GLUTATHIONE 1500 MG</h3>
+
         <div class="price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="GLUTATHIONE 1500 MG"
             data-price="60"
             data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
 
+    <!-- NAD+ -->
+
     <div class="product-card" data-name="NAD+ 500 MG">
+
       <div class="product-image-wrap">
+
         <img
           class="product-image"
           src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
           alt="NAD+ 500 MG"
-          onclick="openImage(this.src)"
+          onclick="openProductModal('NAD+ 500 MG',50,this.src)"
         >
+
         <button
           type="button"
           class="favorite-btn"
           data-product="NAD+ 500 MG"
           onclick="toggleFavorite('NAD+ 500 MG',this)"
         >♡</button>
+
       </div>
 
       <div class="product-info">
+
         <h3>NAD+ 500 MG</h3>
+
         <div class="price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
 
         <div class="add-wrap">
+
           <div class="add-ring"></div>
+
           <button
             type="button"
             class="add-btn"
             data-name="NAD+ 500 MG"
             data-price="50"
             data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png"
-          >ADD TO LIST</button>
+          >
+            ADD TO LIST
+          </button>
+
         </div>
+
       </div>
+
     </div>
 
   </div>
@@ -1700,7 +1951,6 @@ footer{
 
   <h2>Information Request</h2>
 
-
   <form
     id="informationForm"
     action="https://formspree.io/f/myezrady"
@@ -1762,7 +2012,6 @@ footer{
       value="This request is informational only. No payment was processed."
     >
 
-
     <div class="form-group">
 
       <label for="name">Name</label>
@@ -1776,7 +2025,6 @@ footer{
       >
 
     </div>
-
 
     <div class="form-group">
 
@@ -1792,7 +2040,6 @@ footer{
 
     </div>
 
-
     <div class="form-group">
 
       <label for="phone">Phone number</label>
@@ -1807,7 +2054,6 @@ footer{
 
     </div>
 
-
     <div class="form-group">
 
       <label for="address">Address</label>
@@ -1821,7 +2067,6 @@ footer{
       >
 
     </div>
-
 
     <div class="form-group">
 
@@ -1841,7 +2086,6 @@ footer{
 
     </div>
 
-
     <div class="form-row">
 
       <div class="form-group">
@@ -1857,7 +2101,6 @@ footer{
         >
 
       </div>
-
 
       <div class="form-group">
 
@@ -1875,7 +2118,6 @@ footer{
 
     </div>
 
-
     <div class="form-group">
 
       <label for="zip">ZIP Code</label>
@@ -1889,7 +2131,6 @@ footer{
       >
 
     </div>
-
 
     <div class="shipping-options">
 
@@ -1919,7 +2160,6 @@ footer{
 
     </div>
 
-
     <div
       class="form-group"
       style="margin-top:18px;"
@@ -1935,7 +2175,6 @@ footer{
 
     </div>
 
-
     <button
       type="submit"
       class="primary-btn"
@@ -1943,7 +2182,6 @@ footer{
     >
       SEND INFORMATION REQUEST
     </button>
-
 
     <div
       id="formStatus"
@@ -1980,7 +2218,6 @@ footer{
       PEDIDO COMPLETADO
     </div>
 
-
     <div id="zellePaymentDetails">
 
       <h3>
@@ -2006,7 +2243,6 @@ footer{
         <strong>Número de pedido:</strong>
         <span id="zelleOrderNumber"></span>
       </p>
-
 
       <div class="zelle-important">
 
@@ -2233,7 +2469,6 @@ footer{
 
     </div>
 
-
     <div class="form-group">
 
       <label>Password</label>
@@ -2245,14 +2480,12 @@ footer{
 
     </div>
 
-
     <button
       class="primary-btn"
       type="button"
     >
       LOGIN
     </button>
-
 
     <button
       class="secondary-btn"
@@ -2266,7 +2499,9 @@ footer{
 </section>
 
 
-<!-- IMAGE MODAL -->
+<!-- =========================
+     PRODUCT DETAIL MODAL
+========================= -->
 
 <div
   class="modal"
@@ -2281,11 +2516,87 @@ footer{
     ×
   </button>
 
-  <img
-    id="modalImage"
-    src=""
-    alt="Product image"
-  >
+
+  <div class="product-detail-modal">
+
+    <img
+      id="modalImage"
+      src=""
+      alt="Product image"
+      class="product-detail-image"
+    >
+
+
+    <div class="product-detail-info">
+
+      <h2 id="modalProductName">
+        PRODUCT
+      </h2>
+
+
+      <div
+        id="modalProductPrice"
+        class="modal-product-price"
+      >
+        $0
+      </div>
+
+
+      <div class="modal-research">
+        For research use only. For adults 18+.
+      </div>
+
+
+      <div class="modal-quantity-title">
+        Quantity
+      </div>
+
+
+      <div class="modal-quantity">
+
+        <button
+          type="button"
+          onclick="changeModalQuantity(-1)"
+        >
+          −
+        </button>
+
+        <span id="modalQuantity">
+          1
+        </span>
+
+        <button
+          type="button"
+          onclick="changeModalQuantity(1)"
+        >
+          +
+        </button>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="modal-add-cart"
+        onclick="addModalProductToCart()"
+      >
+        ADD TO CART
+      </button>
+
+
+      <button
+        type="button"
+        id="modalGoCart"
+        class="modal-go-cart"
+        onclick="goToCartFromModal()"
+        style="display:none;"
+      >
+        GO TO CART / CHECKOUT
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
@@ -2480,6 +2791,283 @@ try{
 
 
 /* =====================================================
+   PRODUCT MODAL DATA
+===================================================== */
+
+let modalProduct = {
+  name:"",
+  price:0,
+  image:"",
+  quantity:1
+};
+
+
+/* =====================================================
+   OPEN PRODUCT DETAIL
+===================================================== */
+
+function openProductModal(
+  name,
+  price,
+  image
+){
+
+  modalProduct = {
+    name:name,
+    price:Number(price),
+    image:image,
+    quantity:1
+  };
+
+
+  const modal =
+    document.getElementById(
+      "imageModal"
+    );
+
+  const imageElement =
+    document.getElementById(
+      "modalImage"
+    );
+
+  const nameElement =
+    document.getElementById(
+      "modalProductName"
+    );
+
+  const priceElement =
+    document.getElementById(
+      "modalProductPrice"
+    );
+
+  const quantityElement =
+    document.getElementById(
+      "modalQuantity"
+    );
+
+  const goCartButton =
+    document.getElementById(
+      "modalGoCart"
+    );
+
+
+  if(imageElement){
+
+    imageElement.src =
+      image;
+
+    imageElement.alt =
+      name;
+
+  }
+
+
+  if(nameElement){
+
+    nameElement.textContent =
+      name;
+
+  }
+
+
+  if(priceElement){
+
+    priceElement.textContent =
+      "$" + Number(price);
+
+  }
+
+
+  if(quantityElement){
+
+    quantityElement.textContent =
+      "1";
+
+  }
+
+
+  if(goCartButton){
+
+    goCartButton.style.display =
+      "none";
+
+  }
+
+
+  if(modal){
+
+    modal.classList.add(
+      "show"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   PRODUCT MODAL QUANTITY
+===================================================== */
+
+function changeModalQuantity(
+  change
+){
+
+  modalProduct.quantity =
+    Number(
+      modalProduct.quantity || 1
+    ) +
+    Number(change);
+
+
+  if(
+    modalProduct.quantity < 1
+  ){
+
+    modalProduct.quantity=1;
+
+  }
+
+
+  const quantityElement =
+    document.getElementById(
+      "modalQuantity"
+    );
+
+
+  if(quantityElement){
+
+    quantityElement.textContent =
+      modalProduct.quantity;
+
+  }
+
+}
+
+
+/* =====================================================
+   ADD PRODUCT FROM MODAL
+===================================================== */
+
+function addModalProductToCart(){
+
+  if(
+    !modalProduct.name ||
+    !modalProduct.price ||
+    !modalProduct.image
+  ){
+
+    return;
+
+  }
+
+
+  const existing =
+    selectedProducts.find(
+      function(item){
+
+        return item.name ===
+          modalProduct.name;
+
+      }
+    );
+
+
+  if(existing){
+
+    existing.quantity =
+      Number(
+        existing.quantity || 0
+      ) +
+      Number(
+        modalProduct.quantity
+      );
+
+  }else{
+
+    selectedProducts.push({
+
+      name:
+        modalProduct.name,
+
+      price:
+        Number(
+          modalProduct.price
+        ),
+
+      image:
+        modalProduct.image,
+
+      quantity:
+        Number(
+          modalProduct.quantity
+        )
+
+    });
+
+  }
+
+
+  saveProducts();
+
+  renderSelected();
+
+  renderCartPanel();
+
+  updateCartCount();
+
+
+  const cart =
+    document.getElementById(
+      "floatingCart"
+    );
+
+
+  if(cart){
+
+    cart.classList.remove(
+      "cart-bump"
+    );
+
+    void cart.offsetWidth;
+
+    cart.classList.add(
+      "cart-bump"
+    );
+
+  }
+
+
+  const goCartButton =
+    document.getElementById(
+      "modalGoCart"
+    );
+
+
+  if(goCartButton){
+
+    goCartButton.style.display =
+      "block";
+
+  }
+
+}
+
+
+/* =====================================================
+   GO TO CART FROM MODAL
+===================================================== */
+
+function goToCartFromModal(){
+
+  closeImage();
+
+  openCart();
+
+}
+
+
+/* =====================================================
    HELPERS
 ===================================================== */
 
@@ -2518,7 +3106,9 @@ function getShipping(){
 
   }
 
-  if(shippingOption==="Standard"){
+  if(
+    shippingOption==="Standard"
+  ){
 
     return {
       name:"Standard",
@@ -2527,7 +3117,9 @@ function getShipping(){
 
   }
 
-  if(shippingOption==="Express"){
+  if(
+    shippingOption==="Express"
+  ){
 
     return {
       name:"Express",
@@ -2607,6 +3199,7 @@ function saveCartOptions(){
 
     }
 
+
     if(paymentOption){
 
       localStorage.setItem(
@@ -2640,7 +3233,9 @@ function addToList(
   const existing =
     selectedProducts.find(
       function(item){
+
         return item.name===name;
+
       }
     );
 
@@ -2648,7 +3243,9 @@ function addToList(
   if(existing){
 
     existing.quantity =
-      Number(existing.quantity || 0)+1;
+      Number(
+        existing.quantity || 0
+      )+1;
 
   }else{
 
@@ -2678,6 +3275,7 @@ function addToList(
       "floatingCart"
     );
 
+
   if(cart){
 
     cart.classList.remove(
@@ -2704,8 +3302,11 @@ function connectProductButtons(){
   if(
     window.__novaProductButtonsConnected
   ){
+
     return;
+
   }
+
 
   window.__novaProductButtonsConnected=true;
 
@@ -2719,11 +3320,16 @@ function connectProductButtons(){
           ".add-btn"
         );
 
+
       if(!button){
+
         return;
+
       }
 
+
       event.preventDefault();
+
       event.stopPropagation();
 
 
@@ -2781,7 +3387,9 @@ function renderSelected(){
 
 
   if(!box){
+
     return;
+
   }
 
 
@@ -2791,6 +3399,7 @@ function renderSelected(){
 
     box.innerHTML =
       "<p>No products selected.</p>";
+
 
     if(totalBox){
 
@@ -2814,6 +3423,7 @@ function renderSelected(){
         document.createElement(
           "div"
         );
+
 
       row.className =
         "selected-row";
@@ -2954,6 +3564,7 @@ function updateShippingAvailability(){
 
 
     shippingOption="";
+
     paymentOption="";
 
     saveCartOptions();
@@ -2992,9 +3603,13 @@ function updateShippingAvailability(){
 
     shippingOption="";
 
+
     if(freeRadio){
+
       freeRadio.checked=false;
+
     }
+
 
     saveCartOptions();
 
@@ -3057,20 +3672,28 @@ function updateShippingTotal(){
 
 
   if(cartSubtotal){
+
     cartSubtotal.textContent =
       "$"+subtotal;
+
   }
 
+
   if(cartShipping){
+
     cartShipping.textContent =
       shipping.name
         ? "$"+shipping.cost
         : "Not selected";
+
   }
 
+
   if(cartGrand){
+
     cartGrand.textContent =
       "$"+grandTotal;
+
   }
 
 
@@ -3091,20 +3714,28 @@ function updateShippingTotal(){
 
 
   if(formSubtotal){
+
     formSubtotal.textContent =
       "$"+subtotal;
+
   }
 
+
   if(formShipping){
+
     formShipping.textContent =
       shipping.name
         ? "$"+shipping.cost
         : "Not selected";
+
   }
 
+
   if(formGrand){
+
     formGrand.textContent =
       "$"+grandTotal;
+
   }
 
 
@@ -3135,30 +3766,44 @@ function updateShippingTotal(){
 
 
   if(subtotalInput){
+
     subtotalInput.value =
       "$"+subtotal;
+
   }
 
+
   if(shippingMethodInput){
+
     shippingMethodInput.value =
       shipping.name ||
       "Not selected";
+
   }
+
 
   if(shippingCostInput){
+
     shippingCostInput.value =
       "$"+shipping.cost;
+
   }
+
 
   if(informationalTotalInput){
+
     informationalTotalInput.value =
       "$"+grandTotal;
+
   }
 
+
   if(paymentMethodInput){
+
     paymentMethodInput.value =
       paymentOption ||
       "Not selected";
+
   }
 
 }
@@ -3229,11 +3874,20 @@ function openCart(){
 
 
   if(panel){
-    panel.classList.add("open");
+
+    panel.classList.add(
+      "open"
+    );
+
   }
 
+
   if(overlay){
-    overlay.classList.add("show");
+
+    overlay.classList.add(
+      "show"
+    );
+
   }
 
 }
@@ -3246,8 +3900,13 @@ function closeCart(){
       "cartPanel"
     );
 
+
   if(panel){
-    panel.classList.remove("open");
+
+    panel.classList.remove(
+      "open"
+    );
+
   }
 
 }
@@ -3262,7 +3921,9 @@ function renderCartPanel(){
 
 
   if(!box){
+
     return;
+
   }
 
 
@@ -3295,6 +3956,7 @@ function renderCartPanel(){
         document.createElement(
           "div"
         );
+
 
       div.className =
         "cart-item";
@@ -3378,7 +4040,9 @@ function changeQuantity(
 ){
 
   if(!selectedProducts[index]){
+
     return;
+
   }
 
 
@@ -3419,7 +4083,9 @@ function changeQuantity(
 function removeProduct(index){
 
   if(!selectedProducts[index]){
+
     return;
+
   }
 
 
@@ -3434,6 +4100,7 @@ function removeProduct(index){
   ){
 
     shippingOption="";
+
     paymentOption="";
 
     saveCartOptions();
@@ -3461,6 +4128,7 @@ function clearList(){
   selectedProducts=[];
 
   shippingOption="";
+
   paymentOption="";
 
   saveProducts();
@@ -3638,11 +4306,20 @@ function openInformationPanel(){
 
 
   if(panel){
-    panel.classList.add("open");
+
+    panel.classList.add(
+      "open"
+    );
+
   }
 
+
   if(overlay){
-    overlay.classList.add("show");
+
+    overlay.classList.add(
+      "show"
+    );
+
   }
 
 
@@ -3658,8 +4335,13 @@ function closeInformationPanel(){
       "informationPanel"
     );
 
+
   if(panel){
-    panel.classList.remove("open");
+
+    panel.classList.remove(
+      "open"
+    );
+
   }
 
 }
@@ -3707,13 +4389,18 @@ function prepareInformationForm(){
 
 
   if(referenceInput){
+
     referenceInput.value =
       code;
+
   }
 
+
   if(referenceDisplay){
+
     referenceDisplay.textContent =
       code;
+
   }
 
 
@@ -3734,8 +4421,10 @@ function prepareInformationForm(){
 
 
   if(selectedInput){
+
     selectedInput.value =
       productsText;
+
   }
 
 
@@ -3745,8 +4434,10 @@ function prepareInformationForm(){
 
 
   if(referenceBox){
+
     referenceBox.style.display =
       "none";
+
   }
 
 
@@ -3755,8 +4446,12 @@ function prepareInformationForm(){
       "zelleConfirmation"
     );
 
+
   if(confirmationBox){
-    confirmationBox.style.display="none";
+
+    confirmationBox.style.display =
+      "none";
+
   }
 
 
@@ -3765,8 +4460,12 @@ function prepareInformationForm(){
       "zellePaymentDetails"
     );
 
+
   if(zelleDetails){
-    zelleDetails.style.display="block";
+
+    zelleDetails.style.display =
+      "block";
+
   }
 
 }
@@ -3839,7 +4538,9 @@ function showOrderConfirmation(){
 
 
     if(!savedOrder){
+
       return;
+
     }
 
 
@@ -3875,15 +4576,20 @@ function showOrderConfirmation(){
 
 
     if(informationPanel){
+
       informationPanel.classList.add(
         "open"
       );
+
     }
 
+
     if(overlay){
+
       overlay.classList.add(
         "show"
       );
+
     }
 
 
@@ -4007,15 +4713,20 @@ function connectInformationForm(){
 
 
   if(!informationForm){
+
     return;
+
   }
 
 
   if(
     window.__novaInformationFormConnected
   ){
+
     return;
+
   }
+
 
   window.__novaInformationFormConnected=true;
 
@@ -4246,7 +4957,9 @@ function toggleFavorite(
     favorites =
       favorites.filter(
         function(item){
+
           return item!==name;
+
         }
       );
 
@@ -4332,7 +5045,7 @@ function loadFavorites(){
 
 
 /* =====================================================
-   SEARCH — RESULTS INSIDE MENU
+   SEARCH
 ===================================================== */
 
 function normalizeSearchText(value){
@@ -4362,17 +5075,14 @@ function searchProducts(value){
 
 
   if(!resultsBox){
+
     return;
+
   }
 
 
   resultsBox.innerHTML="";
 
-
-  /*
-    SI EL BUSCADOR ESTÁ VACÍO:
-    NO MOSTRAR NINGÚN PRODUCTO.
-  */
 
   if(!search){
 
@@ -4399,14 +5109,10 @@ function searchProducts(value){
         card.querySelector("h3");
 
       const image =
-        card.querySelector(
-          ".product-image"
-        );
+        card.querySelector(".product-image");
 
       const addButton =
-        card.querySelector(
-          ".add-btn"
-        );
+        card.querySelector(".add-btn");
 
 
       if(
@@ -4419,51 +5125,12 @@ function searchProducts(value){
       }
 
 
-      /*
-        TOMAMOS SOLAMENTE EL NOMBRE
-        REAL DEL PRODUCTO.
-
-        NO BUSCAMOS EN:
-        - TODO EL HTML
-        - DESCRIPCIONES
-        - BOTONES
-        - OTROS ELEMENTOS
-
-        ASÍ "GLP-2" SOLO ENCUENTRA
-        PRODUCTOS GLP-2.
-      */
-
       const name =
         (
           card.dataset.name ||
           heading.textContent ||
           ""
         ).trim();
-
-
-      const normalizedName =
-        normalizeSearchText(
-          name
-        );
-
-
-      /*
-        SOLO MOSTRAR SI EL TEXTO
-        COMIENZA EL NOMBRE DEL PRODUCTO.
-      */
-
-      if(
-        !normalizedName.startsWith(
-          search
-        )
-      ){
-
-        return;
-
-      }
-
-
-      matchesFound++;
 
 
       const price =
@@ -4481,10 +5148,31 @@ function searchProducts(value){
         );
 
 
-      /*
-        CREAR RESULTADO
-        CON IMAGEN + NOMBRE + PRECIO.
-      */
+      const searchableText =
+        normalizeSearchText(
+          name +
+          " " +
+          (
+            image
+              ? image.alt
+              : ""
+          )
+        );
+
+
+      if(
+        !searchableText.includes(
+          search
+        )
+      ){
+
+        return;
+
+      }
+
+
+      matchesFound++;
+
 
       const result =
         document.createElement(
@@ -4565,11 +5253,6 @@ function searchProducts(value){
       );
 
 
-      /*
-        AL TOCAR EL RESULTADO:
-        AGREGA EL PRODUCTO AL CART.
-      */
-
       result.addEventListener(
         "click",
         function(event){
@@ -4615,10 +5298,6 @@ function searchProducts(value){
   );
 
 
-  /*
-    SI NO HAY RESULTADOS.
-  */
-
   if(matchesFound===0){
 
     const empty =
@@ -4651,8 +5330,6 @@ function searchProducts(value){
 
 /* =====================================================
    SEARCH ENTER
-   DOES NOT CLOSE MENU
-   DOES NOT SCROLL
 ===================================================== */
 
 function connectSearch(){
@@ -4664,14 +5341,18 @@ function connectSearch(){
 
 
   if(!searchInput){
+
     return;
+
   }
 
 
   if(
     window.__novaSearchConnected
   ){
+
     return;
+
   }
 
 
@@ -4694,11 +5375,6 @@ function connectSearch(){
       event.preventDefault();
 
 
-      /*
-        ENTER SELECCIONA
-        EL PRIMER RESULTADO.
-      */
-
       const firstResult =
         document.querySelector(
           "#menuSearchResults .menu-search-result"
@@ -4718,32 +5394,8 @@ function connectSearch(){
 
 
 /* =====================================================
-   IMAGE ZOOM
+   CLOSE PRODUCT MODAL
 ===================================================== */
-
-function openImage(src){
-
-  const modal =
-    document.getElementById(
-      "imageModal"
-    );
-
-  const image =
-    document.getElementById(
-      "modalImage"
-    );
-
-
-  if(image){
-    image.src=src;
-  }
-
-  if(modal){
-    modal.classList.add("show");
-  }
-
-}
-
 
 function closeImage(){
 
@@ -4754,7 +5406,11 @@ function closeImage(){
 
 
   if(modal){
-    modal.classList.remove("show");
+
+    modal.classList.remove(
+      "show"
+    );
+
   }
 
 }
@@ -4772,6 +5428,8 @@ function closeAllPanels(){
 
   closeInformationPanel();
 
+  closeImage();
+
 
   const overlay =
     document.getElementById(
@@ -4780,7 +5438,11 @@ function closeAllPanels(){
 
 
   if(overlay){
-    overlay.classList.remove("show");
+
+    overlay.classList.remove(
+      "show"
+    );
+
   }
 
 }
