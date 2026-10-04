@@ -3618,11 +3618,6 @@ function prepareInformationForm(){
   updatePaymentDisplay();
 
 
-  /*
-    The reference code is kept hidden
-    until the order has actually been submitted.
-  */
-
   if(referenceBox){
     referenceBox.style.display =
       "none";
@@ -3652,7 +3647,7 @@ function prepareInformationForm(){
 
 
 /* =====================================================
-   SAVE LAST ORDER BEFORE FORMSPREE
+   SAVE LAST ORDER
 ===================================================== */
 
 function saveLastOrder(){
@@ -3702,29 +3697,12 @@ function saveLastOrder(){
 
 
 /* =====================================================
-   SHOW CONFIRMATION AFTER RETURN
+   SHOW FINAL CONFIRMATION
 ===================================================== */
 
-function showZelleConfirmationAfterReturn(){
+function showOrderConfirmation(){
 
   try{
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    if(
-      params.get(
-        "orderSubmitted"
-      ) !== "1"
-    ){
-
-      return;
-
-    }
-
 
     const savedOrder =
       JSON.parse(
@@ -3735,9 +3713,7 @@ function showZelleConfirmationAfterReturn(){
 
 
     if(!savedOrder){
-
       return;
-
     }
 
 
@@ -3772,10 +3748,6 @@ function showZelleConfirmationAfterReturn(){
       );
 
 
-    /*
-      Open the information panel.
-    */
-
     if(informationPanel){
       informationPanel.classList.add(
         "open"
@@ -3789,11 +3761,6 @@ function showZelleConfirmationAfterReturn(){
     }
 
 
-    /*
-      Hide the form after the order
-      has been submitted.
-    */
-
     if(form){
 
       form.style.display =
@@ -3801,10 +3768,6 @@ function showZelleConfirmationAfterReturn(){
 
     }
 
-
-    /*
-      Hide the old reference-code box.
-    */
 
     if(referenceBox){
 
@@ -3814,11 +3777,6 @@ function showZelleConfirmationAfterReturn(){
     }
 
 
-    /*
-      Show the green completion screen
-      after successful submission.
-    */
-
     if(confirmationBox){
 
       confirmationBox.style.display =
@@ -3826,11 +3784,6 @@ function showZelleConfirmationAfterReturn(){
 
     }
 
-
-    /*
-      Only show Zelle instructions
-      when Zelle was selected.
-    */
 
     if(
       savedOrder.paymentMethod === "Zelle"
@@ -3884,16 +3837,6 @@ function showZelleConfirmationAfterReturn(){
       }
 
 
-      /*
-        The example automatically uses
-        the actual order number.
-
-        Example:
-        If the order number is 4827,
-        the customer will see 4827
-        in the Note / Memo example.
-      */
-
       if(exampleNumber){
 
         exampleNumber.textContent =
@@ -3911,12 +3854,6 @@ function showZelleConfirmationAfterReturn(){
 
     }else{
 
-      /*
-        PayPal selected:
-        show only the green completion
-        confirmation and no Zelle details.
-      */
-
       if(zelleDetails){
 
         zelleDetails.style.display =
@@ -3926,29 +3863,13 @@ function showZelleConfirmationAfterReturn(){
 
     }
 
-
-    /*
-      Remove the query from the visible URL
-      after the confirmation is shown.
-    */
-
-    try{
-
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname
-      );
-
-    }catch(error){}
-
   }catch(error){}
 
 }
 
 
 /* =====================================================
-   FORM
+   FORM — AJAX / FORMSPREE
 ===================================================== */
 
 function connectInformationForm(){
@@ -3964,9 +3885,29 @@ function connectInformationForm(){
   }
 
 
+  if(
+    window.__novaInformationFormConnected
+  ){
+    return;
+  }
+
+  window.__novaInformationFormConnected=true;
+
+
   informationForm.addEventListener(
     "submit",
-    function(event){
+    async function(event){
+
+      /*
+        IMPORTANT:
+        Prevent the normal browser navigation.
+
+        Formspree receives the information
+        in the background instead.
+      */
+
+      event.preventDefault();
+
 
       updateShippingTotal();
 
@@ -3976,8 +3917,6 @@ function connectInformationForm(){
       if(
         selectedProducts.length===0
       ){
-
-        event.preventDefault();
 
         alert(
           "Please add at least one product."
@@ -3994,8 +3933,6 @@ function connectInformationForm(){
 
       if(!shipping.name){
 
-        event.preventDefault();
-
         alert(
           "Please select a shipping option in the cart."
         );
@@ -4011,8 +3948,6 @@ function connectInformationForm(){
 
       if(!paymentOption){
 
-        event.preventDefault();
-
         alert(
           "Please select Zelle or PayPal in the cart."
         );
@@ -4027,8 +3962,16 @@ function connectInformationForm(){
 
 
       /*
-        Save everything BEFORE native Formspree
-        submission redirects the browser.
+        Generate the order number and
+        prepare every hidden field.
+      */
+
+      prepareInformationForm();
+
+
+      /*
+        Save the exact order information
+        locally before sending it.
       */
 
       saveLastOrder();
@@ -4037,6 +3980,11 @@ function connectInformationForm(){
       const submitButton =
         document.getElementById(
           "informationSubmit"
+        );
+
+      const formStatus =
+        document.getElementById(
+          "formStatus"
         );
 
 
@@ -4050,15 +3998,149 @@ function connectInformationForm(){
       }
 
 
-      /*
-        IMPORTANT:
-        Do NOT use preventDefault() here.
+      if(formStatus){
 
-        Formspree receives the normal
-        HTML POST and redirects the visitor
-        back to the site according to the
-        Formspree redirect setting.
-      */
+        formStatus.className =
+          "message-status";
+
+        formStatus.textContent =
+          "";
+
+      }
+
+
+      try{
+
+        const formData =
+          new FormData(
+            informationForm
+          );
+
+
+        /*
+          Formspree supports AJAX submissions
+          with an Accept: application/json header.
+        */
+
+        const response =
+          await fetch(
+            informationForm.action,
+            {
+              method:"POST",
+
+              body:formData,
+
+              headers:{
+                "Accept":"application/json"
+              }
+            }
+          );
+
+
+        let responseData=null;
+
+
+        try{
+
+          responseData =
+            await response.json();
+
+        }catch(error){
+
+          responseData=null;
+
+        }
+
+
+        if(!response.ok){
+
+          let errorMessage =
+            "Unable to send the request. Please try again.";
+
+
+          if(
+            responseData &&
+            responseData.errors &&
+            responseData.errors.length
+          ){
+
+            errorMessage =
+              responseData.errors
+                .map(
+                  function(error){
+
+                    return(
+                      error.message ||
+                      "There was an error."
+                    );
+
+                  }
+                )
+                .join(" ");
+
+          }
+
+
+          throw new Error(
+            errorMessage
+          );
+
+        }
+
+
+        /*
+          The request was successfully
+          accepted by Formspree.
+
+          The customer remains on NovaPeps.
+        */
+
+        saveLastOrder();
+
+
+        /*
+          Show the final green confirmation.
+
+          Zelle:
+          show only Zelle instructions.
+
+          PayPal:
+          show only completion confirmation.
+        */
+
+        showOrderConfirmation();
+
+
+      }catch(error){
+
+        console.error(
+          "Form submission error:",
+          error
+        );
+
+
+        if(formStatus){
+
+          formStatus.className =
+            "message-status status-error show";
+
+          formStatus.textContent =
+            error.message ||
+            "Unable to send the request. Please try again.";
+
+        }
+
+
+        if(submitButton){
+
+          submitButton.disabled=false;
+
+          submitButton.textContent =
+            "SEND INFORMATION REQUEST";
+
+        }
+
+      }
 
     }
   );
@@ -4320,24 +4402,6 @@ function initializeNovaPeps(){
   restoreCartOptions();
 
   updateShippingTotal();
-
-
-  /*
-    If Formspree sends the visitor back to:
-    https://novapepsusa.com/?orderSubmitted=1
-
-    this will show the green confirmation.
-
-    If Zelle was selected:
-    the Zelle instructions and dynamic
-    order-number example will appear.
-
-    If PayPal was selected:
-    only the green completion screen
-    will appear.
-  */
-
-  showZelleConfirmationAfterReturn();
 
 }
 
