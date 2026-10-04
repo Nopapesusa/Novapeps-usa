@@ -4370,8 +4370,8 @@ function searchProducts(value){
 
 
   /*
-    Si el buscador está vacío,
-    no mostramos resultados.
+    SI EL BUSCADOR ESTÁ VACÍO:
+    NO MOSTRAR NINGÚN PRODUCTO.
   */
 
   if(!search){
@@ -4399,10 +4399,14 @@ function searchProducts(value){
         card.querySelector("h3");
 
       const image =
-        card.querySelector(".product-image");
+        card.querySelector(
+          ".product-image"
+        );
 
       const addButton =
-        card.querySelector(".add-btn");
+        card.querySelector(
+          ".add-btn"
+        );
 
 
       if(
@@ -4415,6 +4419,20 @@ function searchProducts(value){
       }
 
 
+      /*
+        TOMAMOS SOLAMENTE EL NOMBRE
+        REAL DEL PRODUCTO.
+
+        NO BUSCAMOS EN:
+        - TODO EL HTML
+        - DESCRIPCIONES
+        - BOTONES
+        - OTROS ELEMENTOS
+
+        ASÍ "GLP-2" SOLO ENCUENTRA
+        PRODUCTOS GLP-2.
+      */
+
       const name =
         (
           card.dataset.name ||
@@ -4423,40 +4441,19 @@ function searchProducts(value){
         ).trim();
 
 
-      const price =
-        Number(
-          addButton.dataset.price
+      const normalizedName =
+        normalizeSearchText(
+          name
         );
 
 
       /*
-        Usamos la imagen que ya
-        pertenece a cada producto.
+        SOLO MOSTRAR SI EL TEXTO
+        ES PARTE DEL NOMBRE.
       */
 
-      const imageSrc =
-        addButton.dataset.image ||
-        (
-          image
-            ? image.getAttribute("src")
-            : ""
-        );
-
-
-      const searchableText =
-        normalizeSearchText(
-          name +
-          " " +
-          (
-            image
-              ? image.alt
-              : ""
-          )
-        );
-
-
       if(
-        !searchableText.includes(
+        !normalizedName.includes(
           search
         )
       ){
@@ -4469,10 +4466,24 @@ function searchProducts(value){
       matchesFound++;
 
 
+      const price =
+        Number(
+          addButton.dataset.price
+        );
+
+
+      const imageSrc =
+        addButton.dataset.image ||
+        (
+          image
+            ? image.getAttribute("src")
+            : ""
+        );
+
+
       /*
         CREAR RESULTADO
-        DIRECTAMENTE DEBAJO
-        DEL BUSCADOR
+        CON IMAGEN + NOMBRE + PRECIO.
       */
 
       const result =
@@ -4555,12 +4566,8 @@ function searchProducts(value){
 
 
       /*
-        AL TOCAR:
-        - agrega a la lista
-        - aumenta el carrito
-        - NO cierra el menú
-        - NO hace scroll
-        - NO mueve la página
+        AL TOCAR EL RESULTADO:
+        AGREGA EL PRODUCTO AL CART.
       */
 
       result.addEventListener(
@@ -4578,11 +4585,6 @@ function searchProducts(value){
             imageSrc
           );
 
-
-          /*
-            Limpiar solamente
-            la búsqueda.
-          */
 
           const searchInput =
             document.getElementById(
@@ -4614,7 +4616,7 @@ function searchProducts(value){
 
 
   /*
-    Si no encuentra productos.
+    SI NO HAY RESULTADOS.
   */
 
   if(matchesFound===0){
@@ -4693,8 +4695,8 @@ function connectSearch(){
 
 
       /*
-        ENTER selecciona
-        el primer resultado.
+        ENTER SELECCIONA
+        EL PRIMER RESULTADO.
       */
 
       const firstResult =
