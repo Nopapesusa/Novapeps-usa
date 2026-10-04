@@ -5148,20 +5148,18 @@ function searchProducts(value){
         );
 
 
-      const searchableText =
-        normalizeSearchText(
-          name +
-          " " +
-          (
-            image
-              ? image.alt
-              : ""
-          )
-        );
+      /* =========================================
+         CAMBIO:
+         AHORA SOLO BUSCA SI EL NOMBRE
+         COMIENZA CON LO ESCRITO
+      ========================================= */
+
+      const normalizedName =
+        normalizeSearchText(name);
 
 
       if(
-        !searchableText.includes(
+        !normalizedName.startsWith(
           search
         )
       ){
