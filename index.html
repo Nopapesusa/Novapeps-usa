@@ -217,9 +217,15 @@ header{
 
 /* =========================
    ADD TO LIST
-   LÍNEA ROSA DENTRO
-   DEL CUADRO NEGRO
+   RAYA ROSA GIRANDO
+   DENTRO DEL CUADRO NEGRO
 ========================= */
+
+@property --addListAngle{
+  syntax:"<angle>";
+  initial-value:0deg;
+  inherits:false;
+}
 
 .add-list-btn{
   width:92%;
@@ -241,22 +247,46 @@ header{
   box-shadow:0 3px 8px rgba(0,0,0,.15);
 }
 
-/* LÍNEA ROSA COMPLETA
-   ALREDEDOR DEL BORDE INTERIOR */
+/* RAYA ROSA QUE RECORRE
+   TODO EL BORDE INTERIOR */
 
 .add-list-btn::before{
   content:"";
   position:absolute;
-  top:3px;
-  left:3px;
-  right:3px;
-  bottom:3px;
+  top:2px;
+  left:2px;
+  right:2px;
+  bottom:2px;
 
-  border:1.5px solid #ff4fa3;
   border-radius:6px;
+  padding:1.5px;
+
+  background:
+    conic-gradient(
+      from var(--addListAngle),
+      transparent 0deg,
+      transparent 320deg,
+      #ff4fa3 337deg,
+      #ff4fa3 352deg,
+      transparent 360deg
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  mask-composite:exclude;
 
   pointer-events:none;
   z-index:2;
+
+  animation:addListRotate 1.8s linear infinite;
 }
 
 /* SIN FLECHA NI CÍRCULO */
@@ -274,6 +304,16 @@ header{
 
 .add-list-btn:active{
   transform:scale(.98);
+}
+
+@keyframes addListRotate{
+  from{
+    --addListAngle:0deg;
+  }
+
+  to{
+    --addListAngle:360deg;
+  }
 }
 
 /* =========================
