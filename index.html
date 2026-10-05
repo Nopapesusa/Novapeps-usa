@@ -217,7 +217,8 @@ header{
 
 /* =========================
    ADD TO LIST
-   SOLO ESTE BLOQUE FUE MODIFICADO
+   LÍNEA ROSA DENTRO
+   DEL CUADRO NEGRO
 ========================= */
 
 .add-list-btn{
@@ -240,44 +241,25 @@ header{
   box-shadow:0 3px 8px rgba(0,0,0,.15);
 }
 
-/* LÍNEA ROSA FINA RECORRIENDO
-   LA ORILLA POR DENTRO */
+/* LÍNEA ROSA COMPLETA
+   ALREDEDOR DEL BORDE INTERIOR */
 
 .add-list-btn::before{
   content:"";
   position:absolute;
-  inset:1px;
-  border-radius:7px;
-  padding:1.5px;
+  top:3px;
+  left:3px;
+  right:3px;
+  bottom:3px;
 
-  background:
-    conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      transparent 325deg,
-      #ff4fa3 340deg,
-      #ff4fa3 350deg,
-      transparent 360deg
-    );
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-
-  -webkit-mask-composite:xor;
-
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-
-  mask-composite:exclude;
+  border:1.5px solid #ff4fa3;
+  border-radius:6px;
 
   pointer-events:none;
-  animation:addListSpin 1.8s linear infinite;
   z-index:2;
 }
 
-/* SIN FLECHA */
+/* SIN FLECHA NI CÍRCULO */
 
 .add-list-btn::after{
   content:"";
@@ -290,13 +272,8 @@ header{
   transform:scale(1.02);
 }
 
-@keyframes addListSpin{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
+.add-list-btn:active{
+  transform:scale(.98);
 }
 
 /* =========================
