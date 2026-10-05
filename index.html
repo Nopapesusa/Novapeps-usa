@@ -44,15 +44,7 @@ header{
   box-shadow:0 2px 10px rgba(0,0,0,.25);
 }
 
-.logo{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.logo span{
-  color:#ff4fa3;
-}
+/* MENU LEFT */
 
 .menu-btn{
   border:0;
@@ -61,6 +53,67 @@ header{
   font-size:31px;
   cursor:pointer;
   line-height:1;
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+
+/* LOGO CENTER */
+
+.header-logo{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.header-logo img{
+  display:block;
+  height:58px;
+  width:auto;
+  max-width:220px;
+  object-fit:contain;
+}
+
+/* HEADER CART RIGHT */
+
+.header-cart{
+  position:relative;
+  width:45px;
+  height:45px;
+  border:0;
+  background:transparent;
+  color:#fff;
+  font-size:27px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+
+.header-cart-count{
+  position:absolute;
+  top:0;
+  right:-2px;
+  min-width:21px;
+  height:21px;
+  padding:0 5px;
+  border-radius:50%;
+  background:#ff4fa3;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:900;
 }
 
 /* =========================
@@ -71,7 +124,7 @@ header{
   min-height:430px;
   background-image:
     linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.32)),
-    url("./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg");
+    url("./6FADF183-1747-411C-9344-F3F22404D2E6.PNG");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -836,8 +889,17 @@ footer p{
     padding:0 15px;
   }
 
-  .logo{
-    font-size:20px;
+  .header-logo img{
+    height:52px;
+    max-width:190px;
+  }
+
+  .menu-btn{
+    font-size:28px;
+  }
+
+  .header-cart{
+    font-size:25px;
   }
 
   .hero{
@@ -904,13 +966,23 @@ footer p{
 ========================= -->
 
 <header>
-  <div class="logo">
-    NOVAPEPS <span>USA</span>
-  </div>
 
   <button class="menu-btn" id="menuBtn" type="button">
     ☰
   </button>
+
+  <div class="header-logo">
+    <img
+      src="./A1266070-1450-49E1-BD04-D0D8E88B6C32.PNG"
+      alt="NovaPeps USA"
+    >
+  </div>
+
+  <button class="header-cart" id="headerCart" type="button">
+    🛒
+    <span class="header-cart-count" id="headerCartCount">0</span>
+  </button>
+
 </header>
 
 <!-- =========================
@@ -946,7 +1018,7 @@ footer p{
 </nav>
 
 <!-- =========================
-     HERO
+     HERO / PORTADA
 ========================= -->
 
 <section class="hero" id="home">
@@ -962,7 +1034,7 @@ footer p{
 
 <section class="section" id="products">
 
-  <h2 class="section-title">Products</h2>
+  <h2 class="section-title">Featured Products</h2>
 
   <div class="products-grid">
 
@@ -1205,17 +1277,9 @@ footer p{
 
     <h3>Shipping Options</h3>
 
-    <p>
-      <strong>Standard Shipping:</strong> $9
-    </p>
-
-    <p>
-      <strong>Express Shipping:</strong> $15
-    </p>
-
-    <p>
-      <strong>Free Shipping:</strong> Orders $200+
-    </p>
+    <p><strong>Standard Shipping:</strong> $9</p>
+    <p><strong>Express Shipping:</strong> $15</p>
+    <p><strong>Free Shipping:</strong> Orders $200+</p>
 
     <p class="notice">
       Shipping options are displayed during checkout.
@@ -1297,53 +1361,14 @@ footer p{
 
       <tbody>
 
-        <tr>
-          <td>MOTS-C</td>
-          <td>10 MG</td>
-          <td>$60</td>
-        </tr>
-
-        <tr>
-          <td>GLP-2</td>
-          <td>10 MG</td>
-          <td>$90</td>
-        </tr>
-
-        <tr>
-          <td>GHK-CU</td>
-          <td>100 MG</td>
-          <td>$50</td>
-        </tr>
-
-        <tr>
-          <td>GLP-3</td>
-          <td>10 MG</td>
-          <td>$95</td>
-        </tr>
-
-        <tr>
-          <td>GLP-2</td>
-          <td>20 MG</td>
-          <td>$110</td>
-        </tr>
-
-        <tr>
-          <td>GLP-3</td>
-          <td>20 MG</td>
-          <td>$135</td>
-        </tr>
-
-        <tr>
-          <td>GLUTATHIONE</td>
-          <td>1500 MG</td>
-          <td>$60</td>
-        </tr>
-
-        <tr>
-          <td>NAD+</td>
-          <td>500 MG</td>
-          <td>$50</td>
-        </tr>
+        <tr><td>MOTS-C</td><td>10 MG</td><td>$60</td></tr>
+        <tr><td>GLP-2</td><td>10 MG</td><td>$90</td></tr>
+        <tr><td>GHK-CU</td><td>100 MG</td><td>$50</td></tr>
+        <tr><td>GLP-3</td><td>10 MG</td><td>$95</td></tr>
+        <tr><td>GLP-2</td><td>20 MG</td><td>$110</td></tr>
+        <tr><td>GLP-3</td><td>20 MG</td><td>$135</td></tr>
+        <tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
+        <tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
 
       </tbody>
 
@@ -1363,15 +1388,8 @@ footer p{
 
   <div class="login-box">
 
-    <input
-      type="email"
-      placeholder="Email"
-    >
-
-    <input
-      type="password"
-      placeholder="Password"
-    >
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
 
     <button
       class="primary-btn"
@@ -1411,11 +1429,7 @@ footer p{
   <div class="panel-header">
     <h2>Selected Products</h2>
 
-    <button
-      class="panel-close"
-      data-close-panel="listPanel"
-      type="button"
-    >
+    <button class="panel-close" data-close-panel="listPanel" type="button">
       ×
     </button>
   </div>
@@ -1429,11 +1443,7 @@ footer p{
       <strong id="listTotal">$0.00</strong>
     </div>
 
-    <button
-      class="primary-btn"
-      id="openCartFromList"
-      type="button"
-    >
+    <button class="primary-btn" id="openCartFromList" type="button">
       GO TO CART
     </button>
 
@@ -1450,11 +1460,7 @@ footer p{
   <div class="panel-header">
     <h2>Your Cart</h2>
 
-    <button
-      class="panel-close"
-      data-close-panel="cartPanel"
-      type="button"
-    >
+    <button class="panel-close" data-close-panel="cartPanel" type="button">
       ×
     </button>
   </div>
@@ -1466,29 +1472,17 @@ footer p{
     <h3>Shipping</h3>
 
     <label class="option-label">
-      <input
-        type="radio"
-        name="shipping"
-        value="standard"
-      >
+      <input type="radio" name="shipping" value="standard">
       Standard — $9
     </label>
 
     <label class="option-label">
-      <input
-        type="radio"
-        name="shipping"
-        value="express"
-      >
+      <input type="radio" name="shipping" value="express">
       Express — $15
     </label>
 
     <label class="option-label">
-      <input
-        type="radio"
-        name="shipping"
-        value="free"
-      >
+      <input type="radio" name="shipping" value="free">
       Free Shipping — $200+
     </label>
 
@@ -1499,29 +1493,17 @@ footer p{
     <h3>Payment Method</h3>
 
     <label class="option-label">
-      <input
-        type="radio"
-        name="payment"
-        value="zelle"
-      >
+      <input type="radio" name="payment" value="zelle">
       Zelle
     </label>
 
     <label class="option-label">
-      <input
-        type="radio"
-        name="payment"
-        value="venmo"
-      >
+      <input type="radio" name="payment" value="venmo">
       Venmo
     </label>
 
     <label class="option-label">
-      <input
-        type="radio"
-        name="payment"
-        value="paypal"
-      >
+      <input type="radio" name="payment" value="paypal">
       PayPal
     </label>
 
@@ -1546,19 +1528,11 @@ footer p{
 
   </div>
 
-  <button
-    class="primary-btn"
-    id="checkoutBtn"
-    type="button"
-  >
+  <button class="primary-btn" id="checkoutBtn" type="button">
     CONTINUE
   </button>
 
-  <button
-    class="secondary-btn"
-    id="clearCartBtn"
-    type="button"
-  >
+  <button class="secondary-btn" id="clearCartBtn" type="button">
     CLEAR CART
   </button>
 
@@ -1578,11 +1552,7 @@ footer p{
 
     <h2>Information Request</h2>
 
-    <button
-      class="panel-close"
-      data-close-panel="informationPanel"
-      type="button"
-    >
+    <button class="panel-close" data-close-panel="informationPanel" type="button">
       ×
     </button>
 
@@ -1592,10 +1562,7 @@ footer p{
 
     <div class="reference-box">
       <div>Order / Reference Code</div>
-      <div
-        class="reference-code"
-        id="referenceDisplay"
-      >
+      <div class="reference-code" id="referenceDisplay">
         ----
       </div>
     </div>
@@ -1606,53 +1573,14 @@ footer p{
       method="POST"
     >
 
-      <input
-        type="hidden"
-        name="subject"
-        value="NovaPeps USA Information Request"
-      >
-
-      <input
-        type="hidden"
-        name="reference_code"
-        id="formReference"
-      >
-
-      <input
-        type="hidden"
-        name="selected_products"
-        id="formProducts"
-      >
-
-      <input
-        type="hidden"
-        name="subtotal"
-        id="formSubtotal"
-      >
-
-      <input
-        type="hidden"
-        name="shipping_method"
-        id="formShipping"
-      >
-
-      <input
-        type="hidden"
-        name="shipping_cost"
-        id="formShippingCost"
-      >
-
-      <input
-        type="hidden"
-        name="informational_total"
-        id="formTotal"
-      >
-
-      <input
-        type="hidden"
-        name="payment_method"
-        id="formPayment"
-      >
+      <input type="hidden" name="subject" value="NovaPeps USA Information Request">
+      <input type="hidden" name="reference_code" id="formReference">
+      <input type="hidden" name="selected_products" id="formProducts">
+      <input type="hidden" name="subtotal" id="formSubtotal">
+      <input type="hidden" name="shipping_method" id="formShipping">
+      <input type="hidden" name="shipping_cost" id="formShippingCost">
+      <input type="hidden" name="informational_total" id="formTotal">
+      <input type="hidden" name="payment_method" id="formPayment">
 
       <input
         type="hidden"
@@ -1662,73 +1590,42 @@ footer p{
 
       <div class="form-group">
         <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          required
-        >
+        <input type="text" name="name" required>
       </div>
 
       <div class="form-group">
         <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          required
-        >
+        <input type="email" name="email" required>
       </div>
 
       <div class="form-group">
         <label>Phone</label>
-        <input
-          type="tel"
-          name="phone"
-          required
-        >
+        <input type="tel" name="phone" required>
       </div>
 
       <div class="form-group">
         <label>Address</label>
-        <input
-          type="text"
-          name="address"
-          required
-        >
+        <input type="text" name="address" required>
       </div>
 
       <div class="form-group">
         <label>Apt / Unit</label>
-        <input
-          type="text"
-          name="apt_unit"
-        >
+        <input type="text" name="apt_unit">
       </div>
 
       <div class="form-group">
         <label>City</label>
-        <input
-          type="text"
-          name="city"
-          required
-        >
+        <input type="text" name="city" required>
       </div>
 
       <div class="form-group">
         <label>State</label>
-        <input
-          type="text"
-          name="state"
-          required
-        >
+        <input type="text" name="state" required>
       </div>
 
       <div class="form-group">
         <label>ZIP</label>
-        <input
-          type="text"
-          name="zip"
-          required
-        >
+        <input type="text" name="zip" required>
       </div>
 
       <div class="form-group">
@@ -1736,10 +1633,7 @@ footer p{
         <textarea name="message"></textarea>
       </div>
 
-      <button
-        class="primary-btn"
-        type="submit"
-      >
+      <button class="primary-btn" type="submit">
         SEND INFORMATION
       </button>
 
@@ -1759,10 +1653,7 @@ footer p{
       Your information has been submitted.
     </p>
 
-    <div
-      class="payment-final"
-      id="paymentFinal"
-    ></div>
+    <div class="payment-final" id="paymentFinal"></div>
 
   </div>
 
@@ -1776,27 +1667,15 @@ footer p{
 
   <div class="modal-content">
 
-    <button
-      class="modal-close"
-      id="modalClose"
-      type="button"
-    >
+    <button class="modal-close" id="modalClose" type="button">
       ×
     </button>
 
-    <img
-      class="modal-image"
-      id="modalImage"
-      src=""
-      alt=""
-    >
+    <img class="modal-image" id="modalImage" src="" alt="">
 
     <h2 id="modalName"></h2>
 
-    <div
-      class="modal-price"
-      id="modalPrice"
-    ></div>
+    <div class="modal-price" id="modalPrice"></div>
 
     <div class="research">
       FOR RESEARCH USE ONLY
@@ -1804,37 +1683,19 @@ footer p{
 
     <div class="qty-controls">
 
-      <button
-        id="modalMinus"
-        type="button"
-      >
-        −
-      </button>
+      <button id="modalMinus" type="button">−</button>
 
       <strong id="modalQuantity">1</strong>
 
-      <button
-        id="modalPlus"
-        type="button"
-      >
-        +
-      </button>
+      <button id="modalPlus" type="button">+</button>
 
     </div>
 
-    <button
-      class="primary-btn"
-      id="modalAdd"
-      type="button"
-    >
+    <button class="primary-btn" id="modalAdd" type="button">
       ADD TO CART
     </button>
 
-    <button
-      class="secondary-btn"
-      id="modalGoCart"
-      type="button"
-    >
+    <button class="secondary-btn" id="modalGoCart" type="button">
       GO TO CART / CHECKOUT
     </button>
 
@@ -1848,17 +1709,11 @@ footer p{
 
 <footer>
 
-  <p>
-    © 2026 NovaPeps USA
-  </p>
+  <p>© 2026 NovaPeps USA</p>
 
-  <p>
-    novapeps22@gmail.com
-  </p>
+  <p>novapeps22@gmail.com</p>
 
-  <p>
-    (832) 273-9625
-  </p>
+  <p>(832) 273-9625</p>
 
   <p class="notice" style="color:#aaa;">
     All products are presented for research use only.
@@ -1955,7 +1810,6 @@ function setStorage(key,value){
 
 /* =====================================================
    AGE CONFIRMATION
-   FIXED
 ===================================================== */
 
 function enterSite(){
@@ -2327,7 +2181,12 @@ function updateCartCount(){
       0
     );
 
+  /* FLOATING CART COUNT */
   document.getElementById("cartCount")
+    .textContent = count;
+
+  /* HEADER CART COUNT */
+  document.getElementById("headerCartCount")
     .textContent = count;
 }
 
@@ -2564,8 +2423,20 @@ document
    CART BUTTONS
 ===================================================== */
 
+/* FLOATING CART */
+
 document
   .getElementById("cartFloating")
+  .addEventListener("click",function(){
+
+    openPanel("cartPanel");
+
+  });
+
+/* HEADER CART */
+
+document
+  .getElementById("headerCart")
   .addEventListener("click",function(){
 
     openPanel("cartPanel");
