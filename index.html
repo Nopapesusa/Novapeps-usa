@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NovaPeps USA</title>
 
 <style>
+/* =========================================================
+   NOVAPEPS USA
+   CLEAN BLUE / WHITE DESIGN
+   ========================================================= */
+
+:root{
+  --navy:#071426;
+  --navy-2:#0b1d35;
+  --blue:#1769ff;
+  --blue-dark:#0c48b8;
+  --blue-light:#eaf3ff;
+  --white:#ffffff;
+  --gray:#667085;
+  --light:#f5f8fc;
+  --border:#dce6f2;
+  --text:#10213b;
+  --black:#080b10;
+  --success:#12834b;
+  --danger:#d92d20;
+}
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -17,154 +39,331 @@ html{
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
   background:#fff;
-  color:#111;
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-body.locked{
-  overflow:hidden;
+button,
+input,
+textarea,
+select{
+  font:inherit;
 }
 
-/* =========================
+button{
+  cursor:pointer;
+}
+
+img{
+  max-width:100%;
+}
+
+/* =========================================================
    HEADER
-========================= */
+   ========================================================= */
 
 header{
+  height:92px;
+  background:linear-gradient(135deg,#050d1a,#0b1b31);
+  display:flex;
+  align-items:center;
   position:sticky;
   top:0;
   z-index:5000;
-  height:68px;
-  background:#000;
+  padding:0 30px;
+  box-shadow:0 4px 20px rgba(0,0,0,.22);
+}
+
+.menu-btn{
+  width:48px;
+  height:48px;
+  border:0;
+  background:transparent;
+  color:white;
+  font-size:34px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+}
+
+.menu-btn:hover{
+  transform:scale(1.05);
+}
+
+.header-logo{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:190px;
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.header-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.header-actions{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.header-action{
+  width:48px;
+  height:48px;
+  border:0;
+  background:transparent;
   color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.search-icon{
+  width:28px;
+  height:28px;
+  border:3px solid #fff;
+  border-radius:50%;
+  position:relative;
+}
+
+.search-icon::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:3px;
+  background:#fff;
+  right:-9px;
+  bottom:-5px;
+  transform:rotate(45deg);
+  border-radius:5px;
+}
+
+.cart-icon{
+  width:29px;
+  height:23px;
+  border:3px solid #fff;
+  border-top:0;
+  transform:skew(-8deg);
+  position:relative;
+  margin-top:3px;
+}
+
+.cart-icon::before{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:3px;
+  background:#fff;
+  top:-7px;
+  left:-7px;
+  transform:rotate(0deg);
+}
+
+.cart-icon::after{
+  content:"●  ●";
+  position:absolute;
+  color:#fff;
+  font-size:9px;
+  letter-spacing:8px;
+  left:2px;
+  bottom:-14px;
+}
+
+.cart-count{
+  position:absolute;
+  top:2px;
+  right:1px;
+  min-width:19px;
+  height:19px;
+  padding:0 5px;
+  border-radius:50px;
+  background:var(--blue);
+  color:white;
+  font-size:11px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* =========================================================
+   SIDE MENU
+   ========================================================= */
+
+.side-menu{
+  position:fixed;
+  top:0;
+  left:-330px;
+  width:320px;
+  height:100vh;
+  background:#fff;
+  z-index:7000;
+  box-shadow:8px 0 35px rgba(0,0,0,.2);
+  transition:.3s ease;
+  overflow-y:auto;
+}
+
+.side-menu.open{
+  left:0;
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:6500;
+  display:none;
+}
+
+.menu-overlay.show{
+  display:block;
+}
+
+.side-menu-header{
+  height:92px;
+  background:var(--navy);
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 22px;
-  box-shadow:0 2px 14px rgba(0,0,0,.28);
 }
 
-.logo{
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:2px;
-  line-height:1;
+.side-menu-header img{
+  width:155px;
+  height:65px;
+  object-fit:contain;
 }
 
-.logo span{
-  color:#ff4fa3;
-}
-
-.menu-btn{
+.close-menu{
   border:0;
   background:transparent;
-  color:#fff;
-  font-size:30px;
-  cursor:pointer;
-  line-height:1;
-  width:42px;
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  color:white;
+  font-size:32px;
 }
 
-/* =========================
+.side-menu-content{
+  padding:25px 18px;
+}
+
+.menu-search{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px;
+  margin-bottom:20px;
+}
+
+.menu-search input{
+  border:0;
+  outline:0;
+  width:100%;
+}
+
+.menu-link{
+  display:block;
+  width:100%;
+  padding:15px 14px;
+  border:0;
+  background:white;
+  text-align:left;
+  color:var(--text);
+  font-weight:700;
+  border-radius:10px;
+  margin-bottom:5px;
+}
+
+.menu-link:hover{
+  background:var(--blue-light);
+  color:var(--blue-dark);
+}
+
+/* =========================================================
    HERO
-========================= */
+   ========================================================= */
 
 .hero{
-  min-height:430px;
-  background-image:
-    linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
-    url("./att.i0BTil72eeYgNmi8hZ9z7wpLHeqZZ5IPg4Jg6HxTZ0E.jpg");
+  min-height:500px;
+  width:100%;
+  background-image:url("./att.i0BTil72eeYgNmi8hZ9z7wpLHeqZZ5IPg4Jg6HxTZ0E.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:#fff;
-  padding:40px 20px;
 }
 
-.hero-content h1{
-  font-size:55px;
-  font-weight:900;
-  letter-spacing:3px;
-  margin-bottom:12px;
-  text-shadow:0 3px 12px rgba(0,0,0,.7);
-}
-
-.hero-content p{
-  font-size:20px;
-  font-weight:bold;
-}
-
-/* =========================
-   COA INFORMATION
-========================= */
-
-.cover-info{
-  text-align:center;
-  padding:22px 20px;
-  font-size:14px;
-  font-weight:bold;
-  line-height:1.6;
-  color:#555;
-  max-width:1000px;
-  margin:0 auto;
-}
-
-/* =========================
-   GENERAL
-========================= */
+/* =========================================================
+   PRODUCTS SECTION
+   ========================================================= */
 
 .section{
-  padding:52px 20px;
+  width:100%;
+  max-width:1250px;
+  margin:0 auto;
+  padding:38px 20px 70px;
+}
+
+.products-section{
+  background:#f7faff;
+  max-width:none;
+}
+
+.products-inner{
   max-width:1250px;
   margin:auto;
 }
 
-.section-title{
+.section-heading{
   text-align:center;
-  font-size:34px;
-  margin-bottom:38px;
-  font-weight:900;
-  letter-spacing:.5px;
-  position:relative;
+  margin-bottom:28px;
+}
+
+.section-title{
+  color:#0b2a63;
+  font-size:42px;
+  line-height:1.15;
+  font-weight:800;
+  letter-spacing:-1px;
 }
 
 .section-title::after{
   content:"";
   display:block;
-  width:52px;
-  height:4px;
-  background:#ff4fa3;
+  width:92px;
+  height:5px;
+  background:var(--blue);
   border-radius:10px;
-  margin:12px auto 0;
+  margin:16px auto 0;
 }
 
-.notice{
-  text-align:center;
-  color:#666;
-  font-size:14px;
-  margin-top:15px;
+.section-subtitle{
+  color:var(--gray);
+  font-size:15px;
+  margin-top:12px;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
-
-#products{
-  padding-top:48px;
-  padding-bottom:65px;
-}
-
-#products .section-title{
-  margin-bottom:34px;
-}
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
 
 .products-grid{
   display:grid;
@@ -173,272 +372,217 @@ header{
 }
 
 .product-card{
-  position:relative;
   background:#fff;
-  border:1px solid #e8e8e8;
-  border-radius:20px;
+  border:1px solid #dce7f4;
+  border-radius:24px;
   overflow:hidden;
-  box-shadow:0 6px 24px rgba(0,0,0,.07);
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    border-color .25s ease;
+  box-shadow:0 8px 25px rgba(21,59,110,.08);
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  transition:.25s ease;
 }
 
 .product-card:hover{
   transform:translateY(-5px);
-  box-shadow:0 15px 34px rgba(0,0,0,.12);
-  border-color:#ddd;
+  box-shadow:0 16px 35px rgba(21,59,110,.15);
+  border-color:#bdd4f4;
 }
-
-/* =========================
-   PRODUCT IMAGE
-   MÁS GRANDE
-========================= */
 
 .product-image-wrap{
   position:relative;
   background:
-    radial-gradient(
-      circle at center,
-      #ffffff 0%,
-      #fafafa 65%,
-      #f4f4f4 100%
-    );
-  padding:12px 12px 6px;
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.9),transparent 35%),
+    linear-gradient(135deg,#edf7ff,#dceeff);
+  height:285px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
   overflow:hidden;
 }
 
-.product-image-wrap::after{
-  content:"";
-  position:absolute;
-  left:15%;
-  right:15%;
-  bottom:5px;
-  height:18px;
-  background:rgba(0,0,0,.08);
-  filter:blur(14px);
-  border-radius:50%;
-  z-index:0;
-}
-
 .product-image{
-  display:block;
   width:100%;
-  height:285px;
+  height:100%;
   object-fit:contain;
-  cursor:pointer;
-  position:relative;
-  z-index:1;
-  transition:transform .3s ease;
+  transition:.3s ease;
+  filter:drop-shadow(0 12px 12px rgba(0,0,0,.12));
 }
 
 .product-card:hover .product-image{
   transform:scale(1.045);
 }
 
-/* =========================
-   FAVORITE
-========================= */
-
 .favorite-btn{
   position:absolute;
-  top:12px;
-  right:12px;
-  width:39px;
-  height:39px;
+  top:14px;
+  right:14px;
+  width:44px;
+  height:44px;
   border-radius:50%;
-  border:1px solid #ddd;
   background:rgba(255,255,255,.96);
-  cursor:pointer;
-  font-size:21px;
-  z-index:3;
+  border:1px solid #d9e4ef;
+  color:var(--blue);
+  font-size:25px;
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:.2s ease;
-}
-
-.favorite-btn:hover{
-  transform:scale(1.07);
-  border-color:#ff4fa3;
+  z-index:3;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
 .favorite-btn.active{
-  color:#ff2d83;
+  background:var(--blue);
+  color:#fff;
 }
-
-/* =========================
-   PRODUCT INFO
-========================= */
 
 .product-info{
-  padding:17px 18px 20px;
-  text-align:center;
-  border-top:1px solid #f1f1f1;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
 }
 
-.product-info h3{
-  font-size:17px;
-  margin-bottom:7px;
-  font-weight:900;
-  letter-spacing:.2px;
-}
-
-.product-price{
-  font-size:22px;
-  font-weight:900;
+.product-name{
+  font-size:18px;
+  font-weight:800;
+  color:#102b56;
   margin-bottom:7px;
 }
 
-.research{
-  font-size:10px;
-  color:#777;
-  font-weight:bold;
-  letter-spacing:.5px;
+.research-label{
+  font-size:11px;
+  color:#667085;
+  letter-spacing:.3px;
   margin-bottom:13px;
 }
 
-/* =========================
-   ADD TO LIST
-   RAYA ROSA
-========================= */
+.product-bottom{
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
 
-@property --addListAngle{
-  syntax:"<angle>";
-  initial-value:0deg;
-  inherits:false;
+.price{
+  color:#0c49b8;
+  font-size:21px;
+  font-weight:900;
 }
 
 .add-list-btn{
-  width:92%;
-  max-width:185px;
-  margin:0 auto;
-  display:block;
-  position:relative;
-  border:1px solid #000;
-  background:#000;
+  border:0;
+  border-radius:12px;
+  background:#0b1d35;
   color:#fff;
-  padding:10px 12px;
-  border-radius:9px;
+  padding:11px 14px;
+  font-weight:800;
   font-size:12px;
-  font-weight:900;
-  letter-spacing:.4px;
-  cursor:pointer;
-  transition:.2s;
-  z-index:1;
-  overflow:hidden;
-  box-shadow:0 3px 9px rgba(0,0,0,.16);
-}
-
-.add-list-btn::before{
-  content:"";
-  position:absolute;
-  top:2px;
-  left:2px;
-  right:2px;
-  bottom:2px;
-  border-radius:7px;
-  padding:1.5px;
-
-  background:
-    conic-gradient(
-      from var(--addListAngle),
-      transparent 0deg,
-      transparent 320deg,
-      #ff4fa3 337deg,
-      #ff4fa3 352deg,
-      transparent 360deg
-    );
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-
-  -webkit-mask-composite:xor;
-
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-
-  mask-composite:exclude;
-
-  pointer-events:none;
-  z-index:2;
-  animation:addListRotate 1.8s linear infinite;
-}
-
-.add-list-btn::after{
-  content:"";
-  display:none;
-}
-
-.add-list-btn:hover{
-  background:#000;
-  color:#fff;
-  transform:scale(1.02);
-}
-
-.add-list-btn:active{
-  transform:scale(.98);
-}
-
-@keyframes addListRotate{
-  from{
-    --addListAngle:0deg;
-  }
-
-  to{
-    --addListAngle:360deg;
-  }
-}
-
-/* =========================
-   FLOATING CART
-========================= */
-
-.cart-floating{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  border:none;
-  background:#000;
-  color:#fff;
-  font-size:25px;
-  cursor:pointer;
-  z-index:4500;
-  box-shadow:0 5px 20px rgba(0,0,0,.3);
   transition:.2s ease;
 }
 
-.cart-floating:hover{
-  transform:scale(1.06);
+.add-list-btn:hover{
+  background:var(--blue);
+  transform:translateY(-1px);
 }
 
-.cart-count{
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  min-width:23px;
-  height:23px;
+/* =========================================================
+   INFORMATION SECTIONS
+   ========================================================= */
+
+.info-section{
+  background:#fff;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.info-card{
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  background:#fff;
+  box-shadow:0 5px 18px rgba(0,0,0,.04);
+}
+
+.info-card h3{
+  color:#0b2a63;
+  margin-bottom:10px;
+}
+
+.info-card p{
+  color:#667085;
+  line-height:1.6;
+}
+
+/* =========================================================
+   COMPARE
+   ========================================================= */
+
+.compare-wrapper{
+  overflow-x:auto;
+  margin-top:25px;
+}
+
+.compare-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+.compare-table th,
+.compare-table td{
+  padding:14px;
+  border:1px solid var(--border);
+  text-align:left;
+}
+
+.compare-table th{
+  background:var(--navy);
+  color:white;
+}
+
+.compare-table tr:nth-child(even){
+  background:#f7faff;
+}
+
+/* =========================================================
+   FLOATING CART
+   ========================================================= */
+
+.floating-cart{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:58px;
+  height:58px;
   border-radius:50%;
-  background:#ff4fa3;
+  border:0;
+  background:var(--blue);
   color:#fff;
+  z-index:4000;
+  box-shadow:0 10px 25px rgba(23,105,255,.35);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:11px;
-  font-weight:bold;
 }
 
-/* =========================
-   SIDE MENU
-========================= */
+.floating-cart .cart-count{
+  top:-3px;
+  right:-3px;
+  background:#071426;
+}
 
-.overlay{
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel-overlay{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.55);
@@ -446,99 +590,21 @@ header{
   display:none;
 }
 
-.overlay.show{
+.panel-overlay.show{
   display:block;
 }
-
-.side-menu{
-  position:fixed;
-  top:0;
-  left:-340px;
-  width:320px;
-  max-width:90%;
-  height:100vh;
-  background:#fff;
-  z-index:7000;
-  transition:.3s ease;
-  padding:25px;
-  overflow-y:auto;
-}
-
-.side-menu.open{
-  left:0;
-}
-
-.side-close{
-  border:0;
-  background:#000;
-  color:#fff;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  font-size:23px;
-  cursor:pointer;
-  float:right;
-}
-
-.side-menu h2{
-  clear:both;
-  padding-top:25px;
-  margin-bottom:20px;
-}
-
-.side-menu a,
-.side-menu button.menu-link{
-  display:block;
-  width:100%;
-  padding:15px 8px;
-  border:0;
-  border-bottom:1px solid #eee;
-  background:none;
-  text-align:left;
-  color:#111;
-  text-decoration:none;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.search-box{
-  margin:20px 0;
-}
-
-.search-box input{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:10px;
-}
-
-.search-results{
-  margin-top:10px;
-}
-
-.search-result{
-  padding:10px;
-  border-bottom:1px solid #eee;
-  cursor:pointer;
-}
-
-/* =========================
-   PANELS
-========================= */
 
 .panel{
   position:fixed;
   top:0;
-  right:-500px;
-  width:480px;
-  max-width:95%;
+  right:-470px;
+  width:min(460px,100%);
   height:100vh;
   background:#fff;
-  z-index:8000;
+  z-index:6100;
+  box-shadow:-10px 0 35px rgba(0,0,0,.2);
   transition:.3s ease;
   overflow-y:auto;
-  padding:25px;
-  box-shadow:-5px 0 20px rgba(0,0,0,.2);
 }
 
 .panel.open{
@@ -546,188 +612,148 @@ header{
 }
 
 .panel-header{
+  position:sticky;
+  top:0;
+  z-index:2;
+  background:var(--navy);
+  color:white;
+  padding:20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
 }
 
-.panel-close{
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:50%;
-  background:#000;
-  color:#fff;
-  cursor:pointer;
+.panel-header h2{
   font-size:20px;
 }
 
-/* =========================
-   SELECTED PRODUCTS
-========================= */
+.panel-close{
+  border:0;
+  background:transparent;
+  color:#fff;
+  font-size:28px;
+}
+
+.panel-body{
+  padding:20px;
+}
 
 .selected-item{
   display:flex;
-  align-items:center;
   gap:12px;
-  border-bottom:1px solid #eee;
-  padding:12px 0;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
 }
 
 .selected-item img{
-  width:65px;
-  height:65px;
+  width:72px;
+  height:72px;
   object-fit:contain;
-  background:#fafafa;
   border-radius:10px;
+  background:#f2f7fc;
 }
 
-.selected-info{
+.selected-item-info{
   flex:1;
 }
 
-.qty-controls{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:7px;
+.selected-item-info h4{
+  font-size:14px;
+  margin-bottom:5px;
 }
 
-.qty-controls button{
-  width:30px;
-  height:30px;
-  border:1px solid #ccc;
-  background:#fff;
-  border-radius:7px;
-  cursor:pointer;
+.selected-item-info p{
+  color:var(--gray);
+  font-size:13px;
 }
 
 .remove-btn{
   border:0;
-  background:#eee;
-  padding:7px 9px;
-  border-radius:7px;
-  cursor:pointer;
+  background:transparent;
+  color:var(--danger);
+  font-weight:700;
 }
 
-.cart-summary{
+.total-box{
   margin-top:20px;
-  padding-top:15px;
-  border-top:2px solid #111;
+  padding:18px;
+  background:#f5f8fc;
+  border-radius:15px;
 }
 
-.summary-row{
+.total-row{
   display:flex;
   justify-content:space-between;
-  padding:6px 0;
+  margin-bottom:9px;
 }
 
-.summary-row.total{
-  font-size:21px;
+.total-row.grand{
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  margin-top:12px;
   font-weight:900;
-  margin-top:8px;
-}
-
-/* =========================
-   SHIPPING / PAYMENT
-========================= */
-
-.option-box{
-  margin-top:20px;
-}
-
-.option-box h3{
-  margin-bottom:10px;
-}
-
-.option-label{
-  display:block;
-  border:1px solid #ddd;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:8px;
-  cursor:pointer;
-}
-
-.option-label input{
-  margin-right:8px;
+  font-size:19px;
 }
 
 .primary-btn{
   width:100%;
-  padding:15px;
   border:0;
-  border-radius:12px;
-  background:#000;
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
+  border-radius:13px;
+  padding:14px;
+  background:var(--blue);
+  color:white;
+  font-weight:800;
   margin-top:15px;
-}
-
-.primary-btn:hover{
-  opacity:.85;
 }
 
 .secondary-btn{
   width:100%;
-  padding:13px;
-  border:1px solid #111;
-  border-radius:12px;
-  background:#fff;
-  color:#111;
-  font-weight:900;
-  cursor:pointer;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:14px;
+  background:white;
+  color:var(--text);
+  font-weight:800;
   margin-top:10px;
 }
 
-/* =========================
-   PAYMENT CARDS
-========================= */
+/* =========================================================
+   SHIPPING / PAYMENT
+   ========================================================= */
 
-.payment{
-  border:1px solid #e5e5e5;
-  border-radius:14px;
-  padding:18px;
-  margin:15px 0;
+.option-group{
+  margin-top:20px;
 }
 
-.payment h3{
-  margin-bottom:12px;
-  font-size:20px;
+.option-group h3{
+  margin-bottom:10px;
+  color:#102b56;
 }
 
-.payment p{
-  margin:7px 0;
-}
-
-.venmo h3{
-  color:#008cff;
-}
-
-.zelle h3{
-  color:#6d1ed4;
-}
-
-.paypal h3{
-  color:#003087;
-}
-
-.copy-btn{
-  border:none;
-  border-radius:8px;
-  padding:9px 13px;
-  margin-top:8px;
+.option{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px;
+  margin-bottom:9px;
   cursor:pointer;
-  font-weight:bold;
-  background:#222;
-  color:#fff;
 }
 
-/* =========================
-   INFORMATION FORM
-========================= */
+.option.selected{
+  border:2px solid var(--blue);
+  background:#f1f7ff;
+}
+
+.option input{
+  accent-color:var(--blue);
+}
+
+/* =========================================================
+   FORMS
+   ========================================================= */
 
 .form-group{
   margin-bottom:14px;
@@ -735,7 +761,8 @@ header{
 
 .form-group label{
   display:block;
-  font-weight:bold;
+  font-size:13px;
+  font-weight:700;
   margin-bottom:6px;
 }
 
@@ -743,39 +770,39 @@ header{
 .form-group textarea,
 .form-group select{
   width:100%;
+  border:1px solid #d7e0ea;
+  border-radius:10px;
   padding:12px;
-  border:1px solid #ccc;
-  border-radius:9px;
-  font:inherit;
+  outline:none;
+  background:#fff;
 }
 
 .form-group textarea{
-  min-height:110px;
+  min-height:100px;
   resize:vertical;
 }
 
-.reference-box{
-  background:#f5f5f5;
-  border-radius:12px;
-  padding:14px;
-  margin:15px 0;
-  text-align:center;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(23,105,255,.1);
 }
 
-.reference-code{
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:3px;
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-/* =========================
+/* =========================================================
    MODAL
-========================= */
+   ========================================================= */
 
-.modal{
+.modal-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.65);
   z-index:9000;
   display:none;
   align-items:center;
@@ -783,268 +810,326 @@ header{
   padding:20px;
 }
 
-.modal.open{
+.modal-overlay.show{
   display:flex;
 }
 
-.modal-content{
-  width:500px;
-  max-width:100%;
-  background:#fff;
-  border-radius:20px;
-  padding:25px;
+.modal{
+  width:min(520px,100%);
   max-height:90vh;
   overflow-y:auto;
+  background:#fff;
+  border-radius:22px;
+  padding:25px;
   position:relative;
 }
 
 .modal-close{
   position:absolute;
   top:12px;
-  right:12px;
+  right:15px;
+  border:0;
+  background:transparent;
+  font-size:30px;
+}
+
+.modal-product-image{
+  width:100%;
+  height:280px;
+  object-fit:contain;
+  background:#f1f7ff;
+  border-radius:16px;
+  margin-bottom:18px;
+}
+
+.quantity-control{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-top:15px;
+}
+
+.quantity-control button{
   width:38px;
   height:38px;
-  border:0;
-  border-radius:50%;
-  background:#000;
-  color:#fff;
-  cursor:pointer;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:10px;
   font-size:20px;
 }
 
-.modal-image{
-  width:100%;
-  height:320px;
-  object-fit:contain;
-  margin-bottom:15px;
+.quantity-control span{
+  font-weight:800;
 }
 
-.modal-content h2{
-  margin-bottom:8px;
-}
-
-.modal-price{
-  font-size:25px;
-  font-weight:900;
-  margin-bottom:15px;
-}
-
-/* =========================
-   COMPARE
-========================= */
-
-.compare-wrap{
-  overflow-x:auto;
-}
-
-.compare-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:600px;
-}
-
-.compare-table th,
-.compare-table td{
-  border:1px solid #ddd;
-  padding:13px;
-  text-align:center;
-}
-
-.compare-table th{
-  background:#000;
-  color:#fff;
-}
-
-/* =========================
-   CONTACT / ABOUT / LOGIN
-========================= */
-
-.info-card{
-  max-width:800px;
-  margin:auto;
-  background:#fafafa;
-  padding:30px;
-  border-radius:18px;
-  line-height:1.7;
-}
-
-.contact-info{
-  text-align:center;
-  font-size:18px;
-  line-height:2;
-}
-
-.login-box{
-  max-width:450px;
-  margin:auto;
-  background:#fafafa;
-  padding:30px;
-  border-radius:18px;
-}
-
-.login-box input{
-  width:100%;
-  padding:13px;
-  margin-bottom:12px;
-  border:1px solid #ccc;
-  border-radius:9px;
-}
-
-/* =========================
-   FINAL CONFIRMATION
-========================= */
-
-.thank-you{
-  text-align:center;
-  padding:30px 10px;
-}
-
-.thank-you h2{
-  font-size:34px;
-  margin-bottom:15px;
-}
-
-.payment-final{
-  text-align:left;
-  margin-top:20px;
-  padding:18px;
-  background:#f7f7f7;
-  border-radius:14px;
-}
-
-/* =========================
+/* =========================================================
    AGE GATE
-========================= */
+   ========================================================= */
 
-.age-gate{
+.age-overlay{
   position:fixed;
   inset:0;
+  background:rgba(2,9,20,.94);
   z-index:10000;
-  background:rgba(0,0,0,.94);
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
 }
 
-.age-gate.hidden{
-  display:none !important;
-}
-
-.age-card{
-  width:500px;
-  max-width:100%;
-  background:#fff;
-  border-radius:22px;
+.age-box{
+  width:min(500px,100%);
+  background:white;
+  border-radius:24px;
   padding:35px 25px;
   text-align:center;
-  box-shadow:0 10px 50px rgba(0,0,0,.5);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
-.age-card h2{
-  font-size:30px;
+.age-box img{
+  width:170px;
+  height:80px;
+  object-fit:contain;
   margin-bottom:15px;
 }
 
-.age-card p{
-  color:#555;
+.age-box h2{
+  color:#0b2a63;
+  margin-bottom:12px;
+}
+
+.age-box p{
+  color:#667085;
   line-height:1.6;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
-.age-buttons{
+.age-actions{
   display:flex;
-  gap:12px;
+  gap:10px;
 }
 
-.age-buttons button{
+.age-actions button{
   flex:1;
-  padding:15px 10px;
+  padding:13px;
   border-radius:12px;
-  font-weight:900;
+  border:0;
+  font-weight:800;
+}
+
+.age-yes{
+  background:var(--blue);
+  color:white;
+}
+
+.age-no{
+  background:#eef1f5;
+  color:#263238;
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.search-box input{
+  flex:1;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px;
+  outline:none;
+}
+
+.search-result{
+  padding:13px;
+  border-bottom:1px solid var(--border);
   cursor:pointer;
 }
 
-.age-enter{
-  background:#000;
-  color:#fff;
-  border:2px solid #000;
+.search-result:hover{
+  background:#f4f8fd;
 }
 
-.age-exit{
-  background:#fff;
-  color:#000;
-  border:2px solid #000;
-}
-
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 
 footer{
-  background:#000;
-  color:#fff;
+  background:var(--navy);
+  color:white;
+  padding:40px 20px;
   text-align:center;
-  padding:35px 20px;
-  margin-top:40px;
+}
+
+.footer-logo{
+  width:180px;
+  height:70px;
+  object-fit:contain;
+  margin-bottom:15px;
 }
 
 footer p{
-  margin:7px 0;
+  color:#b8c5d6;
+  line-height:1.7;
+  font-size:13px;
 }
 
-.status{
-  padding:12px;
-  background:#f1f1f1;
-  border-radius:10px;
-  margin-top:12px;
-  text-align:center;
-  display:none;
+.footer-links{
+  margin:18px 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px;
 }
 
-/* =========================
+.footer-links button{
+  background:transparent;
+  border:0;
+  color:white;
+  font-weight:700;
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%) translateY(100px);
+  background:#071426;
+  color:white;
+  padding:13px 18px;
+  border-radius:12px;
+  z-index:12000;
+  opacity:0;
+  transition:.3s ease;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
+
+/* =========================================================
    RESPONSIVE
-========================= */
+   ========================================================= */
 
 @media(max-width:1100px){
 
   .products-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .hero{
+    min-height:440px;
+  }
+}
+
+@media(max-width:800px){
+
+  header{
+    height:82px;
+    padding:0 14px;
+  }
+
+  .header-logo{
+    width:165px;
+    height:68px;
+  }
+
+  .header-actions{
+    gap:4px;
+  }
+
+  .header-action{
+    width:43px;
+    height:43px;
+  }
+
+  .products-grid{
     grid-template-columns:repeat(2,1fr);
+    gap:16px;
   }
 
-  .product-image{
-    height:300px;
+  .product-image-wrap{
+    height:270px;
   }
 
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-title{
+    font-size:35px;
+  }
+
+  .hero{
+    min-height:380px;
+  }
 }
 
 @media(max-width:600px){
 
   header{
-    height:62px;
-    padding:0 15px;
-  }
-
-  .logo{
-    font-size:19px;
-    letter-spacing:1.5px;
+    height:76px;
   }
 
   .menu-btn{
-    font-size:28px;
+    width:43px;
+    height:43px;
+    font-size:30px;
+  }
+
+  .header-logo{
+    width:145px;
+    height:61px;
+  }
+
+  .header-actions{
+    gap:0;
+  }
+
+  .header-action{
+    width:39px;
+    height:39px;
+  }
+
+  .search-icon{
+    width:24px;
+    height:24px;
+    border-width:3px;
+  }
+
+  .cart-icon{
+    width:26px;
+    height:21px;
   }
 
   .hero{
-    min-height:350px;
-    background-size:cover;
+    min-height:300px;
+    background-position:center;
   }
 
-  .hero-content h1{
-    font-size:38px;
+  .section{
+    padding:30px 14px 55px;
   }
 
-  .hero-content p{
-    font-size:17px;
+  .section-title{
+    font-size:31px;
+  }
+
+  .section-title::after{
+    width:70px;
+    height:4px;
+    margin-top:12px;
   }
 
   .products-grid{
@@ -1052,786 +1137,357 @@ footer p{
     gap:18px;
   }
 
-  #products{
-    padding-top:38px;
-  }
-
-  .section{
-    padding:40px 15px;
-  }
-
-  .section-title{
-    font-size:29px;
-    margin-bottom:30px;
-  }
-
-  .product-card{
-    border-radius:19px;
-  }
-
   .product-image-wrap{
-    padding:8px 15px 3px;
-  }
-
-  .product-image{
     height:330px;
   }
 
+  .product-name{
+    font-size:19px;
+  }
+
   .product-info{
-    padding:16px 18px 20px;
+    padding:18px;
   }
 
-  .product-info h3{
-    font-size:18px;
-  }
-
-  .product-price{
-    font-size:23px;
+  .price{
+    font-size:22px;
   }
 
   .add-list-btn{
-    max-width:205px;
-    padding:11px 12px;
+    padding:12px 15px;
   }
 
-  .cart-floating{
-    right:15px;
-    bottom:15px;
-    width:58px;
-    height:58px;
+  .form-grid{
+    grid-template-columns:1fr;
   }
 
-  .panel{
-    width:100%;
-    max-width:100%;
-    padding:20px;
-  }
-
-  .age-buttons{
+  .age-actions{
     flex-direction:column;
   }
-
-  .modal-content{
-    padding:20px;
-  }
-
-  .modal-image{
-    height:290px;
-  }
-
 }
 
-@media(min-width:601px) and (max-width:900px){
-
-  .product-image{
-    height:285px;
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
   }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     AGE CONFIRMATION
-========================= -->
+<!-- =======================================================
+     AGE GATE
+     ======================================================= -->
 
-<div class="age-gate" id="ageGate">
+<div class="age-overlay" id="ageOverlay">
 
-  <div class="age-card">
+  <div class="age-box">
 
-    <h2>Age Confirmation</h2>
+    <img src="./logo.png" alt="NovaPeps USA">
+
+    <h2>Age Verification</h2>
 
     <p>
-      This website contains products presented for research purposes only.<br>
-      Please confirm that you are of legal age to enter this website.
+      You must be 18 years or older to enter this website.
+      All products are intended for research use only.
     </p>
 
-    <div class="age-buttons">
-
-      <button
-        class="age-enter"
-        id="ageEnterBtn"
-        type="button"
-      >
-        I AM OF LEGAL AGE
+    <div class="age-actions">
+      <button class="age-yes" onclick="confirmAge()">
+        I am 18+
       </button>
 
-      <button
-        class="age-exit"
-        id="ageExitBtn"
-        type="button"
-      >
-        EXIT
+      <button class="age-no" onclick="denyAge()">
+        Exit
       </button>
-
     </div>
 
   </div>
 
 </div>
 
-<!-- =========================
-     HEADER
-========================= -->
 
-<header>
+<!-- =======================================================
+     MENU OVERLAY
+     ======================================================= -->
+
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
+
+<!-- =======================================================
+     SIDE MENU
+     ======================================================= -->
+
+<aside class="side-menu" id="sideMenu">
+
+  <div class="side-menu-header">
+
+    <img src="./logo.png" alt="NovaPeps USA">
+
+    <button class="close-menu" onclick="closeMenu()">×</button>
+
+  </div>
+
+  <div class="side-menu-content">
+
+    <div class="menu-search">
+
+      <span>⌕</span>
+
+      <input
+        id="menuSearchInput"
+        type="search"
+        placeholder="Search products..."
+        oninput="searchProducts(this.value)"
+      >
+
+    </div>
+
+    <button class="menu-link" onclick="goTo('home')">
+      Home
+    </button>
+
+    <button class="menu-link" onclick="goTo('products')">
+      Products
+    </button>
+
+    <button class="menu-link" onclick="openList()">
+      My List
+    </button>
+
+    <button class="menu-link" onclick="openCart()">
+      Cart
+    </button>
+
+    <button class="menu-link" onclick="goTo('shipping')">
+      Shipping
+    </button>
+
+    <button class="menu-link" onclick="goTo('about')">
+      About Us
+    </button>
+
+    <button class="menu-link" onclick="goTo('compare')">
+      Compare Products
+    </button>
+
+    <button class="menu-link" onclick="goTo('contact')">
+      Contact
+    </button>
+
+    <button class="menu-link" onclick="login()">
+      Login / Register
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
+
+<header id="home">
 
   <button
     class="menu-btn"
-    id="menuBtn"
-    type="button"
+    onclick="toggleMenu()"
     aria-label="Open menu"
   >
     ☰
   </button>
 
-  <div class="logo">
-    NOVA<span>PEPS</span> USA
+  <!-- REAL LOGO IMAGE -->
+  <div class="header-logo">
+    <img
+      src="./logo.png"
+      alt="NovaPeps USA"
+    >
   </div>
 
-  <div style="width:42px;"></div>
+  <div class="header-actions">
+
+    <button
+      class="header-action"
+      onclick="openSearchPanel()"
+      aria-label="Search"
+    >
+      <span class="search-icon"></span>
+    </button>
+
+    <button
+      class="header-action"
+      onclick="openCart()"
+      aria-label="Cart"
+    >
+      <span class="cart-icon"></span>
+      <span class="cart-count" id="headerCartCount">0</span>
+    </button>
+
+  </div>
 
 </header>
 
-<!-- =========================
-     SIDE MENU
-========================= -->
 
-<div
-  class="overlay"
-  id="overlay"
-></div>
+<!-- =======================================================
+     HERO
+     ======================================================= -->
 
-<nav
-  class="side-menu"
-  id="sideMenu"
+<section class="hero"></section>
+
+
+<!-- =======================================================
+     PRODUCTS
+     ======================================================= -->
+
+<section
+  class="products-section"
+  id="products"
 >
 
-  <button
-    class="side-close"
-    id="sideClose"
-    type="button"
-  >
-    ×
-  </button>
+  <div class="products-inner section">
 
-  <h2>NOVAPEPS USA</h2>
+    <div class="section-heading">
 
-  <div class="search-box">
+      <h1 class="section-title">
+        Productos destacados
+      </h1>
 
-    <input
-      type="search"
-      id="searchInput"
-      placeholder="Search products..."
-    >
+    </div>
+
 
     <div
-      class="search-results"
-      id="searchResults"
+      class="products-grid"
+      id="productsGrid"
     ></div>
 
   </div>
 
-  <a
-    href="#home"
-    class="menu-link"
-  >
-    HOME
-  </a>
-
-  <a
-    href="#products"
-    class="menu-link"
-  >
-    PRODUCTS
-  </a>
-
-  <button
-    class="menu-link"
-    data-open-panel="listPanel"
-  >
-    LIST
-  </button>
-
-  <a
-    href="#shipping"
-    class="menu-link"
-  >
-    SHIPPING
-  </a>
-
-  <a
-    href="#contact"
-    class="menu-link"
-  >
-    CONTACT PAGE
-  </a>
-
-  <a
-    href="#about"
-    class="menu-link"
-  >
-    ABOUT US
-  </a>
-
-  <a
-    href="#compare"
-    class="menu-link"
-  >
-    COMPARE
-  </a>
-
-  <a
-    href="#login"
-    class="menu-link"
-  >
-    LOGIN / REGISTER
-  </a>
-
-</nav>
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section
-  class="hero"
-  id="home"
->
 </section>
 
-<!-- =========================
-     PRODUCTS
-========================= -->
 
-<section
-  class="section"
-  id="products"
->
-
-  <h2 class="section-title">
-    Products
-  </h2>
-
-  <div class="products-grid">
-
-    <!-- MOTS-C -->
-
-    <article
-      class="product-card"
-      data-name="MOTS-C 10 MG"
-      data-price="60"
-      data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="MOTS-C 10 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
-          alt="MOTS-C 10 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>MOTS-C 10 MG</h3>
-
-        <div class="product-price">
-          $60
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- GLP-2 10 -->
-
-    <article
-      class="product-card"
-      data-name="GLP-2 10 MG"
-      data-price="90"
-      data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="GLP-2 10 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
-          alt="GLP-2 10 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>GLP-2 10 MG</h3>
-
-        <div class="product-price">
-          $90
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- GHK-CU -->
-
-    <article
-      class="product-card"
-      data-name="GHK-CU 100 MG"
-      data-price="50"
-      data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="GHK-CU 100 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
-          alt="GHK-CU 100 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>GHK-CU 100 MG</h3>
-
-        <div class="product-price">
-          $50
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- GLP-3 10 -->
-
-    <article
-      class="product-card"
-      data-name="GLP-3 10 MG"
-      data-price="95"
-      data-image="./713BA234-721B-4580-94DF-6677375C7826.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="GLP-3 10 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./713BA234-721B-4580-94DF-6677375C7826.png"
-          alt="GLP-3 10 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>GLP-3 10 MG</h3>
-
-        <div class="product-price">
-          $95
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- GLP-2 20 -->
-
-    <article
-      class="product-card"
-      data-name="GLP-2 20 MG"
-      data-price="110"
-      data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="GLP-2 20 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
-          alt="GLP-2 20 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>GLP-2 20 MG</h3>
-
-        <div class="product-price">
-          $110
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- GLP-3 20 -->
-
-    <article
-      class="product-card"
-      data-name="GLP-3 20 MG"
-      data-price="135"
-      data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="GLP-3 20 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
-          alt="GLP-3 20 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>GLP-3 20 MG</h3>
-
-        <div class="product-price">
-          $135
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- GLUTATHIONE -->
-
-    <article
-      class="product-card"
-      data-name="GLUTATHIONE 1500 MG"
-      data-price="60"
-      data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="GLUTATHIONE 1500 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
-          alt="GLUTATHIONE 1500 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>GLUTATHIONE 1500 MG</h3>
-
-        <div class="product-price">
-          $60
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-    <!-- NAD -->
-
-    <article
-      class="product-card"
-      data-name="NAD+ 500 MG"
-      data-price="50"
-      data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png"
-    >
-
-      <div class="product-image-wrap">
-
-        <button
-          class="favorite-btn"
-          data-favorite="NAD+ 500 MG"
-          type="button"
-        >
-          ♡
-        </button>
-
-        <img
-          class="product-image"
-          src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
-          alt="NAD+ 500 MG"
-        >
-
-      </div>
-
-      <div class="product-info">
-
-        <h3>NAD+ 500 MG</h3>
-
-        <div class="product-price">
-          $50
-        </div>
-
-        <div class="research">
-          FOR RESEARCH USE ONLY
-        </div>
-
-        <button
-          class="add-list-btn"
-          type="button"
-        >
-          ADD TO LIST
-        </button>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-<!-- =========================
+<!-- =======================================================
      SHIPPING
-========================= -->
+     ======================================================= -->
 
 <section
-  class="section"
+  class="section info-section"
   id="shipping"
 >
 
-  <h2 class="section-title">
-    Shipping
-  </h2>
+  <div class="section-heading">
 
-  <div class="info-card">
+    <h2 class="section-title">
+      Shipping
+    </h2>
 
-    <h3>Shipping Options</h3>
+  </div>
 
-    <p>
-      <strong>Standard Shipping:</strong> $9
-    </p>
+  <div class="info-grid">
 
-    <p>
-      <strong>Express Shipping:</strong> $15
-    </p>
+    <div class="info-card">
 
-    <p>
-      <strong>Free Shipping:</strong> Orders $200+
-    </p>
+      <h3>Standard Shipping</h3>
 
-    <p class="notice">
-      Shipping options are displayed during checkout.
-    </p>
+      <p>
+        Standard shipping is available for $9.
+      </p>
+
+    </div>
+
+    <div class="info-card">
+
+      <h3>Express Shipping</h3>
+
+      <p>
+        Express shipping is available for $15.
+      </p>
+
+    </div>
+
+    <div class="info-card">
+
+      <h3>Free Shipping</h3>
+
+      <p>
+        Orders of $200 or more qualify for free shipping.
+      </p>
+
+    </div>
 
   </div>
 
 </section>
 
-<!-- =========================
-     CONTACT
-========================= -->
 
-<section
-  class="section"
-  id="contact"
->
-
-  <h2 class="section-title">
-    Contact
-  </h2>
-
-  <div class="info-card contact-info">
-
-    <p>
-      Email:
-      <strong>novapeps22@gmail.com</strong>
-    </p>
-
-    <p>
-      Phone:
-      <strong>(832) 273-9625</strong>
-    </p>
-
-  </div>
-
-</section>
-
-<!-- =========================
+<!-- =======================================================
      ABOUT
-========================= -->
+     ======================================================= -->
 
 <section
-  class="section"
+  class="section info-section"
   id="about"
 >
 
-  <h2 class="section-title">
-    About Us
-  </h2>
+  <div class="section-heading">
+
+    <h2 class="section-title">
+      About Us
+    </h2>
+
+  </div>
 
   <div class="info-card">
 
     <p>
-      NovaPeps USA provides products presented for research purposes only.
-      The information displayed on this website is informational and is not
-      intended to diagnose, treat, cure, or prevent any disease.
+      NovaPeps USA provides products intended strictly
+      for laboratory and research purposes.
     </p>
 
     <br>
 
     <p>
-      All products are presented for research use only.
+      These products are not intended to diagnose, treat,
+      cure, or prevent any disease or medical condition.
+    </p>
+
+    <br>
+
+    <p>
+      All products are tested by independent laboratories
+      in the United States and are accompanied by a
+      Certificate of Analysis (COA).
     </p>
 
   </div>
 
 </section>
 
-<!-- =========================
+
+<!-- =======================================================
      COMPARE
-========================= -->
+     ======================================================= -->
 
 <section
   class="section"
   id="compare"
 >
 
-  <h2 class="section-title">
-    Compare
-  </h2>
+  <div class="section-heading">
 
-  <div class="compare-wrap">
+    <h2 class="section-title">
+      Compare Products
+    </h2>
+
+  </div>
+
+  <div class="compare-wrapper">
 
     <table class="compare-table">
 
@@ -1839,63 +1495,14 @@ footer p{
 
         <tr>
           <th>Product</th>
-          <th>Amount</th>
+          <th>Size</th>
           <th>Price</th>
+          <th>Research Use</th>
         </tr>
 
       </thead>
 
-      <tbody>
-
-        <tr>
-          <td>MOTS-C</td>
-          <td>10 MG</td>
-          <td>$60</td>
-        </tr>
-
-        <tr>
-          <td>GLP-2</td>
-          <td>10 MG</td>
-          <td>$90</td>
-        </tr>
-
-        <tr>
-          <td>GHK-CU</td>
-          <td>100 MG</td>
-          <td>$50</td>
-        </tr>
-
-        <tr>
-          <td>GLP-3</td>
-          <td>10 MG</td>
-          <td>$95</td>
-        </tr>
-
-        <tr>
-          <td>GLP-2</td>
-          <td>20 MG</td>
-          <td>$110</td>
-        </tr>
-
-        <tr>
-          <td>GLP-3</td>
-          <td>20 MG</td>
-          <td>$135</td>
-        </tr>
-
-        <tr>
-          <td>GLUTATHIONE</td>
-          <td>1500 MG</td>
-          <td>$60</td>
-        </tr>
-
-        <tr>
-          <td>NAD+</td>
-          <td>500 MG</td>
-          <td>$50</td>
-        </tr>
-
-      </tbody>
+      <tbody id="compareBody"></tbody>
 
     </table>
 
@@ -1903,322 +1510,350 @@ footer p{
 
 </section>
 
-<!-- =========================
-     LOGIN
-========================= -->
+
+<!-- =======================================================
+     CONTACT
+     ======================================================= -->
 
 <section
   class="section"
-  id="login"
+  id="contact"
 >
 
-  <h2 class="section-title">
-    Login / Register
-  </h2>
+  <div class="section-heading">
 
-  <div class="login-box">
+    <h2 class="section-title">
+      Contact
+    </h2>
 
-    <input
-      type="email"
-      placeholder="Email"
-    >
+  </div>
 
-    <input
-      type="password"
-      placeholder="Password"
-    >
+  <div class="info-grid">
 
-    <button
-      class="primary-btn"
-      type="button"
-      onclick="alert('Account login is not connected yet.')"
-    >
-      LOGIN
-    </button>
+    <div class="info-card">
 
-    <button
-      class="secondary-btn"
-      type="button"
-      onclick="alert('Registration is not connected yet.')"
-    >
-      REGISTER
-    </button>
+      <h3>Email</h3>
+
+      <p>
+        YOUR_EMAIL_HERE
+      </p>
+
+    </div>
+
+    <div class="info-card">
+
+      <h3>Phone</h3>
+
+      <p>
+        YOUR_PHONE_HERE
+      </p>
+
+    </div>
+
+    <div class="info-card">
+
+      <h3>Customer Support</h3>
+
+      <p>
+        Please use the information request form
+        to contact our team.
+      </p>
+
+    </div>
 
   </div>
 
 </section>
 
-<!-- =========================
+
+<!-- =======================================================
      FLOATING CART
-========================= -->
+     ======================================================= -->
 
 <button
-  class="cart-floating"
-  id="cartFloating"
-  type="button"
+  class="floating-cart"
+  onclick="openCart()"
+  aria-label="Open cart"
 >
 
-  🛒
+  <span class="cart-icon"></span>
 
   <span
     class="cart-count"
-    id="cartCount"
+    id="floatingCartCount"
   >
     0
   </span>
 
 </button>
 
-<!-- =========================
-     LIST PANEL
-========================= -->
+
+<!-- =======================================================
+     PANEL OVERLAY
+     ======================================================= -->
 
 <div
+  class="panel-overlay"
+  id="panelOverlay"
+  onclick="closePanels()"
+></div>
+
+
+<!-- =======================================================
+     LIST PANEL
+     ======================================================= -->
+
+<aside
   class="panel"
   id="listPanel"
 >
 
   <div class="panel-header">
 
-    <h2>
-      Selected Products
-    </h2>
+    <h2>My List</h2>
 
     <button
       class="panel-close"
-      data-close-panel="listPanel"
-      type="button"
+      onclick="closePanels()"
     >
       ×
     </button>
 
   </div>
 
-  <div id="selectedProducts"></div>
+  <div
+    class="panel-body"
+    id="listBody"
+  ></div>
 
-  <div class="cart-summary">
+</aside>
 
-    <div class="summary-row">
 
-      <span>
-        Informational Total
-      </span>
-
-      <strong id="listTotal">
-        $0.00
-      </strong>
-
-    </div>
-
-    <button
-      class="primary-btn"
-      id="openCartFromList"
-      type="button"
-    >
-      GO TO CART
-    </button>
-
-  </div>
-
-</div>
-
-<!-- =========================
+<!-- =======================================================
      CART PANEL
-========================= -->
+     ======================================================= -->
 
-<div
+<aside
   class="panel"
   id="cartPanel"
 >
 
   <div class="panel-header">
 
-    <h2>
-      Your Cart
-    </h2>
+    <h2>Your Cart</h2>
 
     <button
       class="panel-close"
-      data-close-panel="cartPanel"
-      type="button"
+      onclick="closePanels()"
     >
       ×
     </button>
 
   </div>
 
-  <div id="cartItems"></div>
+  <div class="panel-body">
 
-  <div class="option-box">
+    <div id="cartItems"></div>
 
-    <h3>
-      Shipping
-    </h3>
 
-    <label class="option-label">
+    <div class="option-group">
 
-      <input
-        type="radio"
-        name="shipping"
-        value="standard"
+      <h3>Shipping</h3>
+
+      <div
+        class="option"
+        data-shipping="standard"
+        onclick="selectShipping('standard')"
       >
 
-      Standard — $9
+        <span>
+          <input
+            type="radio"
+            name="shipping"
+            value="standard"
+          >
+          Standard
+        </span>
 
-    </label>
+        <strong>$9</strong>
 
-    <label class="option-label">
+      </div>
 
-      <input
-        type="radio"
-        name="shipping"
-        value="express"
+
+      <div
+        class="option"
+        data-shipping="express"
+        onclick="selectShipping('express')"
       >
 
-      Express — $15
+        <span>
+          <input
+            type="radio"
+            name="shipping"
+            value="express"
+          >
+          Express
+        </span>
 
-    </label>
+        <strong>$15</strong>
 
-    <label class="option-label">
+      </div>
 
-      <input
-        type="radio"
-        name="shipping"
-        value="free"
+
+      <div
+        class="option"
+        data-shipping="free"
+        onclick="selectShipping('free')"
       >
 
-      Free Shipping — $200+
+        <span>
+          <input
+            type="radio"
+            name="shipping"
+            value="free"
+          >
+          Free $200+
+        </span>
 
-    </label>
+        <strong>$0</strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="option-group">
+
+      <h3>Payment Method</h3>
+
+      <div
+        class="option"
+        data-payment="zelle"
+        onclick="selectPayment('zelle')"
+      >
+
+        <span>
+          <input
+            type="radio"
+            name="payment"
+            value="zelle"
+          >
+          Zelle
+        </span>
+
+      </div>
+
+
+      <div
+        class="option"
+        data-payment="venmo"
+        onclick="selectPayment('venmo')"
+      >
+
+        <span>
+          <input
+            type="radio"
+            name="payment"
+            value="venmo"
+          >
+          Venmo
+        </span>
+
+      </div>
+
+
+      <div
+        class="option"
+        data-payment="paypal"
+        onclick="selectPayment('paypal')"
+      >
+
+        <span>
+          <input
+            type="radio"
+            name="payment"
+            value="paypal"
+          >
+          PayPal
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="total-box">
+
+      <div class="total-row">
+
+        <span>Subtotal</span>
+
+        <strong id="cartSubtotal">
+          $0.00
+        </strong>
+
+      </div>
+
+
+      <div class="total-row">
+
+        <span>Shipping</span>
+
+        <strong id="cartShipping">
+          $0.00
+        </strong>
+
+      </div>
+
+
+      <div class="total-row grand">
+
+        <span>Total</span>
+
+        <strong id="cartTotal">
+          $0.00
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="primary-btn"
+      onclick="checkout()"
+    >
+      Continue to Information
+    </button>
 
   </div>
 
-  <div class="option-box">
+</aside>
 
-    <h3>
-      Payment Method
-    </h3>
 
-    <label class="option-label">
-
-      <input
-        type="radio"
-        name="payment"
-        value="zelle"
-      >
-
-      Zelle
-
-    </label>
-
-    <label class="option-label">
-
-      <input
-        type="radio"
-        name="payment"
-        value="venmo"
-      >
-
-      Venmo
-
-    </label>
-
-    <label class="option-label">
-
-      <input
-        type="radio"
-        name="payment"
-        value="paypal"
-      >
-
-      PayPal
-
-    </label>
-
-  </div>
-
-  <div class="cart-summary">
-
-    <div class="summary-row">
-      <span>Subtotal</span>
-      <strong id="subtotal">$0.00</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>Shipping</span>
-      <strong id="shippingCost">$0.00</strong>
-    </div>
-
-    <div class="summary-row total">
-      <span>Total</span>
-      <strong id="grandTotal">$0.00</strong>
-    </div>
-
-  </div>
-
-  <button
-    class="primary-btn"
-    id="checkoutBtn"
-    type="button"
-  >
-    CONTINUE
-  </button>
-
-  <button
-    class="secondary-btn"
-    id="clearCartBtn"
-    type="button"
-  >
-    CLEAR CART
-  </button>
-
-  <p class="notice">
-    This list is informational only. No payment is processed here.
-  </p>
-
-</div>
-
-<!-- =========================
+<!-- =======================================================
      INFORMATION PANEL
-========================= -->
+     ======================================================= -->
 
-<div
+<aside
   class="panel"
   id="informationPanel"
 >
 
   <div class="panel-header">
 
-    <h2>
-      Information Request
-    </h2>
+    <h2>Information</h2>
 
     <button
       class="panel-close"
-      data-close-panel="informationPanel"
-      type="button"
+      onclick="closePanels()"
     >
       ×
     </button>
 
   </div>
 
-  <div id="formArea">
-
-    <div class="reference-box">
-
-      <div>
-        Order / Reference Code
-      </div>
-
-      <div
-        class="reference-code"
-        id="referenceDisplay"
-      >
-        ----
-      </div>
-
-    </div>
+  <div class="panel-body">
 
     <form
       id="informationForm"
@@ -2228,61 +1863,28 @@ footer p{
 
       <input
         type="hidden"
-        name="subject"
+        name="_subject"
         value="NovaPeps USA Information Request"
       >
 
       <input
         type="hidden"
-        name="reference_code"
-        id="formReference"
+        name="order_reference"
+        id="orderReference"
       >
 
       <input
         type="hidden"
-        name="selected_products"
-        id="formProducts"
+        name="order_total"
+        id="orderTotalHidden"
       >
 
-      <input
-        type="hidden"
-        name="subtotal"
-        id="formSubtotal"
-      >
-
-      <input
-        type="hidden"
-        name="shipping_method"
-        id="formShipping"
-      >
-
-      <input
-        type="hidden"
-        name="shipping_cost"
-        id="formShippingCost"
-      >
-
-      <input
-        type="hidden"
-        name="informational_total"
-        id="formTotal"
-      >
-
-      <input
-        type="hidden"
-        name="payment_method"
-        id="formPayment"
-      >
-
-      <input
-        type="hidden"
-        name="informational_notice"
-        value="This information request does not process payment."
-      >
 
       <div class="form-group">
 
-        <label>Name</label>
+        <label>
+          Full Name
+        </label>
 
         <input
           type="text"
@@ -2292,9 +1894,12 @@ footer p{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Email</label>
+        <label>
+          Email
+        </label>
 
         <input
           type="email"
@@ -2304,9 +1909,12 @@ footer p{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Phone</label>
+        <label>
+          Phone
+        </label>
 
         <input
           type="tel"
@@ -2316,9 +1924,12 @@ footer p{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Address</label>
+        <label>
+          Address
+        </label>
 
         <input
           type="text"
@@ -2328,44 +1939,60 @@ footer p{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Apt / Unit</label>
+        <label>
+          Apartment / Suite
+        </label>
 
         <input
           type="text"
-          name="apt_unit"
+          name="apt"
         >
 
       </div>
 
-      <div class="form-group">
 
-        <label>City</label>
+      <div class="form-grid">
 
-        <input
-          type="text"
-          name="city"
-          required
-        >
+        <div class="form-group">
+
+          <label>
+            City
+          </label>
+
+          <input
+            type="text"
+            name="city"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            State
+          </label>
+
+          <input
+            type="text"
+            name="state"
+            required
+          >
+
+        </div>
 
       </div>
 
-      <div class="form-group">
-
-        <label>State</label>
-
-        <input
-          type="text"
-          name="state"
-          required
-        >
-
-      </div>
 
       <div class="form-group">
 
-        <label>ZIP</label>
+        <label>
+          ZIP Code
+        </label>
 
         <input
           type="text"
@@ -2375,102 +2002,92 @@ footer p{
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Message</label>
+        <label>
+          Message
+        </label>
 
-        <textarea name="message"></textarea>
+        <textarea
+          name="message"
+          placeholder="Additional information..."
+        ></textarea>
 
       </div>
 
+
       <button
-        class="primary-btn"
         type="submit"
+        class="primary-btn"
       >
-        SEND INFORMATION
+        Submit Information
       </button>
 
     </form>
 
   </div>
 
-  <div
-    id="finalConfirmation"
-    class="thank-you"
-    style="display:none;"
-  >
+</aside>
 
-    <h2>
-      THANK YOU!
-    </h2>
 
-    <p>
-      Your information has been submitted.
-    </p>
-
-    <div
-      class="payment-final"
-      id="paymentFinal"
-    ></div>
-
-  </div>
-
-</div>
-
-<!-- =========================
+<!-- =======================================================
      PRODUCT MODAL
-========================= -->
+     ======================================================= -->
 
 <div
-  class="modal"
+  class="modal-overlay"
   id="productModal"
+  onclick="closeProductModal(event)"
 >
 
-  <div class="modal-content">
+  <div
+    class="modal"
+    onclick="event.stopPropagation()"
+  >
 
     <button
       class="modal-close"
-      id="modalClose"
-      type="button"
+      onclick="closeProductModal()"
     >
       ×
     </button>
 
     <img
-      class="modal-image"
-      id="modalImage"
-      src=""
+      id="modalProductImage"
+      class="modal-product-image"
       alt=""
     >
 
-    <h2 id="modalName"></h2>
+    <h2 id="modalProductName"></h2>
 
-    <div
-      class="modal-price"
-      id="modalPrice"
-    ></div>
+    <p
+      id="modalProductPrice"
+      class="price"
+      style="margin-top:8px"
+    ></p>
 
-    <div class="research">
-      FOR RESEARCH USE ONLY
-    </div>
+    <p
+      style="
+        color:#667085;
+        font-size:13px;
+        margin-top:8px;
+      "
+    >
+      For research use only.
+    </p>
 
-    <div class="qty-controls">
+    <div class="quantity-control">
 
-      <button
-        id="modalMinus"
-        type="button"
-      >
+      <button onclick="changeQuantity(-1)">
         −
       </button>
 
-      <strong id="modalQuantity">
+      <span id="modalQuantity">
         1
-      </strong>
+      </span>
 
-      <button
-        id="modalPlus"
-        type="button"
-      >
+      <button onclick="changeQuantity(1)">
         +
       </button>
 
@@ -2478,113 +2095,181 @@ footer p{
 
     <button
       class="primary-btn"
-      id="modalAdd"
-      type="button"
+      onclick="addModalToCart()"
     >
-      ADD TO CART
+      Add to Cart
     </button>
 
     <button
       class="secondary-btn"
-      id="modalGoCart"
-      type="button"
+      onclick="addModalToList()"
     >
-      GO TO CART / CHECKOUT
+      Add to My List
     </button>
 
   </div>
 
 </div>
 
-<!-- =========================
+
+<!-- =======================================================
+     SEARCH PANEL
+     ======================================================= -->
+
+<aside
+  class="panel"
+  id="searchPanel"
+>
+
+  <div class="panel-header">
+
+    <h2>Search</h2>
+
+    <button
+      class="panel-close"
+      onclick="closePanels()"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div class="panel-body">
+
+    <div class="search-box">
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search products..."
+        oninput="renderSearchResults(this.value)"
+      >
+
+    </div>
+
+    <div id="searchResults"></div>
+
+  </div>
+
+</aside>
+
+
+<!-- =======================================================
+     TOAST
+     ======================================================= -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<!-- =======================================================
      FOOTER
-========================= -->
+     ======================================================= -->
 
 <footer>
 
-  <p>
-    © 2026 NovaPeps USA
-  </p>
-
-  <p>
-    novapeps22@gmail.com
-  </p>
-
-  <p>
-    (832) 273-9625
-  </p>
-
-  <p
-    class="notice"
-    style="color:#aaa;"
+  <img
+    src="./logo.png"
+    alt="NovaPeps USA"
+    class="footer-logo"
   >
-    All products are presented for research use only.
+
+  <div class="footer-links">
+
+    <button onclick="goTo('home')">
+      Home
+    </button>
+
+    <button onclick="goTo('products')">
+      Products
+    </button>
+
+    <button onclick="goTo('shipping')">
+      Shipping
+    </button>
+
+    <button onclick="goTo('about')">
+      About
+    </button>
+
+    <button onclick="goTo('contact')">
+      Contact
+    </button>
+
+  </div>
+
+  <p>
+    © 2026 NovaPeps USA. All rights reserved.
+  </p>
+
+  <p>
+    All products are intended for research use only.
   </p>
 
 </footer>
 
-<!-- =========================
-     COA INFORMATION
-========================= -->
-
-<div class="cover-info">
-
-  All products are tested by independent laboratories in the United States
-  and are accompanied by a Certificate of Analysis (COA).
-
-</div>
 
 <script>
 
-/* =====================================================
-   NOVAPEPS USA JAVASCRIPT
-===================================================== */
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
 
 const PRODUCTS = [
 
   {
+    id:"mots-c-10",
     name:"MOTS-C 10 MG",
     price:60,
     image:"./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
   },
 
   {
+    id:"glp-2-10",
     name:"GLP-2 10 MG",
     price:90,
     image:"./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
   },
 
   {
+    id:"ghk-cu-100",
     name:"GHK-CU 100 MG",
     price:50,
     image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"
   },
 
   {
+    id:"glp-3-10",
     name:"GLP-3 10 MG",
     price:95,
     image:"./713BA234-721B-4580-94DF-6677375C7826.png"
   },
 
   {
+    id:"glp-2-20",
     name:"GLP-2 20 MG",
     price:110,
     image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
   },
 
   {
+    id:"glp-3-20",
     name:"GLP-3 20 MG",
     price:135,
     image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
   },
 
   {
+    id:"glutathione-1500",
     name:"GLUTATHIONE 1500 MG",
     price:60,
     image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
   },
 
   {
+    id:"nad-500",
     name:"NAD+ 500 MG",
     price:50,
     image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"
@@ -2592,188 +2277,174 @@ const PRODUCTS = [
 
 ];
 
+
+/* =========================================================
+   STORAGE
+   ========================================================= */
+
 const STORAGE = {
 
-  selected:"novaSelectedProducts",
+  selected:"novapeps_selected",
 
-  favorites:"novaFavoriteProducts",
+  favorites:"novapeps_favorites",
 
-  shipping:"novaShippingOption",
+  shipping:"novapeps_shipping",
 
-  payment:"novaPaymentOption",
+  payment:"novapeps_payment",
 
-  lastOrder:"novaLastOrder",
+  age:"novapeps_age",
 
-  age:"novaAgeConfirmed"
+  lastOrder:"novapeps_last_order"
 
 };
 
-let selectedProducts = [];
 
-let favorites = [];
+let selectedProducts =
+  JSON.parse(localStorage.getItem(STORAGE.selected) || "[]");
 
-let modalProduct = null;
+let favorites =
+  JSON.parse(localStorage.getItem(STORAGE.favorites) || "[]");
+
+let shipping =
+  localStorage.getItem(STORAGE.shipping) || "";
+
+let payment =
+  localStorage.getItem(STORAGE.payment) || "";
+
+let currentModalProduct = null;
 
 let modalQuantity = 1;
 
-/* =====================================================
-   SAFE STORAGE
-===================================================== */
 
-function getStorage(key,fallback){
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
-  try{
+function money(value){
 
-    const value =
-      localStorage.getItem(key);
-
-    if(value === null){
-      return fallback;
-    }
-
-    return JSON.parse(value);
-
-  }catch(error){
-
-    return fallback;
-
-  }
+  return "$" + Number(value).toFixed(2);
 
 }
 
-function setStorage(key,value){
 
-  try{
+function saveSelected(){
 
-    localStorage.setItem(
-      key,
-      JSON.stringify(value)
-    );
-
-  }catch(error){}
-
-}
-
-/* =====================================================
-   AGE CONFIRMATION
-===================================================== */
-
-function enterSite(){
-
-  try{
-
-    localStorage.setItem(
-      STORAGE.age,
-      "true"
-    );
-
-  }catch(error){}
-
-  const gate =
-    document.getElementById("ageGate");
-
-  if(gate){
-    gate.classList.add("hidden");
-  }
-
-  document.body.classList.remove("locked");
-
-}
-
-function leaveSite(){
-
-  try{
-
-    localStorage.removeItem(
-      STORAGE.age
-    );
-
-  }catch(error){}
-
-  document.body.innerHTML =
-    '<div style="height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Arial;padding:30px;"><div><h1>Thank you.</h1><p>You have chosen to exit this website.</p></div></div>';
-
-}
-
-function initializeAgeGate(){
-
-  const gate =
-    document.getElementById("ageGate");
-
-  const enter =
-    document.getElementById("ageEnterBtn");
-
-  const exit =
-    document.getElementById("ageExitBtn");
-
-  let confirmed = false;
-
-  try{
-
-    confirmed =
-      localStorage.getItem(
-        STORAGE.age
-      ) === "true";
-
-  }catch(error){}
-
-  if(confirmed){
-
-    gate.classList.add("hidden");
-
-    document.body.classList.remove(
-      "locked"
-    );
-
-  }else{
-
-    gate.classList.remove("hidden");
-
-    document.body.classList.add(
-      "locked"
-    );
-
-  }
-
-  enter.addEventListener(
-    "click",
-    function(event){
-
-      event.preventDefault();
-
-      enterSite();
-
-    }
-  );
-
-  exit.addEventListener(
-    "click",
-    function(event){
-
-      event.preventDefault();
-
-      leaveSite();
-
-    }
+  localStorage.setItem(
+    STORAGE.selected,
+    JSON.stringify(selectedProducts)
   );
 
 }
 
-/* =====================================================
+
+function saveFavorites(){
+
+  localStorage.setItem(
+    STORAGE.favorites,
+    JSON.stringify(favorites)
+  );
+
+}
+
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  },2500);
+
+}
+
+
+/* =========================================================
+   AGE
+   ========================================================= */
+
+function confirmAge(){
+
+  localStorage.setItem(
+    STORAGE.age,
+    "yes"
+  );
+
+  document.getElementById(
+    "ageOverlay"
+  ).style.display = "none";
+
+}
+
+
+function denyAge(){
+
+  document.body.innerHTML = `
+
+    <div style="
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+      font-family:Arial;
+    ">
+
+      <div>
+
+        <h2>Access Restricted</h2>
+
+        <p style="margin-top:10px;color:#667085">
+          You must be 18 years or older to enter.
+        </p>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function checkAge(){
+
+  if(
+    localStorage.getItem(STORAGE.age) === "yes"
+  ){
+
+    document.getElementById(
+      "ageOverlay"
+    ).style.display = "none";
+
+  }
+
+}
+
+
+/* =========================================================
    MENU
-===================================================== */
+   ========================================================= */
 
-function openMenu(){
+function toggleMenu(){
 
   document
     .getElementById("sideMenu")
-    .classList.add("open");
+    .classList.toggle("open");
 
   document
-    .getElementById("overlay")
-    .classList.add("show");
+    .getElementById("menuOverlay")
+    .classList.toggle("show");
 
 }
+
 
 function closeMenu(){
 
@@ -2781,445 +2452,369 @@ function closeMenu(){
     .getElementById("sideMenu")
     .classList.remove("open");
 
+  document
+    .getElementById("menuOverlay")
+    .classList.remove("show");
+
 }
 
-document
-  .getElementById("menuBtn")
-  .addEventListener(
-    "click",
-    openMenu
-  );
 
-document
-  .getElementById("sideClose")
-  .addEventListener(
-    "click",
-    closeMenu
-  );
-
-/* =====================================================
+/* =========================================================
    PANELS
-===================================================== */
+   ========================================================= */
 
 function openPanel(id){
 
-  closeMenu();
+  closePanels();
 
   document
     .getElementById(id)
     .classList.add("open");
 
   document
-    .getElementById("overlay")
+    .getElementById("panelOverlay")
     .classList.add("show");
 
-  if(id === "listPanel"){
-    renderSelectedProducts();
-  }
-
-  if(id === "cartPanel"){
-    renderCart();
-  }
-
 }
 
-function closePanel(id){
+
+function closePanels(){
 
   document
-    .getElementById(id)
-    .classList.remove("open");
+    .querySelectorAll(".panel")
+    .forEach(panel => {
 
-  const anyPanel =
-    document.querySelector(
-      ".panel.open"
-    );
-
-  if(
-    !anyPanel &&
-    !document
-      .getElementById("sideMenu")
-      .classList
-      .contains("open")
-  ){
-
-    document
-      .getElementById("overlay")
-      .classList
-      .remove("show");
-
-  }
-
-}
-
-function closeAllPanels(){
-
-  document
-    .querySelectorAll(".panel.open")
-    .forEach(
-      panel =>
-        panel.classList.remove("open")
-    );
-
-  document
-    .getElementById("sideMenu")
-    .classList
-    .remove("open");
-
-  document
-    .getElementById("overlay")
-    .classList
-    .remove("show");
-
-  closeProductModal();
-
-}
-
-document
-  .getElementById("overlay")
-  .addEventListener(
-    "click",
-    closeAllPanels
-  );
-
-document
-  .querySelectorAll("[data-open-panel]")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        openPanel(
-          this.dataset.openPanel
-        );
-
-      }
-    );
-
-  });
-
-document
-  .querySelectorAll("[data-close-panel]")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      function(){
-
-        closePanel(
-          this.dataset.closePanel
-        );
-
-      }
-    );
-
-  });
-
-/* =====================================================
-   PRODUCT HELPERS
-===================================================== */
-
-function findProduct(name){
-
-  return PRODUCTS.find(
-    product =>
-      product.name === name
-  );
-
-}
-
-function normalize(text){
-
-  return String(text)
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(
-      /[\u0300-\u036f]/g,
-      ""
-    );
-
-}
-
-/* =====================================================
-   SELECTED PRODUCTS
-===================================================== */
-
-function saveSelected(){
-
-  setStorage(
-    STORAGE.selected,
-    selectedProducts
-  );
-
-}
-
-function subtotal(){
-
-  return selectedProducts.reduce(
-    (total,item) =>
-      total +
-      (item.price * item.quantity),
-    0
-  );
-
-}
-
-function addToList(
-  product,
-  quantity=1
-){
-
-  const existing =
-    selectedProducts.find(
-      item =>
-        item.name === product.name
-    );
-
-  if(existing){
-
-    existing.quantity += quantity;
-
-  }else{
-
-    selectedProducts.push({
-
-      name:product.name,
-
-      price:product.price,
-
-      image:product.image,
-
-      quantity:quantity
+      panel.classList.remove("open");
 
     });
 
-  }
-
-  saveSelected();
-
-  updateCartCount();
-
-  renderSelectedProducts();
+  document
+    .getElementById("panelOverlay")
+    .classList.remove("show");
 
 }
 
-function changeQuantity(
-  name,
-  change
-){
 
-  const item =
-    selectedProducts.find(
-      product =>
-        product.name === name
-    );
+function openCart(){
 
-  if(!item) return;
-
-  item.quantity += change;
-
-  if(item.quantity <= 0){
-
-    selectedProducts =
-      selectedProducts.filter(
-        product =>
-          product.name !== name
-      );
-
-  }
-
-  saveSelected();
-
-  renderSelectedProducts();
+  closeMenu();
 
   renderCart();
 
-  updateCartCount();
+  openPanel("cartPanel");
 
 }
 
-function removeProduct(name){
+
+function openList(){
+
+  closeMenu();
+
+  renderList();
+
+  openPanel("listPanel");
+
+}
+
+
+function openSearchPanel(){
+
+  openPanel("searchPanel");
+
+  setTimeout(() => {
+
+    document
+      .getElementById("searchInput")
+      .focus();
+
+  },200);
+
+}
+
+
+/* =========================================================
+   PRODUCTS RENDER
+   ========================================================= */
+
+function renderProducts(){
+
+  const grid =
+    document.getElementById("productsGrid");
+
+  grid.innerHTML = "";
+
+  PRODUCTS.forEach(product => {
+
+    const isFavorite =
+      favorites.includes(product.id);
+
+    const card =
+      document.createElement("article");
+
+    card.className = "product-card";
+
+    card.innerHTML = `
+
+      <div class="product-image-wrap">
+
+        <img
+          class="product-image"
+          src="${product.image}"
+          alt="${product.name}"
+          loading="lazy"
+          onclick="openProductModal('${product.id}')"
+          style="cursor:pointer"
+        >
+
+        <button
+          class="favorite-btn ${isFavorite ? "active" : ""}"
+          onclick="toggleFavorite('${product.id}')"
+          aria-label="Favorite"
+        >
+          ${isFavorite ? "♥" : "♡"}
+        </button>
+
+      </div>
+
+
+      <div class="product-info">
+
+        <div>
+
+          <div class="product-name">
+            ${product.name}
+          </div>
+
+          <div class="research-label">
+            FOR RESEARCH USE ONLY
+          </div>
+
+        </div>
+
+
+        <div class="product-bottom">
+
+          <div class="price">
+            ${money(product.price)}
+          </div>
+
+          <button
+            class="add-list-btn"
+            onclick="addToList('${product.id}')"
+          >
+            ADD TO LIST
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+function addToList(id){
+
+  const product =
+    PRODUCTS.find(p => p.id === id);
+
+  if(!product) return;
+
+  if(!selectedProducts.includes(id)){
+
+    selectedProducts.push(id);
+
+    saveSelected();
+
+    updateCartCount();
+
+    showToast(
+      product.name + " added to your list"
+    );
+
+  }else{
+
+    showToast(
+      product.name + " is already selected"
+    );
+
+  }
+
+  renderProducts();
+
+}
+
+
+function removeFromList(id){
 
   selectedProducts =
     selectedProducts.filter(
-      item =>
-        item.name !== name
+      productId => productId !== id
     );
 
   saveSelected();
 
-  renderSelectedProducts();
-
-  renderCart();
+  renderList();
 
   updateCartCount();
 
-}
-
-function clearCart(){
-
-  selectedProducts = [];
-
-  saveSelected();
-
-  renderSelectedProducts();
-
-  renderCart();
-
-  updateCartCount();
+  renderProducts();
 
 }
 
-/* =====================================================
-   RENDER LIST
-===================================================== */
 
-function renderSelectedProducts(){
+function renderList(){
 
-  const container =
-    document.getElementById(
-      "selectedProducts"
-    );
+  const body =
+    document.getElementById("listBody");
 
-  const total =
-    document.getElementById(
-      "listTotal"
-    );
+  if(!selectedProducts.length){
 
-  if(
-    selectedProducts.length === 0
-  ){
+    body.innerHTML = `
 
-    container.innerHTML =
-      '<p class="notice">No products selected.</p>';
+      <div style="
+        text-align:center;
+        padding:40px 10px;
+        color:#667085;
+      ">
 
-    total.textContent =
-      "$0.00";
+        <h3>Your list is empty</h3>
+
+        <p style="margin-top:8px">
+          Add products from the Products section.
+        </p>
+
+      </div>
+
+    `;
 
     return;
 
   }
 
-  container.innerHTML =
-    selectedProducts.map(
-      item => `
 
-        <div class="selected-item">
+  body.innerHTML = "";
 
-          <img
-            src="${item.image}"
-            alt="${item.name}"
-          >
+  selectedProducts.forEach(id => {
 
-          <div class="selected-info">
+    const product =
+      PRODUCTS.find(p => p.id === id);
 
-            <strong>
-              ${item.name}
-            </strong>
+    if(!product) return;
 
-            <div>
-              $${item.price.toFixed(2)}
-            </div>
+    body.innerHTML += `
 
-            <div class="qty-controls">
+      <div class="selected-item">
 
-              <button
-                type="button"
-                onclick="changeQuantity('${escapeJs(item.name)}',-1)"
-              >
-                −
-              </button>
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+        >
 
-              <strong>
-                ${item.quantity}
-              </strong>
+        <div class="selected-item-info">
 
-              <button
-                type="button"
-                onclick="changeQuantity('${escapeJs(item.name)}',1)"
-              >
-                +
-              </button>
+          <h4>${product.name}</h4>
 
-              <button
-                class="remove-btn"
-                type="button"
-                onclick="removeProduct('${escapeJs(item.name)}')"
-              >
-                Remove
-              </button>
-
-            </div>
-
-          </div>
+          <p>${money(product.price)}</p>
 
         </div>
 
-      `
-    ).join("");
+        <button
+          class="remove-btn"
+          onclick="removeFromList('${product.id}')"
+        >
+          Remove
+        </button>
 
-  total.textContent =
-    "$" +
-    subtotal().toFixed(2);
+      </div>
+
+    `;
+
+  });
 
 }
 
-/* =====================================================
+
+/* =========================================================
+   FAVORITES
+   ========================================================= */
+
+function toggleFavorite(id){
+
+  if(favorites.includes(id)){
+
+    favorites =
+      favorites.filter(
+        item => item !== id
+      );
+
+    showToast("Removed from favorites");
+
+  }else{
+
+    favorites.push(id);
+
+    showToast("Added to favorites");
+
+  }
+
+  saveFavorites();
+
+  renderProducts();
+
+}
+
+
+/* =========================================================
    CART
-===================================================== */
+   ========================================================= */
 
-function updateCartCount(){
+function getSubtotal(){
 
-  const count =
-    selectedProducts.reduce(
-      (sum,item) =>
-        sum + item.quantity,
-      0
-    );
+  return selectedProducts.reduce(
+    (total,id) => {
 
-  document
-    .getElementById("cartCount")
-    .textContent = count;
+      const product =
+        PRODUCTS.find(p => p.id === id);
+
+      return total +
+        (product ? product.price : 0);
+
+    },
+    0
+  );
 
 }
+
 
 function getShippingCost(){
 
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
+  const subtotal = getSubtotal();
 
-  if(!selected){
+  if(subtotal >= 200){
+
     return 0;
-  }
-
-  if(
-    selected.value ===
-    "standard"
-  ){
-
-    return 9;
 
   }
 
-  if(
-    selected.value ===
-    "express"
-  ){
+  if(shipping === "express"){
 
     return 15;
 
   }
 
-  if(
-    selected.value ===
-    "free"
-  ){
+  if(shipping === "standard"){
 
-    return subtotal() >= 200
-      ? 0
-      : 9;
+    return 9;
 
   }
 
@@ -3227,884 +2822,170 @@ function getShippingCost(){
 
 }
 
-function getShippingName(){
 
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
+function getTotal(){
 
-  if(!selected){
-    return "";
-  }
-
-  if(
-    selected.value ===
-    "standard"
-  ){
-
-    return "Standard";
-
-  }
-
-  if(
-    selected.value ===
-    "express"
-  ){
-
-    return "Express";
-
-  }
-
-  if(
-    selected.value ===
-    "free"
-  ){
-
-    return "Free Shipping";
-
-  }
-
-  return "";
+  return getSubtotal() +
+    getShippingCost();
 
 }
 
-function getPayment(){
-
-  const selected =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    );
-
-  return selected
-    ? selected.value
-    : "";
-
-}
 
 function renderCart(){
 
   const container =
-    document.getElementById(
-      "cartItems"
-    );
+    document.getElementById("cartItems");
 
-  if(
-    selectedProducts.length === 0
-  ){
+  if(!selectedProducts.length){
 
-    container.innerHTML =
-      '<p class="notice">Your cart is empty.</p>';
+    container.innerHTML = `
+
+      <div style="
+        padding:30px 10px;
+        text-align:center;
+        color:#667085;
+      ">
+
+        <h3>Your cart is empty</h3>
+
+        <p style="margin-top:8px">
+          Add products to continue.
+        </p>
+
+      </div>
+
+    `;
 
   }else{
 
-    container.innerHTML =
-      selectedProducts.map(
-        item => `
+    container.innerHTML = "";
 
-          <div class="selected-item">
+    selectedProducts.forEach(id => {
 
-            <img
-              src="${item.image}"
-              alt="${item.name}"
-            >
+      const product =
+        PRODUCTS.find(p => p.id === id);
 
-            <div class="selected-info">
+      if(!product) return;
 
-              <strong>
-                ${item.name}
-              </strong>
+      container.innerHTML += `
 
-              <div>
-                $${item.price.toFixed(2)}
-              </div>
+        <div class="selected-item">
 
-              <div class="qty-controls">
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+          >
 
-                <button
-                  type="button"
-                  onclick="changeQuantity('${escapeJs(item.name)}',-1)"
-                >
-                  −
-                </button>
+          <div class="selected-item-info">
 
-                <strong>
-                  ${item.quantity}
-                </strong>
+            <h4>${product.name}</h4>
 
-                <button
-                  type="button"
-                  onclick="changeQuantity('${escapeJs(item.name)}',1)"
-                >
-                  +
-                </button>
-
-                <button
-                  class="remove-btn"
-                  type="button"
-                  onclick="removeProduct('${escapeJs(item.name)}')"
-                >
-                  Remove
-                </button>
-
-              </div>
-
-            </div>
+            <p>${money(product.price)}</p>
 
           </div>
 
-        `
-      ).join("");
+          <button
+            class="remove-btn"
+            onclick="removeFromCart('${product.id}')"
+          >
+            Remove
+          </button>
+
+        </div>
+
+      `;
+
+    });
 
   }
 
-  updateTotals();
+
+  document.getElementById(
+    "cartSubtotal"
+  ).textContent =
+    money(getSubtotal());
+
+
+  document.getElementById(
+    "cartShipping"
+  ).textContent =
+    money(getShippingCost());
+
+
+  document.getElementById(
+    "cartTotal"
+  ).textContent =
+    money(getTotal());
+
+
+  updateShippingUI();
+
+  updatePaymentUI();
 
 }
 
-function updateTotals(){
 
-  const sub =
-    subtotal();
+function removeFromCart(id){
 
-  const shipping =
-    getShippingCost();
+  removeFromList(id);
 
-  const total =
-    sub + shipping;
-
-  document
-    .getElementById("subtotal")
-    .textContent =
-      "$" +
-      sub.toFixed(2);
-
-  document
-    .getElementById("shippingCost")
-    .textContent =
-      "$" +
-      shipping.toFixed(2);
-
-  document
-    .getElementById("grandTotal")
-    .textContent =
-      "$" +
-      total.toFixed(2);
-
-  updateFormHiddenFields();
+  renderCart();
 
 }
 
-/* =====================================================
+
+function updateCartCount(){
+
+  const count =
+    selectedProducts.length;
+
+  document.getElementById(
+    "headerCartCount"
+  ).textContent = count;
+
+  document.getElementById(
+    "floatingCartCount"
+  ).textContent = count;
+
+}
+
+
+/* =========================================================
    SHIPPING
-===================================================== */
+   ========================================================= */
 
-function restoreOptions(){
+function selectShipping(type){
 
-  const shipping =
-    getStorage(
-      STORAGE.shipping,
-      null
-    );
+  shipping = type;
 
-  const payment =
-    getStorage(
-      STORAGE.payment,
-      null
-    );
+  localStorage.setItem(
+    STORAGE.shipping,
+    shipping
+  );
 
-  if(shipping){
-
-    const input =
-      document.querySelector(
-        `input[name="shipping"][value="${shipping}"]`
-      );
-
-    if(input){
-      input.checked = true;
-    }
-
-  }
-
-  if(payment){
-
-    const input =
-      document.querySelector(
-        `input[name="payment"][value="${payment}"]`
-      );
-
-    if(input){
-      input.checked = true;
-    }
-
-  }
+  renderCart();
 
 }
 
-document
-  .querySelectorAll(
-    'input[name="shipping"]'
-  )
-  .forEach(input => {
 
-    input.addEventListener(
-      "change",
-      function(){
+function updateShippingUI(){
 
-        setStorage(
-          STORAGE.shipping,
-          this.value
-        );
+  document
+    .querySelectorAll("[data-shipping]")
+    .forEach(option => {
 
-        updateTotals();
-
-      }
-    );
-
-  });
-
-document
-  .querySelectorAll(
-    'input[name="payment"]'
-  )
-  .forEach(input => {
-
-    input.addEventListener(
-      "change",
-      function(){
-
-        setStorage(
-          STORAGE.payment,
-          this.value
-        );
-
-      }
-    );
-
-  });
-
-/* =====================================================
-   CART BUTTONS
-===================================================== */
-
-document
-  .getElementById("cartFloating")
-  .addEventListener(
-    "click",
-    function(){
-
-      openPanel(
-        "cartPanel"
+      option.classList.toggle(
+        "selected",
+        option.dataset.shipping === shipping
       );
 
-    }
-  );
+      const radio =
+        option.querySelector("input");
 
-document
-  .getElementById("openCartFromList")
-  .addEventListener(
-    "click",
-    function(){
+      if(radio){
 
-      closePanel(
-        "listPanel"
-      );
-
-      openPanel(
-        "cartPanel"
-      );
-
-    }
-  );
-
-document
-  .getElementById("clearCartBtn")
-  .addEventListener(
-    "click",
-    function(){
-
-      clearCart();
-
-    }
-  );
-
-/* =====================================================
-   CHECKOUT
-===================================================== */
-
-document
-  .getElementById("checkoutBtn")
-  .addEventListener(
-    "click",
-    function(){
-
-      if(
-        selectedProducts.length === 0
-      ){
-
-        alert(
-          "Please select at least one product."
-        );
-
-        return;
-
-      }
-
-      const shipping =
-        document.querySelector(
-          'input[name="shipping"]:checked'
-        );
-
-      if(!shipping){
-
-        alert(
-          "Please select a shipping option."
-        );
-
-        return;
-
-      }
-
-      if(
-        shipping.value === "free" &&
-        subtotal() < 200
-      ){
-
-        alert(
-          "Free Shipping is available only for orders of $200 or more."
-        );
-
-        return;
-
-      }
-
-      const payment =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        );
-
-      if(!payment){
-
-        alert(
-          "Please select a payment method."
-        );
-
-        return;
-
-      }
-
-      prepareInformationForm();
-
-      closePanel(
-        "cartPanel"
-      );
-
-      openPanel(
-        "informationPanel"
-      );
-
-    }
-  );
-
-/* =====================================================
-   INFORMATION FORM
-===================================================== */
-
-function generateReference(){
-
-  return String(
-    Math.floor(
-      1000 +
-      Math.random() *
-      9000
-    )
-  );
-
-}
-
-function prepareInformationForm(){
-
-  const code =
-    generateReference();
-
-  document
-    .getElementById(
-      "referenceDisplay"
-    )
-    .textContent = code;
-
-  document
-    .getElementById(
-      "formReference"
-    )
-    .value = code;
-
-  updateFormHiddenFields();
-
-}
-
-function updateFormHiddenFields(){
-
-  const productsText =
-    selectedProducts
-      .map(
-        item =>
-          `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
-      )
-      .join("\n");
-
-  const sub =
-    subtotal();
-
-  const shippingCost =
-    getShippingCost();
-
-  const total =
-    sub + shippingCost;
-
-  document
-    .getElementById(
-      "formProducts"
-    )
-    .value = productsText;
-
-  document
-    .getElementById(
-      "formSubtotal"
-    )
-    .value =
-      "$" +
-      sub.toFixed(2);
-
-  document
-    .getElementById(
-      "formShipping"
-    )
-    .value =
-      getShippingName();
-
-  document
-    .getElementById(
-      "formShippingCost"
-    )
-    .value =
-      "$" +
-      shippingCost.toFixed(2);
-
-  document
-    .getElementById(
-      "formTotal"
-    )
-    .value =
-      "$" +
-      total.toFixed(2);
-
-  document
-    .getElementById(
-      "formPayment"
-    )
-    .value =
-      getPayment();
-
-}
-
-function saveLastOrder(
-  reference
-){
-
-  const shippingCost =
-    getShippingCost();
-
-  const sub =
-    subtotal();
-
-  const order = {
-
-    reference:reference,
-
-    products:selectedProducts,
-
-    subtotal:sub,
-
-    shipping:getShippingName(),
-
-    shippingCost:shippingCost,
-
-    total:
-      sub +
-      shippingCost,
-
-    payment:getPayment(),
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-  setStorage(
-    STORAGE.lastOrder,
-    order
-  );
-
-  return order;
-
-}
-
-/* =====================================================
-   FINAL PAYMENT INFORMATION
-===================================================== */
-
-function showPaymentInformation(
-  order
-){
-
-  const box =
-    document.getElementById(
-      "paymentFinal"
-    );
-
-  let html = `
-
-    <p>
-      <strong>Order number:</strong>
-      ${order.reference}
-    </p>
-
-    <p>
-      <strong>Amount:</strong>
-      $${order.total.toFixed(2)}
-    </p>
-
-  `;
-
-  if(
-    order.payment ===
-    "zelle"
-  ){
-
-    html += `
-
-      <div class="payment zelle">
-
-        <h3>Zelle</h3>
-
-        <p>
-          <strong>Name:</strong>
-          Araceli Hernández
-        </p>
-
-        <p>
-          <strong>Phone:</strong>
-          (832) 273-9625
-        </p>
-
-        <p>
-          Send the amount shown above through Zelle.
-        </p>
-
-        <p>
-          Please place your order number in the memo.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-  if(
-    order.payment ===
-    "venmo"
-  ){
-
-    html += `
-
-      <div class="payment venmo">
-
-        <h3>Venmo</h3>
-
-        <p>
-          <strong>Venmo:</strong>
-          @novapeps22
-        </p>
-
-        <p>
-          <strong>Name:</strong>
-          Araceli Hernández
-        </p>
-
-        <p>
-          Send the amount shown above through Venmo.
-        </p>
-
-        <p>
-          Please place your order number in the memo.
-        </p>
-
-        <button
-          class="copy-btn"
-          type="button"
-          onclick="copyText('@novapeps22')"
-        >
-          Copy Venmo
-        </button>
-
-      </div>
-
-    `;
-
-  }
-
-  if(
-    order.payment ===
-    "paypal"
-  ){
-
-    html += `
-
-      <div class="payment paypal">
-
-        <h3>PayPal</h3>
-
-        <p>
-          <strong>PayPal:</strong>
-          Add your PayPal information here.
-        </p>
-
-        <p>
-          <strong>Amount:</strong>
-          $${order.total.toFixed(2)}
-        </p>
-
-        <p>
-          Please use your order number as the payment reference.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-  box.innerHTML = html;
-
-}
-
-/* =====================================================
-   FORMSPREE
-===================================================== */
-
-document
-  .getElementById(
-    "informationForm"
-  )
-  .addEventListener(
-    "submit",
-    async function(event){
-
-      event.preventDefault();
-
-      const form = this;
-
-      const button =
-        form.querySelector(
-          'button[type="submit"]'
-        );
-
-      const reference =
-        document
-          .getElementById(
-            "formReference"
-          )
-          .value;
-
-      if(!reference){
-
-        prepareInformationForm();
-
-      }
-
-      updateFormHiddenFields();
-
-      button.disabled = true;
-
-      button.textContent =
-        "SENDING...";
-
-      try{
-
-        const response =
-          await fetch(
-            form.action,
-            {
-              method:"POST",
-
-              body:
-                new FormData(form),
-
-              headers:{
-                "Accept":
-                  "application/json"
-              }
-            }
-          );
-
-        if(!response.ok){
-
-          throw new Error(
-            "Submission failed"
-          );
-
-        }
-
-        const order =
-          saveLastOrder(
-            document
-              .getElementById(
-                "formReference"
-              )
-              .value
-          );
-
-        form.style.display =
-          "none";
-
-        document
-          .getElementById(
-            "finalConfirmation"
-          )
-          .style.display =
-          "block";
-
-        showPaymentInformation(
-          order
-        );
-
-      }catch(error){
-
-        alert(
-          "There was a problem sending the information. Please try again."
-        );
-
-        button.disabled =
-          false;
-
-        button.textContent =
-          "SEND INFORMATION";
-
-      }
-
-    }
-  );
-
-/* =====================================================
-   COPY
-===================================================== */
-
-function copyText(text){
-
-  if(
-    navigator.clipboard &&
-    navigator.clipboard.writeText
-  ){
-
-    navigator.clipboard
-      .writeText(text)
-      .then(
-        function(){
-
-          alert(
-            "Information copied"
-          );
-
-        }
-      )
-      .catch(
-        function(){
-
-          fallbackCopy(text);
-
-        }
-      );
-
-  }else{
-
-    fallbackCopy(text);
-
-  }
-
-}
-
-function fallbackCopy(text){
-
-  const textarea =
-    document.createElement(
-      "textarea"
-    );
-
-  textarea.value = text;
-
-  document.body.appendChild(
-    textarea
-  );
-
-  textarea.select();
-
-  try{
-
-    document.execCommand(
-      "copy"
-    );
-
-    alert(
-      "Information copied"
-    );
-
-  }catch(error){
-
-    alert(
-      "Could not copy the information."
-    );
-
-  }
-
-  document.body.removeChild(
-    textarea
-  );
-
-}
-
-/* =====================================================
-   FAVORITES
-===================================================== */
-
-function loadFavorites(){
-
-  favorites =
-    getStorage(
-      STORAGE.favorites,
-      []
-    );
-
-  document
-    .querySelectorAll(
-      ".favorite-btn"
-    )
-    .forEach(button => {
-
-      const name =
-        button.dataset.favorite;
-
-      if(
-        favorites.includes(name)
-      ){
-
-        button.classList.add(
-          "active"
-        );
-
-        button.textContent =
-          "♥";
+        radio.checked =
+          option.dataset.shipping === shipping;
 
       }
 
@@ -4112,576 +2993,549 @@ function loadFavorites(){
 
 }
 
-document
-  .querySelectorAll(
-    ".favorite-btn"
-  )
-  .forEach(button => {
 
-    button.addEventListener(
-      "click",
-      function(event){
+/* =========================================================
+   PAYMENT
+   ========================================================= */
 
-        event.stopPropagation();
+function selectPayment(type){
 
-        const name =
-          this.dataset.favorite;
+  payment = type;
 
-        if(
-          favorites.includes(name)
-        ){
+  localStorage.setItem(
+    STORAGE.payment,
+    payment
+  );
 
-          favorites =
-            favorites.filter(
-              item =>
-                item !== name
-            );
+  updatePaymentUI();
 
-          this.classList.remove(
-            "active"
-          );
+}
 
-          this.textContent =
-            "♡";
 
-        }else{
+function updatePaymentUI(){
 
-          favorites.push(name);
+  document
+    .querySelectorAll("[data-payment]")
+    .forEach(option => {
 
-          this.classList.add(
-            "active"
-          );
+      option.classList.toggle(
+        "selected",
+        option.dataset.payment === payment
+      );
 
-          this.textContent =
-            "♥";
+      const radio =
+        option.querySelector("input");
 
-        }
+      if(radio){
 
-        setStorage(
-          STORAGE.favorites,
-          favorites
-        );
+        radio.checked =
+          option.dataset.payment === payment;
 
       }
+
+    });
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
+
+function checkout(){
+
+  if(!selectedProducts.length){
+
+    showToast(
+      "Please add at least one product."
+    );
+
+    return;
+
+  }
+
+
+  const subtotal =
+    getSubtotal();
+
+
+  if(
+    subtotal < 200 &&
+    !shipping
+  ){
+
+    showToast(
+      "Please select a shipping method."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    subtotal >= 200
+  ){
+
+    shipping = "free";
+
+    localStorage.setItem(
+      STORAGE.shipping,
+      "free"
+    );
+
+  }
+
+
+  if(!payment){
+
+    showToast(
+      "Please select a payment method."
+    );
+
+    return;
+
+  }
+
+
+  const reference =
+    "NP-" +
+    Date.now()
+      .toString()
+      .slice(-8);
+
+
+  localStorage.setItem(
+    STORAGE.lastOrder,
+    reference
+  );
+
+
+  document.getElementById(
+    "orderReference"
+  ).value = reference;
+
+
+  document.getElementById(
+    "orderTotalHidden"
+  ).value = money(getTotal());
+
+
+  closePanels();
+
+  openPanel("informationPanel");
+
+}
+
+
+/* =========================================================
+   INFORMATION FORM
+   ========================================================= */
+
+document
+  .getElementById("informationForm")
+  .addEventListener("submit",function(){
+
+    showToast(
+      "Information submitted."
     );
 
   });
 
-/* =====================================================
+
+/* =========================================================
    PRODUCT MODAL
-===================================================== */
+   ========================================================= */
 
-function openProductModal(
-  product
-){
+function openProductModal(id){
 
-  modalProduct =
-    product;
+  const product =
+    PRODUCTS.find(p => p.id === id);
 
-  modalQuantity =
-    1;
+  if(!product) return;
 
-  document
-    .getElementById(
-      "modalImage"
-    )
-    .src =
-    product.image;
+  currentModalProduct = product;
 
-  document
-    .getElementById(
-      "modalImage"
-    )
-    .alt =
-    product.name;
+  modalQuantity = 1;
 
-  document
-    .getElementById(
-      "modalName"
-    )
-    .textContent =
-    product.name;
+  document.getElementById(
+    "modalProductImage"
+  ).src = product.image;
 
-  document
-    .getElementById(
-      "modalPrice"
-    )
-    .textContent =
-      "$" +
-      product.price.toFixed(2);
+  document.getElementById(
+    "modalProductImage"
+  ).alt = product.name;
 
-  document
-    .getElementById(
-      "modalQuantity"
-    )
-    .textContent =
-    modalQuantity;
+  document.getElementById(
+    "modalProductName"
+  ).textContent = product.name;
 
-  document
-    .getElementById(
-      "productModal"
-    )
-    .classList
-    .add("open");
+  document.getElementById(
+    "modalProductPrice"
+  ).textContent = money(product.price);
 
-}
+  document.getElementById(
+    "modalQuantity"
+  ).textContent = modalQuantity;
 
-function closeProductModal(){
-
-  document
-    .getElementById(
-      "productModal"
-    )
-    .classList
-    .remove("open");
-
-  modalProduct =
-    null;
-
-}
-
-function changeModalQuantity(
-  change
-){
-
-  modalQuantity +=
-    change;
-
-  if(
-    modalQuantity < 1
-  ){
-
-    modalQuantity =
-      1;
-
-  }
-
-  document
-    .getElementById(
-      "modalQuantity"
-    )
-    .textContent =
-    modalQuantity;
-
-}
-
-document
-  .getElementById(
-    "modalClose"
-  )
-  .addEventListener(
-    "click",
-    closeProductModal
-  );
-
-document
-  .getElementById(
-    "modalMinus"
-  )
-  .addEventListener(
-    "click",
-    () =>
-      changeModalQuantity(-1)
-  );
-
-document
-  .getElementById(
-    "modalPlus"
-  )
-  .addEventListener(
-    "click",
-    () =>
-      changeModalQuantity(1)
-  );
-
-document
-  .getElementById(
-    "modalAdd"
-  )
-  .addEventListener(
-    "click",
-    function(){
-
-      if(!modalProduct){
-        return;
-      }
-
-      addToList(
-        modalProduct,
-        modalQuantity
-      );
-
-      closeProductModal();
-
-      openPanel(
-        "listPanel"
-      );
-
-    }
-  );
-
-document
-  .getElementById(
-    "modalGoCart"
-  )
-  .addEventListener(
-    "click",
-    function(){
-
-      if(modalProduct){
-
-        addToList(
-          modalProduct,
-          modalQuantity
-        );
-
-      }
-
-      closeProductModal();
-
-      openPanel(
-        "cartPanel"
-      );
-
-    }
-  );
-
-document
-  .getElementById(
+  document.getElementById(
     "productModal"
-  )
-  .addEventListener(
-    "click",
-    function(event){
+  ).classList.add("show");
 
-      if(
-        event.target === this
-      ){
+}
 
-        closeProductModal();
 
-      }
-
-    }
-  );
-
-/* =====================================================
-   PRODUCT BUTTONS
-===================================================== */
-
-document
-  .querySelectorAll(
-    ".product-card"
-  )
-  .forEach(card => {
-
-    const image =
-      card.querySelector(
-        ".product-image"
-      );
-
-    const addButton =
-      card.querySelector(
-        ".add-list-btn"
-      );
-
-    const product = {
-
-      name:
-        card.dataset.name,
-
-      price:
-        Number(
-          card.dataset.price
-        ),
-
-      image:
-        card.dataset.image
-
-    };
-
-    image.addEventListener(
-      "click",
-      function(){
-
-        openProductModal(
-          product
-        );
-
-      }
-    );
-
-    addButton.addEventListener(
-      "click",
-      function(){
-
-        addToList(
-          product,
-          1
-        );
-
-        this.textContent =
-          "ADDED ✓";
-
-        setTimeout(
-          () => {
-
-            this.textContent =
-              "ADD TO LIST";
-
-          },
-          1200
-        );
-
-      }
-    );
-
-  });
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
-const searchResults =
-  document.getElementById(
-    "searchResults"
-  );
-
-function renderSearchResults(){
-
-  const query =
-    normalize(
-      searchInput.value.trim()
-    );
-
-  if(!query){
-
-    searchResults.innerHTML =
-      "";
-
-    return;
-
-  }
-
-  const results =
-    PRODUCTS.filter(
-      product =>
-        normalize(
-          product.name
-        ).includes(query)
-    );
+function closeProductModal(event){
 
   if(
-    results.length === 0
+    event &&
+    event.target !== event.currentTarget
   ){
-
-    searchResults.innerHTML =
-      '<div class="notice">No products found.</div>';
 
     return;
 
   }
 
-  searchResults.innerHTML =
-    results.map(
-      product => `
+  document
+    .getElementById("productModal")
+    .classList.remove("show");
 
-        <div
-          class="search-result"
-          data-search-name="${escapeHtml(product.name)}"
+}
+
+
+function changeQuantity(amount){
+
+  modalQuantity += amount;
+
+  if(modalQuantity < 1){
+
+    modalQuantity = 1;
+
+  }
+
+  document.getElementById(
+    "modalQuantity"
+  ).textContent = modalQuantity;
+
+}
+
+
+function addModalToCart(){
+
+  if(!currentModalProduct) return;
+
+  if(
+    !selectedProducts.includes(
+      currentModalProduct.id
+    )
+  ){
+
+    selectedProducts.push(
+      currentModalProduct.id
+    );
+
+    saveSelected();
+
+  }
+
+  updateCartCount();
+
+  closeProductModal();
+
+  showToast(
+    currentModalProduct.name +
+    " added to cart"
+  );
+
+}
+
+
+function addModalToList(){
+
+  if(!currentModalProduct) return;
+
+  addToList(
+    currentModalProduct.id
+  );
+
+  closeProductModal();
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function searchProducts(query){
+
+  const value =
+    query.trim().toLowerCase();
+
+  if(!value){
+
+    renderProducts();
+
+    return;
+
+  }
+
+  const matches =
+    PRODUCTS.filter(product =>
+      product.name
+        .toLowerCase()
+        .includes(value)
+    );
+
+  const grid =
+    document.getElementById("productsGrid");
+
+  grid.innerHTML = "";
+
+  matches.forEach(product => {
+
+    const isFavorite =
+      favorites.includes(product.id);
+
+    const card =
+      document.createElement("article");
+
+    card.className = "product-card";
+
+    card.innerHTML = `
+
+      <div class="product-image-wrap">
+
+        <img
+          class="product-image"
+          src="${product.image}"
+          alt="${product.name}"
+          onclick="openProductModal('${product.id}')"
+          style="cursor:pointer"
         >
 
-          <strong>
-            ${escapeHtml(product.name)}
-          </strong>
+        <button
+          class="favorite-btn ${isFavorite ? "active" : ""}"
+          onclick="toggleFavorite('${product.id}')"
+        >
+          ${isFavorite ? "♥" : "♡"}
+        </button>
 
-          —
-          $${product.price.toFixed(2)}
+      </div>
+
+      <div class="product-info">
+
+        <div>
+
+          <div class="product-name">
+            ${product.name}
+          </div>
+
+          <div class="research-label">
+            FOR RESEARCH USE ONLY
+          </div>
 
         </div>
 
-      `
-    ).join("");
+        <div class="product-bottom">
 
-}
+          <div class="price">
+            ${money(product.price)}
+          </div>
 
-searchInput
-  .addEventListener(
-    "input",
-    renderSearchResults
-  );
+          <button
+            class="add-list-btn"
+            onclick="addToList('${product.id}')"
+          >
+            ADD TO LIST
+          </button>
 
-searchResults
-  .addEventListener(
-    "click",
-    function(event){
+        </div>
 
-      const item =
-        event.target.closest(
-          ".search-result"
-        );
+      </div>
 
-      if(!item){
-        return;
-      }
+    `;
 
-      const product =
-        findProduct(
-          item.dataset.searchName
-        );
-
-      if(product){
-
-        addToList(
-          product,
-          1
-        );
-
-        searchInput.value =
-          "";
-
-        searchResults.innerHTML =
-          "";
-
-        openPanel(
-          "listPanel"
-        );
-
-      }
-
-    }
-  );
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-document
-  .querySelectorAll(
-    ".menu-link"
-  )
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-      function(){
-
-        const href =
-          this.getAttribute(
-            "href"
-          );
-
-        if(
-          href &&
-          href.startsWith("#")
-        ){
-
-          closeAllPanels();
-
-          setTimeout(
-            () => {
-
-              const element =
-                document.querySelector(
-                  href
-                );
-
-              if(element){
-
-                element.scrollIntoView({
-                  behavior:"smooth"
-                });
-
-              }
-
-            },
-            50
-          );
-
-        }
-
-      }
-    );
+    grid.appendChild(card);
 
   });
 
-/* =====================================================
-   ESCAPE HELPERS
-===================================================== */
+}
 
-function escapeHtml(text){
 
-  return String(text)
+function renderSearchResults(query){
 
-    .replace(
-      /&/g,
-      "&amp;"
-    )
+  const container =
+    document.getElementById("searchResults");
 
-    .replace(
-      /</g,
-      "&lt;"
-    )
+  const value =
+    query.trim().toLowerCase();
 
-    .replace(
-      />/g,
-      "&gt;"
-    )
+  if(!value){
 
-    .replace(
-      /"/g,
-      "&quot;"
-    )
+    container.innerHTML = "";
 
-    .replace(
-      /'/g,
-      "&#039;"
+    return;
+
+  }
+
+  const matches =
+    PRODUCTS.filter(product =>
+      product.name
+        .toLowerCase()
+        .includes(value)
     );
+
+
+  if(!matches.length){
+
+    container.innerHTML = `
+
+      <p style="color:#667085">
+        No products found.
+      </p>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+  matches.forEach(product => {
+
+    container.innerHTML += `
+
+      <div
+        class="search-result"
+        onclick="openProductModal('${product.id}')"
+      >
+
+        <strong>
+          ${product.name}
+        </strong>
+
+        <div style="
+          color:#1769ff;
+          margin-top:4px;
+          font-weight:800;
+        ">
+          ${money(product.price)}
+        </div>
+
+      </div>
+
+    `;
+
+  });
 
 }
 
-function escapeJs(text){
 
-  return String(text)
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-    .replace(
-      /\\/g,
-      "\\\\"
-    )
+function goTo(id){
 
-    .replace(
-      /'/g,
-      "\\'"
-    );
+  closeMenu();
+
+  closePanels();
+
+  const element =
+    document.getElementById(id);
+
+  if(element){
+
+    element.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }
 
 }
 
-/* =====================================================
-   INITIALIZATION
-===================================================== */
 
-selectedProducts =
-  getStorage(
-    STORAGE.selected,
-    []
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+function login(){
+
+  closeMenu();
+
+  showToast(
+    "Login / Register will be connected soon."
   );
 
-initializeAgeGate();
+}
 
-restoreOptions();
 
-loadFavorites();
+/* =========================================================
+   COMPARE TABLE
+   ========================================================= */
 
-renderSelectedProducts();
+function renderCompare(){
 
-renderCart();
+  const body =
+    document.getElementById("compareBody");
 
-updateCartCount();
+  body.innerHTML = "";
+
+  PRODUCTS.forEach(product => {
+
+    const row =
+      document.createElement("tr");
+
+    const parts =
+      product.name.split(" ");
+
+    const size =
+      parts.slice(-2).join(" ");
+
+    row.innerHTML = `
+
+      <td>${product.name}</td>
+
+      <td>${size}</td>
+
+      <td>${money(product.price)}</td>
+
+      <td>Yes</td>
+
+    `;
+
+    body.appendChild(row);
+
+  });
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
+
+function initialize(){
+
+  checkAge();
+
+  renderProducts();
+
+  renderCompare();
+
+  updateCartCount();
+
+  updateShippingUI();
+
+  updatePaymentUI();
+
+}
+
+
+initialize();
 
 </script>
 
