@@ -201,11 +201,39 @@ header{
   background:#fff;
   cursor:pointer;
   font-size:22px;
-  z-index:2;
+  z-index:4;
 }
 
 .favorite-btn.active{
   color:#ff2d83;
+}
+
+/* PRECIO DENTRO DE LA IMAGEN */
+
+.image-sale-price{
+  position:absolute;
+  left:15px;
+  bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  background:rgba(255,255,255,.92);
+  padding:7px 10px;
+  border-radius:8px;
+  z-index:3;
+}
+
+.image-old-price{
+  color:#aaa;
+  text-decoration:line-through;
+  font-size:17px;
+  font-weight:400;
+}
+
+.image-new-price{
+  color:#000;
+  font-size:21px;
+  font-weight:900;
 }
 
 .product-info{
@@ -217,6 +245,8 @@ header{
   font-size:18px;
   margin-bottom:8px;
 }
+
+/* PRECIO DEBAJO DEL PRODUCTO */
 
 .product-price{
   display:flex;
@@ -248,7 +278,7 @@ header{
 }
 
 /* =========================
-   ADD TO LIST - MODIFICADO
+   ADD TO LIST
 ========================= */
 
 .add-list-btn{
@@ -306,12 +336,8 @@ header{
 }
 
 @keyframes pinkBorderSpin{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 /* =========================
@@ -481,10 +507,6 @@ header{
   cursor:pointer;
 }
 
-.search-add-btn:active{
-  transform:scale(.95);
-}
-
 /* =========================
    PANELS
 ========================= */
@@ -525,10 +547,6 @@ header{
   cursor:pointer;
   font-size:20px;
 }
-
-/* =========================
-   SELECTED PRODUCTS
-========================= */
 
 .selected-item{
   display:flex;
@@ -592,10 +610,6 @@ header{
   margin-top:8px;
 }
 
-/* =========================
-   SHIPPING / PAYMENT
-========================= */
-
 .option-box{
   margin-top:20px;
 }
@@ -629,10 +643,6 @@ header{
   margin-top:15px;
 }
 
-.primary-btn:hover{
-  opacity:.85;
-}
-
 .secondary-btn{
   width:100%;
   padding:13px;
@@ -644,10 +654,6 @@ header{
   cursor:pointer;
   margin-top:10px;
 }
-
-/* =========================
-   PAYMENT CARDS
-========================= */
 
 .payment{
   border:1px solid #e5e5e5;
@@ -665,17 +671,9 @@ header{
   margin:7px 0;
 }
 
-.venmo h3{
-  color:#008cff;
-}
-
-.zelle h3{
-  color:#6d1ed4;
-}
-
-.paypal h3{
-  color:#003087;
-}
+.venmo h3{color:#008cff;}
+.zelle h3{color:#6d1ed4;}
+.paypal h3{color:#003087;}
 
 .copy-btn{
   border:none;
@@ -687,10 +685,6 @@ header{
   background:#222;
   color:#fff;
 }
-
-/* =========================
-   INFORMATION FORM
-========================= */
 
 .form-group{
   margin-bottom:14px;
@@ -730,10 +724,6 @@ header{
   font-weight:900;
   letter-spacing:3px;
 }
-
-/* =========================
-   MODAL
-========================= */
 
 .modal{
   position:fixed;
@@ -782,19 +772,11 @@ header{
   margin-bottom:15px;
 }
 
-.modal-content h2{
-  margin-bottom:8px;
-}
-
 .modal-price{
   font-size:25px;
   font-weight:900;
   margin-bottom:15px;
 }
-
-/* =========================
-   COMPARE
-========================= */
 
 .compare-wrap{
   overflow-x:auto;
@@ -817,10 +799,6 @@ header{
   background:#000;
   color:#fff;
 }
-
-/* =========================
-   CONTACT / ABOUT / LOGIN
-========================= */
 
 .info-card{
   max-width:800px;
@@ -853,10 +831,6 @@ header{
   border-radius:9px;
 }
 
-/* =========================
-   FINAL CONFIRMATION
-========================= */
-
 .thank-you{
   text-align:center;
   padding:30px 10px;
@@ -874,10 +848,6 @@ header{
   background:#f7f7f7;
   border-radius:14px;
 }
-
-/* =========================
-   AGE GATE
-========================= */
 
 .age-gate{
   position:fixed;
@@ -901,7 +871,6 @@ header{
   border-radius:22px;
   padding:35px 25px;
   text-align:center;
-  box-shadow:0 10px 50px rgba(0,0,0,.5);
 }
 
 .age-card h2{
@@ -940,10 +909,6 @@ header{
   border:2px solid #000;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer{
   background:#000;
   color:#fff;
@@ -956,19 +921,6 @@ footer p{
   margin:7px 0;
 }
 
-.status{
-  padding:12px;
-  background:#f1f1f1;
-  border-radius:10px;
-  margin-top:12px;
-  text-align:center;
-  display:none;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:1000px){
   .products-grid{
     grid-template-columns:repeat(2,1fr);
@@ -976,6 +928,7 @@ footer p{
 }
 
 @media(max-width:600px){
+
   header{
     height:62px;
     padding:0 15px;
@@ -994,13 +947,16 @@ footer p{
     font-size:25px;
   }
 
+  /* MISMO ALTO Y ANCHO.
+     SOLAMENTE SUBIMOS LA FOTO */
+
   .hero{
     width:100%;
     height:225px;
     min-height:225px;
     background-size:auto 205px;
     background-repeat:no-repeat;
-    background-position:center center;
+    background-position:center -10px;
     background-color:#fff;
     margin:0;
     padding:0;
@@ -1040,12 +996,8 @@ footer p{
       Please confirm that you are of legal age to enter this website.
     </p>
     <div class="age-buttons">
-      <button class="age-enter" id="ageEnterBtn" type="button">
-        I AM OF LEGAL AGE
-      </button>
-      <button class="age-exit" id="ageExitBtn" type="button">
-        EXIT
-      </button>
+      <button class="age-enter" id="ageEnterBtn" type="button">I AM OF LEGAL AGE</button>
+      <button class="age-exit" id="ageExitBtn" type="button">EXIT</button>
     </div>
   </div>
 </div>
@@ -1054,10 +1006,7 @@ footer p{
   <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
   <div class="header-logo">
-    <img
-      src="./A1266070-1450-49E1-BD04-D0D8E88B6C32.PNG"
-      alt="NovaPeps USA"
-    >
+    <img src="./A1266070-1450-49E1-BD04-D0D8E88B6C32.PNG" alt="NovaPeps USA">
   </div>
 
   <button class="header-cart" id="headerCart" type="button">
@@ -1090,139 +1039,171 @@ footer p{
 <section class="hero" id="home"></section>
 
 <section class="section" id="products">
-  <h2 class="section-title">Featured Products</h2>
+<h2 class="section-title">Featured Products</h2>
 
-  <div class="products-grid">
+<div class="products-grid">
 
-    <article class="product-card" data-name="MOTS-C 10 MG" data-price="60" data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="MOTS-C 10 MG" type="button">♡</button>
-        <img class="product-image" src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="MOTS-C 10 MG">
-      </div>
-      <div class="product-info">
-        <h3>MOTS-C 10 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$70.00</span>
-          <span class="new-price">$60.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-2 10 MG" data-price="90" data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-2 10 MG" type="button">♡</button>
-        <img class="product-image" src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-2 10 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$100.00</span>
-          <span class="new-price">$90.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GHK-CU 100 MG" data-price="55" data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GHK-CU 100 MG" type="button">♡</button>
-        <img class="product-image" src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
-      </div>
-      <div class="product-info">
-        <h3>GHK-CU 100 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$70.00</span>
-          <span class="new-price">$55.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-3 10 MG" data-price="95" data-image="./713BA234-721B-4580-94DF-6677375C7826.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-3 10 MG" type="button">♡</button>
-        <img class="product-image" src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-3 10 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$110.00</span>
-          <span class="new-price">$95.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-2 20 MG" data-price="120" data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-2 20 MG" type="button">♡</button>
-        <img class="product-image" src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-2 20 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$130.00</span>
-          <span class="new-price">$120.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-3 20 MG" data-price="110" data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
-        <img class="product-image" src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-3 20 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$125.00</span>
-          <span class="new-price">$110.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLUTATHIONE 1500 MG" data-price="60" data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG" type="button">♡</button>
-        <img class="product-image" src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLUTATHIONE 1500 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$75.00</span>
-          <span class="new-price">$60.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="NAD+ 500 MG" data-price="50" data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="NAD+ 500 MG" type="button">♡</button>
-        <img class="product-image" src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
-      </div>
-      <div class="product-info">
-        <h3>NAD+ 500 MG</h3>
-        <div class="product-price">
-          <span class="old-price">$60.00</span>
-          <span class="new-price">$50.00</span>
-        </div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
+<article class="product-card" data-name="MOTS-C 10 MG" data-price="60" data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="MOTS-C 10 MG" type="button">♡</button>
+    <img class="product-image" src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="MOTS-C 10 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$70.00</span>
+      <span class="image-new-price">$60.00</span>
+    </div>
   </div>
+  <div class="product-info">
+    <h3>MOTS-C 10 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$70.00</span>
+      <span class="new-price">$60.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="GLP-2 10 MG" data-price="90" data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="GLP-2 10 MG" type="button">♡</button>
+    <img class="product-image" src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$100.00</span>
+      <span class="image-new-price">$90.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>GLP-2 10 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$100.00</span>
+      <span class="new-price">$90.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="GHK-CU 100 MG" data-price="55" data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="GHK-CU 100 MG" type="button">♡</button>
+    <img class="product-image" src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$70.00</span>
+      <span class="image-new-price">$55.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>GHK-CU 100 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$70.00</span>
+      <span class="new-price">$55.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="GLP-3 10 MG" data-price="95" data-image="./713BA234-721B-4580-94DF-6677375C7826.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="GLP-3 10 MG" type="button">♡</button>
+    <img class="product-image" src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$110.00</span>
+      <span class="image-new-price">$95.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>GLP-3 10 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$110.00</span>
+      <span class="new-price">$95.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="GLP-2 20 MG" data-price="120" data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="GLP-2 20 MG" type="button">♡</button>
+    <img class="product-image" src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$130.00</span>
+      <span class="image-new-price">$120.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>GLP-2 20 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$130.00</span>
+      <span class="new-price">$120.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="GLP-3 20 MG" data-price="110" data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
+    <img class="product-image" src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$125.00</span>
+      <span class="image-new-price">$110.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>GLP-3 20 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$125.00</span>
+      <span class="new-price">$110.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="GLUTATHIONE 1500 MG" data-price="60" data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG" type="button">♡</button>
+    <img class="product-image" src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$75.00</span>
+      <span class="image-new-price">$60.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>GLUTATHIONE 1500 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$75.00</span>
+      <span class="new-price">$60.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+<article class="product-card" data-name="NAD+ 500 MG" data-price="50" data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png">
+  <div class="product-image-wrap">
+    <button class="favorite-btn" data-favorite="NAD+ 500 MG" type="button">♡</button>
+    <img class="product-image" src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
+    <div class="image-sale-price">
+      <span class="image-old-price">$60.00</span>
+      <span class="image-new-price">$50.00</span>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>NAD+ 500 MG</h3>
+    <div class="product-price">
+      <span class="old-price">$60.00</span>
+      <span class="new-price">$50.00</span>
+    </div>
+    <div class="research">FOR RESEARCH USE ONLY</div>
+    <button class="add-list-btn" type="button">ADD TO LIST</button>
+  </div>
+</article>
+
+</div>
 </section>
 
 <section class="section" id="shipping">
@@ -1317,9 +1298,7 @@ footer p{
       <strong id="listTotal">$0.00</strong>
     </div>
 
-    <button class="primary-btn" id="openCartFromList" type="button">
-      GO TO CART
-    </button>
+    <button class="primary-btn" id="openCartFromList" type="button">GO TO CART</button>
   </div>
 </div>
 
@@ -1386,13 +1365,8 @@ footer p{
     </div>
   </div>
 
-  <button class="primary-btn" id="checkoutBtn" type="button">
-    CONTINUE
-  </button>
-
-  <button class="secondary-btn" id="clearCartBtn" type="button">
-    CLEAR CART
-  </button>
+  <button class="primary-btn" id="checkoutBtn" type="button">CONTINUE</button>
+  <button class="secondary-btn" id="clearCartBtn" type="button">CLEAR CART</button>
 
   <p class="notice">
     This list is informational only. No payment is processed here.
@@ -1471,9 +1445,7 @@ footer p{
         <textarea name="message"></textarea>
       </div>
 
-      <button class="primary-btn" type="submit">
-        SEND INFORMATION
-      </button>
+      <button class="primary-btn" type="submit">SEND INFORMATION</button>
     </form>
   </div>
 
@@ -1501,13 +1473,8 @@ footer p{
       <button id="modalPlus" type="button">+</button>
     </div>
 
-    <button class="primary-btn" id="modalAdd" type="button">
-      ADD TO CART
-    </button>
-
-    <button class="secondary-btn" id="modalGoCart" type="button">
-      GO TO CART / CHECKOUT
-    </button>
+    <button class="primary-btn" id="modalAdd" type="button">ADD TO CART</button>
+    <button class="secondary-btn" id="modalGoCart" type="button">GO TO CART / CHECKOUT</button>
   </div>
 </div>
 
@@ -1569,8 +1536,7 @@ function enterSite(){
     localStorage.setItem(STORAGE.age,"true");
   }catch(error){}
 
-  const gate = document.getElementById("ageGate");
-  if(gate) gate.classList.add("hidden");
+  document.getElementById("ageGate").classList.add("hidden");
   document.body.classList.remove("locked");
 }
 
@@ -1585,8 +1551,6 @@ function leaveSite(){
 
 function initializeAgeGate(){
   const gate = document.getElementById("ageGate");
-  const enter = document.getElementById("ageEnterBtn");
-  const exit = document.getElementById("ageExitBtn");
 
   let confirmed = false;
 
@@ -1601,17 +1565,10 @@ function initializeAgeGate(){
     gate.classList.remove("hidden");
     document.body.classList.add("locked");
   }
-
-  enter.addEventListener("click",function(event){
-    event.preventDefault();
-    enterSite();
-  });
-
-  exit.addEventListener("click",function(event){
-    event.preventDefault();
-    leaveSite();
-  });
 }
+
+document.getElementById("ageEnterBtn").addEventListener("click",enterSite);
+document.getElementById("ageExitBtn").addEventListener("click",leaveSite);
 
 function openMenu(){
   document.getElementById("sideMenu").classList.add("open");
@@ -1753,22 +1710,14 @@ function renderSelectedProducts(){
   container.innerHTML = selectedProducts.map(item => `
     <div class="selected-item">
       <img src="${item.image}" alt="${item.name}">
-
       <div class="selected-info">
         <strong>${item.name}</strong>
-
         <div>$${item.price.toFixed(2)}</div>
-
         <div class="qty-controls">
           <button type="button" onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
-
           <strong>${item.quantity}</strong>
-
           <button type="button" onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-
-          <button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">
-            Remove
-          </button>
+          <button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
         </div>
       </div>
     </div>
@@ -1778,10 +1727,7 @@ function renderSelectedProducts(){
 }
 
 function updateCartCount(){
-  const count = selectedProducts.reduce(
-    (sum,item) => sum + item.quantity,
-    0
-  );
+  const count = selectedProducts.reduce((sum,item) => sum + item.quantity,0);
 
   document.getElementById("cartCount").textContent = count;
   document.getElementById("headerCartCount").textContent = count;
@@ -1823,19 +1769,14 @@ function renderCart(){
     container.innerHTML = selectedProducts.map(item => `
       <div class="selected-item">
         <img src="${item.image}" alt="${item.name}">
-
         <div class="selected-info">
           <strong>${item.name}</strong>
           <div>$${item.price.toFixed(2)}</div>
-
           <div class="qty-controls">
             <button type="button" onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
             <strong>${item.quantity}</strong>
             <button type="button" onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-
-            <button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">
-              Remove
-            </button>
+            <button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
           </div>
         </div>
       </div>
@@ -1898,11 +1839,10 @@ document.getElementById("openCartFromList").addEventListener("click",function(){
   openPanel("cartPanel");
 });
 
-document.getElementById("clearCartBtn").addEventListener("click",function(){
-  clearCart();
-});
+document.getElementById("clearCartBtn").addEventListener("click",clearCart);
 
 document.getElementById("checkoutBtn").addEventListener("click",function(){
+
   if(selectedProducts.length === 0){
     alert("Please select at least one product.");
     return;
@@ -1978,7 +1918,6 @@ function saveLastOrder(reference){
   };
 
   setStorage(STORAGE.lastOrder,order);
-
   return order;
 }
 
@@ -2010,10 +1949,7 @@ function showPaymentInformation(order){
         <p><strong>Name:</strong> Araceli Hernández</p>
         <p>Send the amount shown above through Venmo.</p>
         <p>Please place your order number in the memo.</p>
-
-        <button class="copy-btn" type="button" onclick="copyText('@novapeps22')">
-          Copy Venmo
-        </button>
+        <button class="copy-btn" type="button" onclick="copyText('@novapeps22')">Copy Venmo</button>
       </div>
     `;
   }
@@ -2049,16 +1985,13 @@ document.getElementById("informationForm").addEventListener("submit",async funct
   button.textContent = "SENDING...";
 
   try{
-    const response = await fetch(
-      form.action,
-      {
-        method:"POST",
-        body:new FormData(form),
-        headers:{
-          "Accept":"application/json"
-        }
+    const response = await fetch(form.action,{
+      method:"POST",
+      body:new FormData(form),
+      headers:{
+        "Accept":"application/json"
       }
-    );
+    });
 
     if(!response.ok){
       throw new Error("Submission failed");
@@ -2075,7 +2008,6 @@ document.getElementById("informationForm").addEventListener("submit",async funct
 
   }catch(error){
     alert("There was a problem sending the information. Please try again.");
-
     button.disabled = false;
     button.textContent = "SEND INFORMATION";
   }
@@ -2083,14 +2015,11 @@ document.getElementById("informationForm").addEventListener("submit",async funct
 
 function copyText(text){
   if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard
-      .writeText(text)
-      .then(function(){
-        alert("Information copied");
-      })
-      .catch(function(){
-        fallbackCopy(text);
-      });
+    navigator.clipboard.writeText(text).then(function(){
+      alert("Information copied");
+    }).catch(function(){
+      fallbackCopy(text);
+    });
   }else{
     fallbackCopy(text);
   }
@@ -2098,7 +2027,6 @@ function copyText(text){
 
 function fallbackCopy(text){
   const textarea = document.createElement("textarea");
-
   textarea.value = text;
   document.body.appendChild(textarea);
   textarea.select();
@@ -2174,7 +2102,6 @@ function changeModalQuantity(change){
 }
 
 document.getElementById("modalClose").addEventListener("click",closeProductModal);
-
 document.getElementById("modalMinus").addEventListener("click",() => changeModalQuantity(-1));
 document.getElementById("modalPlus").addEventListener("click",() => changeModalQuantity(1));
 
@@ -2226,10 +2153,6 @@ document.querySelectorAll(".product-card").forEach(card => {
   });
 });
 
-/* =========================
-   SEARCH
-========================= */
-
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 
@@ -2253,7 +2176,6 @@ function renderSearchResults(){
 
   searchResults.innerHTML = results.map(product => `
     <div class="search-result">
-
       <img
         class="search-result-image"
         src="${escapeHtml(product.image)}"
@@ -2261,13 +2183,8 @@ function renderSearchResults(){
       >
 
       <div class="search-result-info">
-        <div class="search-result-name">
-          ${escapeHtml(product.name)}
-        </div>
-
-        <div class="search-result-price">
-          $${product.price.toFixed(2)}
-        </div>
+        <div class="search-result-name">${escapeHtml(product.name)}</div>
+        <div class="search-result-price">$${product.price.toFixed(2)}</div>
       </div>
 
       <button
@@ -2277,7 +2194,6 @@ function renderSearchResults(){
       >
         ADD TO LIST
       </button>
-
     </div>
   `).join("");
 }
@@ -2285,7 +2201,6 @@ function renderSearchResults(){
 searchInput.addEventListener("input",renderSearchResults);
 
 searchResults.addEventListener("click",function(event){
-
   const button = event.target.closest(".search-add-btn");
 
   if(!button) return;
@@ -2340,7 +2255,6 @@ function escapeJs(text){
 
 selectedProducts = getStorage(STORAGE.selected,[]);
 
-/* Actualiza precios guardados anteriormente */
 selectedProducts = selectedProducts.map(item => {
   const currentProduct = findProduct(item.name);
 
