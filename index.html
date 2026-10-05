@@ -112,39 +112,16 @@ header{
 
 /* =========================
    HERO
-   ÚNICO CAMBIO: PORTADA MÁS BAJITA
-   Y SIN RECORTAR LA IMAGEN
 ========================= */
 
 .hero{
-  height:280px;
-  min-height:280px;
-  background-image:
-    linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.18)),
-    url("./6FADF183-1747-411C-9344-F3F22404D2E6.PNG");
-  background-size:contain;
+  height:320px;
+  min-height:320px;
+  background-image:url("./6FADF183-1747-411C-9344-F3F22404D2E6.PNG");
+  background-size:cover;
   background-repeat:no-repeat;
   background-position:center center;
-  background-color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:#fff;
   padding:0;
-}
-
-.hero-content h1{
-  font-size:55px;
-  font-weight:900;
-  letter-spacing:3px;
-  margin-bottom:12px;
-  text-shadow:0 3px 12px rgba(0,0,0,.7);
-}
-
-.hero-content p{
-  font-size:20px;
-  font-weight:bold;
 }
 
 /* =========================
@@ -901,16 +878,11 @@ footer p{
     font-size:25px;
   }
 
-  /* ÚNICO CAMBIO EN CELULAR */
   .hero{
-    height:220px;
-    min-height:220px;
-    background-size:contain;
+    height:270px;
+    min-height:270px;
+    background-size:cover;
     background-position:center center;
-  }
-
-  .hero-content h1{
-    font-size:38px;
   }
 
   .products-grid{
@@ -994,12 +966,7 @@ footer p{
   <a href="#login" class="menu-link">LOGIN / REGISTER</a>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>NOVAPEPS USA</h1>
-    <p>Research Use Only</p>
-  </div>
-</section>
+<section class="hero" id="home"></section>
 
 <section class="section" id="products">
   <h2 class="section-title">Featured Products</h2>
@@ -1956,7 +1923,6 @@ document.getElementById("informationForm").addEventListener("submit",async funct
     );
 
     form.style.display = "none";
-
     document.getElementById("finalConfirmation").style.display = "block";
 
     showPaymentInformation(order);
