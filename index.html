@@ -34,20 +34,21 @@ header{
   position:sticky;
   top:0;
   z-index:5000;
-  height:70px;
+  height:68px;
   background:#000;
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 22px;
-  box-shadow:0 2px 10px rgba(0,0,0,.25);
+  box-shadow:0 2px 14px rgba(0,0,0,.28);
 }
 
 .logo{
-  font-size:24px;
+  font-size:22px;
   font-weight:900;
   letter-spacing:2px;
+  line-height:1;
 }
 
 .logo span{
@@ -58,9 +59,14 @@ header{
   border:0;
   background:transparent;
   color:#fff;
-  font-size:31px;
+  font-size:30px;
   cursor:pointer;
   line-height:1;
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 /* =========================
@@ -70,9 +76,9 @@ header{
 .hero{
   min-height:430px;
   background-image:
-    linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.32)),
+    linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),
     url("./att.i0BTil72eeYgNmi8hZ9z7wpLHeqZZ5IPg4Jg6HxTZ0E.jpg");
-  background-size:100% 100%;
+  background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
   display:flex;
@@ -103,10 +109,10 @@ header{
 .cover-info{
   text-align:center;
   padding:22px 20px;
-  font-size:15px;
+  font-size:14px;
   font-weight:bold;
   line-height:1.6;
-  color:#333;
+  color:#555;
   max-width:1000px;
   margin:0 auto;
 }
@@ -116,7 +122,7 @@ header{
 ========================= */
 
 .section{
-  padding:55px 20px;
+  padding:52px 20px;
   max-width:1250px;
   margin:auto;
 }
@@ -124,8 +130,20 @@ header{
 .section-title{
   text-align:center;
   font-size:34px;
-  margin-bottom:30px;
+  margin-bottom:38px;
   font-weight:900;
+  letter-spacing:.5px;
+  position:relative;
+}
+
+.section-title::after{
+  content:"";
+  display:block;
+  width:52px;
+  height:4px;
+  background:#ff4fa3;
+  border-radius:10px;
+  margin:12px auto 0;
 }
 
 .notice{
@@ -139,6 +157,15 @@ header{
    PRODUCTS
 ========================= */
 
+#products{
+  padding-top:48px;
+  padding-bottom:65px;
+}
+
+#products .section-title{
+  margin-bottom:34px;
+}
+
 .products-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -151,74 +178,130 @@ header{
   border:1px solid #e8e8e8;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 7px 25px rgba(0,0,0,.08);
-  transition:.25s ease;
+  box-shadow:0 6px 24px rgba(0,0,0,.07);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
 }
 
 .product-card:hover{
   transform:translateY(-5px);
-  box-shadow:0 12px 30px rgba(0,0,0,.14);
+  box-shadow:0 15px 34px rgba(0,0,0,.12);
+  border-color:#ddd;
 }
+
+/* =========================
+   PRODUCT IMAGE
+   MÁS GRANDE
+========================= */
 
 .product-image-wrap{
   position:relative;
-  background:#fafafa;
-  padding:18px;
+  background:
+    radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      #fafafa 65%,
+      #f4f4f4 100%
+    );
+  padding:12px 12px 6px;
+  overflow:hidden;
+}
+
+.product-image-wrap::after{
+  content:"";
+  position:absolute;
+  left:15%;
+  right:15%;
+  bottom:5px;
+  height:18px;
+  background:rgba(0,0,0,.08);
+  filter:blur(14px);
+  border-radius:50%;
+  z-index:0;
 }
 
 .product-image{
   display:block;
   width:100%;
-  height:230px;
+  height:285px;
   object-fit:contain;
   cursor:pointer;
+  position:relative;
+  z-index:1;
+  transition:transform .3s ease;
 }
+
+.product-card:hover .product-image{
+  transform:scale(1.045);
+}
+
+/* =========================
+   FAVORITE
+========================= */
 
 .favorite-btn{
   position:absolute;
   top:12px;
   right:12px;
-  width:40px;
-  height:40px;
+  width:39px;
+  height:39px;
   border-radius:50%;
   border:1px solid #ddd;
-  background:#fff;
+  background:rgba(255,255,255,.96);
   cursor:pointer;
-  font-size:22px;
-  z-index:2;
+  font-size:21px;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s ease;
+}
+
+.favorite-btn:hover{
+  transform:scale(1.07);
+  border-color:#ff4fa3;
 }
 
 .favorite-btn.active{
   color:#ff2d83;
 }
 
+/* =========================
+   PRODUCT INFO
+========================= */
+
 .product-info{
-  padding:20px;
+  padding:17px 18px 20px;
   text-align:center;
+  border-top:1px solid #f1f1f1;
 }
 
 .product-info h3{
-  font-size:18px;
-  margin-bottom:8px;
+  font-size:17px;
+  margin-bottom:7px;
+  font-weight:900;
+  letter-spacing:.2px;
 }
 
 .product-price{
-  font-size:23px;
+  font-size:22px;
   font-weight:900;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 .research{
-  font-size:11px;
+  font-size:10px;
   color:#777;
   font-weight:bold;
-  margin-bottom:15px;
+  letter-spacing:.5px;
+  margin-bottom:13px;
 }
 
 /* =========================
    ADD TO LIST
-   RAYA ROSA GIRANDO
-   DENTRO DEL CUADRO NEGRO
+   RAYA ROSA
 ========================= */
 
 @property --addListAngle{
@@ -229,26 +312,24 @@ header{
 
 .add-list-btn{
   width:92%;
-  max-width:180px;
+  max-width:185px;
   margin:0 auto;
   display:block;
   position:relative;
   border:1px solid #000;
   background:#000;
   color:#fff;
-  padding:9px 12px;
-  border-radius:8px;
-  font-size:13px;
+  padding:10px 12px;
+  border-radius:9px;
+  font-size:12px;
   font-weight:900;
+  letter-spacing:.4px;
   cursor:pointer;
   transition:.2s;
   z-index:1;
   overflow:hidden;
-  box-shadow:0 3px 8px rgba(0,0,0,.15);
+  box-shadow:0 3px 9px rgba(0,0,0,.16);
 }
-
-/* RAYA ROSA QUE RECORRE
-   TODO EL BORDE INTERIOR */
 
 .add-list-btn::before{
   content:"";
@@ -257,8 +338,7 @@ header{
   left:2px;
   right:2px;
   bottom:2px;
-
-  border-radius:6px;
+  border-radius:7px;
   padding:1.5px;
 
   background:
@@ -285,11 +365,8 @@ header{
 
   pointer-events:none;
   z-index:2;
-
   animation:addListRotate 1.8s linear infinite;
 }
-
-/* SIN FLECHA NI CÍRCULO */
 
 .add-list-btn::after{
   content:"";
@@ -324,31 +401,36 @@ header{
   position:fixed;
   right:20px;
   bottom:20px;
-  width:62px;
-  height:62px;
+  width:60px;
+  height:60px;
   border-radius:50%;
   border:none;
   background:#000;
   color:#fff;
-  font-size:26px;
+  font-size:25px;
   cursor:pointer;
   z-index:4500;
   box-shadow:0 5px 20px rgba(0,0,0,.3);
+  transition:.2s ease;
+}
+
+.cart-floating:hover{
+  transform:scale(1.06);
 }
 
 .cart-count{
   position:absolute;
   top:-5px;
   right:-5px;
-  min-width:24px;
-  height:24px;
+  min-width:23px;
+  height:23px;
   border-radius:50%;
   background:#ff4fa3;
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
 }
 
@@ -732,7 +814,7 @@ header{
 
 .modal-image{
   width:100%;
-  height:300px;
+  height:320px;
   object-fit:contain;
   margin-bottom:15px;
 }
@@ -924,32 +1006,54 @@ footer p{
    RESPONSIVE
 ========================= */
 
-@media(max-width:1000px){
+@media(max-width:1100px){
+
   .products-grid{
     grid-template-columns:repeat(2,1fr);
   }
+
+  .product-image{
+    height:300px;
+  }
+
 }
 
 @media(max-width:600px){
+
   header{
     height:62px;
     padding:0 15px;
   }
 
   .logo{
-    font-size:20px;
+    font-size:19px;
+    letter-spacing:1.5px;
+  }
+
+  .menu-btn{
+    font-size:28px;
   }
 
   .hero{
     min-height:350px;
+    background-size:cover;
   }
 
   .hero-content h1{
     font-size:38px;
   }
 
+  .hero-content p{
+    font-size:17px;
+  }
+
   .products-grid{
     grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  #products{
+    padding-top:38px;
   }
 
   .section{
@@ -957,17 +1061,72 @@ footer p{
   }
 
   .section-title{
-    font-size:28px;
+    font-size:29px;
+    margin-bottom:30px;
+  }
+
+  .product-card{
+    border-radius:19px;
+  }
+
+  .product-image-wrap{
+    padding:8px 15px 3px;
+  }
+
+  .product-image{
+    height:330px;
+  }
+
+  .product-info{
+    padding:16px 18px 20px;
+  }
+
+  .product-info h3{
+    font-size:18px;
+  }
+
+  .product-price{
+    font-size:23px;
+  }
+
+  .add-list-btn{
+    max-width:205px;
+    padding:11px 12px;
+  }
+
+  .cart-floating{
+    right:15px;
+    bottom:15px;
+    width:58px;
+    height:58px;
   }
 
   .panel{
     width:100%;
     max-width:100%;
+    padding:20px;
   }
 
   .age-buttons{
     flex-direction:column;
   }
+
+  .modal-content{
+    padding:20px;
+  }
+
+  .modal-image{
+    height:290px;
+  }
+
+}
+
+@media(min-width:601px) and (max-width:900px){
+
+  .product-image{
+    height:285px;
+  }
+
 }
 </style>
 </head>
@@ -979,7 +1138,9 @@ footer p{
 ========================= -->
 
 <div class="age-gate" id="ageGate">
+
   <div class="age-card">
+
     <h2>Age Confirmation</h2>
 
     <p>
@@ -988,15 +1149,27 @@ footer p{
     </p>
 
     <div class="age-buttons">
-      <button class="age-enter" id="ageEnterBtn" type="button">
+
+      <button
+        class="age-enter"
+        id="ageEnterBtn"
+        type="button"
+      >
         I AM OF LEGAL AGE
       </button>
 
-      <button class="age-exit" id="ageExitBtn" type="button">
+      <button
+        class="age-exit"
+        id="ageExitBtn"
+        type="button"
+      >
         EXIT
       </button>
+
     </div>
+
   </div>
+
 </div>
 
 <!-- =========================
@@ -1005,9 +1178,20 @@ footer p{
 
 <header>
 
-  <button class="menu-btn" id="menuBtn" type="button">
+  <button
+    class="menu-btn"
+    id="menuBtn"
+    type="button"
+    aria-label="Open menu"
+  >
     ☰
   </button>
+
+  <div class="logo">
+    NOVA<span>PEPS</span> USA
+  </div>
+
+  <div style="width:42px;"></div>
 
 </header>
 
@@ -1015,31 +1199,96 @@ footer p{
      SIDE MENU
 ========================= -->
 
-<div class="overlay" id="overlay"></div>
+<div
+  class="overlay"
+  id="overlay"
+></div>
 
-<nav class="side-menu" id="sideMenu">
+<nav
+  class="side-menu"
+  id="sideMenu"
+>
 
-  <button class="side-close" id="sideClose" type="button">×</button>
+  <button
+    class="side-close"
+    id="sideClose"
+    type="button"
+  >
+    ×
+  </button>
 
   <h2>NOVAPEPS USA</h2>
 
   <div class="search-box">
+
     <input
       type="search"
       id="searchInput"
       placeholder="Search products..."
     >
-    <div class="search-results" id="searchResults"></div>
+
+    <div
+      class="search-results"
+      id="searchResults"
+    ></div>
+
   </div>
 
-  <a href="#home" class="menu-link">HOME</a>
-  <a href="#products" class="menu-link">PRODUCTS</a>
-  <button class="menu-link" data-open-panel="listPanel">LIST</button>
-  <a href="#shipping" class="menu-link">SHIPPING</a>
-  <a href="#contact" class="menu-link">CONTACT PAGE</a>
-  <a href="#about" class="menu-link">ABOUT US</a>
-  <a href="#compare" class="menu-link">COMPARE</a>
-  <a href="#login" class="menu-link">LOGIN / REGISTER</a>
+  <a
+    href="#home"
+    class="menu-link"
+  >
+    HOME
+  </a>
+
+  <a
+    href="#products"
+    class="menu-link"
+  >
+    PRODUCTS
+  </a>
+
+  <button
+    class="menu-link"
+    data-open-panel="listPanel"
+  >
+    LIST
+  </button>
+
+  <a
+    href="#shipping"
+    class="menu-link"
+  >
+    SHIPPING
+  </a>
+
+  <a
+    href="#contact"
+    class="menu-link"
+  >
+    CONTACT PAGE
+  </a>
+
+  <a
+    href="#about"
+    class="menu-link"
+  >
+    ABOUT US
+  </a>
+
+  <a
+    href="#compare"
+    class="menu-link"
+  >
+    COMPARE
+  </a>
+
+  <a
+    href="#login"
+    class="menu-link"
+  >
+    LOGIN / REGISTER
+  </a>
 
 </nav>
 
@@ -1047,253 +1296,443 @@ footer p{
      HERO
 ========================= -->
 
-<section class="hero" id="home">
+<section
+  class="hero"
+  id="home"
+>
 </section>
 
 <!-- =========================
      PRODUCTS
 ========================= -->
 
-<section class="section" id="products">
+<section
+  class="section"
+  id="products"
+>
 
-  <h2 class="section-title">Products</h2>
+  <h2 class="section-title">
+    Products
+  </h2>
 
   <div class="products-grid">
 
     <!-- MOTS-C -->
+
     <article
       class="product-card"
       data-name="MOTS-C 10 MG"
       data-price="60"
       data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="MOTS-C 10 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="MOTS-C 10 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
           alt="MOTS-C 10 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>MOTS-C 10 MG</h3>
-        <div class="product-price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>MOTS-C 10 MG</h3>
+
+        <div class="product-price">
+          $60
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- GLP-2 10 -->
+
     <article
       class="product-card"
       data-name="GLP-2 10 MG"
       data-price="90"
       data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-2 10 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="GLP-2 10 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
           alt="GLP-2 10 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>GLP-2 10 MG</h3>
-        <div class="product-price">$90</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>GLP-2 10 MG</h3>
+
+        <div class="product-price">
+          $90
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- GHK-CU -->
+
     <article
       class="product-card"
       data-name="GHK-CU 100 MG"
       data-price="50"
       data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GHK-CU 100 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="GHK-CU 100 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
           alt="GHK-CU 100 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>GHK-CU 100 MG</h3>
-        <div class="product-price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>GHK-CU 100 MG</h3>
+
+        <div class="product-price">
+          $50
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- GLP-3 10 -->
+
     <article
       class="product-card"
       data-name="GLP-3 10 MG"
       data-price="95"
       data-image="./713BA234-721B-4580-94DF-6677375C7826.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-3 10 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="GLP-3 10 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./713BA234-721B-4580-94DF-6677375C7826.png"
           alt="GLP-3 10 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>GLP-3 10 MG</h3>
-        <div class="product-price">$95</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>GLP-3 10 MG</h3>
+
+        <div class="product-price">
+          $95
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- GLP-2 20 -->
+
     <article
       class="product-card"
       data-name="GLP-2 20 MG"
       data-price="110"
       data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-2 20 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="GLP-2 20 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
           alt="GLP-2 20 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>GLP-2 20 MG</h3>
-        <div class="product-price">$110</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>GLP-2 20 MG</h3>
+
+        <div class="product-price">
+          $110
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- GLP-3 20 -->
+
     <article
       class="product-card"
       data-name="GLP-3 20 MG"
       data-price="135"
       data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="GLP-3 20 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
           alt="GLP-3 20 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>GLP-3 20 MG</h3>
-        <div class="product-price">$135</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>GLP-3 20 MG</h3>
+
+        <div class="product-price">
+          $135
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- GLUTATHIONE -->
+
     <article
       class="product-card"
       data-name="GLUTATHIONE 1500 MG"
       data-price="60"
       data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="GLUTATHIONE 1500 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
           alt="GLUTATHIONE 1500 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>GLUTATHIONE 1500 MG</h3>
-        <div class="product-price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>GLUTATHIONE 1500 MG</h3>
+
+        <div class="product-price">
+          $60
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
     <!-- NAD -->
+
     <article
       class="product-card"
       data-name="NAD+ 500 MG"
       data-price="50"
       data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png"
     >
+
       <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="NAD+ 500 MG" type="button">♡</button>
+
+        <button
+          class="favorite-btn"
+          data-favorite="NAD+ 500 MG"
+          type="button"
+        >
+          ♡
+        </button>
 
         <img
           class="product-image"
           src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
           alt="NAD+ 500 MG"
         >
+
       </div>
 
       <div class="product-info">
-        <h3>NAD+ 500 MG</h3>
-        <div class="product-price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
 
-        <button class="add-list-btn" type="button">
+        <h3>NAD+ 500 MG</h3>
+
+        <div class="product-price">
+          $50
+        </div>
+
+        <div class="research">
+          FOR RESEARCH USE ONLY
+        </div>
+
+        <button
+          class="add-list-btn"
+          type="button"
+        >
           ADD TO LIST
         </button>
+
       </div>
+
     </article>
 
   </div>
+
 </section>
 
 <!-- =========================
      SHIPPING
 ========================= -->
 
-<section class="section" id="shipping">
+<section
+  class="section"
+  id="shipping"
+>
 
-  <h2 class="section-title">Shipping</h2>
+  <h2 class="section-title">
+    Shipping
+  </h2>
 
   <div class="info-card">
 
@@ -1323,9 +1762,14 @@ footer p{
      CONTACT
 ========================= -->
 
-<section class="section" id="contact">
+<section
+  class="section"
+  id="contact"
+>
 
-  <h2 class="section-title">Contact</h2>
+  <h2 class="section-title">
+    Contact
+  </h2>
 
   <div class="info-card contact-info">
 
@@ -1347,9 +1791,14 @@ footer p{
      ABOUT
 ========================= -->
 
-<section class="section" id="about">
+<section
+  class="section"
+  id="about"
+>
 
-  <h2 class="section-title">About Us</h2>
+  <h2 class="section-title">
+    About Us
+  </h2>
 
   <div class="info-card">
 
@@ -1373,20 +1822,27 @@ footer p{
      COMPARE
 ========================= -->
 
-<section class="section" id="compare">
+<section
+  class="section"
+  id="compare"
+>
 
-  <h2 class="section-title">Compare</h2>
+  <h2 class="section-title">
+    Compare
+  </h2>
 
   <div class="compare-wrap">
 
     <table class="compare-table">
 
       <thead>
+
         <tr>
           <th>Product</th>
           <th>Amount</th>
           <th>Price</th>
         </tr>
+
       </thead>
 
       <tbody>
@@ -1451,9 +1907,14 @@ footer p{
      LOGIN
 ========================= -->
 
-<section class="section" id="login">
+<section
+  class="section"
+  id="login"
+>
 
-  <h2 class="section-title">Login / Register</h2>
+  <h2 class="section-title">
+    Login / Register
+  </h2>
 
   <div class="login-box">
 
@@ -1491,19 +1952,37 @@ footer p{
      FLOATING CART
 ========================= -->
 
-<button class="cart-floating" id="cartFloating" type="button">
+<button
+  class="cart-floating"
+  id="cartFloating"
+  type="button"
+>
+
   🛒
-  <span class="cart-count" id="cartCount">0</span>
+
+  <span
+    class="cart-count"
+    id="cartCount"
+  >
+    0
+  </span>
+
 </button>
 
 <!-- =========================
      LIST PANEL
 ========================= -->
 
-<div class="panel" id="listPanel">
+<div
+  class="panel"
+  id="listPanel"
+>
 
   <div class="panel-header">
-    <h2>Selected Products</h2>
+
+    <h2>
+      Selected Products
+    </h2>
 
     <button
       class="panel-close"
@@ -1512,6 +1991,7 @@ footer p{
     >
       ×
     </button>
+
   </div>
 
   <div id="selectedProducts"></div>
@@ -1519,8 +1999,15 @@ footer p{
   <div class="cart-summary">
 
     <div class="summary-row">
-      <span>Informational Total</span>
-      <strong id="listTotal">$0.00</strong>
+
+      <span>
+        Informational Total
+      </span>
+
+      <strong id="listTotal">
+        $0.00
+      </strong>
+
     </div>
 
     <button
@@ -1539,10 +2026,16 @@ footer p{
      CART PANEL
 ========================= -->
 
-<div class="panel" id="cartPanel">
+<div
+  class="panel"
+  id="cartPanel"
+>
 
   <div class="panel-header">
-    <h2>Your Cart</h2>
+
+    <h2>
+      Your Cart
+    </h2>
 
     <button
       class="panel-close"
@@ -1551,72 +2044,95 @@ footer p{
     >
       ×
     </button>
+
   </div>
 
   <div id="cartItems"></div>
 
   <div class="option-box">
 
-    <h3>Shipping</h3>
+    <h3>
+      Shipping
+    </h3>
 
     <label class="option-label">
+
       <input
         type="radio"
         name="shipping"
         value="standard"
       >
+
       Standard — $9
+
     </label>
 
     <label class="option-label">
+
       <input
         type="radio"
         name="shipping"
         value="express"
       >
+
       Express — $15
+
     </label>
 
     <label class="option-label">
+
       <input
         type="radio"
         name="shipping"
         value="free"
       >
+
       Free Shipping — $200+
+
     </label>
 
   </div>
 
   <div class="option-box">
 
-    <h3>Payment Method</h3>
+    <h3>
+      Payment Method
+    </h3>
 
     <label class="option-label">
+
       <input
         type="radio"
         name="payment"
         value="zelle"
       >
+
       Zelle
+
     </label>
 
     <label class="option-label">
+
       <input
         type="radio"
         name="payment"
         value="venmo"
       >
+
       Venmo
+
     </label>
 
     <label class="option-label">
+
       <input
         type="radio"
         name="payment"
         value="paypal"
       >
+
       PayPal
+
     </label>
 
   </div>
@@ -1666,11 +2182,16 @@ footer p{
      INFORMATION PANEL
 ========================= -->
 
-<div class="panel" id="informationPanel">
+<div
+  class="panel"
+  id="informationPanel"
+>
 
   <div class="panel-header">
 
-    <h2>Information Request</h2>
+    <h2>
+      Information Request
+    </h2>
 
     <button
       class="panel-close"
@@ -1685,13 +2206,18 @@ footer p{
   <div id="formArea">
 
     <div class="reference-box">
-      <div>Order / Reference Code</div>
+
+      <div>
+        Order / Reference Code
+      </div>
+
       <div
         class="reference-code"
         id="referenceDisplay"
       >
         ----
       </div>
+
     </div>
 
     <form
@@ -1755,79 +2281,106 @@ footer p{
       >
 
       <div class="form-group">
+
         <label>Name</label>
+
         <input
           type="text"
           name="name"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>Email</label>
+
         <input
           type="email"
           name="email"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>Phone</label>
+
         <input
           type="tel"
           name="phone"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>Address</label>
+
         <input
           type="text"
           name="address"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>Apt / Unit</label>
+
         <input
           type="text"
           name="apt_unit"
         >
+
       </div>
 
       <div class="form-group">
+
         <label>City</label>
+
         <input
           type="text"
           name="city"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>State</label>
+
         <input
           type="text"
           name="state"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>ZIP</label>
+
         <input
           type="text"
           name="zip"
           required
         >
+
       </div>
 
       <div class="form-group">
+
         <label>Message</label>
+
         <textarea name="message"></textarea>
+
       </div>
 
       <button
@@ -1847,7 +2400,9 @@ footer p{
     style="display:none;"
   >
 
-    <h2>THANK YOU!</h2>
+    <h2>
+      THANK YOU!
+    </h2>
 
     <p>
       Your information has been submitted.
@@ -1866,7 +2421,10 @@ footer p{
      PRODUCT MODAL
 ========================= -->
 
-<div class="modal" id="productModal">
+<div
+  class="modal"
+  id="productModal"
+>
 
   <div class="modal-content">
 
@@ -1905,7 +2463,9 @@ footer p{
         −
       </button>
 
-      <strong id="modalQuantity">1</strong>
+      <strong id="modalQuantity">
+        1
+      </strong>
 
       <button
         id="modalPlus"
@@ -1954,7 +2514,10 @@ footer p{
     (832) 273-9625
   </p>
 
-  <p class="notice" style="color:#aaa;">
+  <p
+    class="notice"
+    style="color:#aaa;"
+  >
     All products are presented for research use only.
   </p>
 
@@ -1962,11 +2525,13 @@ footer p{
 
 <!-- =========================
      COA INFORMATION
-     MOVED TO VERY BOTTOM
 ========================= -->
 
 <div class="cover-info">
-  All products are tested by independent laboratories in the United States and are accompanied by a Certificate of Analysis (COA).
+
+  All products are tested by independent laboratories in the United States
+  and are accompanied by a Certificate of Analysis (COA).
+
 </div>
 
 <script>
@@ -1976,60 +2541,79 @@ footer p{
 ===================================================== */
 
 const PRODUCTS = [
+
   {
     name:"MOTS-C 10 MG",
     price:60,
     image:"./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
   },
+
   {
     name:"GLP-2 10 MG",
     price:90,
     image:"./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
   },
+
   {
     name:"GHK-CU 100 MG",
     price:50,
     image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"
   },
+
   {
     name:"GLP-3 10 MG",
     price:95,
     image:"./713BA234-721B-4580-94DF-6677375C7826.png"
   },
+
   {
     name:"GLP-2 20 MG",
     price:110,
     image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
   },
+
   {
     name:"GLP-3 20 MG",
     price:135,
     image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
   },
+
   {
     name:"GLUTATHIONE 1500 MG",
     price:60,
     image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
   },
+
   {
     name:"NAD+ 500 MG",
     price:50,
     image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"
   }
+
 ];
 
 const STORAGE = {
+
   selected:"novaSelectedProducts",
+
   favorites:"novaFavoriteProducts",
+
   shipping:"novaShippingOption",
+
   payment:"novaPaymentOption",
+
   lastOrder:"novaLastOrder",
+
   age:"novaAgeConfirmed"
+
 };
 
 let selectedProducts = [];
+
 let favorites = [];
+
 let modalProduct = null;
+
 let modalQuantity = 1;
 
 /* =====================================================
@@ -2037,85 +2621,142 @@ let modalQuantity = 1;
 ===================================================== */
 
 function getStorage(key,fallback){
+
   try{
-    const value = localStorage.getItem(key);
+
+    const value =
+      localStorage.getItem(key);
 
     if(value === null){
       return fallback;
     }
 
     return JSON.parse(value);
+
   }catch(error){
+
     return fallback;
+
   }
+
 }
 
 function setStorage(key,value){
+
   try{
-    localStorage.setItem(key,JSON.stringify(value));
+
+    localStorage.setItem(
+      key,
+      JSON.stringify(value)
+    );
+
   }catch(error){}
+
 }
 
 /* =====================================================
    AGE CONFIRMATION
-   FIXED
 ===================================================== */
 
 function enterSite(){
 
   try{
-    localStorage.setItem(STORAGE.age,"true");
+
+    localStorage.setItem(
+      STORAGE.age,
+      "true"
+    );
+
   }catch(error){}
 
-  const gate = document.getElementById("ageGate");
+  const gate =
+    document.getElementById("ageGate");
 
   if(gate){
     gate.classList.add("hidden");
   }
 
   document.body.classList.remove("locked");
+
 }
 
 function leaveSite(){
 
   try{
-    localStorage.removeItem(STORAGE.age);
+
+    localStorage.removeItem(
+      STORAGE.age
+    );
+
   }catch(error){}
 
   document.body.innerHTML =
     '<div style="height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Arial;padding:30px;"><div><h1>Thank you.</h1><p>You have chosen to exit this website.</p></div></div>';
+
 }
 
 function initializeAgeGate(){
 
-  const gate = document.getElementById("ageGate");
-  const enter = document.getElementById("ageEnterBtn");
-  const exit = document.getElementById("ageExitBtn");
+  const gate =
+    document.getElementById("ageGate");
+
+  const enter =
+    document.getElementById("ageEnterBtn");
+
+  const exit =
+    document.getElementById("ageExitBtn");
 
   let confirmed = false;
 
   try{
+
     confirmed =
-      localStorage.getItem(STORAGE.age) === "true";
+      localStorage.getItem(
+        STORAGE.age
+      ) === "true";
+
   }catch(error){}
 
   if(confirmed){
+
     gate.classList.add("hidden");
-    document.body.classList.remove("locked");
+
+    document.body.classList.remove(
+      "locked"
+    );
+
   }else{
+
     gate.classList.remove("hidden");
-    document.body.classList.add("locked");
+
+    document.body.classList.add(
+      "locked"
+    );
+
   }
 
-  enter.addEventListener("click",function(event){
-    event.preventDefault();
-    enterSite();
-  });
+  enter.addEventListener(
+    "click",
+    function(event){
 
-  exit.addEventListener("click",function(event){
-    event.preventDefault();
-    leaveSite();
-  });
+      event.preventDefault();
+
+      enterSite();
+
+    }
+  );
+
+  exit.addEventListener(
+    "click",
+    function(event){
+
+      event.preventDefault();
+
+      leaveSite();
+
+    }
+  );
+
 }
 
 /* =====================================================
@@ -2123,25 +2764,45 @@ function initializeAgeGate(){
 ===================================================== */
 
 function openMenu(){
-  document.getElementById("sideMenu").classList.add("open");
-  document.getElementById("overlay").classList.add("show");
+
+  document
+    .getElementById("sideMenu")
+    .classList.add("open");
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
 }
 
 function closeMenu(){
-  document.getElementById("sideMenu").classList.remove("open");
+
+  document
+    .getElementById("sideMenu")
+    .classList.remove("open");
+
 }
 
-document.getElementById("menuBtn")
-  .addEventListener("click",openMenu);
+document
+  .getElementById("menuBtn")
+  .addEventListener(
+    "click",
+    openMenu
+  );
 
-document.getElementById("sideClose")
-  .addEventListener("click",closeMenu);
+document
+  .getElementById("sideClose")
+  .addEventListener(
+    "click",
+    closeMenu
+  );
 
 /* =====================================================
    PANELS
 ===================================================== */
 
 function openPanel(id){
+
   closeMenu();
 
   document
@@ -2159,56 +2820,81 @@ function openPanel(id){
   if(id === "cartPanel"){
     renderCart();
   }
+
 }
 
 function closePanel(id){
+
   document
     .getElementById(id)
     .classList.remove("open");
 
   const anyPanel =
-    document.querySelector(".panel.open");
+    document.querySelector(
+      ".panel.open"
+    );
 
-  if(!anyPanel &&
-     !document.getElementById("sideMenu").classList.contains("open")){
+  if(
+    !anyPanel &&
+    !document
+      .getElementById("sideMenu")
+      .classList
+      .contains("open")
+  ){
+
     document
       .getElementById("overlay")
-      .classList.remove("show");
+      .classList
+      .remove("show");
+
   }
+
 }
 
 function closeAllPanels(){
 
   document
     .querySelectorAll(".panel.open")
-    .forEach(panel => panel.classList.remove("open"));
+    .forEach(
+      panel =>
+        panel.classList.remove("open")
+    );
 
   document
     .getElementById("sideMenu")
-    .classList.remove("open");
+    .classList
+    .remove("open");
 
   document
     .getElementById("overlay")
-    .classList.remove("show");
+    .classList
+    .remove("show");
 
   closeProductModal();
+
 }
 
 document
   .getElementById("overlay")
-  .addEventListener("click",closeAllPanels);
+  .addEventListener(
+    "click",
+    closeAllPanels
+  );
 
 document
   .querySelectorAll("[data-open-panel]")
   .forEach(button => {
 
-    button.addEventListener("click",function(){
+    button.addEventListener(
+      "click",
+      function(){
 
-      openPanel(
-        this.dataset.openPanel
-      );
+        openPanel(
+          this.dataset.openPanel
+        );
 
-    });
+      }
+    );
 
   });
 
@@ -2216,13 +2902,16 @@ document
   .querySelectorAll("[data-close-panel]")
   .forEach(button => {
 
-    button.addEventListener("click",function(){
+    button.addEventListener(
+      "click",
+      function(){
 
-      closePanel(
-        this.dataset.closePanel
-      );
+        closePanel(
+          this.dataset.closePanel
+        );
 
-    });
+      }
+    );
 
   });
 
@@ -2231,16 +2920,24 @@ document
 ===================================================== */
 
 function findProduct(name){
+
   return PRODUCTS.find(
-    product => product.name === name
+    product =>
+      product.name === name
   );
+
 }
 
 function normalize(text){
+
   return String(text)
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"");
+    .replace(
+      /[\u0300-\u036f]/g,
+      ""
+    );
+
 }
 
 /* =====================================================
@@ -2248,51 +2945,73 @@ function normalize(text){
 ===================================================== */
 
 function saveSelected(){
+
   setStorage(
     STORAGE.selected,
     selectedProducts
   );
+
 }
 
 function subtotal(){
 
   return selectedProducts.reduce(
     (total,item) =>
-      total + (item.price * item.quantity),
+      total +
+      (item.price * item.quantity),
     0
   );
 
 }
 
-function addToList(product,quantity=1){
+function addToList(
+  product,
+  quantity=1
+){
 
   const existing =
     selectedProducts.find(
-      item => item.name === product.name
+      item =>
+        item.name === product.name
     );
 
   if(existing){
+
     existing.quantity += quantity;
+
   }else{
+
     selectedProducts.push({
+
       name:product.name,
+
       price:product.price,
+
       image:product.image,
+
       quantity:quantity
+
     });
+
   }
 
   saveSelected();
+
   updateCartCount();
+
   renderSelectedProducts();
 
 }
 
-function changeQuantity(name,change){
+function changeQuantity(
+  name,
+  change
+){
 
   const item =
     selectedProducts.find(
-      product => product.name === name
+      product =>
+        product.name === name
     );
 
   if(!item) return;
@@ -2300,15 +3019,21 @@ function changeQuantity(name,change){
   item.quantity += change;
 
   if(item.quantity <= 0){
+
     selectedProducts =
       selectedProducts.filter(
-        product => product.name !== name
+        product =>
+          product.name !== name
       );
+
   }
 
   saveSelected();
+
   renderSelectedProducts();
+
   renderCart();
+
   updateCartCount();
 
 }
@@ -2317,12 +3042,16 @@ function removeProduct(name){
 
   selectedProducts =
     selectedProducts.filter(
-      item => item.name !== name
+      item =>
+        item.name !== name
     );
 
   saveSelected();
+
   renderSelectedProducts();
+
   renderCart();
+
   updateCartCount();
 
 }
@@ -2334,7 +3063,9 @@ function clearCart(){
   saveSelected();
 
   renderSelectedProducts();
+
   renderCart();
+
   updateCartCount();
 
 }
@@ -2346,168 +3077,32 @@ function clearCart(){
 function renderSelectedProducts(){
 
   const container =
-    document.getElementById("selectedProducts");
+    document.getElementById(
+      "selectedProducts"
+    );
 
   const total =
-    document.getElementById("listTotal");
+    document.getElementById(
+      "listTotal"
+    );
 
-  if(selectedProducts.length === 0){
+  if(
+    selectedProducts.length === 0
+  ){
 
     container.innerHTML =
       '<p class="notice">No products selected.</p>';
 
-    total.textContent = "$0.00";
+    total.textContent =
+      "$0.00";
 
     return;
+
   }
 
   container.innerHTML =
-    selectedProducts.map(item => `
-
-      <div class="selected-item">
-
-        <img
-          src="${item.image}"
-          alt="${item.name}"
-        >
-
-        <div class="selected-info">
-
-          <strong>${item.name}</strong>
-
-          <div>
-            $${item.price.toFixed(2)}
-          </div>
-
-          <div class="qty-controls">
-
-            <button
-              type="button"
-              onclick="changeQuantity('${escapeJs(item.name)}',-1)"
-            >
-              −
-            </button>
-
-            <strong>${item.quantity}</strong>
-
-            <button
-              type="button"
-              onclick="changeQuantity('${escapeJs(item.name)}',1)"
-            >
-              +
-            </button>
-
-            <button
-              class="remove-btn"
-              type="button"
-              onclick="removeProduct('${escapeJs(item.name)}')"
-            >
-              Remove
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `).join("");
-
-  total.textContent =
-    "$" + subtotal().toFixed(2);
-
-}
-
-/* =====================================================
-   CART
-===================================================== */
-
-function updateCartCount(){
-
-  const count =
-    selectedProducts.reduce(
-      (sum,item) => sum + item.quantity,
-      0
-    );
-
-  document.getElementById("cartCount")
-    .textContent = count;
-}
-
-function getShippingCost(){
-
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
-
-  if(!selected){
-    return 0;
-  }
-
-  if(selected.value === "standard"){
-    return 9;
-  }
-
-  if(selected.value === "express"){
-    return 15;
-  }
-
-  if(selected.value === "free"){
-    return subtotal() >= 200 ? 0 : 9;
-  }
-
-  return 0;
-}
-
-function getShippingName(){
-
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
-
-  if(!selected) return "";
-
-  if(selected.value === "standard"){
-    return "Standard";
-  }
-
-  if(selected.value === "express"){
-    return "Express";
-  }
-
-  if(selected.value === "free"){
-    return "Free Shipping";
-  }
-
-  return "";
-}
-
-function getPayment(){
-
-  const selected =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    );
-
-  return selected ? selected.value : "";
-}
-
-function renderCart(){
-
-  const container =
-    document.getElementById("cartItems");
-
-  if(selectedProducts.length === 0){
-
-    container.innerHTML =
-      '<p class="notice">Your cart is empty.</p>';
-
-  }else{
-
-    container.innerHTML =
-      selectedProducts.map(item => `
+    selectedProducts.map(
+      item => `
 
         <div class="selected-item">
 
@@ -2518,7 +3113,9 @@ function renderCart(){
 
           <div class="selected-info">
 
-            <strong>${item.name}</strong>
+            <strong>
+              ${item.name}
+            </strong>
 
             <div>
               $${item.price.toFixed(2)}
@@ -2533,7 +3130,9 @@ function renderCart(){
                 −
               </button>
 
-              <strong>${item.quantity}</strong>
+              <strong>
+                ${item.quantity}
+              </strong>
 
               <button
                 type="button"
@@ -2556,7 +3155,206 @@ function renderCart(){
 
         </div>
 
-      `).join("");
+      `
+    ).join("");
+
+  total.textContent =
+    "$" +
+    subtotal().toFixed(2);
+
+}
+
+/* =====================================================
+   CART
+===================================================== */
+
+function updateCartCount(){
+
+  const count =
+    selectedProducts.reduce(
+      (sum,item) =>
+        sum + item.quantity,
+      0
+    );
+
+  document
+    .getElementById("cartCount")
+    .textContent = count;
+
+}
+
+function getShippingCost(){
+
+  const selected =
+    document.querySelector(
+      'input[name="shipping"]:checked'
+    );
+
+  if(!selected){
+    return 0;
+  }
+
+  if(
+    selected.value ===
+    "standard"
+  ){
+
+    return 9;
+
+  }
+
+  if(
+    selected.value ===
+    "express"
+  ){
+
+    return 15;
+
+  }
+
+  if(
+    selected.value ===
+    "free"
+  ){
+
+    return subtotal() >= 200
+      ? 0
+      : 9;
+
+  }
+
+  return 0;
+
+}
+
+function getShippingName(){
+
+  const selected =
+    document.querySelector(
+      'input[name="shipping"]:checked'
+    );
+
+  if(!selected){
+    return "";
+  }
+
+  if(
+    selected.value ===
+    "standard"
+  ){
+
+    return "Standard";
+
+  }
+
+  if(
+    selected.value ===
+    "express"
+  ){
+
+    return "Express";
+
+  }
+
+  if(
+    selected.value ===
+    "free"
+  ){
+
+    return "Free Shipping";
+
+  }
+
+  return "";
+
+}
+
+function getPayment(){
+
+  const selected =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
+
+  return selected
+    ? selected.value
+    : "";
+
+}
+
+function renderCart(){
+
+  const container =
+    document.getElementById(
+      "cartItems"
+    );
+
+  if(
+    selectedProducts.length === 0
+  ){
+
+    container.innerHTML =
+      '<p class="notice">Your cart is empty.</p>';
+
+  }else{
+
+    container.innerHTML =
+      selectedProducts.map(
+        item => `
+
+          <div class="selected-item">
+
+            <img
+              src="${item.image}"
+              alt="${item.name}"
+            >
+
+            <div class="selected-info">
+
+              <strong>
+                ${item.name}
+              </strong>
+
+              <div>
+                $${item.price.toFixed(2)}
+              </div>
+
+              <div class="qty-controls">
+
+                <button
+                  type="button"
+                  onclick="changeQuantity('${escapeJs(item.name)}',-1)"
+                >
+                  −
+                </button>
+
+                <strong>
+                  ${item.quantity}
+                </strong>
+
+                <button
+                  type="button"
+                  onclick="changeQuantity('${escapeJs(item.name)}',1)"
+                >
+                  +
+                </button>
+
+                <button
+                  class="remove-btn"
+                  type="button"
+                  onclick="removeProduct('${escapeJs(item.name)}')"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `
+      ).join("");
 
   }
 
@@ -2575,17 +3373,23 @@ function updateTotals(){
   const total =
     sub + shipping;
 
-  document.getElementById("subtotal")
+  document
+    .getElementById("subtotal")
     .textContent =
-      "$" + sub.toFixed(2);
+      "$" +
+      sub.toFixed(2);
 
-  document.getElementById("shippingCost")
+  document
+    .getElementById("shippingCost")
     .textContent =
-      "$" + shipping.toFixed(2);
+      "$" +
+      shipping.toFixed(2);
 
-  document.getElementById("grandTotal")
+  document
+    .getElementById("grandTotal")
     .textContent =
-      "$" + total.toFixed(2);
+      "$" +
+      total.toFixed(2);
 
   updateFormHiddenFields();
 
@@ -2598,10 +3402,16 @@ function updateTotals(){
 function restoreOptions(){
 
   const shipping =
-    getStorage(STORAGE.shipping,null);
+    getStorage(
+      STORAGE.shipping,
+      null
+    );
 
   const payment =
-    getStorage(STORAGE.payment,null);
+    getStorage(
+      STORAGE.payment,
+      null
+    );
 
   if(shipping){
 
@@ -2632,34 +3442,44 @@ function restoreOptions(){
 }
 
 document
-  .querySelectorAll('input[name="shipping"]')
+  .querySelectorAll(
+    'input[name="shipping"]'
+  )
   .forEach(input => {
 
-    input.addEventListener("change",function(){
+    input.addEventListener(
+      "change",
+      function(){
 
-      setStorage(
-        STORAGE.shipping,
-        this.value
-      );
+        setStorage(
+          STORAGE.shipping,
+          this.value
+        );
 
-      updateTotals();
+        updateTotals();
 
-    });
+      }
+    );
 
   });
 
 document
-  .querySelectorAll('input[name="payment"]')
+  .querySelectorAll(
+    'input[name="payment"]'
+  )
   .forEach(input => {
 
-    input.addEventListener("change",function(){
+    input.addEventListener(
+      "change",
+      function(){
 
-      setStorage(
-        STORAGE.payment,
-        this.value
-      );
+        setStorage(
+          STORAGE.payment,
+          this.value
+        );
 
-    });
+      }
+    );
 
   });
 
@@ -2669,28 +3489,44 @@ document
 
 document
   .getElementById("cartFloating")
-  .addEventListener("click",function(){
+  .addEventListener(
+    "click",
+    function(){
 
-    openPanel("cartPanel");
+      openPanel(
+        "cartPanel"
+      );
 
-  });
+    }
+  );
 
 document
   .getElementById("openCartFromList")
-  .addEventListener("click",function(){
+  .addEventListener(
+    "click",
+    function(){
 
-    closePanel("listPanel");
-    openPanel("cartPanel");
+      closePanel(
+        "listPanel"
+      );
 
-  });
+      openPanel(
+        "cartPanel"
+      );
+
+    }
+  );
 
 document
   .getElementById("clearCartBtn")
-  .addEventListener("click",function(){
+  .addEventListener(
+    "click",
+    function(){
 
-    clearCart();
+      clearCart();
 
-  });
+    }
+  );
 
 /* =====================================================
    CHECKOUT
@@ -2698,58 +3534,77 @@ document
 
 document
   .getElementById("checkoutBtn")
-  .addEventListener("click",function(){
+  .addEventListener(
+    "click",
+    function(){
 
-    if(selectedProducts.length === 0){
+      if(
+        selectedProducts.length === 0
+      ){
 
-      alert("Please select at least one product.");
+        alert(
+          "Please select at least one product."
+        );
 
-      return;
-    }
+        return;
 
-    const shipping =
-      document.querySelector(
-        'input[name="shipping"]:checked'
+      }
+
+      const shipping =
+        document.querySelector(
+          'input[name="shipping"]:checked'
+        );
+
+      if(!shipping){
+
+        alert(
+          "Please select a shipping option."
+        );
+
+        return;
+
+      }
+
+      if(
+        shipping.value === "free" &&
+        subtotal() < 200
+      ){
+
+        alert(
+          "Free Shipping is available only for orders of $200 or more."
+        );
+
+        return;
+
+      }
+
+      const payment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        );
+
+      if(!payment){
+
+        alert(
+          "Please select a payment method."
+        );
+
+        return;
+
+      }
+
+      prepareInformationForm();
+
+      closePanel(
+        "cartPanel"
       );
 
-    if(!shipping){
-
-      alert("Please select a shipping option.");
-
-      return;
-    }
-
-    if(
-      shipping.value === "free" &&
-      subtotal() < 200
-    ){
-
-      alert(
-        "Free Shipping is available only for orders of $200 or more."
+      openPanel(
+        "informationPanel"
       );
 
-      return;
     }
-
-    const payment =
-      document.querySelector(
-        'input[name="payment"]:checked'
-      );
-
-    if(!payment){
-
-      alert("Please select a payment method.");
-
-      return;
-    }
-
-    prepareInformationForm();
-
-    closePanel("cartPanel");
-
-    openPanel("informationPanel");
-
-  });
+  );
 
 /* =====================================================
    INFORMATION FORM
@@ -2759,7 +3614,9 @@ function generateReference(){
 
   return String(
     Math.floor(
-      1000 + Math.random() * 9000
+      1000 +
+      Math.random() *
+      9000
     )
   );
 
@@ -2770,10 +3627,16 @@ function prepareInformationForm(){
   const code =
     generateReference();
 
-  document.getElementById("referenceDisplay")
+  document
+    .getElementById(
+      "referenceDisplay"
+    )
     .textContent = code;
 
-  document.getElementById("formReference")
+  document
+    .getElementById(
+      "formReference"
+    )
     .value = code;
 
   updateFormHiddenFields();
@@ -2783,9 +3646,12 @@ function prepareInformationForm(){
 function updateFormHiddenFields(){
 
   const productsText =
-    selectedProducts.map(item =>
-      `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
-    ).join("\n");
+    selectedProducts
+      .map(
+        item =>
+          `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
+      )
+      .join("\n");
 
   const sub =
     subtotal();
@@ -2796,27 +3662,55 @@ function updateFormHiddenFields(){
   const total =
     sub + shippingCost;
 
-  document.getElementById("formProducts")
+  document
+    .getElementById(
+      "formProducts"
+    )
     .value = productsText;
 
-  document.getElementById("formSubtotal")
-    .value = "$" + sub.toFixed(2);
+  document
+    .getElementById(
+      "formSubtotal"
+    )
+    .value =
+      "$" +
+      sub.toFixed(2);
 
-  document.getElementById("formShipping")
-    .value = getShippingName();
+  document
+    .getElementById(
+      "formShipping"
+    )
+    .value =
+      getShippingName();
 
-  document.getElementById("formShippingCost")
-    .value = "$" + shippingCost.toFixed(2);
+  document
+    .getElementById(
+      "formShippingCost"
+    )
+    .value =
+      "$" +
+      shippingCost.toFixed(2);
 
-  document.getElementById("formTotal")
-    .value = "$" + total.toFixed(2);
+  document
+    .getElementById(
+      "formTotal"
+    )
+    .value =
+      "$" +
+      total.toFixed(2);
 
-  document.getElementById("formPayment")
-    .value = getPayment();
+  document
+    .getElementById(
+      "formPayment"
+    )
+    .value =
+      getPayment();
 
 }
 
-function saveLastOrder(reference){
+function saveLastOrder(
+  reference
+){
 
   const shippingCost =
     getShippingCost();
@@ -2836,11 +3730,14 @@ function saveLastOrder(reference){
 
     shippingCost:shippingCost,
 
-    total:sub + shippingCost,
+    total:
+      sub +
+      shippingCost,
 
     payment:getPayment(),
 
-    createdAt:new Date().toISOString()
+    createdAt:
+      new Date().toISOString()
 
   };
 
@@ -2857,10 +3754,14 @@ function saveLastOrder(reference){
    FINAL PAYMENT INFORMATION
 ===================================================== */
 
-function showPaymentInformation(order){
+function showPaymentInformation(
+  order
+){
 
   const box =
-    document.getElementById("paymentFinal");
+    document.getElementById(
+      "paymentFinal"
+    );
 
   let html = `
 
@@ -2876,7 +3777,10 @@ function showPaymentInformation(order){
 
   `;
 
-  if(order.payment === "zelle"){
+  if(
+    order.payment ===
+    "zelle"
+  ){
 
     html += `
 
@@ -2908,7 +3812,10 @@ function showPaymentInformation(order){
 
   }
 
-  if(order.payment === "venmo"){
+  if(
+    order.payment ===
+    "venmo"
+  ){
 
     html += `
 
@@ -2948,7 +3855,10 @@ function showPaymentInformation(order){
 
   }
 
-  if(order.payment === "paypal"){
+  if(
+    order.payment ===
+    "paypal"
+  ){
 
     html += `
 
@@ -2985,74 +3895,107 @@ function showPaymentInformation(order){
 ===================================================== */
 
 document
-  .getElementById("informationForm")
-  .addEventListener("submit",async function(event){
+  .getElementById(
+    "informationForm"
+  )
+  .addEventListener(
+    "submit",
+    async function(event){
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const form = this;
+      const form = this;
 
-    const button =
-      form.querySelector(
-        'button[type="submit"]'
-      );
-
-    const reference =
-      document.getElementById("formReference").value;
-
-    if(!reference){
-
-      prepareInformationForm();
-
-    }
-
-    updateFormHiddenFields();
-
-    button.disabled = true;
-    button.textContent = "SENDING...";
-
-    try{
-
-      const response =
-        await fetch(
-          form.action,
-          {
-            method:"POST",
-            body:new FormData(form),
-            headers:{
-              "Accept":"application/json"
-            }
-          }
+      const button =
+        form.querySelector(
+          'button[type="submit"]'
         );
 
-      if(!response.ok){
-        throw new Error("Submission failed");
+      const reference =
+        document
+          .getElementById(
+            "formReference"
+          )
+          .value;
+
+      if(!reference){
+
+        prepareInformationForm();
+
       }
 
-      const order =
-        saveLastOrder(
-          document.getElementById("formReference").value
+      updateFormHiddenFields();
+
+      button.disabled = true;
+
+      button.textContent =
+        "SENDING...";
+
+      try{
+
+        const response =
+          await fetch(
+            form.action,
+            {
+              method:"POST",
+
+              body:
+                new FormData(form),
+
+              headers:{
+                "Accept":
+                  "application/json"
+              }
+            }
+          );
+
+        if(!response.ok){
+
+          throw new Error(
+            "Submission failed"
+          );
+
+        }
+
+        const order =
+          saveLastOrder(
+            document
+              .getElementById(
+                "formReference"
+              )
+              .value
+          );
+
+        form.style.display =
+          "none";
+
+        document
+          .getElementById(
+            "finalConfirmation"
+          )
+          .style.display =
+          "block";
+
+        showPaymentInformation(
+          order
         );
 
-      form.style.display = "none";
+      }catch(error){
 
-      document.getElementById("finalConfirmation")
-        .style.display = "block";
+        alert(
+          "There was a problem sending the information. Please try again."
+        );
 
-      showPaymentInformation(order);
+        button.disabled =
+          false;
 
-    }catch(error){
+        button.textContent =
+          "SEND INFORMATION";
 
-      alert(
-        "There was a problem sending the information. Please try again."
-      );
-
-      button.disabled = false;
-      button.textContent = "SEND INFORMATION";
+      }
 
     }
-
-  });
+  );
 
 /* =====================================================
    COPY
@@ -3067,16 +4010,22 @@ function copyText(text){
 
     navigator.clipboard
       .writeText(text)
-      .then(function(){
+      .then(
+        function(){
 
-        alert("Information copied");
+          alert(
+            "Information copied"
+          );
 
-      })
-      .catch(function(){
+        }
+      )
+      .catch(
+        function(){
 
-        fallbackCopy(text);
+          fallbackCopy(text);
 
-      });
+        }
+      );
 
   }else{
 
@@ -3089,22 +4038,39 @@ function copyText(text){
 function fallbackCopy(text){
 
   const textarea =
-    document.createElement("textarea");
+    document.createElement(
+      "textarea"
+    );
 
   textarea.value = text;
 
-  document.body.appendChild(textarea);
+  document.body.appendChild(
+    textarea
+  );
 
   textarea.select();
 
   try{
-    document.execCommand("copy");
-    alert("Information copied");
+
+    document.execCommand(
+      "copy"
+    );
+
+    alert(
+      "Information copied"
+    );
+
   }catch(error){
-    alert("Could not copy the information.");
+
+    alert(
+      "Could not copy the information."
+    );
+
   }
 
-  document.body.removeChild(textarea);
+  document.body.removeChild(
+    textarea
+  );
 
 }
 
@@ -3121,16 +4087,24 @@ function loadFavorites(){
     );
 
   document
-    .querySelectorAll(".favorite-btn")
+    .querySelectorAll(
+      ".favorite-btn"
+    )
     .forEach(button => {
 
       const name =
         button.dataset.favorite;
 
-      if(favorites.includes(name)){
+      if(
+        favorites.includes(name)
+      ){
 
-        button.classList.add("active");
-        button.textContent = "♥";
+        button.classList.add(
+          "active"
+        );
+
+        button.textContent =
+          "♥";
 
       }
 
@@ -3139,41 +4113,57 @@ function loadFavorites(){
 }
 
 document
-  .querySelectorAll(".favorite-btn")
+  .querySelectorAll(
+    ".favorite-btn"
+  )
   .forEach(button => {
 
-    button.addEventListener("click",function(event){
+    button.addEventListener(
+      "click",
+      function(event){
 
-      event.stopPropagation();
+        event.stopPropagation();
 
-      const name =
-        this.dataset.favorite;
+        const name =
+          this.dataset.favorite;
 
-      if(favorites.includes(name)){
+        if(
+          favorites.includes(name)
+        ){
 
-        favorites =
-          favorites.filter(
-            item => item !== name
+          favorites =
+            favorites.filter(
+              item =>
+                item !== name
+            );
+
+          this.classList.remove(
+            "active"
           );
 
-        this.classList.remove("active");
-        this.textContent = "♡";
+          this.textContent =
+            "♡";
 
-      }else{
+        }else{
 
-        favorites.push(name);
+          favorites.push(name);
 
-        this.classList.add("active");
-        this.textContent = "♥";
+          this.classList.add(
+            "active"
+          );
+
+          this.textContent =
+            "♥";
+
+        }
+
+        setStorage(
+          STORAGE.favorites,
+          favorites
+        );
 
       }
-
-      setStorage(
-        STORAGE.favorites,
-        favorites
-      );
-
-    });
+    );
 
   });
 
@@ -3181,166 +4171,270 @@ document
    PRODUCT MODAL
 ===================================================== */
 
-function openProductModal(product){
+function openProductModal(
+  product
+){
 
-  modalProduct = product;
-  modalQuantity = 1;
+  modalProduct =
+    product;
 
-  document.getElementById("modalImage")
-    .src = product.image;
+  modalQuantity =
+    1;
 
-  document.getElementById("modalImage")
-    .alt = product.name;
+  document
+    .getElementById(
+      "modalImage"
+    )
+    .src =
+    product.image;
 
-  document.getElementById("modalName")
-    .textContent = product.name;
+  document
+    .getElementById(
+      "modalImage"
+    )
+    .alt =
+    product.name;
 
-  document.getElementById("modalPrice")
+  document
+    .getElementById(
+      "modalName"
+    )
     .textContent =
-      "$" + product.price.toFixed(2);
+    product.name;
 
-  document.getElementById("modalQuantity")
-    .textContent = modalQuantity;
+  document
+    .getElementById(
+      "modalPrice"
+    )
+    .textContent =
+      "$" +
+      product.price.toFixed(2);
 
-  document.getElementById("productModal")
-    .classList.add("open");
+  document
+    .getElementById(
+      "modalQuantity"
+    )
+    .textContent =
+    modalQuantity;
+
+  document
+    .getElementById(
+      "productModal"
+    )
+    .classList
+    .add("open");
 
 }
 
 function closeProductModal(){
 
-  document.getElementById("productModal")
-    .classList.remove("open");
+  document
+    .getElementById(
+      "productModal"
+    )
+    .classList
+    .remove("open");
 
-  modalProduct = null;
+  modalProduct =
+    null;
 
 }
 
-function changeModalQuantity(change){
+function changeModalQuantity(
+  change
+){
 
-  modalQuantity += change;
+  modalQuantity +=
+    change;
 
-  if(modalQuantity < 1){
-    modalQuantity = 1;
+  if(
+    modalQuantity < 1
+  ){
+
+    modalQuantity =
+      1;
+
   }
 
-  document.getElementById("modalQuantity")
-    .textContent = modalQuantity;
+  document
+    .getElementById(
+      "modalQuantity"
+    )
+    .textContent =
+    modalQuantity;
 
 }
 
 document
-  .getElementById("modalClose")
+  .getElementById(
+    "modalClose"
+  )
   .addEventListener(
     "click",
     closeProductModal
   );
 
 document
-  .getElementById("modalMinus")
+  .getElementById(
+    "modalMinus"
+  )
   .addEventListener(
     "click",
-    () => changeModalQuantity(-1)
+    () =>
+      changeModalQuantity(-1)
   );
 
 document
-  .getElementById("modalPlus")
+  .getElementById(
+    "modalPlus"
+  )
   .addEventListener(
     "click",
-    () => changeModalQuantity(1)
+    () =>
+      changeModalQuantity(1)
   );
 
 document
-  .getElementById("modalAdd")
-  .addEventListener("click",function(){
+  .getElementById(
+    "modalAdd"
+  )
+  .addEventListener(
+    "click",
+    function(){
 
-    if(!modalProduct) return;
-
-    addToList(
-      modalProduct,
-      modalQuantity
-    );
-
-    closeProductModal();
-
-    openPanel("listPanel");
-
-  });
-
-document
-  .getElementById("modalGoCart")
-  .addEventListener("click",function(){
-
-    if(modalProduct){
+      if(!modalProduct){
+        return;
+      }
 
       addToList(
         modalProduct,
         modalQuantity
       );
 
+      closeProductModal();
+
+      openPanel(
+        "listPanel"
+      );
+
     }
-
-    closeProductModal();
-
-    openPanel("cartPanel");
-
-  });
+  );
 
 document
-  .getElementById("productModal")
-  .addEventListener("click",function(event){
+  .getElementById(
+    "modalGoCart"
+  )
+  .addEventListener(
+    "click",
+    function(){
 
-    if(event.target === this){
+      if(modalProduct){
+
+        addToList(
+          modalProduct,
+          modalQuantity
+        );
+
+      }
+
       closeProductModal();
-    }
 
-  });
+      openPanel(
+        "cartPanel"
+      );
+
+    }
+  );
+
+document
+  .getElementById(
+    "productModal"
+  )
+  .addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target === this
+      ){
+
+        closeProductModal();
+
+      }
+
+    }
+  );
 
 /* =====================================================
    PRODUCT BUTTONS
 ===================================================== */
 
 document
-  .querySelectorAll(".product-card")
+  .querySelectorAll(
+    ".product-card"
+  )
   .forEach(card => {
 
     const image =
-      card.querySelector(".product-image");
+      card.querySelector(
+        ".product-image"
+      );
 
     const addButton =
-      card.querySelector(".add-list-btn");
+      card.querySelector(
+        ".add-list-btn"
+      );
 
     const product = {
 
-      name:card.dataset.name,
+      name:
+        card.dataset.name,
 
-      price:Number(
-        card.dataset.price
-      ),
+      price:
+        Number(
+          card.dataset.price
+        ),
 
-      image:card.dataset.image
+      image:
+        card.dataset.image
 
     };
 
-    image.addEventListener("click",function(){
+    image.addEventListener(
+      "click",
+      function(){
 
-      openProductModal(product);
+        openProductModal(
+          product
+        );
 
-    });
+      }
+    );
 
-    addButton.addEventListener("click",function(){
+    addButton.addEventListener(
+      "click",
+      function(){
 
-      addToList(product,1);
+        addToList(
+          product,
+          1
+        );
 
-      this.textContent = "ADDED ✓";
+        this.textContent =
+          "ADDED ✓";
 
-      setTimeout(() => {
+        setTimeout(
+          () => {
 
-        this.textContent = "ADD TO LIST";
+            this.textContent =
+              "ADD TO LIST";
 
-      },1200);
+          },
+          1200
+        );
 
-    });
+      }
+    );
 
   });
 
@@ -3349,30 +4443,42 @@ document
 ===================================================== */
 
 const searchInput =
-  document.getElementById("searchInput");
+  document.getElementById(
+    "searchInput"
+  );
 
 const searchResults =
-  document.getElementById("searchResults");
+  document.getElementById(
+    "searchResults"
+  );
 
 function renderSearchResults(){
 
   const query =
-    normalize(searchInput.value.trim());
+    normalize(
+      searchInput.value.trim()
+    );
 
   if(!query){
 
-    searchResults.innerHTML = "";
+    searchResults.innerHTML =
+      "";
 
     return;
+
   }
 
   const results =
-    PRODUCTS.filter(product =>
-      normalize(product.name)
-        .includes(query)
+    PRODUCTS.filter(
+      product =>
+        normalize(
+          product.name
+        ).includes(query)
     );
 
-  if(results.length === 0){
+  if(
+    results.length === 0
+  ){
 
     searchResults.innerHTML =
       '<div class="notice">No products found.</div>';
@@ -3382,17 +4488,25 @@ function renderSearchResults(){
   }
 
   searchResults.innerHTML =
-    results.map(product => `
+    results.map(
+      product => `
 
-      <div
-        class="search-result"
-        data-search-name="${escapeHtml(product.name)}"
-      >
-        <strong>${escapeHtml(product.name)}</strong>
-        — $${product.price.toFixed(2)}
-      </div>
+        <div
+          class="search-result"
+          data-search-name="${escapeHtml(product.name)}"
+        >
 
-    `).join("");
+          <strong>
+            ${escapeHtml(product.name)}
+          </strong>
+
+          —
+          $${product.price.toFixed(2)}
+
+        </div>
+
+      `
+    ).join("");
 
 }
 
@@ -3403,66 +4517,96 @@ searchInput
   );
 
 searchResults
-  .addEventListener("click",function(event){
+  .addEventListener(
+    "click",
+    function(event){
 
-    const item =
-      event.target.closest(
-        ".search-result"
-      );
+      const item =
+        event.target.closest(
+          ".search-result"
+        );
 
-    if(!item) return;
+      if(!item){
+        return;
+      }
 
-    const product =
-      findProduct(
-        item.dataset.searchName
-      );
+      const product =
+        findProduct(
+          item.dataset.searchName
+        );
 
-    if(product){
+      if(product){
 
-      addToList(product,1);
+        addToList(
+          product,
+          1
+        );
 
-      searchInput.value = "";
-      searchResults.innerHTML = "";
+        searchInput.value =
+          "";
 
-      openPanel("listPanel");
+        searchResults.innerHTML =
+          "";
+
+        openPanel(
+          "listPanel"
+        );
+
+      }
 
     }
-
-  });
+  );
 
 /* =====================================================
    NAVIGATION
 ===================================================== */
 
 document
-  .querySelectorAll(".menu-link")
+  .querySelectorAll(
+    ".menu-link"
+  )
   .forEach(link => {
 
-    link.addEventListener("click",function(){
+    link.addEventListener(
+      "click",
+      function(){
 
-      const href =
-        this.getAttribute("href");
+        const href =
+          this.getAttribute(
+            "href"
+          );
 
-      if(href && href.startsWith("#")){
+        if(
+          href &&
+          href.startsWith("#")
+        ){
 
-        closeAllPanels();
+          closeAllPanels();
 
-        setTimeout(() => {
+          setTimeout(
+            () => {
 
-          const element =
-            document.querySelector(href);
+              const element =
+                document.querySelector(
+                  href
+                );
 
-          if(element){
-            element.scrollIntoView({
-              behavior:"smooth"
-            });
-          }
+              if(element){
 
-        },50);
+                element.scrollIntoView({
+                  behavior:"smooth"
+                });
+
+              }
+
+            },
+            50
+          );
+
+        }
 
       }
-
-    });
+    );
 
   });
 
@@ -3473,19 +4617,48 @@ document
 function escapeHtml(text){
 
   return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 function escapeJs(text){
 
   return String(text)
-    .replace(/\\/g,"\\\\")
-    .replace(/'/g,"\\'");
+
+    .replace(
+      /\\/g,
+      "\\\\"
+    )
+
+    .replace(
+      /'/g,
+      "\\'"
+    );
+
 }
 
 /* =====================================================
