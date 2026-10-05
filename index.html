@@ -228,21 +228,71 @@ header{
   margin-bottom:15px;
 }
 
+/* =========================
+   ADD TO LIST - MODIFICADO
+========================= */
+
 .add-list-btn{
-  width:100%;
-  border:2px dashed #ff4fa3;
-  background:#fff;
-  color:#111;
-  padding:12px;
-  border-radius:12px;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  min-width:125px;
+  padding:10px 18px;
+  border:0;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
+  font-size:12px;
   font-weight:900;
   cursor:pointer;
+  overflow:hidden;
+  isolation:isolate;
   transition:.2s;
 }
 
+.add-list-btn::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  width:180%;
+  height:400%;
+  background:conic-gradient(
+    transparent 0deg,
+    transparent 285deg,
+    #ff4fa3 310deg,
+    #ff4fa3 350deg,
+    transparent 360deg
+  );
+  animation:pinkBorderSpin 1.7s linear infinite;
+}
+
+.add-list-btn::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  z-index:-1;
+  background:#000;
+  border-radius:8px;
+}
+
 .add-list-btn:hover{
-  background:#ff4fa3;
+  transform:scale(1.05);
   color:#fff;
+}
+
+.add-list-btn:active{
+  transform:scale(.97);
+}
+
+@keyframes pinkBorderSpin{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 /* =========================
@@ -348,6 +398,10 @@ header{
   cursor:pointer;
 }
 
+/* =========================
+   SEARCH - MODIFICADO
+========================= */
+
 .search-box{
   margin:20px 0;
 }
@@ -364,9 +418,52 @@ header{
 }
 
 .search-result{
-  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 4px;
   border-bottom:1px solid #eee;
+}
+
+.search-result-image{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  flex-shrink:0;
+  background:#fafafa;
+  border-radius:9px;
+}
+
+.search-result-info{
+  flex:1;
+  min-width:0;
+}
+
+.search-result-name{
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:4px;
+}
+
+.search-result-price{
+  font-size:14px;
+  font-weight:900;
+}
+
+.search-add-btn{
+  flex-shrink:0;
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:8px 9px;
+  border-radius:8px;
+  font-size:9px;
+  font-weight:900;
   cursor:pointer;
+}
+
+.search-add-btn:active{
+  transform:scale(.95);
 }
 
 /* =========================
@@ -2080,6 +2177,10 @@ document.querySelectorAll(".product-card").forEach(card => {
   });
 });
 
+/* =========================
+   SEARCH - MODIFICADO
+========================= */
+
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 
@@ -2091,22 +2192,45 @@ function renderSearchResults(){
     return;
   }
 
+  /* Muestra solamente productos que EMPIEZAN
+     con la letra o texto escrito */
   const results = PRODUCTS.filter(product =>
-    normalize(product.name).includes(query)
+    normalize(product.name).startsWith(query)
   );
 
   if(results.length === 0){
-    searchResults.innerHTML = '<div class="notice">No products found.</div>';
+    searchResults.innerHTML =
+      '<div class="notice">No products found.</div>';
     return;
   }
 
   searchResults.innerHTML = results.map(product => `
-    <div
-      class="search-result"
-      data-search-name="${escapeHtml(product.name)}"
-    >
-      <strong>${escapeHtml(product.name)}</strong>
-      — $${product.price.toFixed(2)}
+    <div class="search-result">
+
+      <img
+        class="search-result-image"
+        src="${escapeHtml(product.image)}"
+        alt="${escapeHtml(product.name)}"
+      >
+
+      <div class="search-result-info">
+        <div class="search-result-name">
+          ${escapeHtml(product.name)}
+        </div>
+
+        <div class="search-result-price">
+          $${product.price.toFixed(2)}
+        </div>
+      </div>
+
+      <button
+        class="search-add-btn"
+        type="button"
+        data-search-add="${escapeHtml(product.name)}"
+      >
+        ADD TO LIST
+      </button>
+
     </div>
   `).join("");
 }
@@ -2114,20 +2238,22 @@ function renderSearchResults(){
 searchInput.addEventListener("input",renderSearchResults);
 
 searchResults.addEventListener("click",function(event){
-  const item = event.target.closest(".search-result");
 
-  if(!item) return;
+  const button = event.target.closest(".search-add-btn");
 
-  const product = findProduct(item.dataset.searchName);
+  if(!button) return;
 
-  if(product){
-    addToList(product,1);
+  const product = findProduct(button.dataset.searchAdd);
 
-    searchInput.value = "";
-    searchResults.innerHTML = "";
+  if(!product) return;
 
-    openPanel("listPanel");
-  }
+  addToList(product,1);
+
+  button.textContent = "ADDED ✓";
+
+  setTimeout(() => {
+    button.textContent = "ADD TO LIST";
+  },1200);
 });
 
 document.querySelectorAll(".menu-link").forEach(link => {
