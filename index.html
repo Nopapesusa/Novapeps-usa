@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NovaPeps USA</title>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M15P9VJDBG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M15P9VJDBG');
 </script>
 
@@ -599,7 +598,9 @@ header{
 }
 
 .option-label{
-  display:block;
+  display:flex;
+  align-items:center;
+  gap:8px;
   border:1px solid #ddd;
   padding:12px;
   border-radius:10px;
@@ -608,7 +609,45 @@ header{
 }
 
 .option-label input{
-  margin-right:8px;
+  margin-right:2px;
+}
+
+.payment-logo{
+  width:30px;
+  height:30px;
+  border-radius:7px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  flex-shrink:0;
+}
+
+.payment-logo.zelle-logo{
+  background:#6d1ed4;
+  color:#fff;
+}
+
+.payment-logo.venmo-logo{
+  background:#008cff;
+  color:#fff;
+}
+
+.payment-logo.paypal-logo{
+  background:#003087;
+  color:#fff;
+}
+
+.payment-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.payment-title h3{
+  margin:0;
 }
 
 .primary-btn{
@@ -1118,15 +1157,15 @@ footer p{
   </div>
 </article>
 
-<article class="product-card" data-name="GLP-3 20 MG" data-price="110" data-old-price="125" data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
+<article class="product-card" data-name="GLP-3 20 MG" data-price="130" data-old-price="140" data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
   <div class="product-image-wrap">
     <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
     <img class="product-image" src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
   </div>
   <div class="product-info">
     <div class="image-sale-price">
-      <span class="image-old-price">$125.00</span>
-      <span class="image-new-price">$110.00</span>
+      <span class="image-old-price">$140.00</span>
+      <span class="image-new-price">$130.00</span>
     </div>
     <h3>GLP-3 20 MG</h3>
     <div class="research">FOR RESEARCH USE ONLY</div>
@@ -1170,12 +1209,12 @@ footer p{
 </section>
 
 <section class="section" id="shipping">
-  <h2 class="section-title">Shipping</h2>
+  <h2 class="section-title">🚚 Shipping</h2>
   <div class="info-card">
     <h3>Shipping Options</h3>
-    <p><strong>Standard Shipping:</strong> $9</p>
-    <p><strong>Express Shipping:</strong> $15</p>
-    <p><strong>Free Shipping:</strong> Orders $200+</p>
+    <p>🚚 <strong>Standard Shipping:</strong> $9</p>
+    <p>🚚 <strong>Express Shipping:</strong> $15</p>
+    <p>🚚 <strong>Free Shipping:</strong> Orders $200+</p>
     <p class="notice">Shipping options are displayed during checkout.</p>
   </div>
 </section>
@@ -1218,7 +1257,7 @@ footer p{
         <tr><td>GHK-CU</td><td>100 MG</td><td>$55</td></tr>
         <tr><td>GLP-3</td><td>10 MG</td><td>$95</td></tr>
         <tr><td>GLP-2</td><td>20 MG</td><td>$120</td></tr>
-        <tr><td>GLP-3</td><td>20 MG</td><td>$110</td></tr>
+        <tr><td>GLP-3</td><td>20 MG</td><td>$130</td></tr>
         <tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
         <tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
       </tbody>
@@ -1274,21 +1313,21 @@ footer p{
   <div id="cartItems"></div>
 
   <div class="option-box">
-    <h3>Shipping</h3>
+    <h3>🚚 Shipping</h3>
 
     <label class="option-label">
       <input type="radio" name="shipping" value="standard">
-      Standard — $9
+      🚚 Standard — $9
     </label>
 
     <label class="option-label">
       <input type="radio" name="shipping" value="express">
-      Express — $15
+      🚚 Express — $15
     </label>
 
     <label class="option-label">
       <input type="radio" name="shipping" value="free">
-      Free Shipping — $200+
+      🚚 Free Shipping — $200+
     </label>
   </div>
 
@@ -1297,17 +1336,20 @@ footer p{
 
     <label class="option-label">
       <input type="radio" name="payment" value="zelle">
-      Zelle
+      <span class="payment-logo zelle-logo">Z</span>
+      <strong>Zelle</strong>
     </label>
 
     <label class="option-label">
       <input type="radio" name="payment" value="venmo">
-      Venmo
+      <span class="payment-logo venmo-logo">V</span>
+      <strong>Venmo</strong>
     </label>
 
     <label class="option-label">
       <input type="radio" name="payment" value="paypal">
-      PayPal
+      <span class="payment-logo paypal-logo">P</span>
+      <strong>PayPal</strong>
     </label>
   </div>
 
@@ -1463,7 +1505,7 @@ const PRODUCTS = [
   {name:"GHK-CU 100 MG",price:55,oldPrice:70,image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"},
   {name:"GLP-3 10 MG",price:95,oldPrice:110,image:"./713BA234-721B-4580-94DF-6677375C7826.png"},
   {name:"GLP-2 20 MG",price:120,oldPrice:130,image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"},
-  {name:"GLP-3 20 MG",price:110,oldPrice:125,image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"},
+  {name:"GLP-3 20 MG",price:130,oldPrice:140,image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"},
   {name:"GLUTATHIONE 1500 MG",price:60,oldPrice:75,image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"},
   {name:"NAD+ 500 MG",price:50,oldPrice:60,image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"}
 ];
@@ -1899,7 +1941,10 @@ function showPaymentInformation(order){
   if(order.payment === "zelle"){
     html += `
       <div class="payment zelle">
-        <h3>Zelle</h3>
+        <div class="payment-title">
+          <span class="payment-logo zelle-logo">Z</span>
+          <h3>Zelle</h3>
+        </div>
         <p><strong>Name:</strong> Araceli Hernández</p>
         <p><strong>Phone:</strong> (832) 273-9625</p>
         <p>Send the total amount shown above through Zelle.</p>
@@ -1916,7 +1961,10 @@ function showPaymentInformation(order){
   if(order.payment === "venmo"){
     html += `
       <div class="payment venmo">
-        <h3>Venmo</h3>
+        <div class="payment-title">
+          <span class="payment-logo venmo-logo">V</span>
+          <h3>Venmo</h3>
+        </div>
         <p><strong>Venmo:</strong> @novapeps22</p>
         <p><strong>Name:</strong> Araceli Hernández</p>
         <p>Send the total amount shown above through Venmo.</p>
@@ -1937,7 +1985,10 @@ function showPaymentInformation(order){
   if(order.payment === "paypal"){
     html += `
       <div class="payment paypal">
-        <h3>PayPal</h3>
+        <div class="payment-title">
+          <span class="payment-logo paypal-logo">P</span>
+          <h3>PayPal</h3>
+        </div>
         <p><strong>PayPal:</strong> Add your PayPal information here.</p>
         <p><strong>Total Amount:</strong> $${order.total.toFixed(2)}</p>
         <p>Send the total amount shown above through PayPal.</p>
