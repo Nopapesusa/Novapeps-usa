@@ -109,6 +109,12 @@ body.locked{
   align-items:center;
   justify-content:center;
   cursor:pointer;
+  transition:.2s ease;
+}
+
+.header-icon:hover{
+  background:rgba(45,143,255,.16);
+  border-color:rgba(45,143,255,.45);
 }
 
 .header-icon svg{
@@ -139,7 +145,9 @@ body.locked{
   border:2px solid #050b16;
 }
 
-/* HERO */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
   min-height:505px;
@@ -151,7 +159,7 @@ body.locked{
       rgba(3,10,22,.20),
       rgba(3,10,22,.48)
     ),
-    url("./B3FD9D4A-A915-48AD-A552-E618979DD352.PNG");
+    url("./att.tK5Us77ej-aCYPmzLGG1MqUszdTsZL0nehl0NVAVGC0.jpeg");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -184,9 +192,12 @@ body.locked{
   border:1px solid rgba(255,255,255,.35);
   border-radius:30px;
   background:rgba(0,0,0,.28);
+  backdrop-filter:blur(6px);
 }
 
-/* GENERAL */
+/* =====================================================
+   GENERAL
+===================================================== */
 
 .section{
   max-width:1400px;
@@ -196,11 +207,13 @@ body.locked{
 }
 
 .section-title{
+  position:relative;
   text-align:center;
   font-size:clamp(30px,4vw,46px);
   margin-bottom:48px;
   font-weight:900;
   color:#08152a;
+  letter-spacing:-.8px;
 }
 
 .section-title::after{
@@ -211,6 +224,7 @@ body.locked{
   margin:15px auto 0;
   border-radius:10px;
   background:#1688ff;
+  box-shadow:0 3px 12px rgba(22,136,255,.25);
 }
 
 .notice{
@@ -220,7 +234,9 @@ body.locked{
   margin-top:15px;
 }
 
-/* PRODUCTS */
+/* =====================================================
+   PRODUCTS
+===================================================== */
 
 .products-grid{
   display:grid;
@@ -234,12 +250,18 @@ body.locked{
   border:1px solid #e3eaf3;
   border-radius:24px;
   overflow:hidden;
-  box-shadow:0 10px 35px rgba(5,27,55,.08);
+  box-shadow:
+    0 10px 35px rgba(5,27,55,.08),
+    0 2px 7px rgba(5,27,55,.04);
   transition:.28s ease;
 }
 
 .product-card:hover{
   transform:translateY(-7px);
+  border-color:#cbdff5;
+  box-shadow:
+    0 18px 45px rgba(5,27,55,.13),
+    0 4px 12px rgba(22,136,255,.08);
 }
 
 .product-image-wrap{
@@ -249,7 +271,12 @@ body.locked{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:radial-gradient(circle at 50% 35%,#fff,#e8f3fd);
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255,255,255,.98),
+      rgba(232,243,253,.98)
+    );
   border-bottom:1px solid #e2edf8;
 }
 
@@ -260,6 +287,11 @@ body.locked{
   object-fit:contain;
   cursor:pointer;
   filter:drop-shadow(0 13px 14px rgba(0,31,66,.14));
+  transition:.3s ease;
+}
+
+.product-card:hover .product-image{
+  transform:scale(1.045);
 }
 
 .favorite-btn{
@@ -270,15 +302,24 @@ body.locked{
   height:44px;
   border-radius:50%;
   border:1px solid #d9e3ef;
-  background:#fff;
+  background:rgba(255,255,255,.95);
   color:#657286;
   cursor:pointer;
   font-size:23px;
   z-index:2;
+  box-shadow:0 5px 16px rgba(0,0,0,.08);
+  transition:.2s ease;
+}
+
+.favorite-btn:hover{
+  color:#1688ff;
+  border-color:#8fc6ff;
+  transform:scale(1.05);
 }
 
 .favorite-btn.active{
   color:#1688ff;
+  border-color:#8fc6ff;
   background:#f0f8ff;
 }
 
@@ -289,6 +330,7 @@ body.locked{
 
 .product-info h3{
   font-size:18px;
+  color:#101b2c;
   margin-bottom:9px;
   font-weight:900;
 }
@@ -316,15 +358,20 @@ body.locked{
   padding:13px;
   border-radius:13px;
   font-weight:900;
+  letter-spacing:.4px;
   cursor:pointer;
+  transition:.2s ease;
 }
 
 .add-list-btn:hover{
   background:#1688ff;
   color:#fff;
+  box-shadow:0 7px 20px rgba(22,136,255,.22);
 }
 
-/* FLOATING CART */
+/* =====================================================
+   FLOATING CART
+===================================================== */
 
 .cart-floating{
   position:fixed;
@@ -333,7 +380,7 @@ body.locked{
   width:64px;
   height:64px;
   border-radius:50%;
-  border:none;
+  border:1px solid rgba(255,255,255,.15);
   background:#071525;
   color:#fff;
   display:flex;
@@ -341,6 +388,13 @@ body.locked{
   justify-content:center;
   cursor:pointer;
   z-index:4500;
+  box-shadow:0 9px 30px rgba(0,0,0,.28);
+  transition:.2s ease;
+}
+
+.cart-floating:hover{
+  transform:translateY(-3px);
+  background:#0b2540;
 }
 
 .cart-floating svg{
@@ -349,6 +403,8 @@ body.locked{
   fill:none;
   stroke:#fff;
   stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .cart-count{
@@ -357,6 +413,7 @@ body.locked{
   right:-5px;
   min-width:25px;
   height:25px;
+  padding:0 5px;
   border-radius:50%;
   background:#1688ff;
   color:#fff;
@@ -368,12 +425,15 @@ body.locked{
   font-weight:900;
 }
 
-/* MENU */
+/* =====================================================
+   SIDE MENU
+===================================================== */
 
 .overlay{
   position:fixed;
   inset:0;
   background:rgba(1,8,18,.62);
+  backdrop-filter:blur(3px);
   z-index:6000;
   display:none;
 }
@@ -394,6 +454,7 @@ body.locked{
   transition:.32s ease;
   padding:25px;
   overflow-y:auto;
+  box-shadow:10px 0 35px rgba(0,0,0,.2);
 }
 
 .side-menu.open{
@@ -416,6 +477,7 @@ body.locked{
   clear:both;
   padding-top:25px;
   margin-bottom:20px;
+  color:#071525;
 }
 
 .side-menu a,
@@ -431,6 +493,13 @@ body.locked{
   text-decoration:none;
   font-weight:800;
   cursor:pointer;
+  transition:.2s ease;
+}
+
+.side-menu a:hover,
+.side-menu button.menu-link:hover{
+  color:#1688ff;
+  padding-left:14px;
 }
 
 .search-box{
@@ -442,15 +511,32 @@ body.locked{
   padding:14px;
   border:1px solid #d5dfeb;
   border-radius:12px;
+  outline:none;
+}
+
+.search-box input:focus{
+  border-color:#1688ff;
+  box-shadow:0 0 0 3px rgba(22,136,255,.1);
+}
+
+.search-results{
+  margin-top:10px;
 }
 
 .search-result{
   padding:11px;
   border-bottom:1px solid #eee;
   cursor:pointer;
+  border-radius:8px;
 }
 
-/* PANELS */
+.search-result:hover{
+  background:#f0f7ff;
+}
+
+/* =====================================================
+   PANELS
+===================================================== */
 
 .panel{
   position:fixed;
@@ -464,6 +550,7 @@ body.locked{
   transition:.3s ease;
   overflow-y:auto;
   padding:28px;
+  box-shadow:-8px 0 35px rgba(0,0,0,.2);
 }
 
 .panel.open{
@@ -479,6 +566,10 @@ body.locked{
   border-bottom:1px solid #e6ebf1;
 }
 
+.panel-header h2{
+  color:#071525;
+}
+
 .panel-close{
   width:40px;
   height:40px;
@@ -487,7 +578,12 @@ body.locked{
   background:#071525;
   color:#fff;
   cursor:pointer;
+  font-size:20px;
 }
+
+/* =====================================================
+   SELECTED PRODUCTS
+===================================================== */
 
 .selected-item{
   display:flex;
@@ -501,6 +597,8 @@ body.locked{
   width:70px;
   height:70px;
   object-fit:contain;
+  background:#eef6fd;
+  border-radius:12px;
 }
 
 .selected-info{
@@ -516,7 +614,7 @@ body.locked{
 }
 
 .qty-controls button{
-  min-width:31px;
+  width:31px;
   height:31px;
   border:1px solid #ccd7e4;
   background:#fff;
@@ -524,8 +622,17 @@ body.locked{
   cursor:pointer;
 }
 
+.qty-controls button:hover{
+  border-color:#1688ff;
+  color:#1688ff;
+}
+
 .remove-btn{
+  border:0;
+  background:#edf1f5;
   padding:7px 9px;
+  border-radius:7px;
+  cursor:pointer;
 }
 
 .cart-summary{
@@ -543,7 +650,13 @@ body.locked{
 .summary-row.total{
   font-size:21px;
   font-weight:900;
+  color:#071525;
+  margin-top:8px;
 }
+
+/* =====================================================
+   SHIPPING / PAYMENT
+===================================================== */
 
 .option-box{
   margin-top:22px;
@@ -551,6 +664,7 @@ body.locked{
 
 .option-box h3{
   margin-bottom:11px;
+  color:#071525;
 }
 
 .option-label{
@@ -560,6 +674,59 @@ body.locked{
   border-radius:11px;
   margin-bottom:9px;
   cursor:pointer;
+  transition:.2s ease;
+  background:#fff;
+}
+
+.option-label:hover{
+  border-color:#8ec8ff;
+  background:#f7fbff;
+}
+
+.option-label:has(input:checked){
+  border-color:#1688ff;
+  background:#eef7ff;
+  box-shadow:0 0 0 1px #1688ff inset;
+}
+
+.option-label input{
+  margin-right:8px;
+  accent-color:#1688ff;
+}
+
+.payment-option-row{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.payment-logo{
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
+  font-weight:900;
+  flex:0 0 34px;
+}
+
+.payment-logo.zelle-logo{
+  background:#6d1ed4;
+  color:#fff;
+}
+
+.payment-logo.venmo-logo{
+  background:#008cff;
+  color:#fff;
+  font-style:italic;
+}
+
+.payment-logo.paypal-logo{
+  background:#003087;
+  color:#fff;
+  font-style:italic;
 }
 
 .primary-btn{
@@ -572,6 +739,17 @@ body.locked{
   font-weight:900;
   cursor:pointer;
   margin-top:15px;
+  transition:.2s ease;
+}
+
+.primary-btn:hover{
+  background:#1688ff;
+  box-shadow:0 8px 22px rgba(22,136,255,.2);
+}
+
+.primary-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 .secondary-btn{
@@ -586,6 +764,15 @@ body.locked{
   margin-top:10px;
 }
 
+.secondary-btn:hover{
+  border-color:#1688ff;
+  color:#1688ff;
+}
+
+/* =====================================================
+   PAYMENT CARDS
+===================================================== */
+
 .payment{
   border:1px solid #dfe6ee;
   border-radius:14px;
@@ -594,13 +781,37 @@ body.locked{
   background:#fbfdff;
 }
 
+.payment h3{
+  margin-bottom:12px;
+  font-size:20px;
+}
+
 .payment p{
   margin:7px 0;
 }
 
-.venmo h3{color:#008cff;}
-.zelle h3{color:#6d1ed4;}
-.paypal h3{color:#003087;}
+.payment-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.payment-title h3{
+  margin:0;
+}
+
+.venmo h3{
+  color:#008cff;
+}
+
+.zelle h3{
+  color:#6d1ed4;
+}
+
+.paypal h3{
+  color:#003087;
+}
 
 .copy-btn{
   border:none;
@@ -613,6 +824,36 @@ body.locked{
   color:#fff;
 }
 
+.pay-link{
+  display:block;
+  width:100%;
+  padding:14px;
+  border-radius:11px;
+  margin-top:13px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  font-weight:900;
+  transition:.2s ease;
+}
+
+.pay-link:hover{
+  transform:translateY(-1px);
+  box-shadow:0 7px 18px rgba(0,0,0,.14);
+}
+
+.venmo-pay{
+  background:#008cff;
+}
+
+.paypal-pay{
+  background:#003087;
+}
+
+/* =====================================================
+   INFORMATION FORM
+===================================================== */
+
 .form-group{
   margin-bottom:14px;
 }
@@ -624,16 +865,26 @@ body.locked{
 }
 
 .form-group input,
-.form-group textarea{
+.form-group textarea,
+.form-group select{
   width:100%;
   padding:12px;
   border:1px solid #ccd7e4;
   border-radius:9px;
   font:inherit;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:#1688ff;
+  box-shadow:0 0 0 3px rgba(22,136,255,.1);
 }
 
 .form-group textarea{
   min-height:110px;
+  resize:vertical;
 }
 
 .reference-box{
@@ -647,16 +898,20 @@ body.locked{
 
 .reference-code{
   font-size:28px;
+  color:#071525;
   font-weight:900;
   letter-spacing:3px;
 }
 
-/* MODAL */
+/* =====================================================
+   MODAL
+===================================================== */
 
 .modal{
   position:fixed;
   inset:0;
   background:rgba(1,8,18,.78);
+  backdrop-filter:blur(4px);
   z-index:9000;
   display:none;
   align-items:center;
@@ -677,6 +932,7 @@ body.locked{
   max-height:90vh;
   overflow-y:auto;
   position:relative;
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
 }
 
 .modal-close{
@@ -690,6 +946,7 @@ body.locked{
   background:#071525;
   color:#fff;
   cursor:pointer;
+  font-size:20px;
 }
 
 .modal-image{
@@ -701,11 +958,20 @@ body.locked{
   border-radius:18px;
 }
 
+.modal-content h2{
+  margin-bottom:8px;
+  color:#071525;
+}
+
 .modal-price{
   font-size:25px;
   font-weight:900;
   margin-bottom:15px;
 }
+
+/* =====================================================
+   COMPARE
+===================================================== */
 
 .compare-wrap{
   overflow-x:auto;
@@ -713,8 +979,11 @@ body.locked{
 
 .compare-table{
   width:100%;
-  border-collapse:collapse;
+  border-collapse:separate;
+  border-spacing:0;
   min-width:600px;
+  overflow:hidden;
+  border-radius:14px;
 }
 
 .compare-table th,
@@ -729,6 +998,14 @@ body.locked{
   color:#fff;
 }
 
+.compare-table tr:nth-child(even) td{
+  background:#f7faff;
+}
+
+/* =====================================================
+   CONTACT / ABOUT / LOGIN
+===================================================== */
+
 .info-card{
   max-width:850px;
   margin:auto;
@@ -737,6 +1014,7 @@ body.locked{
   padding:32px;
   border-radius:20px;
   line-height:1.7;
+  box-shadow:0 8px 28px rgba(5,27,55,.05);
 }
 
 .contact-info{
@@ -749,6 +1027,7 @@ body.locked{
   max-width:450px;
   margin:auto;
   background:#f7faff;
+  border:1px solid #e2eaf3;
   padding:30px;
   border-radius:20px;
 }
@@ -761,9 +1040,19 @@ body.locked{
   border-radius:9px;
 }
 
+/* =====================================================
+   FINAL CONFIRMATION
+===================================================== */
+
 .thank-you{
   text-align:center;
   padding:30px 10px;
+}
+
+.thank-you h2{
+  font-size:34px;
+  margin-bottom:15px;
+  color:#071525;
 }
 
 .payment-final{
@@ -771,10 +1060,13 @@ body.locked{
   margin-top:20px;
   padding:18px;
   background:#f4f8fc;
+  border:1px solid #dfe7f0;
   border-radius:14px;
 }
 
-/* AGE */
+/* =====================================================
+   AGE GATE
+===================================================== */
 
 .age-gate{
   position:fixed;
@@ -788,7 +1080,7 @@ body.locked{
 }
 
 .age-gate.hidden{
-  display:none!important;
+  display:none !important;
 }
 
 .age-card{
@@ -798,12 +1090,25 @@ body.locked{
   border-radius:24px;
   padding:38px 27px;
   text-align:center;
+  box-shadow:0 10px 60px rgba(0,0,0,.55);
+  border:1px solid #dce8f5;
+}
+
+.age-card h2{
+  font-size:30px;
+  color:#071525;
+  margin-bottom:15px;
+}
+
+.age-card p{
+  color:#555;
+  line-height:1.6;
+  margin-bottom:25px;
 }
 
 .age-buttons{
   display:flex;
   gap:12px;
-  margin-top:20px;
 }
 
 .age-buttons button{
@@ -811,6 +1116,7 @@ body.locked{
   padding:15px 10px;
   border-radius:12px;
   font-weight:900;
+  cursor:pointer;
 }
 
 .age-enter{
@@ -819,11 +1125,20 @@ body.locked{
   border:2px solid #071525;
 }
 
+.age-enter:hover{
+  background:#1688ff;
+  border-color:#1688ff;
+}
+
 .age-exit{
   background:#fff;
   color:#071525;
   border:2px solid #071525;
 }
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
   background:#050b16;
@@ -837,14 +1152,33 @@ footer p{
   margin:7px 0;
 }
 
+.status{
+  padding:12px;
+  background:#f1f5f9;
+  border-radius:10px;
+  margin-top:12px;
+  text-align:center;
+  display:none;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
 @media(max-width:1100px){
-  .products-grid{grid-template-columns:repeat(2,1fr);}
+
+  .products-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
 }
 
 @media(max-width:700px){
+
   .site-header{
     height:72px;
     padding:0 14px;
+    grid-template-columns:1fr auto 1fr;
   }
 
   .brand-logo img{
@@ -852,8 +1186,51 @@ footer p{
     max-height:53px;
   }
 
+  .menu-btn,
+  .header-icon{
+    width:43px;
+    height:43px;
+  }
+
+  .header-actions{
+    gap:6px;
+  }
+
+  .header-icon svg{
+    width:21px;
+    height:21px;
+  }
+
+  .hero{
+    min-height:390px;
+  }
+
+  .hero-content h1{
+    font-size:39px;
+    letter-spacing:3px;
+  }
+
+  .hero-content p{
+    font-size:12px;
+    letter-spacing:2px;
+  }
+
+  .section{
+    padding:55px 15px;
+  }
+
+  .section-title{
+    font-size:30px;
+    margin-bottom:34px;
+  }
+
   .products-grid{
     grid-template-columns:1fr;
+    gap:22px;
+  }
+
+  .product-image-wrap{
+    min-height:350px;
   }
 
   .product-image{
@@ -863,16 +1240,53 @@ footer p{
   .panel{
     width:100%;
     max-width:100%;
+    padding:22px 18px;
   }
 
   .age-buttons{
     flex-direction:column;
   }
+
+  .cart-floating{
+    right:16px;
+    bottom:16px;
+  }
+
 }
 
 @media(max-width:420px){
-  .brand-logo img{max-width:125px;}
-  .product-image{height:280px;}
+
+  .site-header{
+    padding:0 10px;
+  }
+
+  .brand-logo img{
+    max-width:125px;
+  }
+
+  .menu-btn,
+  .header-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+  }
+
+  .header-actions{
+    gap:4px;
+  }
+
+  .hero-content h1{
+    font-size:32px;
+  }
+
+  .product-image-wrap{
+    min-height:320px;
+  }
+
+  .product-image{
+    height:280px;
+  }
+
 }
 </style>
 </head>
@@ -880,1186 +1294,1836 @@ footer p{
 <body>
 
 <div class="age-gate" id="ageGate">
-<div class="age-card">
-<h2>Age Confirmation</h2>
-<p>This website contains products presented for research purposes only.<br>
-Please confirm that you are of legal age to enter this website.</p>
-
-<div class="age-buttons">
-<button class="age-enter" id="ageEnterBtn" type="button">I AM OF LEGAL AGE</button>
-<button class="age-exit" id="ageExitBtn" type="button">EXIT</button>
-</div>
-</div>
+  <div class="age-card">
+    <h2>Age Confirmation</h2>
+    <p>
+      This website contains products presented for research purposes only.<br>
+      Please confirm that you are of legal age to enter this website.
+    </p>
+    <div class="age-buttons">
+      <button class="age-enter" id="ageEnterBtn" type="button">
+        I AM OF LEGAL AGE
+      </button>
+      <button class="age-exit" id="ageExitBtn" type="button">
+        EXIT
+      </button>
+    </div>
+  </div>
 </div>
 
 <header class="site-header">
 
-<button class="menu-btn" id="menuBtn" type="button">
-<span></span><span></span><span></span>
-</button>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-<a href="#home" class="brand-logo">
-<img src="./A1266070-1450-49E1-BD04-D0D8E88B6C32.PNG" alt="NovaPeps USA">
-</a>
+  <a href="#home" class="brand-logo" aria-label="NovaPeps USA Home">
+    <img src="./logo.png" alt="NovaPeps USA">
+  </a>
 
-<div class="header-actions">
+  <div class="header-actions">
 
-<button class="header-icon" id="headerSearchBtn" type="button">
-<svg viewBox="0 0 24 24">
-<circle cx="11" cy="11" r="7"></circle>
-<path d="M16.5 16.5L22 22"></path>
-</svg>
-</button>
+    <button class="header-icon" id="headerSearchBtn" type="button" aria-label="Search products">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M16.5 16.5L22 22"></path>
+      </svg>
+    </button>
 
-<button class="header-icon" id="headerCartBtn" type="button">
-<svg viewBox="0 0 24 24">
-<path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
-<circle cx="10" cy="20" r="1.5"></circle>
-<circle cx="18" cy="20" r="1.5"></circle>
-</svg>
-<span class="header-cart-count" id="headerCartCount">0</span>
-</button>
+    <button class="header-icon" id="headerCartBtn" type="button" aria-label="Shopping cart">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
+        <circle cx="10" cy="20" r="1.5"></circle>
+        <circle cx="18" cy="20" r="1.5"></circle>
+      </svg>
+      <span class="header-cart-count" id="headerCartCount">0</span>
+    </button>
 
-</div>
+  </div>
 </header>
 
 <div class="overlay" id="overlay"></div>
 
 <nav class="side-menu" id="sideMenu">
-<button class="side-close" id="sideClose" type="button">×</button>
 
-<h2>NOVAPEPS USA</h2>
+  <button class="side-close" id="sideClose" type="button">×</button>
 
-<div class="search-box">
-<input type="search" id="searchInput" placeholder="Search products...">
-<div class="search-results" id="searchResults"></div>
-</div>
+  <h2>NOVAPEPS USA</h2>
 
-<a href="#home" class="menu-link">HOME</a>
-<a href="#products" class="menu-link">PRODUCTS</a>
-<button class="menu-link" data-open-panel="listPanel">LIST</button>
-<a href="#shipping" class="menu-link">SHIPPING</a>
-<a href="#contact" class="menu-link">CONTACT PAGE</a>
-<a href="#about" class="menu-link">ABOUT US</a>
-<a href="#compare" class="menu-link">COMPARE</a>
-<a href="#login" class="menu-link">LOGIN / REGISTER</a>
+  <div class="search-box">
+    <input type="search" id="searchInput" placeholder="Search products...">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <a href="#home" class="menu-link">HOME</a>
+  <a href="#products" class="menu-link">PRODUCTS</a>
+  <button class="menu-link" data-open-panel="listPanel">LIST</button>
+  <a href="#shipping" class="menu-link">SHIPPING</a>
+  <a href="#contact" class="menu-link">CONTACT PAGE</a>
+  <a href="#about" class="menu-link">ABOUT US</a>
+  <a href="#compare" class="menu-link">COMPARE</a>
+  <a href="#login" class="menu-link">LOGIN / REGISTER</a>
+
 </nav>
 
 <section class="hero" id="home">
-<div class="hero-content">
-<h1>NOVAPEPS USA</h1>
-<p>Research Use Only</p>
-</div>
+  <div class="hero-content">
+    <h1>NOVAPEPS USA</h1>
+    <p>Research Use Only</p>
+  </div>
 </section>
 
 <section class="section" id="products">
-<h2 class="section-title">Featured Products</h2>
 
-<div class="products-grid">
+  <h2 class="section-title">Featured Products</h2>
 
-<article class="product-card"
-data-name="MOTS-C 10 MG"
-data-price="60"
-data-image="./25BAD52D-CE6D-497C-898E-70448C534E31.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="MOTS-C 10 MG">♡</button>
-<img class="product-image" src="./25BAD52D-CE6D-497C-898E-70448C534E31.png" alt="MOTS-C 10 MG">
-</div>
-<div class="product-info">
-<h3>MOTS-C 10 MG</h3>
-<div class="product-price">$60</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+  <div class="products-grid">
 
-<article class="product-card"
-data-name="GLP-2 10 MG"
-data-price="90"
-data-image="./89E739CC-041E-4FAE-A417-91B04205538F.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="GLP-2 10 MG">♡</button>
-<img class="product-image" src="./89E739CC-041E-4FAE-A417-91B04205538F.png" alt="GLP-2 10 MG">
-</div>
-<div class="product-info">
-<h3>GLP-2 10 MG</h3>
-<div class="product-price">$90</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+    <article class="product-card"
+      data-name="MOTS-C 10 MG"
+      data-price="60"
+      data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png">
 
-<article class="product-card"
-data-name="GHK-CU 100 MG"
-data-price="50"
-data-image="./E5957939-2A35-4106-B59E-118EE61FCD6B.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="GHK-CU 100 MG">♡</button>
-<img class="product-image" src="./E5957939-2A35-4106-B59E-118EE61FCD6B.png" alt="GHK-CU 100 MG">
-</div>
-<div class="product-info">
-<h3>GHK-CU 100 MG</h3>
-<div class="product-price">$50</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="MOTS-C 10 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
+          alt="MOTS-C 10 MG">
+      </div>
 
-<article class="product-card"
-data-name="GLP-3 10 MG"
-data-price="95"
-data-image="./4370627F-46AF-488D-9877-BB42B9C9AF90.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="GLP-3 10 MG">♡</button>
-<img class="product-image" src="./4370627F-46AF-488D-9877-BB42B9C9AF90.png" alt="GLP-3 10 MG">
-</div>
-<div class="product-info">
-<h3>GLP-3 10 MG</h3>
-<div class="product-price">$95</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+      <div class="product-info">
+        <h3>MOTS-C 10 MG</h3>
+        <div class="product-price">$60</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
 
-<article class="product-card"
-data-name="GLP-2 20 MG"
-data-price="110"
-data-image="./9130C144-577C-4B9A-8DCD-2918ED68069D.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="GLP-2 20 MG">♡</button>
-<img class="product-image" src="./9130C144-577C-4B9A-8DCD-2918ED68069D.png" alt="GLP-2 20 MG">
-</div>
-<div class="product-info">
-<h3>GLP-2 20 MG</h3>
-<div class="product-price">$110</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+    <article class="product-card"
+      data-name="GLP-2 10 MG"
+      data-price="90"
+      data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png">
 
-<article class="product-card"
-data-name="GLP-3 20 MG"
-data-price="135"
-data-image="./065B33AF-7FEA-45A7-B5BF-9634422FF905.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="GLP-3 20 MG">♡</button>
-<img class="product-image" src="./065B33AF-7FEA-45A7-B5BF-9634422FF905.png" alt="GLP-3 20 MG">
-</div>
-<div class="product-info">
-<h3>GLP-3 20 MG</h3>
-<div class="product-price">$135</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="GLP-2 10 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
+          alt="GLP-2 10 MG">
+      </div>
 
-<article class="product-card"
-data-name="GLUTATHIONE 1500 MG"
-data-price="60"
-data-image="./12A73595-5804-4602-987C-58FF1FFB7880.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG">♡</button>
-<img class="product-image" src="./12A73595-5804-4602-987C-58FF1FFB7880.png" alt="GLUTATHIONE 1500 MG">
-</div>
-<div class="product-info">
-<h3>GLUTATHIONE 1500 MG</h3>
-<div class="product-price">$60</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+      <div class="product-info">
+        <h3>GLP-2 10 MG</h3>
+        <div class="product-price">$90</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
 
-<article class="product-card"
-data-name="NAD+ 500 MG"
-data-price="50"
-data-image="./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png">
-<div class="product-image-wrap">
-<button class="favorite-btn" data-favorite="NAD+ 500 MG">♡</button>
-<img class="product-image" src="./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png" alt="NAD+ 500 MG">
-</div>
-<div class="product-info">
-<h3>NAD+ 500 MG</h3>
-<div class="product-price">$50</div>
-<div class="research">FOR RESEARCH USE ONLY</div>
-<button class="add-list-btn">ADD TO LIST</button>
-</div>
-</article>
+    <article class="product-card"
+      data-name="GHK-CU 100 MG"
+      data-price="50"
+      data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png">
 
-</div>
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="GHK-CU 100 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./6747079A-BB69-4F51-A792-565688C6BC86.png"
+          alt="GHK-CU 100 MG">
+      </div>
+
+      <div class="product-info">
+        <h3>GHK-CU 100 MG</h3>
+        <div class="product-price">$50</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
+
+    <article class="product-card"
+      data-name="GLP-3 10 MG"
+      data-price="95"
+      data-image="./713BA234-721B-4580-94DF-6677375C7826.png">
+
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="GLP-3 10 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./713BA234-721B-4580-94DF-6677375C7826.png"
+          alt="GLP-3 10 MG">
+      </div>
+
+      <div class="product-info">
+        <h3>GLP-3 10 MG</h3>
+        <div class="product-price">$95</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
+
+    <article class="product-card"
+      data-name="GLP-2 20 MG"
+      data-price="110"
+      data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png">
+
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="GLP-2 20 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
+          alt="GLP-2 20 MG">
+      </div>
+
+      <div class="product-info">
+        <h3>GLP-2 20 MG</h3>
+        <div class="product-price">$110</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
+
+    <article class="product-card"
+      data-name="GLP-3 20 MG"
+      data-price="135"
+      data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
+
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
+          alt="GLP-3 20 MG">
+      </div>
+
+      <div class="product-info">
+        <h3>GLP-3 20 MG</h3>
+        <div class="product-price">$135</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
+
+    <article class="product-card"
+      data-name="GLUTATHIONE 1500 MG"
+      data-price="60"
+      data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png">
+
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
+          alt="GLUTATHIONE 1500 MG">
+      </div>
+
+      <div class="product-info">
+        <h3>GLUTATHIONE 1500 MG</h3>
+        <div class="product-price">$60</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
+
+    <article class="product-card"
+      data-name="NAD+ 500 MG"
+      data-price="50"
+      data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png">
+
+      <div class="product-image-wrap">
+        <button class="favorite-btn" data-favorite="NAD+ 500 MG" type="button">♡</button>
+        <img class="product-image"
+          src="./EB389E57-904B-4E57-953C-407C50FA216A.png"
+          alt="NAD+ 500 MG">
+      </div>
+
+      <div class="product-info">
+        <h3>NAD+ 500 MG</h3>
+        <div class="product-price">$50</div>
+        <div class="research">FOR RESEARCH USE ONLY</div>
+        <button class="add-list-btn" type="button">ADD TO LIST</button>
+      </div>
+    </article>
+
+  </div>
 </section>
 
 <section class="section" id="shipping">
-<h2 class="section-title">Shipping</h2>
-<div class="info-card">
-<h3>Shipping Options</h3>
-<p><strong>Standard Shipping:</strong> $9</p>
-<p><strong>Express Shipping:</strong> $15</p>
-<p><strong>Free Shipping:</strong> Orders $200+</p>
-<p class="notice">Shipping options are displayed during checkout.</p>
-</div>
+  <h2 class="section-title">Shipping</h2>
+  <div class="info-card">
+    <h3>Shipping Options</h3>
+    <p><strong>Standard Shipping:</strong> $9</p>
+    <p><strong>Express Shipping:</strong> $15</p>
+    <p><strong>Free Shipping:</strong> Orders $200+</p>
+    <p class="notice">Shipping options are displayed during checkout.</p>
+  </div>
 </section>
 
 <section class="section" id="contact">
-<h2 class="section-title">Contact</h2>
-<div class="info-card contact-info">
-<p>Email: <strong>novapeps22@gmail.com</strong></p>
-<p>Phone: <strong>(832) 273-9625</strong></p>
-</div>
+  <h2 class="section-title">Contact</h2>
+  <div class="info-card contact-info">
+    <p>Email: <strong>novapeps22@gmail.com</strong></p>
+    <p>Phone: <strong>(832) 273-9625</strong></p>
+  </div>
 </section>
 
 <section class="section" id="about">
-<h2 class="section-title">About Us</h2>
-<div class="info-card">
-<p>NovaPeps USA provides products presented for research purposes only.
-The information displayed on this website is informational and is not
-intended to diagnose, treat, cure, or prevent any disease.</p>
-<br>
-<p>All products are presented for research use only.</p>
-</div>
+  <h2 class="section-title">About Us</h2>
+  <div class="info-card">
+    <p>
+      NovaPeps USA provides products presented for research purposes only.
+      The information displayed on this website is informational and is not
+      intended to diagnose, treat, cure, or prevent any disease.
+    </p>
+    <br>
+    <p>All products are presented for research use only.</p>
+  </div>
 </section>
 
 <section class="section" id="compare">
-<h2 class="section-title">Compare</h2>
-<div class="compare-wrap">
-<table class="compare-table">
-<thead>
-<tr><th>Product</th><th>Amount</th><th>Price</th></tr>
-</thead>
-<tbody>
-<tr><td>MOTS-C</td><td>10 MG</td><td>$60</td></tr>
-<tr><td>GLP-2</td><td>10 MG</td><td>$90</td></tr>
-<tr><td>GHK-CU</td><td>100 MG</td><td>$50</td></tr>
-<tr><td>GLP-3</td><td>10 MG</td><td>$95</td></tr>
-<tr><td>GLP-2</td><td>20 MG</td><td>$110</td></tr>
-<tr><td>GLP-3</td><td>20 MG</td><td>$135</td></tr>
-<tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
-<tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
-</tbody>
-</table>
-</div>
+  <h2 class="section-title">Compare</h2>
+
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Amount</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>MOTS-C</td><td>10 MG</td><td>$60</td></tr>
+        <tr><td>GLP-2</td><td>10 MG</td><td>$90</td></tr>
+        <tr><td>GHK-CU</td><td>100 MG</td><td>$50</td></tr>
+        <tr><td>GLP-3</td><td>10 MG</td><td>$95</td></tr>
+        <tr><td>GLP-2</td><td>20 MG</td><td>$110</td></tr>
+        <tr><td>GLP-3</td><td>20 MG</td><td>$135</td></tr>
+        <tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
+        <tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section class="section" id="login">
-<h2 class="section-title">Login / Register</h2>
-<div class="login-box">
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
-<button class="primary-btn" type="button" onclick="alert('Account login is not connected yet.')">LOGIN</button>
-<button class="secondary-btn" type="button" onclick="alert('Registration is not connected yet.')">REGISTER</button>
-</div>
+  <h2 class="section-title">Login / Register</h2>
+
+  <div class="login-box">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+
+    <button class="primary-btn" type="button"
+      onclick="alert('Account login is not connected yet.')">
+      LOGIN
+    </button>
+
+    <button class="secondary-btn" type="button"
+      onclick="alert('Registration is not connected yet.')">
+      REGISTER
+    </button>
+  </div>
 </section>
 
-<button class="cart-floating" id="cartFloating" type="button">
-<svg viewBox="0 0 24 24">
-<path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
-<circle cx="10" cy="20" r="1.5"></circle>
-<circle cx="18" cy="20" r="1.5"></circle>
-</svg>
-<span class="cart-count" id="cartCount">0</span>
+<button class="cart-floating" id="cartFloating" type="button" aria-label="Open shopping cart">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
+    <circle cx="10" cy="20" r="1.5"></circle>
+    <circle cx="18" cy="20" r="1.5"></circle>
+  </svg>
+  <span class="cart-count" id="cartCount">0</span>
 </button>
 
 <div class="panel" id="listPanel">
-<div class="panel-header">
-<h2>Selected Products</h2>
-<button class="panel-close" data-close-panel="listPanel">×</button>
-</div>
-<div id="selectedProducts"></div>
-<div class="cart-summary">
-<div class="summary-row">
-<span>Informational Total</span>
-<strong id="listTotal">$0.00</strong>
-</div>
-<button class="primary-btn" id="openCartFromList">GO TO CART</button>
-</div>
+  <div class="panel-header">
+    <h2>Selected Products</h2>
+    <button class="panel-close" data-close-panel="listPanel" type="button">×</button>
+  </div>
+
+  <div id="selectedProducts"></div>
+
+  <div class="cart-summary">
+    <div class="summary-row">
+      <span>Informational Total</span>
+      <strong id="listTotal">$0.00</strong>
+    </div>
+
+    <button class="primary-btn" id="openCartFromList" type="button">
+      GO TO CART
+    </button>
+  </div>
 </div>
 
 <div class="panel" id="cartPanel">
-<div class="panel-header">
-<h2>Your Cart</h2>
-<button class="panel-close" data-close-panel="cartPanel">×</button>
-</div>
 
-<div id="cartItems"></div>
+  <div class="panel-header">
+    <h2>Your Cart</h2>
+    <button class="panel-close" data-close-panel="cartPanel" type="button">×</button>
+  </div>
 
-<div class="option-box">
-<h3>Shipping</h3>
-<label class="option-label"><input type="radio" name="shipping" value="standard">Standard — $9</label>
-<label class="option-label"><input type="radio" name="shipping" value="express">Express — $15</label>
-<label class="option-label"><input type="radio" name="shipping" value="free">Free Shipping — $200+</label>
-</div>
+  <div id="cartItems"></div>
 
-<div class="option-box">
-<h3>Payment Method</h3>
-<label class="option-label"><input type="radio" name="payment" value="zelle">Zelle</label>
-<label class="option-label"><input type="radio" name="payment" value="venmo">Venmo</label>
-<label class="option-label"><input type="radio" name="payment" value="paypal">PayPal</label>
-</div>
+  <div class="option-box">
+    <h3>Shipping</h3>
 
-<div class="cart-summary">
-<div class="summary-row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
-<div class="summary-row"><span>Shipping</span><strong id="shippingCost">$0.00</strong></div>
-<div class="summary-row total"><span>Total</span><strong id="grandTotal">$0.00</strong></div>
-</div>
+    <label class="option-label">
+      <input type="radio" name="shipping" value="standard">
+      Standard — $9
+    </label>
 
-<button class="primary-btn" id="checkoutBtn">CONTINUE</button>
-<button class="secondary-btn" id="clearCartBtn">CLEAR CART</button>
+    <label class="option-label">
+      <input type="radio" name="shipping" value="express">
+      Express — $15
+    </label>
 
-<p class="notice">This list is informational only. No payment is processed here.</p>
+    <label class="option-label">
+      <input type="radio" name="shipping" value="free">
+      Free Shipping — $200+
+    </label>
+  </div>
+
+  <div class="option-box">
+
+    <h3>Payment Method</h3>
+
+    <label class="option-label">
+      <span class="payment-option-row">
+        <input type="radio" name="payment" value="zelle">
+        <span class="payment-logo zelle-logo">Z</span>
+        <strong>Zelle</strong>
+      </span>
+    </label>
+
+    <label class="option-label">
+      <span class="payment-option-row">
+        <input type="radio" name="payment" value="venmo">
+        <span class="payment-logo venmo-logo">V</span>
+        <strong>Venmo</strong>
+      </span>
+    </label>
+
+    <label class="option-label">
+      <span class="payment-option-row">
+        <input type="radio" name="payment" value="paypal">
+        <span class="payment-logo paypal-logo">P</span>
+        <strong>PayPal</strong>
+      </span>
+    </label>
+
+  </div>
+
+  <div class="cart-summary">
+
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <strong id="subtotal">$0.00</strong>
+    </div>
+
+    <div class="summary-row">
+      <span>Shipping</span>
+      <strong id="shippingCost">$0.00</strong>
+    </div>
+
+    <div class="summary-row total">
+      <span>Total</span>
+      <strong id="grandTotal">$0.00</strong>
+    </div>
+
+  </div>
+
+  <button class="primary-btn" id="checkoutBtn" type="button">
+    CONTINUE
+  </button>
+
+  <button class="secondary-btn" id="clearCartBtn" type="button">
+    CLEAR CART
+  </button>
+
+  <p class="notice">
+    This list is informational only. No payment is processed here.
+  </p>
+
 </div>
 
 <div class="panel" id="informationPanel">
-<div class="panel-header">
-<h2>Information Request</h2>
-<button class="panel-close" data-close-panel="informationPanel">×</button>
-</div>
 
-<div id="formArea">
-<div class="reference-box">
-<div>Order / Reference Code</div>
-<div class="reference-code" id="referenceDisplay">----</div>
-</div>
+  <div class="panel-header">
+    <h2>Information Request</h2>
+    <button class="panel-close" data-close-panel="informationPanel" type="button">×</button>
+  </div>
 
-<form id="informationForm" action="https://formspree.io/f/myezrady" method="POST">
+  <div id="formArea">
 
-<input type="hidden" name="subject" value="NovaPeps USA Information Request">
-<input type="hidden" name="reference_code" id="formReference">
-<input type="hidden" name="selected_products" id="formProducts">
-<input type="hidden" name="subtotal" id="formSubtotal">
-<input type="hidden" name="shipping_method" id="formShipping">
-<input type="hidden" name="shipping_cost" id="formShippingCost">
-<input type="hidden" name="informational_total" id="formTotal">
-<input type="hidden" name="payment_method" id="formPayment">
+    <div class="reference-box">
+      <div>Order / Reference Code</div>
+      <div class="reference-code" id="referenceDisplay">----</div>
+    </div>
 
-<div class="form-group"><label>Name</label><input type="text" name="name" required></div>
-<div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-<div class="form-group"><label>Phone</label><input type="tel" name="phone" required></div>
-<div class="form-group"><label>Address</label><input type="text" name="address" required></div>
-<div class="form-group"><label>Apt / Unit</label><input type="text" name="apt_unit"></div>
-<div class="form-group"><label>City</label><input type="text" name="city" required></div>
-<div class="form-group"><label>State</label><input type="text" name="state" required></div>
-<div class="form-group"><label>ZIP</label><input type="text" name="zip" required></div>
-<div class="form-group"><label>Message</label><textarea name="message"></textarea></div>
+    <form
+      id="informationForm"
+      action="https://formspree.io/f/myezrady"
+      method="POST"
+    >
 
-<button class="primary-btn" type="submit">SEND INFORMATION</button>
-</form>
-</div>
+      <input type="hidden" name="subject" value="NovaPeps USA Information Request">
+      <input type="hidden" name="reference_code" id="formReference">
+      <input type="hidden" name="selected_products" id="formProducts">
+      <input type="hidden" name="subtotal" id="formSubtotal">
+      <input type="hidden" name="shipping_method" id="formShipping">
+      <input type="hidden" name="shipping_cost" id="formShippingCost">
+      <input type="hidden" name="informational_total" id="formTotal">
+      <input type="hidden" name="payment_method" id="formPayment">
+      <input type="hidden" name="informational_notice"
+        value="This information request does not process payment.">
 
-<div id="finalConfirmation" class="thank-you" style="display:none;">
-<h2>THANK YOU!</h2>
-<p>Your information has been submitted.</p>
-<div class="payment-final" id="paymentFinal"></div>
-</div>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" name="address" required>
+      </div>
+
+      <div class="form-group">
+        <label>Apt / Unit</label>
+        <input type="text" name="apt_unit">
+      </div>
+
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" name="city" required>
+      </div>
+
+      <div class="form-group">
+        <label>State</label>
+        <input type="text" name="state" required>
+      </div>
+
+      <div class="form-group">
+        <label>ZIP</label>
+        <input type="text" name="zip" required>
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message"></textarea>
+      </div>
+
+      <button class="primary-btn" type="submit">
+        SEND INFORMATION
+      </button>
+
+    </form>
+
+  </div>
+
+  <div id="finalConfirmation" class="thank-you" style="display:none;">
+    <h2>THANK YOU!</h2>
+
+    <p>Your information has been submitted.</p>
+
+    <div class="payment-final" id="paymentFinal"></div>
+  </div>
+
 </div>
 
 <div class="modal" id="productModal">
-<div class="modal-content">
-<button class="modal-close" id="modalClose">×</button>
-<img class="modal-image" id="modalImage" src="" alt="">
-<h2 id="modalName"></h2>
-<div class="modal-price" id="modalPrice"></div>
-<div class="research">FOR RESEARCH USE ONLY</div>
 
-<div class="qty-controls">
-<button id="modalMinus">−</button>
-<strong id="modalQuantity">1</strong>
-<button id="modalPlus">+</button>
-</div>
+  <div class="modal-content">
 
-<button class="primary-btn" id="modalAdd">ADD TO CART</button>
-<button class="secondary-btn" id="modalGoCart">GO TO CART / CHECKOUT</button>
-</div>
+    <button class="modal-close" id="modalClose" type="button">×</button>
+
+    <img class="modal-image" id="modalImage" src="" alt="">
+
+    <h2 id="modalName"></h2>
+
+    <div class="modal-price" id="modalPrice"></div>
+
+    <div class="research">FOR RESEARCH USE ONLY</div>
+
+    <div class="qty-controls">
+      <button id="modalMinus" type="button">−</button>
+      <strong id="modalQuantity">1</strong>
+      <button id="modalPlus" type="button">+</button>
+    </div>
+
+    <button class="primary-btn" id="modalAdd" type="button">
+      ADD TO CART
+    </button>
+
+    <button class="secondary-btn" id="modalGoCart" type="button">
+      GO TO CART / CHECKOUT
+    </button>
+
+  </div>
 </div>
 
 <footer>
-<p>© 2026 NovaPeps USA</p>
-<p>novapeps22@gmail.com</p>
-<p>(832) 273-9625</p>
-<p class="notice" style="color:#aaa;">All products are presented for research use only.</p>
+  <p>© 2026 NovaPeps USA</p>
+  <p>novapeps22@gmail.com</p>
+  <p>(832) 273-9625</p>
+
+  <p class="notice" style="color:#aaa;">
+    All products are presented for research use only.
+  </p>
 </footer>
 
 <script>
 
-const PRODUCTS=[
-{name:"MOTS-C 10 MG",price:60,image:"./25BAD52D-CE6D-497C-898E-70448C534E31.png"},
-{name:"GLP-2 10 MG",price:90,image:"./89E739CC-041E-4FAE-A417-91B04205538F.png"},
-{name:"GHK-CU 100 MG",price:50,image:"./E5957939-2A35-4106-B59E-118EE61FCD6B.png"},
-{name:"GLP-3 10 MG",price:95,image:"./4370627F-46AF-488D-9877-BB42B9C9AF90.png"},
-{name:"GLP-2 20 MG",price:110,image:"./9130C144-577C-4B9A-8DCD-2918ED68069D.png"},
-{name:"GLP-3 20 MG",price:135,image:"./065B33AF-7FEA-45A7-B5BF-9634422FF905.png"},
-{name:"GLUTATHIONE 1500 MG",price:60,image:"./12A73595-5804-4602-987C-58FF1FFB7880.png"},
-{name:"NAD+ 500 MG",price:50,image:"./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png"}
+const PRODUCTS = [
+  {
+    name:"MOTS-C 10 MG",
+    price:60,
+    image:"./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"
+  },
+  {
+    name:"GLP-2 10 MG",
+    price:90,
+    image:"./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"
+  },
+  {
+    name:"GHK-CU 100 MG",
+    price:50,
+    image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"
+  },
+  {
+    name:"GLP-3 10 MG",
+    price:95,
+    image:"./713BA234-721B-4580-94DF-6677375C7826.png"
+  },
+  {
+    name:"GLP-2 20 MG",
+    price:110,
+    image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"
+  },
+  {
+    name:"GLP-3 20 MG",
+    price:135,
+    image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"
+  },
+  {
+    name:"GLUTATHIONE 1500 MG",
+    price:60,
+    image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"
+  },
+  {
+    name:"NAD+ 500 MG",
+    price:50,
+    image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"
+  }
 ];
 
-const STORAGE={
-selected:"novaSelectedProducts",
-favorites:"novaFavoriteProducts",
-shipping:"novaShippingOption",
-payment:"novaPaymentOption",
-lastOrder:"novaLastOrder",
-age:"novaAgeConfirmed"
+const STORAGE = {
+  selected:"novaSelectedProducts",
+  favorites:"novaFavoriteProducts",
+  shipping:"novaShippingOption",
+  payment:"novaPaymentOption",
+  lastOrder:"novaLastOrder",
+  age:"novaAgeConfirmed"
 };
 
-let selectedProducts=[];
-let favorites=[];
-let modalProduct=null;
-let modalQuantity=1;
+let selectedProducts = [];
+let favorites = [];
+let modalProduct = null;
+let modalQuantity = 1;
 
 function getStorage(key,fallback){
-try{
-const value=localStorage.getItem(key);
-if(value===null)return fallback;
-return JSON.parse(value);
-}catch(error){return fallback;}
+  try{
+    const value = localStorage.getItem(key);
+    if(value === null){
+      return fallback;
+    }
+    return JSON.parse(value);
+  }catch(error){
+    return fallback;
+  }
 }
 
 function setStorage(key,value){
-try{localStorage.setItem(key,JSON.stringify(value));}catch(error){}
+  try{
+    localStorage.setItem(key,JSON.stringify(value));
+  }catch(error){}
 }
 
 function enterSite(){
-try{localStorage.setItem(STORAGE.age,"true");}catch(error){}
-document.getElementById("ageGate").classList.add("hidden");
-document.body.classList.remove("locked");
+  try{
+    localStorage.setItem(STORAGE.age,"true");
+  }catch(error){}
+
+  const gate = document.getElementById("ageGate");
+
+  if(gate){
+    gate.classList.add("hidden");
+  }
+
+  document.body.classList.remove("locked");
 }
 
 function leaveSite(){
-try{localStorage.removeItem(STORAGE.age);}catch(error){}
-document.body.innerHTML='<div style="height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;"><div><h1>Thank you.</h1><p>You have chosen to exit this website.</p></div></div>';
+  try{
+    localStorage.removeItem(STORAGE.age);
+  }catch(error){}
+
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-family:Arial;
+      padding:30px;
+    ">
+      <div>
+        <h1>Thank you.</h1>
+        <p>You have chosen to exit this website.</p>
+      </div>
+    </div>
+  `;
 }
 
 function initializeAgeGate(){
-let confirmed=false;
-try{confirmed=localStorage.getItem(STORAGE.age)==="true";}catch(error){}
 
-if(confirmed){
-document.getElementById("ageGate").classList.add("hidden");
-document.body.classList.remove("locked");
-}else{
-document.body.classList.add("locked");
-}
+  const gate = document.getElementById("ageGate");
+  const enter = document.getElementById("ageEnterBtn");
+  const exit = document.getElementById("ageExitBtn");
 
-document.getElementById("ageEnterBtn").addEventListener("click",enterSite);
-document.getElementById("ageExitBtn").addEventListener("click",leaveSite);
+  let confirmed = false;
+
+  try{
+    confirmed = localStorage.getItem(STORAGE.age) === "true";
+  }catch(error){}
+
+  if(confirmed){
+    gate.classList.add("hidden");
+    document.body.classList.remove("locked");
+  }else{
+    gate.classList.remove("hidden");
+    document.body.classList.add("locked");
+  }
+
+  enter.addEventListener("click",function(event){
+    event.preventDefault();
+    enterSite();
+  });
+
+  exit.addEventListener("click",function(event){
+    event.preventDefault();
+    leaveSite();
+  });
 }
 
 function openMenu(){
-document.getElementById("sideMenu").classList.add("open");
-document.getElementById("overlay").classList.add("show");
+  document.getElementById("sideMenu").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
 }
 
 function closeMenu(){
-document.getElementById("sideMenu").classList.remove("open");
+  document.getElementById("sideMenu").classList.remove("open");
 }
 
 document.getElementById("menuBtn").addEventListener("click",openMenu);
 document.getElementById("sideClose").addEventListener("click",closeMenu);
 
 function openPanel(id){
-closeMenu();
-document.getElementById(id).classList.add("open");
-document.getElementById("overlay").classList.add("show");
-if(id==="listPanel")renderSelectedProducts();
-if(id==="cartPanel")renderCart();
+
+  closeMenu();
+
+  document.getElementById(id).classList.add("open");
+  document.getElementById("overlay").classList.add("show");
+
+  if(id === "listPanel"){
+    renderSelectedProducts();
+  }
+
+  if(id === "cartPanel"){
+    renderCart();
+  }
 }
 
 function closePanel(id){
-document.getElementById(id).classList.remove("open");
-const anyPanel=document.querySelector(".panel.open");
-if(!anyPanel&&!document.getElementById("sideMenu").classList.contains("open")){
-document.getElementById("overlay").classList.remove("show");
-}
+
+  document.getElementById(id).classList.remove("open");
+
+  const anyPanel = document.querySelector(".panel.open");
+
+  if(
+    !anyPanel &&
+    !document.getElementById("sideMenu").classList.contains("open")
+  ){
+    document.getElementById("overlay").classList.remove("show");
+  }
 }
 
 function closeAllPanels(){
-document.querySelectorAll(".panel.open").forEach(panel=>panel.classList.remove("open"));
-document.getElementById("sideMenu").classList.remove("open");
-document.getElementById("overlay").classList.remove("show");
-closeProductModal();
+
+  document.querySelectorAll(".panel.open").forEach(
+    panel => panel.classList.remove("open")
+  );
+
+  document.getElementById("sideMenu").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+
+  closeProductModal();
 }
 
 document.getElementById("overlay").addEventListener("click",closeAllPanels);
 
-document.querySelectorAll("[data-open-panel]").forEach(button=>{
-button.addEventListener("click",function(){openPanel(this.dataset.openPanel);});
+document.querySelectorAll("[data-open-panel]").forEach(button => {
+  button.addEventListener("click",function(){
+    openPanel(this.dataset.openPanel);
+  });
 });
 
-document.querySelectorAll("[data-close-panel]").forEach(button=>{
-button.addEventListener("click",function(){closePanel(this.dataset.closePanel);});
+document.querySelectorAll("[data-close-panel]").forEach(button => {
+  button.addEventListener("click",function(){
+    closePanel(this.dataset.closePanel);
+  });
 });
 
 document.getElementById("headerSearchBtn").addEventListener("click",function(){
-openMenu();
-setTimeout(()=>document.getElementById("searchInput").focus(),250);
+
+  openMenu();
+
+  setTimeout(function(){
+    const input = document.getElementById("searchInput");
+
+    if(input){
+      input.focus();
+    }
+  },250);
 });
 
-document.getElementById("headerCartBtn").addEventListener("click",()=>openPanel("cartPanel"));
+document.getElementById("headerCartBtn").addEventListener("click",function(){
+  openPanel("cartPanel");
+});
 
 function findProduct(name){
-return PRODUCTS.find(product=>product.name===name);
+  return PRODUCTS.find(product => product.name === name);
 }
 
 function normalize(text){
-return String(text).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  return String(text)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"");
 }
 
 function saveSelected(){
-setStorage(STORAGE.selected,selectedProducts);
+  setStorage(STORAGE.selected,selectedProducts);
 }
 
 function subtotal(){
-return selectedProducts.reduce((total,item)=>total+item.price*item.quantity,0);
+  return selectedProducts.reduce(
+    (total,item) => total + item.price * item.quantity,
+    0
+  );
 }
 
 function addToList(product,quantity=1){
-const existing=selectedProducts.find(item=>item.name===product.name);
 
-if(existing){
-existing.quantity+=quantity;
-}else{
-selectedProducts.push({
-name:product.name,
-price:product.price,
-image:product.image,
-quantity:quantity
-});
-}
+  const existing = selectedProducts.find(
+    item => item.name === product.name
+  );
 
-saveSelected();
-updateCartCount();
-renderSelectedProducts();
-renderCart();
+  if(existing){
+    existing.quantity += quantity;
+  }else{
+    selectedProducts.push({
+      name:product.name,
+      price:product.price,
+      image:product.image,
+      quantity:quantity
+    });
+  }
+
+  saveSelected();
+  updateCartCount();
+  renderSelectedProducts();
+  renderCart();
 }
 
 function changeQuantity(name,change){
-const item=selectedProducts.find(product=>product.name===name);
-if(!item)return;
 
-item.quantity+=change;
+  const item = selectedProducts.find(
+    product => product.name === name
+  );
 
-if(item.quantity<=0){
-selectedProducts=selectedProducts.filter(product=>product.name!==name);
-}
+  if(!item){
+    return;
+  }
 
-saveSelected();
-renderSelectedProducts();
-renderCart();
-updateCartCount();
+  item.quantity += change;
+
+  if(item.quantity <= 0){
+    selectedProducts = selectedProducts.filter(
+      product => product.name !== name
+    );
+  }
+
+  saveSelected();
+  renderSelectedProducts();
+  renderCart();
+  updateCartCount();
 }
 
 function removeProduct(name){
-selectedProducts=selectedProducts.filter(item=>item.name!==name);
-saveSelected();
-renderSelectedProducts();
-renderCart();
-updateCartCount();
+
+  selectedProducts = selectedProducts.filter(
+    item => item.name !== name
+  );
+
+  saveSelected();
+  renderSelectedProducts();
+  renderCart();
+  updateCartCount();
 }
 
 function clearCart(){
-selectedProducts=[];
-saveSelected();
-renderSelectedProducts();
-renderCart();
-updateCartCount();
+  selectedProducts = [];
+  saveSelected();
+  renderSelectedProducts();
+  renderCart();
+  updateCartCount();
 }
 
 function renderSelectedProducts(){
-const container=document.getElementById("selectedProducts");
-const total=document.getElementById("listTotal");
 
-if(selectedProducts.length===0){
-container.innerHTML='<p class="notice">No products selected.</p>';
-total.textContent="$0.00";
-return;
-}
+  const container = document.getElementById("selectedProducts");
+  const total = document.getElementById("listTotal");
 
-container.innerHTML=selectedProducts.map(item=>`
-<div class="selected-item">
-<img src="${item.image}" alt="${escapeHtml(item.name)}">
-<div class="selected-info">
-<strong>${escapeHtml(item.name)}</strong>
-<div>$${item.price.toFixed(2)}</div>
-<div class="qty-controls">
-<button onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
-<strong>${item.quantity}</strong>
-<button onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-<button class="remove-btn" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
-</div>
-</div>
-</div>
-`).join("");
+  if(selectedProducts.length === 0){
+    container.innerHTML = '<p class="notice">No products selected.</p>';
+    total.textContent = "$0.00";
+    return;
+  }
 
-total.textContent="$"+subtotal().toFixed(2);
+  container.innerHTML = selectedProducts.map(item => `
+
+    <div class="selected-item">
+
+      <img
+        src="${item.image}"
+        alt="${escapeHtml(item.name)}"
+      >
+
+      <div class="selected-info">
+
+        <strong>${escapeHtml(item.name)}</strong>
+
+        <div>$${item.price.toFixed(2)}</div>
+
+        <div class="qty-controls">
+
+          <button
+            type="button"
+            onclick="changeQuantity('${escapeJs(item.name)}',-1)"
+          >
+            −
+          </button>
+
+          <strong>${item.quantity}</strong>
+
+          <button
+            type="button"
+            onclick="changeQuantity('${escapeJs(item.name)}',1)"
+          >
+            +
+          </button>
+
+          <button
+            class="remove-btn"
+            type="button"
+            onclick="removeProduct('${escapeJs(item.name)}')"
+          >
+            Remove
+          </button>
+
+        </div>
+      </div>
+    </div>
+  `).join("");
+
+  total.textContent = "$" + subtotal().toFixed(2);
 }
 
 function updateCartCount(){
-const count=selectedProducts.reduce((sum,item)=>sum+item.quantity,0);
-document.getElementById("cartCount").textContent=count;
-document.getElementById("headerCartCount").textContent=count;
+
+  const count = selectedProducts.reduce(
+    (sum,item) => sum + item.quantity,
+    0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+
+  const headerCount = document.getElementById("headerCartCount");
+
+  if(headerCount){
+    headerCount.textContent = count;
+  }
 }
 
 function getShippingCost(){
-const selected=document.querySelector('input[name="shipping"]:checked');
-if(!selected)return 0;
-if(selected.value==="standard")return 9;
-if(selected.value==="express")return 15;
-if(selected.value==="free")return subtotal()>=200?0:9;
-return 0;
+
+  const selected = document.querySelector(
+    'input[name="shipping"]:checked'
+  );
+
+  if(!selected){
+    return 0;
+  }
+
+  if(selected.value === "standard"){
+    return 9;
+  }
+
+  if(selected.value === "express"){
+    return 15;
+  }
+
+  if(selected.value === "free"){
+    return subtotal() >= 200 ? 0 : 9;
+  }
+
+  return 0;
 }
 
 function getShippingName(){
-const selected=document.querySelector('input[name="shipping"]:checked');
-if(!selected)return "";
-if(selected.value==="standard")return "Standard";
-if(selected.value==="express")return "Express";
-if(selected.value==="free")return "Free Shipping";
-return "";
+
+  const selected = document.querySelector(
+    'input[name="shipping"]:checked'
+  );
+
+  if(!selected){
+    return "";
+  }
+
+  if(selected.value === "standard"){
+    return "Standard";
+  }
+
+  if(selected.value === "express"){
+    return "Express";
+  }
+
+  if(selected.value === "free"){
+    return "Free Shipping";
+  }
+
+  return "";
 }
 
 function getPayment(){
-const selected=document.querySelector('input[name="payment"]:checked');
-return selected?selected.value:"";
+
+  const selected = document.querySelector(
+    'input[name="payment"]:checked'
+  );
+
+  return selected ? selected.value : "";
 }
 
 function renderCart(){
-const container=document.getElementById("cartItems");
 
-if(selectedProducts.length===0){
-container.innerHTML='<p class="notice">Your cart is empty.</p>';
-}else{
-container.innerHTML=selectedProducts.map(item=>`
-<div class="selected-item">
-<img src="${item.image}" alt="${escapeHtml(item.name)}">
-<div class="selected-info">
-<strong>${escapeHtml(item.name)}</strong>
-<div>$${item.price.toFixed(2)}</div>
-<div class="qty-controls">
-<button onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
-<strong>${item.quantity}</strong>
-<button onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-<button class="remove-btn" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
-</div>
-</div>
-</div>
-`).join("");
-}
+  const container = document.getElementById("cartItems");
 
-updateTotals();
+  if(selectedProducts.length === 0){
+
+    container.innerHTML =
+      '<p class="notice">Your cart is empty.</p>';
+
+  }else{
+
+    container.innerHTML = selectedProducts.map(item => `
+
+      <div class="selected-item">
+
+        <img
+          src="${item.image}"
+          alt="${escapeHtml(item.name)}"
+        >
+
+        <div class="selected-info">
+
+          <strong>${escapeHtml(item.name)}</strong>
+
+          <div>$${item.price.toFixed(2)}</div>
+
+          <div class="qty-controls">
+
+            <button
+              type="button"
+              onclick="changeQuantity('${escapeJs(item.name)}',-1)"
+            >
+              −
+            </button>
+
+            <strong>${item.quantity}</strong>
+
+            <button
+              type="button"
+              onclick="changeQuantity('${escapeJs(item.name)}',1)"
+            >
+              +
+            </button>
+
+            <button
+              class="remove-btn"
+              type="button"
+              onclick="removeProduct('${escapeJs(item.name)}')"
+            >
+              Remove
+            </button>
+
+          </div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  updateTotals();
 }
 
 function updateTotals(){
-const sub=subtotal();
-const shipping=getShippingCost();
-const total=sub+shipping;
 
-document.getElementById("subtotal").textContent="$"+sub.toFixed(2);
-document.getElementById("shippingCost").textContent="$"+shipping.toFixed(2);
-document.getElementById("grandTotal").textContent="$"+total.toFixed(2);
-updateFormHiddenFields();
+  const sub = subtotal();
+  const shipping = getShippingCost();
+  const total = sub + shipping;
+
+  document.getElementById("subtotal").textContent =
+    "$" + sub.toFixed(2);
+
+  document.getElementById("shippingCost").textContent =
+    "$" + shipping.toFixed(2);
+
+  document.getElementById("grandTotal").textContent =
+    "$" + total.toFixed(2);
+
+  updateFormHiddenFields();
 }
 
 function restoreOptions(){
-const shipping=getStorage(STORAGE.shipping,null);
-const payment=getStorage(STORAGE.payment,null);
 
-if(shipping){
-const input=document.querySelector(`input[name="shipping"][value="${shipping}"]`);
-if(input)input.checked=true;
+  const shipping = getStorage(STORAGE.shipping,null);
+  const payment = getStorage(STORAGE.payment,null);
+
+  if(shipping){
+
+    const input = document.querySelector(
+      `input[name="shipping"][value="${shipping}"]`
+    );
+
+    if(input){
+      input.checked = true;
+    }
+  }
+
+  if(payment){
+
+    const input = document.querySelector(
+      `input[name="payment"][value="${payment}"]`
+    );
+
+    if(input){
+      input.checked = true;
+    }
+  }
 }
 
-if(payment){
-const input=document.querySelector(`input[name="payment"][value="${payment}"]`);
-if(input)input.checked=true;
-}
-}
+document.querySelectorAll('input[name="shipping"]').forEach(input => {
 
-document.querySelectorAll('input[name="shipping"]').forEach(input=>{
-input.addEventListener("change",function(){
-setStorage(STORAGE.shipping,this.value);
-updateTotals();
-});
+  input.addEventListener("change",function(){
+
+    setStorage(STORAGE.shipping,this.value);
+    updateTotals();
+
+  });
 });
 
-document.querySelectorAll('input[name="payment"]').forEach(input=>{
-input.addEventListener("change",function(){
-setStorage(STORAGE.payment,this.value);
-updateFormHiddenFields();
-});
+document.querySelectorAll('input[name="payment"]').forEach(input => {
+
+  input.addEventListener("change",function(){
+
+    setStorage(STORAGE.payment,this.value);
+    updateFormHiddenFields();
+
+  });
 });
 
-document.getElementById("cartFloating").addEventListener("click",()=>openPanel("cartPanel"));
+document.getElementById("cartFloating").addEventListener("click",function(){
+  openPanel("cartPanel");
+});
 
 document.getElementById("openCartFromList").addEventListener("click",function(){
-closePanel("listPanel");
-openPanel("cartPanel");
+  closePanel("listPanel");
+  openPanel("cartPanel");
 });
 
-document.getElementById("clearCartBtn").addEventListener("click",clearCart);
+document.getElementById("clearCartBtn").addEventListener("click",function(){
+  clearCart();
+});
 
 document.getElementById("checkoutBtn").addEventListener("click",function(){
 
-if(selectedProducts.length===0){
-alert("Please select at least one product.");
-return;
-}
+  if(selectedProducts.length === 0){
+    alert("Please select at least one product.");
+    return;
+  }
 
-const shipping=document.querySelector('input[name="shipping"]:checked');
+  const shipping = document.querySelector(
+    'input[name="shipping"]:checked'
+  );
 
-if(!shipping){
-alert("Please select a shipping option.");
-return;
-}
+  if(!shipping){
+    alert("Please select a shipping option.");
+    return;
+  }
 
-if(shipping.value==="free"&&subtotal()<200){
-alert("Free Shipping is available only for orders of $200 or more.");
-return;
-}
+  if(shipping.value === "free" && subtotal() < 200){
+    alert("Free Shipping is available only for orders of $200 or more.");
+    return;
+  }
 
-const payment=document.querySelector('input[name="payment"]:checked');
+  const payment = document.querySelector(
+    'input[name="payment"]:checked'
+  );
 
-if(!payment){
-alert("Please select a payment method.");
-return;
-}
+  if(!payment){
+    alert("Please select a payment method.");
+    return;
+  }
 
-prepareInformationForm();
-closePanel("cartPanel");
-openPanel("informationPanel");
+  prepareInformationForm();
+  closePanel("cartPanel");
+  openPanel("informationPanel");
 });
 
 function generateReference(){
-return String(Math.floor(1000+Math.random()*9000));
+
+  return String(
+    Math.floor(
+      1000 +
+      Math.random() *
+      9000
+    )
+  );
 }
 
 function prepareInformationForm(){
-const code=generateReference();
-document.getElementById("referenceDisplay").textContent=code;
-document.getElementById("formReference").value=code;
-updateFormHiddenFields();
+
+  const code = generateReference();
+
+  document.getElementById("referenceDisplay").textContent = code;
+  document.getElementById("formReference").value = code;
+
+  updateFormHiddenFields();
 }
 
 function updateFormHiddenFields(){
-const productsText=selectedProducts
-.map(item=>`${item.name} x${item.quantity} - $${(item.price*item.quantity).toFixed(2)}`)
-.join("\n");
 
-const sub=subtotal();
-const shippingCost=getShippingCost();
-const total=sub+shippingCost;
+  const productsText = selectedProducts
+    .map(
+      item =>
+        `${item.name} x${item.quantity} - $${(
+          item.price * item.quantity
+        ).toFixed(2)}`
+    )
+    .join("\n");
 
-document.getElementById("formProducts").value=productsText;
-document.getElementById("formSubtotal").value="$"+sub.toFixed(2);
-document.getElementById("formShipping").value=getShippingName();
-document.getElementById("formShippingCost").value="$"+shippingCost.toFixed(2);
-document.getElementById("formTotal").value="$"+total.toFixed(2);
-document.getElementById("formPayment").value=getPayment();
+  const sub = subtotal();
+  const shippingCost = getShippingCost();
+  const total = sub + shippingCost;
+
+  document.getElementById("formProducts").value = productsText;
+  document.getElementById("formSubtotal").value = "$" + sub.toFixed(2);
+  document.getElementById("formShipping").value = getShippingName();
+  document.getElementById("formShippingCost").value = "$" + shippingCost.toFixed(2);
+  document.getElementById("formTotal").value = "$" + total.toFixed(2);
+  document.getElementById("formPayment").value = getPayment();
 }
 
 function saveLastOrder(reference){
-const shippingCost=getShippingCost();
-const sub=subtotal();
 
-const order={
-reference:reference,
-products:selectedProducts,
-subtotal:sub,
-shipping:getShippingName(),
-shippingCost:shippingCost,
-total:sub+shippingCost,
-payment:getPayment(),
-createdAt:new Date().toISOString()
-};
+  const shippingCost = getShippingCost();
+  const sub = subtotal();
 
-setStorage(STORAGE.lastOrder,order);
-return order;
+  const order = {
+    reference:reference,
+    products:selectedProducts,
+    subtotal:sub,
+    shipping:getShippingName(),
+    shippingCost:shippingCost,
+    total:sub + shippingCost,
+    payment:getPayment(),
+    createdAt:new Date().toISOString()
+  };
+
+  setStorage(STORAGE.lastOrder,order);
+
+  return order;
 }
 
-/* PAYMENT */
+/* =====================================================
+   PAYMENT INFORMATION
+===================================================== */
 
 function showPaymentInformation(order){
 
-const box=document.getElementById("paymentFinal");
-const amount=order.total.toFixed(2);
-const reference=order.reference;
+  const box = document.getElementById("paymentFinal");
 
-let html=`
-<p><strong>Order number:</strong> ${escapeHtml(reference)}</p>
-<p><strong>Amount:</strong> $${amount}</p>
-`;
+  const amount = order.total.toFixed(2);
+  const reference = order.reference;
 
-if(order.payment==="zelle"){
-html+=`
-<div class="payment zelle">
-<h3>Zelle</h3>
-<p><strong>Name:</strong> Araceli Hernández</p>
-<p><strong>Phone:</strong> (832) 273-9625</p>
-<p><strong>Amount:</strong> $${amount}</p>
-<p>Please include order number <strong>${escapeHtml(reference)}</strong> in the memo.</p>
+  let html = `
 
-<button class="copy-btn" type="button" onclick="copyText('8322739625')">
-COPY ZELLE NUMBER
-</button>
-</div>
-`;
+    <p>
+      <strong>Order number:</strong>
+      ${escapeHtml(reference)}
+    </p>
+
+    <p>
+      <strong>Amount:</strong>
+      $${amount}
+    </p>
+
+  `;
+
+  if(order.payment === "zelle"){
+
+    html += `
+
+      <div class="payment zelle">
+
+        <div class="payment-title">
+          <span class="payment-logo zelle-logo">Z</span>
+          <h3>Zelle</h3>
+        </div>
+
+        <p>
+          <strong>Name:</strong>
+          Araceli Hernández
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          (832) 273-9625
+        </p>
+
+        <p>
+          <strong>Amount:</strong>
+          $${amount}
+        </p>
+
+        <p>
+          Please include order number
+          <strong>${escapeHtml(reference)}</strong>
+          in the memo.
+        </p>
+
+        <button
+          class="copy-btn"
+          type="button"
+          onclick="copyText('8322739625')"
+        >
+          COPY ZELLE NUMBER
+        </button>
+
+      </div>
+    `;
+  }
+
+  if(order.payment === "venmo"){
+
+    const venmoNote =
+      encodeURIComponent(
+        "NovaPeps Order " + reference
+      );
+
+    const venmoUrl =
+      "https://venmo.com/novapeps22" +
+      "?txn=pay" +
+      "&amount=" +
+      encodeURIComponent(amount) +
+      "&note=" +
+      venmoNote;
+
+    html += `
+
+      <div class="payment venmo">
+
+        <div class="payment-title">
+          <span class="payment-logo venmo-logo">V</span>
+          <h3>Venmo</h3>
+        </div>
+
+        <p>
+          <strong>Venmo:</strong>
+          @novapeps22
+        </p>
+
+        <p>
+          <strong>Name:</strong>
+          Araceli Hernández
+        </p>
+
+        <p>
+          <strong>Amount:</strong>
+          $${amount}
+        </p>
+
+        <p>
+          Order number:
+          <strong>${escapeHtml(reference)}</strong>
+        </p>
+
+        <a
+          href="${venmoUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pay-link venmo-pay"
+        >
+          PAY WITH VENMO
+        </a>
+
+        <button
+          class="copy-btn"
+          type="button"
+          onclick="copyText('@novapeps22')"
+        >
+          COPY VENMO
+        </button>
+
+      </div>
+    `;
+  }
+
+  if(order.payment === "paypal"){
+
+    const paypalUrl =
+      "https://paypal.me/novapeps22/" +
+      encodeURIComponent(amount) +
+      "?currencyCode=USD";
+
+    html += `
+
+      <div class="payment paypal">
+
+        <div class="payment-title">
+          <span class="payment-logo paypal-logo">P</span>
+          <h3>PayPal</h3>
+        </div>
+
+        <p>
+          <strong>PayPal.Me:</strong>
+          @novapeps22
+        </p>
+
+        <p>
+          <strong>Name:</strong>
+          Araceli Hernández
+        </p>
+
+        <p>
+          <strong>Amount:</strong>
+          $${amount}
+        </p>
+
+        <p>
+          Order number:
+          <strong>${escapeHtml(reference)}</strong>
+        </p>
+
+        <a
+          href="${paypalUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pay-link paypal-pay"
+        >
+          PAY WITH PAYPAL
+        </a>
+
+      </div>
+    `;
+  }
+
+  box.innerHTML = html;
 }
 
-if(order.payment==="venmo"){
+document.getElementById("informationForm").addEventListener(
+  "submit",
+  async function(event){
 
-const venmoNote=encodeURIComponent("NovaPeps Order "+reference);
+    event.preventDefault();
 
-const venmoUrl=
-"https://venmo.com/novapeps22"+
-"?txn=pay"+
-"&amount="+encodeURIComponent(amount)+
-"&note="+venmoNote;
+    const form = this;
+    const button = form.querySelector('button[type="submit"]');
 
-html+=`
-<div class="payment venmo">
-<h3>Venmo</h3>
-<p><strong>Venmo:</strong> @novapeps22</p>
-<p><strong>Name:</strong> Araceli Hernández</p>
-<p><strong>Amount:</strong> $${amount}</p>
-<p>Order number: <strong>${escapeHtml(reference)}</strong></p>
+    const reference = document.getElementById("formReference").value;
 
-<a
-href="${venmoUrl}"
-target="_blank"
-rel="noopener noreferrer"
-class="primary-btn"
-style="display:block;text-align:center;text-decoration:none;">
-PAY WITH VENMO
-</a>
+    if(!reference){
+      prepareInformationForm();
+    }
 
-<button class="copy-btn" type="button" onclick="copyText('@novapeps22')">
-COPY VENMO
-</button>
-</div>
-`;
-}
+    updateFormHiddenFields();
 
-if(order.payment==="paypal"){
+    button.disabled = true;
+    button.textContent = "SENDING...";
 
-const paypalUrl=
-"https://paypal.me/novapeps22/"+
-encodeURIComponent(amount)+
-"?currencyCode=USD";
+    try{
 
-html+=`
-<div class="payment paypal">
-<h3>PayPal</h3>
-<p><strong>PayPal.Me:</strong> @novapeps22</p>
-<p><strong>Name:</strong> Araceli Hernández</p>
-<p><strong>Amount:</strong> $${amount}</p>
-<p>Order number: <strong>${escapeHtml(reference)}</strong></p>
+      const response = await fetch(
+        form.action,
+        {
+          method:"POST",
+          body:new FormData(form),
+          headers:{
+            "Accept":"application/json"
+          }
+        }
+      );
 
-<a
-href="${paypalUrl}"
-target="_blank"
-rel="noopener noreferrer"
-class="primary-btn"
-style="display:block;text-align:center;text-decoration:none;">
-PAY WITH PAYPAL
-</a>
-</div>
-`;
-}
+      if(!response.ok){
+        throw new Error("Submission failed");
+      }
 
-box.innerHTML=html;
-}
+      const order = saveLastOrder(
+        document.getElementById("formReference").value
+      );
 
-/* FORMSPREE */
+      form.style.display = "none";
 
-document.getElementById("informationForm").addEventListener("submit",async function(event){
+      document.getElementById("finalConfirmation").style.display =
+        "block";
 
-event.preventDefault();
+      showPaymentInformation(order);
 
-const form=this;
-const button=form.querySelector('button[type="submit"]');
-const reference=document.getElementById("formReference").value;
+    }catch(error){
 
-if(!reference){
-prepareInformationForm();
-}
+      alert(
+        "There was a problem sending the information. Please try again."
+      );
 
-updateFormHiddenFields();
-
-button.disabled=true;
-button.textContent="SENDING...";
-
-try{
-
-const response=await fetch(form.action,{
-method:"POST",
-body:new FormData(form),
-headers:{"Accept":"application/json"}
-});
-
-if(!response.ok){
-throw new Error("Submission failed");
-}
-
-const order=saveLastOrder(document.getElementById("formReference").value);
-
-form.style.display="none";
-document.getElementById("finalConfirmation").style.display="block";
-
-showPaymentInformation(order);
-
-}catch(error){
-
-alert("There was a problem sending the information. Please try again.");
-
-button.disabled=false;
-button.textContent="SEND INFORMATION";
-}
-});
+      button.disabled = false;
+      button.textContent = "SEND INFORMATION";
+    }
+  }
+);
 
 function copyText(text){
 
-if(navigator.clipboard&&navigator.clipboard.writeText){
+  if(navigator.clipboard && navigator.clipboard.writeText){
 
-navigator.clipboard.writeText(text)
-.then(()=>alert("Information copied"))
-.catch(()=>fallbackCopy(text));
+    navigator.clipboard
+      .writeText(text)
+      .then(function(){
+        alert("Information copied");
+      })
+      .catch(function(){
+        fallbackCopy(text);
+      });
 
-}else{
-fallbackCopy(text);
-}
+  }else{
+    fallbackCopy(text);
+  }
 }
 
 function fallbackCopy(text){
 
-const textarea=document.createElement("textarea");
-textarea.value=text;
-document.body.appendChild(textarea);
-textarea.select();
+  const textarea = document.createElement("textarea");
 
-try{
-document.execCommand("copy");
-alert("Information copied");
-}catch(error){
-alert("Could not copy the information.");
-}
+  textarea.value = text;
 
-document.body.removeChild(textarea);
+  document.body.appendChild(textarea);
+
+  textarea.select();
+
+  try{
+
+    document.execCommand("copy");
+    alert("Information copied");
+
+  }catch(error){
+
+    alert("Could not copy the information.");
+
+  }
+
+  document.body.removeChild(textarea);
 }
 
 function loadFavorites(){
 
-favorites=getStorage(STORAGE.favorites,[]);
+  favorites = getStorage(STORAGE.favorites,[]);
 
-document.querySelectorAll(".favorite-btn").forEach(button=>{
-const name=button.dataset.favorite;
+  document.querySelectorAll(".favorite-btn").forEach(button => {
 
-if(favorites.includes(name)){
-button.classList.add("active");
-button.textContent="♥";
-}
-});
-}
+    const name = button.dataset.favorite;
 
-document.querySelectorAll(".favorite-btn").forEach(button=>{
-
-button.addEventListener("click",function(event){
-
-event.stopPropagation();
-
-const name=this.dataset.favorite;
-
-if(favorites.includes(name)){
-favorites=favorites.filter(item=>item!==name);
-this.classList.remove("active");
-this.textContent="♡";
-}else{
-favorites.push(name);
-this.classList.add("active");
-this.textContent="♥";
+    if(favorites.includes(name)){
+      button.classList.add("active");
+      button.textContent = "♥";
+    }
+  });
 }
 
-setStorage(STORAGE.favorites,favorites);
-});
+document.querySelectorAll(".favorite-btn").forEach(button => {
+
+  button.addEventListener("click",function(event){
+
+    event.stopPropagation();
+
+    const name = this.dataset.favorite;
+
+    if(favorites.includes(name)){
+
+      favorites = favorites.filter(
+        item => item !== name
+      );
+
+      this.classList.remove("active");
+      this.textContent = "♡";
+
+    }else{
+
+      favorites.push(name);
+      this.classList.add("active");
+      this.textContent = "♥";
+    }
+
+    setStorage(STORAGE.favorites,favorites);
+  });
 });
 
 function openProductModal(product){
 
-modalProduct=product;
-modalQuantity=1;
+  modalProduct = product;
+  modalQuantity = 1;
 
-document.getElementById("modalImage").src=product.image;
-document.getElementById("modalImage").alt=product.name;
-document.getElementById("modalName").textContent=product.name;
-document.getElementById("modalPrice").textContent="$"+product.price.toFixed(2);
-document.getElementById("modalQuantity").textContent=modalQuantity;
+  document.getElementById("modalImage").src = product.image;
+  document.getElementById("modalImage").alt = product.name;
+  document.getElementById("modalName").textContent = product.name;
 
-document.getElementById("productModal").classList.add("open");
+  document.getElementById("modalPrice").textContent =
+    "$" + product.price.toFixed(2);
+
+  document.getElementById("modalQuantity").textContent =
+    modalQuantity;
+
+  document.getElementById("productModal").classList.add("open");
 }
 
 function closeProductModal(){
-document.getElementById("productModal").classList.remove("open");
-modalProduct=null;
+
+  document.getElementById("productModal").classList.remove("open");
+  modalProduct = null;
 }
 
 function changeModalQuantity(change){
 
-modalQuantity+=change;
+  modalQuantity += change;
 
-if(modalQuantity<1){
-modalQuantity=1;
+  if(modalQuantity < 1){
+    modalQuantity = 1;
+  }
+
+  document.getElementById("modalQuantity").textContent =
+    modalQuantity;
 }
 
-document.getElementById("modalQuantity").textContent=modalQuantity;
-}
+document.getElementById("modalClose").addEventListener(
+  "click",
+  closeProductModal
+);
 
-document.getElementById("modalClose").addEventListener("click",closeProductModal);
-document.getElementById("modalMinus").addEventListener("click",()=>changeModalQuantity(-1));
-document.getElementById("modalPlus").addEventListener("click",()=>changeModalQuantity(1));
+document.getElementById("modalMinus").addEventListener(
+  "click",
+  () => changeModalQuantity(-1)
+);
+
+document.getElementById("modalPlus").addEventListener(
+  "click",
+  () => changeModalQuantity(1)
+);
 
 document.getElementById("modalAdd").addEventListener("click",function(){
 
-if(!modalProduct)return;
+  if(!modalProduct){
+    return;
+  }
 
-addToList(modalProduct,modalQuantity);
-closeProductModal();
-openPanel("listPanel");
+  addToList(modalProduct,modalQuantity);
+
+  closeProductModal();
+  openPanel("listPanel");
 });
 
 document.getElementById("modalGoCart").addEventListener("click",function(){
 
-if(modalProduct){
-addToList(modalProduct,modalQuantity);
-}
+  if(modalProduct){
+    addToList(modalProduct,modalQuantity);
+  }
 
-closeProductModal();
-openPanel("cartPanel");
+  closeProductModal();
+  openPanel("cartPanel");
 });
 
-document.getElementById("productModal").addEventListener("click",function(event){
-if(event.target===this){
-closeProductModal();
-}
+document.getElementById("productModal").addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === this){
+      closeProductModal();
+    }
+  }
+);
+
+document.querySelectorAll(".product-card").forEach(card => {
+
+  const image = card.querySelector(".product-image");
+  const addButton = card.querySelector(".add-list-btn");
+
+  const product = {
+    name:card.dataset.name,
+    price:Number(card.dataset.price),
+    image:card.dataset.image
+  };
+
+  image.addEventListener("click",function(){
+    openProductModal(product);
+  });
+
+  addButton.addEventListener("click",function(){
+
+    addToList(product,1);
+
+    this.textContent = "ADDED ✓";
+
+    setTimeout(() => {
+      this.textContent = "ADD TO LIST";
+    },1200);
+  });
 });
 
-document.querySelectorAll(".product-card").forEach(card=>{
-
-const image=card.querySelector(".product-image");
-const addButton=card.querySelector(".add-list-btn");
-
-const product={
-name:card.dataset.name,
-price:Number(card.dataset.price),
-image:card.dataset.image
-};
-
-image.addEventListener("click",function(){
-openProductModal(product);
-});
-
-addButton.addEventListener("click",function(){
-
-addToList(product,1);
-
-this.textContent="ADDED ✓";
-
-setTimeout(()=>{
-this.textContent="ADD TO LIST";
-},1200);
-
-});
-});
-
-const searchInput=document.getElementById("searchInput");
-const searchResults=document.getElementById("searchResults");
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
 function renderSearchResults(){
 
-const query=normalize(searchInput.value.trim());
+  const query = normalize(searchInput.value.trim());
 
-if(!query){
-searchResults.innerHTML="";
-return;
-}
+  if(!query){
+    searchResults.innerHTML = "";
+    return;
+  }
 
-const results=PRODUCTS.filter(product=>normalize(product.name).includes(query));
+  const results = PRODUCTS.filter(
+    product => normalize(product.name).includes(query)
+  );
 
-if(results.length===0){
-searchResults.innerHTML='<div class="notice">No products found.</div>';
-return;
-}
+  if(results.length === 0){
+    searchResults.innerHTML =
+      '<div class="notice">No products found.</div>';
+    return;
+  }
 
-searchResults.innerHTML=results.map(product=>`
-<div class="search-result" data-search-name="${escapeHtml(product.name)}">
-<strong>${escapeHtml(product.name)}</strong> — $${product.price.toFixed(2)}
-</div>
-`).join("");
+  searchResults.innerHTML = results.map(product => `
+
+    <div
+      class="search-result"
+      data-search-name="${escapeHtml(product.name)}"
+    >
+
+      <strong>
+        ${escapeHtml(product.name)}
+      </strong>
+
+      —
+      $${product.price.toFixed(2)}
+
+    </div>
+  `).join("");
 }
 
 searchInput.addEventListener("input",renderSearchResults);
 
 searchResults.addEventListener("click",function(event){
 
-const item=event.target.closest(".search-result");
+  const item = event.target.closest(".search-result");
 
-if(!item)return;
+  if(!item){
+    return;
+  }
 
-const product=findProduct(item.dataset.searchName);
+  const product = findProduct(item.dataset.searchName);
 
-if(product){
+  if(product){
 
-addToList(product,1);
+    addToList(product,1);
 
-searchInput.value="";
-searchResults.innerHTML="";
+    searchInput.value = "";
+    searchResults.innerHTML = "";
 
-openPanel("listPanel");
-}
+    openPanel("listPanel");
+  }
 });
 
-document.querySelectorAll(".menu-link").forEach(link=>{
+document.querySelectorAll(".menu-link").forEach(link => {
 
-link.addEventListener("click",function(){
+  link.addEventListener("click",function(){
 
-const href=this.getAttribute("href");
+    const href = this.getAttribute("href");
 
-if(href&&href.startsWith("#")){
+    if(href && href.startsWith("#")){
 
-closeAllPanels();
+      closeAllPanels();
 
-setTimeout(()=>{
+      setTimeout(() => {
 
-const element=document.querySelector(href);
+        const element = document.querySelector(href);
 
-if(element){
-element.scrollIntoView({behavior:"smooth"});
-}
+        if(element){
+          element.scrollIntoView({
+            behavior:"smooth"
+          });
+        }
 
-},50);
-}
+      },50);
+    }
+  });
 });
-});
 
-document.querySelector(".brand-logo").addEventListener("click",function(){
-closeAllPanels();
-});
+document.querySelector(".brand-logo").addEventListener(
+  "click",
+  function(){
+    closeAllPanels();
+  }
+);
 
 function escapeHtml(text){
 
-return String(text)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 function escapeJs(text){
 
-return String(text)
-.replace(/\\/g,"\\\\")
-.replace(/'/g,"\\'");
+  return String(text)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
 }
 
-/* START */
-
-selectedProducts=getStorage(STORAGE.selected,[]);
+selectedProducts = getStorage(STORAGE.selected,[]);
 
 initializeAgeGate();
 restoreOptions();
