@@ -250,18 +250,14 @@ body.locked{
   border:1px solid #e3eaf3;
   border-radius:24px;
   overflow:hidden;
-  box-shadow:
-    0 10px 35px rgba(5,27,55,.08),
-    0 2px 7px rgba(5,27,55,.04);
+  box-shadow:0 10px 35px rgba(5,27,55,.08),0 2px 7px rgba(5,27,55,.04);
   transition:.28s ease;
 }
 
 .product-card:hover{
   transform:translateY(-7px);
   border-color:#cbdff5;
-  box-shadow:
-    0 18px 45px rgba(5,27,55,.13),
-    0 4px 12px rgba(22,136,255,.08);
+  box-shadow:0 18px 45px rgba(5,27,55,.13),0 4px 12px rgba(22,136,255,.08);
 }
 
 .product-image-wrap{
@@ -271,12 +267,7 @@ body.locked{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(255,255,255,.98),
-      rgba(232,243,253,.98)
-    );
+  background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.98),rgba(232,243,253,.98));
   border-bottom:1px solid #e2edf8;
 }
 
@@ -389,12 +380,6 @@ body.locked{
   cursor:pointer;
   z-index:4500;
   box-shadow:0 9px 30px rgba(0,0,0,.28);
-  transition:.2s ease;
-}
-
-.cart-floating:hover{
-  transform:translateY(-3px);
-  background:#0b2540;
 }
 
 .cart-floating svg{
@@ -403,8 +388,6 @@ body.locked{
   fill:none;
   stroke:#fff;
   stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
 }
 
 .cart-count{
@@ -413,7 +396,6 @@ body.locked{
   right:-5px;
   min-width:25px;
   height:25px;
-  padding:0 5px;
   border-radius:50%;
   background:#1688ff;
   color:#fff;
@@ -493,13 +475,6 @@ body.locked{
   text-decoration:none;
   font-weight:800;
   cursor:pointer;
-  transition:.2s ease;
-}
-
-.side-menu a:hover,
-.side-menu button.menu-link:hover{
-  color:#1688ff;
-  padding-left:14px;
 }
 
 .search-box{
@@ -514,11 +489,6 @@ body.locked{
   outline:none;
 }
 
-.search-box input:focus{
-  border-color:#1688ff;
-  box-shadow:0 0 0 3px rgba(22,136,255,.1);
-}
-
 .search-results{
   margin-top:10px;
 }
@@ -528,10 +498,6 @@ body.locked{
   border-bottom:1px solid #eee;
   cursor:pointer;
   border-radius:8px;
-}
-
-.search-result:hover{
-  background:#f0f7ff;
 }
 
 /* =====================================================
@@ -566,10 +532,6 @@ body.locked{
   border-bottom:1px solid #e6ebf1;
 }
 
-.panel-header h2{
-  color:#071525;
-}
-
 .panel-close{
   width:40px;
   height:40px;
@@ -582,7 +544,7 @@ body.locked{
 }
 
 /* =====================================================
-   SELECTED PRODUCTS
+   CART
 ===================================================== */
 
 .selected-item{
@@ -614,7 +576,7 @@ body.locked{
 }
 
 .qty-controls button{
-  width:31px;
+  min-width:31px;
   height:31px;
   border:1px solid #ccd7e4;
   background:#fff;
@@ -622,17 +584,8 @@ body.locked{
   cursor:pointer;
 }
 
-.qty-controls button:hover{
-  border-color:#1688ff;
-  color:#1688ff;
-}
-
 .remove-btn{
-  border:0;
-  background:#edf1f5;
-  padding:7px 9px;
-  border-radius:7px;
-  cursor:pointer;
+  padding:0 9px;
 }
 
 .cart-summary{
@@ -650,13 +603,7 @@ body.locked{
 .summary-row.total{
   font-size:21px;
   font-weight:900;
-  color:#071525;
-  margin-top:8px;
 }
-
-/* =====================================================
-   SHIPPING / PAYMENT
-===================================================== */
 
 .option-box{
   margin-top:22px;
@@ -664,7 +611,6 @@ body.locked{
 
 .option-box h3{
   margin-bottom:11px;
-  color:#071525;
 }
 
 .option-label{
@@ -674,68 +620,32 @@ body.locked{
   border-radius:11px;
   margin-bottom:9px;
   cursor:pointer;
-  transition:.2s ease;
-  background:#fff;
 }
 
-.option-label:hover{
-  border-color:#8ec8ff;
-  background:#f7fbff;
-}
-
-.option-label:has(input:checked){
-  border-color:#1688ff;
-  background:#eef7ff;
-  box-shadow:0 0 0 1px #1688ff inset;
-}
-
-.option-label input{
-  margin-right:8px;
-  accent-color:#1688ff;
-}
-
-.primary-btn{
+.primary-btn,
+.secondary-btn{
   width:100%;
   padding:15px;
-  border:0;
   border-radius:13px;
-  background:#071525;
-  color:#fff;
   font-weight:900;
   cursor:pointer;
   margin-top:15px;
-  transition:.2s ease;
 }
 
-.primary-btn:hover{
-  background:#1688ff;
-  box-shadow:0 8px 22px rgba(22,136,255,.2);
-}
-
-.primary-btn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
+.primary-btn{
+  border:0;
+  background:#071525;
+  color:#fff;
 }
 
 .secondary-btn{
-  width:100%;
-  padding:13px;
   border:1px solid #071525;
-  border-radius:13px;
   background:#fff;
   color:#071525;
-  font-weight:900;
-  cursor:pointer;
-  margin-top:10px;
-}
-
-.secondary-btn:hover{
-  border-color:#1688ff;
-  color:#1688ff;
 }
 
 /* =====================================================
-   PAYMENT CARDS
+   PAYMENT
 ===================================================== */
 
 .payment{
@@ -755,31 +665,48 @@ body.locked{
   margin:7px 0;
 }
 
-.venmo h3{
-  color:#008cff;
-}
-
-.zelle h3{
-  color:#6d1ed4;
-}
-
-.paypal h3{
-  color:#003087;
-}
+.venmo h3{color:#008cff;}
+.zelle h3{color:#6d1ed4;}
+.paypal h3{color:#003087;}
 
 .copy-btn{
   border:none;
   border-radius:8px;
-  padding:9px 13px;
-  margin-top:8px;
+  padding:10px 13px;
+  margin-top:9px;
   cursor:pointer;
   font-weight:bold;
   background:#071525;
   color:#fff;
 }
 
+.pay-now-btn{
+  display:block;
+  width:100%;
+  margin-top:15px;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.venmo-pay{background:#008cff;}
+.zelle-pay{background:#6d1ed4;}
+.paypal-pay{background:#003087;}
+
+.payment-note{
+  margin-top:11px !important;
+  font-size:12px;
+  color:#687386;
+}
+
 /* =====================================================
-   INFORMATION FORM
+   FORM
 ===================================================== */
 
 .form-group{
@@ -793,8 +720,7 @@ body.locked{
 }
 
 .form-group input,
-.form-group textarea,
-.form-group select{
+.form-group textarea{
   width:100%;
   padding:12px;
   border:1px solid #ccd7e4;
@@ -803,19 +729,9 @@ body.locked{
   outline:none;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-  border-color:#1688ff;
-  box-shadow:0 0 0 3px rgba(22,136,255,.1);
-}
-
 .form-group textarea{
   min-height:110px;
-  resize:vertical;
 }
-
-/* EMAIL + PHONE VALIDATION */
 
 .form-group input.field-error{
   border:2px solid #dc2626 !important;
@@ -850,20 +766,18 @@ body.locked{
 
 .reference-code{
   font-size:28px;
-  color:#071525;
   font-weight:900;
   letter-spacing:3px;
 }
 
 /* =====================================================
-   MODAL
+   MODAL / OTHER
 ===================================================== */
 
 .modal{
   position:fixed;
   inset:0;
   background:rgba(1,8,18,.78);
-  backdrop-filter:blur(4px);
   z-index:9000;
   display:none;
   align-items:center;
@@ -871,9 +785,7 @@ body.locked{
   padding:20px;
 }
 
-.modal.open{
-  display:flex;
-}
+.modal.open{display:flex;}
 
 .modal-content{
   width:520px;
@@ -881,61 +793,61 @@ body.locked{
   background:#fff;
   border-radius:24px;
   padding:28px;
-  max-height:90vh;
-  overflow-y:auto;
   position:relative;
-  box-shadow:0 20px 70px rgba(0,0,0,.35);
 }
 
 .modal-close{
   position:absolute;
-  top:14px;
   right:14px;
+  top:14px;
   width:40px;
   height:40px;
   border:0;
   border-radius:50%;
   background:#071525;
   color:#fff;
-  cursor:pointer;
-  font-size:20px;
 }
 
 .modal-image{
   width:100%;
   height:320px;
   object-fit:contain;
-  margin-bottom:15px;
   background:#f1f8ff;
   border-radius:18px;
-}
-
-.modal-content h2{
-  margin-bottom:8px;
-  color:#071525;
 }
 
 .modal-price{
   font-size:25px;
   font-weight:900;
-  margin-bottom:15px;
+  margin:10px 0;
 }
 
-/* =====================================================
-   COMPARE
-===================================================== */
-
-.compare-wrap{
-  overflow-x:auto;
+.info-card,
+.login-box{
+  max-width:850px;
+  margin:auto;
+  background:#f7faff;
+  border:1px solid #e2eaf3;
+  padding:32px;
+  border-radius:20px;
+  line-height:1.7;
 }
+
+.login-box{
+  max-width:450px;
+}
+
+.login-box input{
+  width:100%;
+  padding:13px;
+  margin-bottom:12px;
+}
+
+.compare-wrap{overflow-x:auto;}
 
 .compare-table{
   width:100%;
-  border-collapse:separate;
-  border-spacing:0;
-  min-width:600px;
-  overflow:hidden;
-  border-radius:14px;
+  border-collapse:collapse;
 }
 
 .compare-table th,
@@ -950,61 +862,9 @@ body.locked{
   color:#fff;
 }
 
-.compare-table tr:nth-child(even) td{
-  background:#f7faff;
-}
-
-/* =====================================================
-   CONTACT / ABOUT / LOGIN
-===================================================== */
-
-.info-card{
-  max-width:850px;
-  margin:auto;
-  background:#f7faff;
-  border:1px solid #e2eaf3;
-  padding:32px;
-  border-radius:20px;
-  line-height:1.7;
-  box-shadow:0 8px 28px rgba(5,27,55,.05);
-}
-
-.contact-info{
-  text-align:center;
-  font-size:18px;
-  line-height:2;
-}
-
-.login-box{
-  max-width:450px;
-  margin:auto;
-  background:#f7faff;
-  border:1px solid #e2eaf3;
-  padding:30px;
-  border-radius:20px;
-}
-
-.login-box input{
-  width:100%;
-  padding:13px;
-  margin-bottom:12px;
-  border:1px solid #ccd7e4;
-  border-radius:9px;
-}
-
-/* =====================================================
-   FINAL CONFIRMATION
-===================================================== */
-
 .thank-you{
   text-align:center;
   padding:30px 10px;
-}
-
-.thank-you h2{
-  font-size:34px;
-  margin-bottom:15px;
-  color:#071525;
 }
 
 .payment-final{
@@ -1012,13 +872,10 @@ body.locked{
   margin-top:20px;
   padding:18px;
   background:#f4f8fc;
-  border:1px solid #dfe7f0;
   border-radius:14px;
 }
 
-/* =====================================================
-   AGE GATE
-===================================================== */
+/* AGE */
 
 .age-gate{
   position:fixed;
@@ -1031,9 +888,7 @@ body.locked{
   padding:20px;
 }
 
-.age-gate.hidden{
-  display:none !important;
-}
+.age-gate.hidden{display:none !important;}
 
 .age-card{
   width:500px;
@@ -1042,20 +897,11 @@ body.locked{
   border-radius:24px;
   padding:38px 27px;
   text-align:center;
-  box-shadow:0 10px 60px rgba(0,0,0,.55);
-  border:1px solid #dce8f5;
-}
-
-.age-card h2{
-  font-size:30px;
-  color:#071525;
-  margin-bottom:15px;
 }
 
 .age-card p{
-  color:#555;
+  margin:15px 0 25px;
   line-height:1.6;
-  margin-bottom:25px;
 }
 
 .age-buttons{
@@ -1065,10 +911,9 @@ body.locked{
 
 .age-buttons button{
   flex:1;
-  padding:15px 10px;
+  padding:15px;
   border-radius:12px;
   font-weight:900;
-  cursor:pointer;
 }
 
 .age-enter{
@@ -1077,164 +922,34 @@ body.locked{
   border:2px solid #071525;
 }
 
-.age-enter:hover{
-  background:#1688ff;
-  border-color:#1688ff;
-}
-
 .age-exit{
   background:#fff;
-  color:#071525;
   border:2px solid #071525;
 }
-
-/* =====================================================
-   FOOTER
-===================================================== */
 
 footer{
   background:#050b16;
   color:#fff;
   text-align:center;
   padding:40px 20px;
-  margin-top:40px;
 }
 
-footer p{
-  margin:7px 0;
-}
-
-.status{
-  padding:12px;
-  background:#f1f5f9;
-  border-radius:10px;
-  margin-top:12px;
-  text-align:center;
-  display:none;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+footer p{margin:7px;}
 
 @media(max-width:1100px){
-  .products-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+  .products-grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(max-width:700px){
-
-  .site-header{
-    height:72px;
-    padding:0 14px;
-    grid-template-columns:1fr auto 1fr;
-  }
-
-  .brand-logo img{
-    max-width:145px;
-    max-height:53px;
-  }
-
-  .menu-btn,
-  .header-icon{
-    width:43px;
-    height:43px;
-  }
-
-  .header-actions{
-    gap:6px;
-  }
-
-  .header-icon svg{
-    width:21px;
-    height:21px;
-  }
-
-  .hero{
-    min-height:390px;
-  }
-
-  .hero-content h1{
-    font-size:39px;
-    letter-spacing:3px;
-  }
-
-  .hero-content p{
-    font-size:12px;
-    letter-spacing:2px;
-  }
-
-  .section{
-    padding:55px 15px;
-  }
-
-  .section-title{
-    font-size:30px;
-    margin-bottom:34px;
-  }
-
-  .products-grid{
-    grid-template-columns:1fr;
-    gap:22px;
-  }
-
-  .product-image-wrap{
-    min-height:350px;
-  }
-
-  .product-image{
-    height:310px;
-  }
-
-  .panel{
-    width:100%;
-    max-width:100%;
-    padding:22px 18px;
-  }
-
-  .age-buttons{
-    flex-direction:column;
-  }
-
-  .cart-floating{
-    right:16px;
-    bottom:16px;
-  }
-}
-
-@media(max-width:420px){
-
-  .site-header{
-    padding:0 10px;
-  }
-
-  .brand-logo img{
-    max-width:125px;
-  }
-
-  .menu-btn,
-  .header-icon{
-    width:40px;
-    height:40px;
-    border-radius:12px;
-  }
-
-  .header-actions{
-    gap:4px;
-  }
-
-  .hero-content h1{
-    font-size:32px;
-  }
-
-  .product-image-wrap{
-    min-height:320px;
-  }
-
-  .product-image{
-    height:280px;
-  }
+  .site-header{height:72px;padding:0 14px;}
+  .brand-logo img{max-width:145px;max-height:53px;}
+  .products-grid{grid-template-columns:1fr;}
+  .section{padding:55px 15px;}
+  .hero{min-height:390px;}
+  .hero-content h1{font-size:39px;}
+  .panel{width:100%;max-width:100%;}
+  .age-buttons{flex-direction:column;}
+  .product-image{height:310px;}
 }
 </style>
 </head>
@@ -1243,2454 +958,1142 @@ footer p{
 
 <div class="age-gate" id="ageGate">
   <div class="age-card">
-
     <h2>Age Confirmation</h2>
-
     <p>
       This website contains products presented for research purposes only.<br>
       Please confirm that you are of legal age to enter this website.
     </p>
-
     <div class="age-buttons">
-      <button class="age-enter" id="ageEnterBtn" type="button">
-        I AM OF LEGAL AGE
-      </button>
-
-      <button class="age-exit" id="ageExitBtn" type="button">
-        EXIT
-      </button>
+      <button class="age-enter" id="ageEnterBtn">I AM OF LEGAL AGE</button>
+      <button class="age-exit" id="ageExitBtn">EXIT</button>
     </div>
-
   </div>
 </div>
 
 <header class="site-header">
 
-  <button
-    class="menu-btn"
-    id="menuBtn"
-    type="button"
-    aria-label="Open menu"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+<button class="menu-btn" id="menuBtn">
+<span></span><span></span><span></span>
+</button>
 
-  <a href="#home" class="brand-logo" aria-label="NovaPeps USA Home">
-    <img src="./logo.png" alt="NovaPeps USA">
-  </a>
+<a href="#home" class="brand-logo">
+<img src="./logo.png" alt="NovaPeps USA">
+</a>
 
-  <div class="header-actions">
+<div class="header-actions">
 
-    <button
-      class="header-icon"
-      id="headerSearchBtn"
-      type="button"
-      aria-label="Search products"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="11" cy="11" r="7"></circle>
-        <path d="M16.5 16.5L22 22"></path>
-      </svg>
-    </button>
+<button class="header-icon" id="headerSearchBtn">
+<svg viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="7"></circle>
+<path d="M16.5 16.5L22 22"></path>
+</svg>
+</button>
 
-    <button
-      class="header-icon"
-      id="headerCartBtn"
-      type="button"
-      aria-label="Shopping cart"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
-        <circle cx="10" cy="20" r="1.5"></circle>
-        <circle cx="18" cy="20" r="1.5"></circle>
-      </svg>
+<button class="header-icon" id="headerCartBtn">
+<svg viewBox="0 0 24 24">
+<path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
+<circle cx="10" cy="20" r="1.5"></circle>
+<circle cx="18" cy="20" r="1.5"></circle>
+</svg>
+<span class="header-cart-count" id="headerCartCount">0</span>
+</button>
 
-      <span class="header-cart-count" id="headerCartCount">0</span>
-    </button>
-
-  </div>
-
+</div>
 </header>
 
 <div class="overlay" id="overlay"></div>
 
 <nav class="side-menu" id="sideMenu">
+<button class="side-close" id="sideClose">×</button>
+<h2>NOVAPEPS USA</h2>
 
-  <button class="side-close" id="sideClose" type="button">×</button>
+<div class="search-box">
+<input type="search" id="searchInput" placeholder="Search products...">
+<div class="search-results" id="searchResults"></div>
+</div>
 
-  <h2>NOVAPEPS USA</h2>
-
-  <div class="search-box">
-    <input
-      type="search"
-      id="searchInput"
-      placeholder="Search products..."
-    >
-    <div class="search-results" id="searchResults"></div>
-  </div>
-
-  <a href="#home" class="menu-link">HOME</a>
-  <a href="#products" class="menu-link">PRODUCTS</a>
-  <button class="menu-link" data-open-panel="listPanel">LIST</button>
-  <a href="#shipping" class="menu-link">SHIPPING</a>
-  <a href="#contact" class="menu-link">CONTACT PAGE</a>
-  <a href="#about" class="menu-link">ABOUT US</a>
-  <a href="#compare" class="menu-link">COMPARE</a>
-  <a href="#login" class="menu-link">LOGIN / REGISTER</a>
-
+<a href="#home" class="menu-link">HOME</a>
+<a href="#products" class="menu-link">PRODUCTS</a>
+<button class="menu-link" data-open-panel="listPanel">LIST</button>
+<a href="#shipping" class="menu-link">SHIPPING</a>
+<a href="#contact" class="menu-link">CONTACT PAGE</a>
+<a href="#about" class="menu-link">ABOUT US</a>
+<a href="#compare" class="menu-link">COMPARE</a>
+<a href="#login" class="menu-link">LOGIN / REGISTER</a>
 </nav>
 
 <section class="hero" id="home">
-  <div class="hero-content">
-    <h1>NOVAPEPS USA</h1>
-    <p>Research Use Only</p>
-  </div>
+<div class="hero-content">
+<h1>NOVAPEPS USA</h1>
+<p>Research Use Only</p>
+</div>
 </section>
 
 <section class="section" id="products">
-  <h2 class="section-title">Featured Products</h2>
-
-  <div class="products-grid">
-
-    <article class="product-card" data-name="MOTS-C 10 MG" data-price="60" data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="MOTS-C 10 MG" type="button">♡</button>
-        <img class="product-image" src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="MOTS-C 10 MG">
-      </div>
-      <div class="product-info">
-        <h3>MOTS-C 10 MG</h3>
-        <div class="product-price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-2 10 MG" data-price="90" data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-2 10 MG" type="button">♡</button>
-        <img class="product-image" src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-2 10 MG</h3>
-        <div class="product-price">$90</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GHK-CU 100 MG" data-price="50" data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GHK-CU 100 MG" type="button">♡</button>
-        <img class="product-image" src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
-      </div>
-      <div class="product-info">
-        <h3>GHK-CU 100 MG</h3>
-        <div class="product-price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-3 10 MG" data-price="95" data-image="./713BA234-721B-4580-94DF-6677375C7826.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-3 10 MG" type="button">♡</button>
-        <img class="product-image" src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-3 10 MG</h3>
-        <div class="product-price">$95</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-2 20 MG" data-price="110" data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-2 20 MG" type="button">♡</button>
-        <img class="product-image" src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-2 20 MG</h3>
-        <div class="product-price">$110</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLP-3 20 MG" data-price="135" data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
-        <img class="product-image" src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLP-3 20 MG</h3>
-        <div class="product-price">$135</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="GLUTATHIONE 1500 MG" data-price="60" data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG" type="button">♡</button>
-        <img class="product-image" src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
-      </div>
-      <div class="product-info">
-        <h3>GLUTATHIONE 1500 MG</h3>
-        <div class="product-price">$60</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-name="NAD+ 500 MG" data-price="50" data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png">
-      <div class="product-image-wrap">
-        <button class="favorite-btn" data-favorite="NAD+ 500 MG" type="button">♡</button>
-        <img class="product-image" src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
-      </div>
-      <div class="product-info">
-        <h3>NAD+ 500 MG</h3>
-        <div class="product-price">$50</div>
-        <div class="research">FOR RESEARCH USE ONLY</div>
-        <button class="add-list-btn" type="button">ADD TO LIST</button>
-      </div>
-    </article>
-
-  </div>
+<h2 class="section-title">Featured Products</h2>
+<div class="products-grid" id="productsGrid"></div>
 </section>
 
 <section class="section" id="shipping">
-  <h2 class="section-title">Shipping</h2>
-  <div class="info-card">
-    <h3>Shipping Options</h3>
-    <p><strong>Standard Shipping:</strong> $9</p>
-    <p><strong>Express Shipping:</strong> $15</p>
-    <p><strong>Free Shipping:</strong> Orders $200+</p>
-    <p class="notice">Shipping options are displayed during checkout.</p>
-  </div>
+<h2 class="section-title">Shipping</h2>
+<div class="info-card">
+<h3>Shipping Options</h3>
+<p><strong>Standard Shipping:</strong> $9</p>
+<p><strong>Express Shipping:</strong> $15</p>
+<p><strong>Free Shipping:</strong> Orders $200+</p>
+<p class="notice">Shipping options are displayed during checkout.</p>
+</div>
 </section>
 
 <section class="section" id="contact">
-  <h2 class="section-title">Contact</h2>
-  <div class="info-card contact-info">
-    <p>Email: <strong>novapeps22@gmail.com</strong></p>
-    <p>Phone: <strong>(832) 273-9625</strong></p>
-  </div>
+<h2 class="section-title">Contact</h2>
+<div class="info-card">
+<p>Email: <strong>novapeps22@gmail.com</strong></p>
+<p>Phone: <strong>(832) 273-9625</strong></p>
+</div>
 </section>
 
 <section class="section" id="about">
-  <h2 class="section-title">About Us</h2>
-  <div class="info-card">
-    <p>
-      NovaPeps USA provides products presented for research purposes only.
-      The information displayed on this website is informational and is not
-      intended to diagnose, treat, cure, or prevent any disease.
-    </p>
-    <br>
-    <p>All products are presented for research use only.</p>
-  </div>
+<h2 class="section-title">About Us</h2>
+<div class="info-card">
+<p>
+NovaPeps USA provides products presented for research purposes only.
+The information displayed on this website is informational and is not
+intended to diagnose, treat, cure, or prevent any disease.
+</p>
+<br>
+<p>All products are presented for research use only.</p>
+</div>
 </section>
 
 <section class="section" id="compare">
-  <h2 class="section-title">Compare</h2>
-
-  <div class="compare-wrap">
-    <table class="compare-table">
-      <thead>
-        <tr><th>Product</th><th>Amount</th><th>Price</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>MOTS-C</td><td>10 MG</td><td>$60</td></tr>
-        <tr><td>GLP-2</td><td>10 MG</td><td>$90</td></tr>
-        <tr><td>GHK-CU</td><td>100 MG</td><td>$50</td></tr>
-        <tr><td>GLP-3</td><td>10 MG</td><td>$95</td></tr>
-        <tr><td>GLP-2</td><td>20 MG</td><td>$110</td></tr>
-        <tr><td>GLP-3</td><td>20 MG</td><td>$135</td></tr>
-        <tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
-        <tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
-      </tbody>
-    </table>
-  </div>
+<h2 class="section-title">Compare</h2>
+<div class="compare-wrap">
+<table class="compare-table">
+<thead>
+<tr><th>Product</th><th>Amount</th><th>Price</th></tr>
+</thead>
+<tbody>
+<tr><td>MOTS-C</td><td>10 MG</td><td>$60</td></tr>
+<tr><td>GLP-2</td><td>10 MG</td><td>$90</td></tr>
+<tr><td>GHK-CU</td><td>100 MG</td><td>$50</td></tr>
+<tr><td>GLP-3</td><td>10 MG</td><td>$95</td></tr>
+<tr><td>GLP-2</td><td>20 MG</td><td>$110</td></tr>
+<tr><td>GLP-3</td><td>20 MG</td><td>$135</td></tr>
+<tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
+<tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
+</tbody>
+</table>
+</div>
 </section>
 
 <section class="section" id="login">
-  <h2 class="section-title">Login / Register</h2>
-
-  <div class="login-box">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-
-    <button
-      class="primary-btn"
-      type="button"
-      onclick="alert('Account login is not connected yet.')"
-    >
-      LOGIN
-    </button>
-
-    <button
-      class="secondary-btn"
-      type="button"
-      onclick="alert('Registration is not connected yet.')"
-    >
-      REGISTER
-    </button>
-  </div>
+<h2 class="section-title">Login / Register</h2>
+<div class="login-box">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button class="primary-btn" type="button" onclick="alert('Account login is not connected yet.')">LOGIN</button>
+<button class="secondary-btn" type="button" onclick="alert('Registration is not connected yet.')">REGISTER</button>
+</div>
 </section>
 
-<button
-  class="cart-floating"
-  id="cartFloating"
-  type="button"
-  aria-label="Open shopping cart"
->
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
-    <circle cx="10" cy="20" r="1.5"></circle>
-    <circle cx="18" cy="20" r="1.5"></circle>
-  </svg>
-
-  <span class="cart-count" id="cartCount">0</span>
+<button class="cart-floating" id="cartFloating">
+<svg viewBox="0 0 24 24">
+<path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H7"></path>
+<circle cx="10" cy="20" r="1.5"></circle>
+<circle cx="18" cy="20" r="1.5"></circle>
+</svg>
+<span class="cart-count" id="cartCount">0</span>
 </button>
 
 <div class="panel" id="listPanel">
-  <div class="panel-header">
-    <h2>Selected Products</h2>
-    <button class="panel-close" data-close-panel="listPanel" type="button">×</button>
-  </div>
-
-  <div id="selectedProducts"></div>
-
-  <div class="cart-summary">
-    <div class="summary-row">
-      <span>Informational Total</span>
-      <strong id="listTotal">$0.00</strong>
-    </div>
-
-    <button class="primary-btn" id="openCartFromList" type="button">
-      GO TO CART
-    </button>
-  </div>
+<div class="panel-header">
+<h2>Selected Products</h2>
+<button class="panel-close" data-close-panel="listPanel">×</button>
+</div>
+<div id="selectedProducts"></div>
+<div class="cart-summary">
+<div class="summary-row">
+<span>Informational Total</span>
+<strong id="listTotal">$0.00</strong>
+</div>
+<button class="primary-btn" id="openCartFromList">GO TO CART</button>
+</div>
 </div>
 
 <div class="panel" id="cartPanel">
+<div class="panel-header">
+<h2>Your Cart</h2>
+<button class="panel-close" data-close-panel="cartPanel">×</button>
+</div>
 
-  <div class="panel-header">
-    <h2>Your Cart</h2>
-    <button class="panel-close" data-close-panel="cartPanel" type="button">×</button>
-  </div>
+<div id="cartItems"></div>
 
-  <div id="cartItems"></div>
+<div class="option-box">
+<h3>Shipping</h3>
+<label class="option-label"><input type="radio" name="shipping" value="standard"> Standard — $9</label>
+<label class="option-label"><input type="radio" name="shipping" value="express"> Express — $15</label>
+<label class="option-label"><input type="radio" name="shipping" value="free"> Free Shipping — $200+</label>
+</div>
 
-  <div class="option-box">
-    <h3>Shipping</h3>
-    <label class="option-label"><input type="radio" name="shipping" value="standard"> Standard — $9</label>
-    <label class="option-label"><input type="radio" name="shipping" value="express"> Express — $15</label>
-    <label class="option-label"><input type="radio" name="shipping" value="free"> Free Shipping — $200+</label>
-  </div>
+<div class="option-box">
+<h3>Payment Method</h3>
+<label class="option-label"><input type="radio" name="payment" value="zelle"> Zelle</label>
+<label class="option-label"><input type="radio" name="payment" value="venmo"> Venmo</label>
+<label class="option-label"><input type="radio" name="payment" value="paypal"> PayPal</label>
+</div>
 
-  <div class="option-box">
-    <h3>Payment Method</h3>
-    <label class="option-label"><input type="radio" name="payment" value="zelle"> Zelle</label>
-    <label class="option-label"><input type="radio" name="payment" value="venmo"> Venmo</label>
-    <label class="option-label"><input type="radio" name="payment" value="paypal"> PayPal</label>
-  </div>
+<div class="cart-summary">
+<div class="summary-row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+<div class="summary-row"><span>Shipping</span><strong id="shippingCost">$0.00</strong></div>
+<div class="summary-row total"><span>Total</span><strong id="grandTotal">$0.00</strong></div>
+</div>
 
-  <div class="cart-summary">
-    <div class="summary-row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
-    <div class="summary-row"><span>Shipping</span><strong id="shippingCost">$0.00</strong></div>
-    <div class="summary-row total"><span>Total</span><strong id="grandTotal">$0.00</strong></div>
-  </div>
-
-  <button class="primary-btn" id="checkoutBtn" type="button">CONTINUE</button>
-  <button class="secondary-btn" id="clearCartBtn" type="button">CLEAR CART</button>
-
-  <p class="notice">
-    This list is informational only. No payment is processed here.
-  </p>
+<button class="primary-btn" id="checkoutBtn">CONTINUE</button>
+<button class="secondary-btn" id="clearCartBtn">CLEAR CART</button>
 </div>
 
 <div class="panel" id="informationPanel">
 
-  <div class="panel-header">
-    <h2>Information Request</h2>
-    <button class="panel-close" data-close-panel="informationPanel" type="button">×</button>
-  </div>
+<div class="panel-header">
+<h2>Information Request</h2>
+<button class="panel-close" data-close-panel="informationPanel">×</button>
+</div>
 
-  <div id="formArea">
+<div id="formArea">
 
-    <div class="reference-box">
-      <div>Order / Reference Code</div>
-      <div class="reference-code" id="referenceDisplay">----</div>
-    </div>
+<div class="reference-box">
+<div>Order / Reference Code</div>
+<div class="reference-code" id="referenceDisplay">----</div>
+</div>
 
-    <form
-      id="informationForm"
-      action="https://formspree.io/f/myezrady"
-      method="POST"
-    >
+<form id="informationForm" action="https://formspree.io/f/myezrady" method="POST">
 
-      <input type="hidden" name="subject" value="NovaPeps USA Information Request">
-      <input type="hidden" name="reference_code" id="formReference">
-      <input type="hidden" name="selected_products" id="formProducts">
-      <input type="hidden" name="subtotal" id="formSubtotal">
-      <input type="hidden" name="shipping_method" id="formShipping">
-      <input type="hidden" name="shipping_cost" id="formShippingCost">
-      <input type="hidden" name="informational_total" id="formTotal">
-      <input type="hidden" name="payment_method" id="formPayment">
-      <input type="hidden" name="informational_notice" value="This information request does not process payment.">
+<input type="hidden" name="subject" value="NovaPeps USA Information Request">
+<input type="hidden" name="reference_code" id="formReference">
+<input type="hidden" name="selected_products" id="formProducts">
+<input type="hidden" name="subtotal" id="formSubtotal">
+<input type="hidden" name="shipping_method" id="formShipping">
+<input type="hidden" name="shipping_cost" id="formShippingCost">
+<input type="hidden" name="informational_total" id="formTotal">
+<input type="hidden" name="payment_method" id="formPayment">
 
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="name" required>
-      </div>
+<div class="form-group">
+<label>Name</label>
+<input type="text" name="name" required>
+</div>
 
-      <div class="form-group">
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          required
-          autocomplete="email"
-        >
-      </div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" name="email" required autocomplete="email">
+</div>
 
-      <div class="form-group">
-        <label>Phone</label>
-        <input
-          type="tel"
-          name="phone"
-          required
-          autocomplete="tel"
-        >
-      </div>
+<div class="form-group">
+<label>Phone</label>
+<input type="tel" name="phone" required autocomplete="tel">
+</div>
 
-      <div class="form-group">
-        <label>Address</label>
-        <input type="text" name="address" required>
-      </div>
+<div class="form-group">
+<label>Address</label>
+<input type="text" name="address" required>
+</div>
 
-      <div class="form-group">
-        <label>Apt / Unit</label>
-        <input type="text" name="apt_unit">
-      </div>
+<div class="form-group">
+<label>Apt / Unit</label>
+<input type="text" name="apt_unit">
+</div>
 
-      <div class="form-group">
-        <label>City</label>
-        <input type="text" name="city" required>
-      </div>
+<div class="form-group">
+<label>City</label>
+<input type="text" name="city" required>
+</div>
 
-      <div class="form-group">
-        <label>State</label>
-        <input type="text" name="state" required>
-      </div>
+<div class="form-group">
+<label>State</label>
+<input type="text" name="state" required>
+</div>
 
-      <div class="form-group">
-        <label>ZIP</label>
-        <input type="text" name="zip" required>
-      </div>
+<div class="form-group">
+<label>ZIP</label>
+<input type="text" name="zip" required>
+</div>
 
-      <div class="form-group">
-        <label>Message</label>
-        <textarea name="message"></textarea>
-      </div>
+<div class="form-group">
+<label>Message</label>
+<textarea name="message"></textarea>
+</div>
 
-      <button class="primary-btn" type="submit">
-        SEND INFORMATION
-      </button>
+<button class="primary-btn" type="submit">SEND INFORMATION</button>
 
-    </form>
+</form>
+</div>
 
-  </div>
-
-  <div
-    id="finalConfirmation"
-    class="thank-you"
-    style="display:none;"
-  >
-    <h2>THANK YOU!</h2>
-    <p>Your information has been submitted.</p>
-    <div class="payment-final" id="paymentFinal"></div>
-  </div>
+<div id="finalConfirmation" class="thank-you" style="display:none;">
+<h2>THANK YOU!</h2>
+<p>Your order information has been saved.</p>
+<div class="payment-final" id="paymentFinal"></div>
+</div>
 
 </div>
 
 <div class="modal" id="productModal">
-
-  <div class="modal-content">
-
-    <button class="modal-close" id="modalClose" type="button">×</button>
-
-    <img class="modal-image" id="modalImage" src="" alt="">
-
-    <h2 id="modalName"></h2>
-
-    <div class="modal-price" id="modalPrice"></div>
-
-    <div class="research">FOR RESEARCH USE ONLY</div>
-
-    <div class="qty-controls">
-      <button id="modalMinus" type="button">−</button>
-      <strong id="modalQuantity">1</strong>
-      <button id="modalPlus" type="button">+</button>
-    </div>
-
-    <button class="primary-btn" id="modalAdd" type="button">
-      ADD TO CART
-    </button>
-
-    <button class="secondary-btn" id="modalGoCart" type="button">
-      GO TO CART / CHECKOUT
-    </button>
-
-  </div>
-
+<div class="modal-content">
+<button class="modal-close" id="modalClose">×</button>
+<img class="modal-image" id="modalImage" src="" alt="">
+<h2 id="modalName"></h2>
+<div class="modal-price" id="modalPrice"></div>
+<div class="research">FOR RESEARCH USE ONLY</div>
+<div class="qty-controls">
+<button id="modalMinus">−</button>
+<strong id="modalQuantity">1</strong>
+<button id="modalPlus">+</button>
+</div>
+<button class="primary-btn" id="modalAdd">ADD TO CART</button>
+<button class="secondary-btn" id="modalGoCart">GO TO CART / CHECKOUT</button>
+</div>
 </div>
 
 <footer>
-  <p>© 2026 NovaPeps USA</p>
-  <p>novapeps22@gmail.com</p>
-  <p>(832) 273-9625</p>
-  <p class="notice" style="color:#aaa;">
-    All products are presented for research use only.
-  </p>
+<p>© 2026 NovaPeps USA</p>
+<p>novapeps22@gmail.com</p>
+<p>(832) 273-9625</p>
+<p>All products are presented for research use only.</p>
 </footer>
 
 <script>
 
 const PRODUCTS = [
-  {name:"MOTS-C 10 MG",price:60,image:"./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"},
-  {name:"GLP-2 10 MG",price:90,image:"./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"},
-  {name:"GHK-CU 100 MG",price:50,image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"},
-  {name:"GLP-3 10 MG",price:95,image:"./713BA234-721B-4580-94DF-6677375C7826.png"},
-  {name:"GLP-2 20 MG",price:110,image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"},
-  {name:"GLP-3 20 MG",price:135,image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"},
-  {name:"GLUTATHIONE 1500 MG",price:60,image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"},
-  {name:"NAD+ 500 MG",price:50,image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"}
+{name:"MOTS-C 10 MG",price:60,image:"./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"},
+{name:"GLP-2 10 MG",price:90,image:"./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"},
+{name:"GHK-CU 100 MG",price:50,image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"},
+{name:"GLP-3 10 MG",price:95,image:"./713BA234-721B-4580-94DF-6677375C7826.png"},
+{name:"GLP-2 20 MG",price:110,image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"},
+{name:"GLP-3 20 MG",price:135,image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"},
+{name:"GLUTATHIONE 1500 MG",price:60,image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"},
+{name:"NAD+ 500 MG",price:50,image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"}
 ];
 
 const STORAGE = {
-  selected:"novaSelectedProducts",
-  favorites:"novaFavoriteProducts",
-  shipping:"novaShippingOption",
-  payment:"novaPaymentOption",
-  lastOrder:"novaLastOrder",
-  age:"novaAgeConfirmed"
+selected:"novaSelectedProducts",
+favorites:"novaFavoriteProducts",
+shipping:"novaShippingOption",
+payment:"novaPaymentOption",
+lastOrder:"novaLastOrder",
+age:"novaAgeConfirmed"
 };
 
-let selectedProducts = [];
-let favorites = [];
-let modalProduct = null;
-let modalQuantity = 1;
+let selectedProducts=[];
+let favorites=[];
+let modalProduct=null;
+let modalQuantity=1;
 
 function getStorage(key,fallback){
-  try{
-    const value = localStorage.getItem(key);
-    if(value === null){ return fallback; }
-    return JSON.parse(value);
-  }catch(error){
-    return fallback;
-  }
+try{
+const value=localStorage.getItem(key);
+return value===null ? fallback : JSON.parse(value);
+}catch(e){
+return fallback;
+}
 }
 
 function setStorage(key,value){
-  try{
-    localStorage.setItem(key,JSON.stringify(value));
-  }catch(error){}
+try{
+localStorage.setItem(key,JSON.stringify(value));
+}catch(e){}
 }
 
-function enterSite(){
-  try{
-    localStorage.setItem(STORAGE.age,"true");
-  }catch(error){}
-
-  const gate = document.getElementById("ageGate");
-
-  if(gate){
-    gate.classList.add("hidden");
-  }
-
-  document.body.classList.remove("locked");
+function escapeHtml(text){
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 }
 
-function leaveSite(){
-  try{
-    localStorage.removeItem(STORAGE.age);
-  }catch(error){}
-
-  document.body.innerHTML = `
-    <div style="height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Arial;padding:30px;">
-      <div>
-        <h1>Thank you.</h1>
-        <p>You have chosen to exit this website.</p>
-      </div>
-    </div>
-  `;
+function escapeJs(text){
+return String(text)
+.replace(/\\/g,"\\\\")
+.replace(/'/g,"\\'");
 }
 
 function initializeAgeGate(){
+const gate=document.getElementById("ageGate");
+const confirmed=localStorage.getItem(STORAGE.age)==="true";
 
-  const gate = document.getElementById("ageGate");
-  const enter = document.getElementById("ageEnterBtn");
-  const exit = document.getElementById("ageExitBtn");
+if(confirmed){
+gate.classList.add("hidden");
+}else{
+document.body.classList.add("locked");
+}
 
-  let confirmed = false;
+document.getElementById("ageEnterBtn").onclick=function(){
+localStorage.setItem(STORAGE.age,"true");
+gate.classList.add("hidden");
+document.body.classList.remove("locked");
+};
 
-  try{
-    confirmed = localStorage.getItem(STORAGE.age) === "true";
-  }catch(error){}
-
-  if(confirmed){
-    gate.classList.add("hidden");
-    document.body.classList.remove("locked");
-  }else{
-    gate.classList.remove("hidden");
-    document.body.classList.add("locked");
-  }
-
-  enter.addEventListener("click",function(event){
-    event.preventDefault();
-    enterSite();
-  });
-
-  exit.addEventListener("click",function(event){
-    event.preventDefault();
-    leaveSite();
-  });
+document.getElementById("ageExitBtn").onclick=function(){
+document.body.innerHTML="<div style='padding:50px;text-align:center'><h1>Thank you.</h1></div>";
+};
 }
 
 function openMenu(){
-  document.getElementById("sideMenu").classList.add("open");
-  document.getElementById("overlay").classList.add("show");
+document.getElementById("sideMenu").classList.add("open");
+document.getElementById("overlay").classList.add("show");
 }
-
-/* CORRECCIÓN 1: EL FONDO OSCURO SE CIERRA */
 
 function closeMenu(){
+document.getElementById("sideMenu").classList.remove("open");
 
-  document
-    .getElementById("sideMenu")
-    .classList.remove("open");
-
-  const anyPanel =
-    document.querySelector(".panel.open");
-
-  if(!anyPanel){
-    document
-      .getElementById("overlay")
-      .classList.remove("show");
-  }
+if(!document.querySelector(".panel.open")){
+document.getElementById("overlay").classList.remove("show");
+}
 }
 
-document
-  .getElementById("menuBtn")
-  .addEventListener("click",openMenu);
-
-document
-  .getElementById("sideClose")
-  .addEventListener("click",closeMenu);
-
 function openPanel(id){
+closeMenu();
+document.getElementById(id).classList.add("open");
+document.getElementById("overlay").classList.add("show");
 
-  closeMenu();
-
-  document
-    .getElementById(id)
-    .classList.add("open");
-
-  document
-    .getElementById("overlay")
-    .classList.add("show");
-
-  if(id === "listPanel"){
-    renderSelectedProducts();
-  }
-
-  if(id === "cartPanel"){
-    renderCart();
-  }
+if(id==="listPanel") renderSelectedProducts();
+if(id==="cartPanel") renderCart();
 }
 
 function closePanel(id){
+document.getElementById(id).classList.remove("open");
 
-  document
-    .getElementById(id)
-    .classList.remove("open");
-
-  const anyPanel =
-    document.querySelector(".panel.open");
-
-  if(
-    !anyPanel &&
-    !document
-      .getElementById("sideMenu")
-      .classList.contains("open")
-  ){
-    document
-      .getElementById("overlay")
-      .classList.remove("show");
-  }
+if(!document.querySelector(".panel.open") &&
+!document.getElementById("sideMenu").classList.contains("open")){
+document.getElementById("overlay").classList.remove("show");
+}
 }
 
 function closeAllPanels(){
-
-  document
-    .querySelectorAll(".panel.open")
-    .forEach(panel =>
-      panel.classList.remove("open")
-    );
-
-  document
-    .getElementById("sideMenu")
-    .classList.remove("open");
-
-  document
-    .getElementById("overlay")
-    .classList.remove("show");
-
-  closeProductModal();
+document.querySelectorAll(".panel.open").forEach(p=>p.classList.remove("open"));
+document.getElementById("sideMenu").classList.remove("open");
+document.getElementById("overlay").classList.remove("show");
+closeProductModal();
 }
 
-document
-  .getElementById("overlay")
-  .addEventListener("click",closeAllPanels);
+document.getElementById("menuBtn").onclick=openMenu;
+document.getElementById("sideClose").onclick=closeMenu;
+document.getElementById("overlay").onclick=closeAllPanels;
 
-document
-  .querySelectorAll("[data-open-panel]")
-  .forEach(button => {
+document.querySelectorAll("[data-open-panel]").forEach(button=>{
+button.onclick=function(){
+openPanel(this.dataset.openPanel);
+};
+});
 
-    button.addEventListener(
-      "click",
-      function(){
-        openPanel(this.dataset.openPanel);
-      }
-    );
+document.querySelectorAll("[data-close-panel]").forEach(button=>{
+button.onclick=function(){
+closePanel(this.dataset.closePanel);
+};
+});
 
-  });
-
-document
-  .querySelectorAll("[data-close-panel]")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      function(){
-        closePanel(this.dataset.closePanel);
-      }
-    );
-
-  });
-
-document
-  .getElementById("headerSearchBtn")
-  .addEventListener(
-    "click",
-    function(){
-
-      openMenu();
-
-      setTimeout(function(){
-
-        const input =
-          document.getElementById("searchInput");
-
-        if(input){
-          input.focus();
-        }
-
-      },250);
-
-    }
-  );
-
-document
-  .getElementById("headerCartBtn")
-  .addEventListener(
-    "click",
-    function(){
-      openPanel("cartPanel");
-    }
-  );
-
-function findProduct(name){
-  return PRODUCTS.find(
-    product => product.name === name
-  );
-}
-
-function normalize(text){
-
-  return String(text)
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"");
+function subtotal(){
+return selectedProducts.reduce((total,item)=>total+(item.price*item.quantity),0);
 }
 
 function saveSelected(){
-  setStorage(
-    STORAGE.selected,
-    selectedProducts
-  );
-}
-
-function subtotal(){
-
-  return selectedProducts.reduce(
-    (total,item) =>
-      total +
-      item.price * item.quantity,
-    0
-  );
+setStorage(STORAGE.selected,selectedProducts);
 }
 
 function addToList(product,quantity=1){
+const existing=selectedProducts.find(item=>item.name===product.name);
 
-  const existing =
-    selectedProducts.find(
-      item =>
-        item.name === product.name
-    );
+if(existing){
+existing.quantity+=quantity;
+}else{
+selectedProducts.push({...product,quantity});
+}
 
-  if(existing){
-
-    existing.quantity += quantity;
-
-  }else{
-
-    selectedProducts.push({
-      name:product.name,
-      price:product.price,
-      image:product.image,
-      quantity:quantity
-    });
-
-  }
-
-  saveSelected();
-  updateCartCount();
-  renderSelectedProducts();
-  renderCart();
+saveSelected();
+renderSelectedProducts();
+renderCart();
+updateCartCount();
 }
 
 function changeQuantity(name,change){
+const item=selectedProducts.find(i=>i.name===name);
+if(!item)return;
 
-  const item =
-    selectedProducts.find(
-      product =>
-        product.name === name
-    );
+item.quantity+=change;
 
-  if(!item){
-    return;
-  }
+if(item.quantity<=0){
+selectedProducts=selectedProducts.filter(i=>i.name!==name);
+}
 
-  item.quantity += change;
-
-  if(item.quantity <= 0){
-
-    selectedProducts =
-      selectedProducts.filter(
-        product =>
-          product.name !== name
-      );
-
-  }
-
-  saveSelected();
-  renderSelectedProducts();
-  renderCart();
-  updateCartCount();
+saveSelected();
+renderSelectedProducts();
+renderCart();
+updateCartCount();
 }
 
 function removeProduct(name){
-
-  selectedProducts =
-    selectedProducts.filter(
-      item =>
-        item.name !== name
-    );
-
-  saveSelected();
-  renderSelectedProducts();
-  renderCart();
-  updateCartCount();
+selectedProducts=selectedProducts.filter(i=>i.name!==name);
+saveSelected();
+renderSelectedProducts();
+renderCart();
+updateCartCount();
 }
 
 function clearCart(){
-
-  selectedProducts = [];
-
-  saveSelected();
-  renderSelectedProducts();
-  renderCart();
-  updateCartCount();
-}
-
-function renderSelectedProducts(){
-
-  const container =
-    document.getElementById(
-      "selectedProducts"
-    );
-
-  const total =
-    document.getElementById(
-      "listTotal"
-    );
-
-  if(selectedProducts.length === 0){
-
-    container.innerHTML =
-      '<p class="notice">No products selected.</p>';
-
-    total.textContent =
-      "$0.00";
-
-    return;
-  }
-
-  container.innerHTML =
-    selectedProducts.map(item => `
-      <div class="selected-item">
-
-        <img
-          src="${item.image}"
-          alt="${escapeHtml(item.name)}"
-        >
-
-        <div class="selected-info">
-
-          <strong>
-            ${escapeHtml(item.name)}
-          </strong>
-
-          <div>
-            $${item.price.toFixed(2)}
-          </div>
-
-          <div class="qty-controls">
-
-            <button
-              type="button"
-              onclick="changeQuantity('${escapeJs(item.name)}',-1)"
-            >
-              −
-            </button>
-
-            <strong>
-              ${item.quantity}
-            </strong>
-
-            <button
-              type="button"
-              onclick="changeQuantity('${escapeJs(item.name)}',1)"
-            >
-              +
-            </button>
-
-            <button
-              class="remove-btn"
-              type="button"
-              onclick="removeProduct('${escapeJs(item.name)}')"
-            >
-              Remove
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    `).join("");
-
-  total.textContent =
-    "$" +
-    subtotal().toFixed(2);
+selectedProducts=[];
+saveSelected();
+renderSelectedProducts();
+renderCart();
+updateCartCount();
 }
 
 function updateCartCount(){
+const count=selectedProducts.reduce((sum,item)=>sum+item.quantity,0);
+document.getElementById("cartCount").textContent=count;
+document.getElementById("headerCartCount").textContent=count;
+}
 
-  const count =
-    selectedProducts.reduce(
-      (sum,item) =>
-        sum + item.quantity,
-      0
-    );
+function renderProducts(){
+document.getElementById("productsGrid").innerHTML=PRODUCTS.map(product=>`
+<article class="product-card">
+<div class="product-image-wrap">
+<button class="favorite-btn" data-favorite="${escapeHtml(product.name)}">♡</button>
+<img class="product-image" src="${product.image}" alt="${escapeHtml(product.name)}" onclick="openProductByName('${escapeJs(product.name)}')">
+</div>
+<div class="product-info">
+<h3>${escapeHtml(product.name)}</h3>
+<div class="product-price">$${product.price}</div>
+<div class="research">FOR RESEARCH USE ONLY</div>
+<button class="add-list-btn" onclick="addProductByName('${escapeJs(product.name)}')">ADD TO LIST</button>
+</div>
+</article>
+`).join("");
 
-  document
-    .getElementById("cartCount")
-    .textContent = count;
+loadFavorites();
+}
 
-  const headerCount =
-    document.getElementById(
-      "headerCartCount"
-    );
+function addProductByName(name){
+const product=PRODUCTS.find(p=>p.name===name);
+if(product)addToList(product,1);
+}
 
-  if(headerCount){
-    headerCount.textContent = count;
-  }
+function openProductByName(name){
+const product=PRODUCTS.find(p=>p.name===name);
+if(product)openProductModal(product);
+}
+
+function renderSelectedProducts(){
+const container=document.getElementById("selectedProducts");
+
+if(!selectedProducts.length){
+container.innerHTML='<p class="notice">No products selected.</p>';
+document.getElementById("listTotal").textContent="$0.00";
+return;
+}
+
+container.innerHTML=selectedProducts.map(item=>`
+<div class="selected-item">
+<img src="${item.image}" alt="${escapeHtml(item.name)}">
+<div class="selected-info">
+<strong>${escapeHtml(item.name)}</strong>
+<div>$${item.price.toFixed(2)}</div>
+<div class="qty-controls">
+<button onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
+<strong>${item.quantity}</strong>
+<button onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
+<button class="remove-btn" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
+</div>
+</div>
+</div>
+`).join("");
+
+document.getElementById("listTotal").textContent="$"+subtotal().toFixed(2);
 }
 
 function getShippingCost(){
-
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
-
-  if(!selected){
-    return 0;
-  }
-
-  if(selected.value === "standard"){
-    return 9;
-  }
-
-  if(selected.value === "express"){
-    return 15;
-  }
-
-  if(selected.value === "free"){
-    return subtotal() >= 200 ? 0 : 9;
-  }
-
-  return 0;
+const selected=document.querySelector('input[name="shipping"]:checked');
+if(!selected)return 0;
+if(selected.value==="standard")return 9;
+if(selected.value==="express")return 15;
+if(selected.value==="free")return subtotal()>=200?0:9;
+return 0;
 }
 
 function getShippingName(){
-
-  const selected =
-    document.querySelector(
-      'input[name="shipping"]:checked'
-    );
-
-  if(!selected){
-    return "";
-  }
-
-  if(selected.value === "standard"){
-    return "Standard";
-  }
-
-  if(selected.value === "express"){
-    return "Express";
-  }
-
-  if(selected.value === "free"){
-    return "Free Shipping";
-  }
-
-  return "";
+const selected=document.querySelector('input[name="shipping"]:checked');
+if(!selected)return "";
+if(selected.value==="standard")return "Standard";
+if(selected.value==="express")return "Express";
+if(selected.value==="free")return "Free Shipping";
+return "";
 }
 
 function getPayment(){
-
-  const selected =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    );
-
-  return selected ?
-    selected.value :
-    "";
+const selected=document.querySelector('input[name="payment"]:checked');
+return selected?selected.value:"";
 }
 
 function renderCart(){
+const container=document.getElementById("cartItems");
 
-  const container =
-    document.getElementById(
-      "cartItems"
-    );
+if(!selectedProducts.length){
+container.innerHTML='<p class="notice">Your cart is empty.</p>';
+}else{
+container.innerHTML=selectedProducts.map(item=>`
+<div class="selected-item">
+<img src="${item.image}" alt="${escapeHtml(item.name)}">
+<div class="selected-info">
+<strong>${escapeHtml(item.name)}</strong>
+<div>$${item.price.toFixed(2)}</div>
+<div class="qty-controls">
+<button onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
+<strong>${item.quantity}</strong>
+<button onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
+<button class="remove-btn" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
+</div>
+</div>
+</div>
+`).join("");
+}
 
-  if(selectedProducts.length === 0){
-
-    container.innerHTML =
-      '<p class="notice">Your cart is empty.</p>';
-
-  }else{
-
-    container.innerHTML =
-      selectedProducts.map(item => `
-        <div class="selected-item">
-
-          <img
-            src="${item.image}"
-            alt="${escapeHtml(item.name)}"
-          >
-
-          <div class="selected-info">
-
-            <strong>
-              ${escapeHtml(item.name)}
-            </strong>
-
-            <div>
-              $${item.price.toFixed(2)}
-            </div>
-
-            <div class="qty-controls">
-
-              <button
-                type="button"
-                onclick="changeQuantity('${escapeJs(item.name)}',-1)"
-              >
-                −
-              </button>
-
-              <strong>
-                ${item.quantity}
-              </strong>
-
-              <button
-                type="button"
-                onclick="changeQuantity('${escapeJs(item.name)}',1)"
-              >
-                +
-              </button>
-
-              <button
-                class="remove-btn"
-                type="button"
-                onclick="removeProduct('${escapeJs(item.name)}')"
-              >
-                Remove
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-      `).join("");
-
-  }
-
-  updateTotals();
+updateTotals();
 }
 
 function updateTotals(){
+const sub=subtotal();
+const shipping=getShippingCost();
 
-  const sub =
-    subtotal();
-
-  const shipping =
-    getShippingCost();
-
-  const total =
-    sub + shipping;
-
-  document
-    .getElementById("subtotal")
-    .textContent =
-      "$" + sub.toFixed(2);
-
-  document
-    .getElementById("shippingCost")
-    .textContent =
-      "$" + shipping.toFixed(2);
-
-  document
-    .getElementById("grandTotal")
-    .textContent =
-      "$" + total.toFixed(2);
-
-  updateFormHiddenFields();
+document.getElementById("subtotal").textContent="$"+sub.toFixed(2);
+document.getElementById("shippingCost").textContent="$"+shipping.toFixed(2);
+document.getElementById("grandTotal").textContent="$"+(sub+shipping).toFixed(2);
+updateFormHiddenFields();
 }
 
-function restoreOptions(){
+document.querySelectorAll('input[name="shipping"]').forEach(input=>{
+input.onchange=function(){
+setStorage(STORAGE.shipping,this.value);
+updateTotals();
+};
+});
 
-  const shipping =
-    getStorage(
-      STORAGE.shipping,
-      null
-    );
+document.querySelectorAll('input[name="payment"]').forEach(input=>{
+input.onchange=function(){
+setStorage(STORAGE.payment,this.value);
+updateFormHiddenFields();
+};
+});
 
-  const payment =
-    getStorage(
-      STORAGE.payment,
-      null
-    );
+document.getElementById("headerCartBtn").onclick=()=>openPanel("cartPanel");
+document.getElementById("cartFloating").onclick=()=>openPanel("cartPanel");
 
-  if(shipping){
+document.getElementById("headerSearchBtn").onclick=function(){
+openMenu();
+setTimeout(()=>document.getElementById("searchInput").focus(),200);
+};
 
-    const input =
-      document.querySelector(
-        `input[name="shipping"][value="${shipping}"]`
-      );
+document.getElementById("openCartFromList").onclick=function(){
+closePanel("listPanel");
+openPanel("cartPanel");
+};
 
-    if(input){
-      input.checked = true;
-    }
-  }
+document.getElementById("clearCartBtn").onclick=clearCart;
 
-  if(payment){
+document.getElementById("checkoutBtn").onclick=function(){
 
-    const input =
-      document.querySelector(
-        `input[name="payment"][value="${payment}"]`
-      );
-
-    if(input){
-      input.checked = true;
-    }
-  }
+if(!selectedProducts.length){
+alert("Please select at least one product.");
+return;
 }
 
-document
-  .querySelectorAll(
-    'input[name="shipping"]'
-  )
-  .forEach(input => {
+const shipping=document.querySelector('input[name="shipping"]:checked');
+const payment=document.querySelector('input[name="payment"]:checked');
 
-    input.addEventListener(
-      "change",
-      function(){
+if(!shipping){
+alert("Please select a shipping option.");
+return;
+}
 
-        setStorage(
-          STORAGE.shipping,
-          this.value
-        );
+if(shipping.value==="free" && subtotal()<200){
+alert("Free Shipping is available only for orders of $200 or more.");
+return;
+}
 
-        updateTotals();
-      }
-    );
+if(!payment){
+alert("Please select a payment method.");
+return;
+}
 
-  });
-
-document
-  .querySelectorAll(
-    'input[name="payment"]'
-  )
-  .forEach(input => {
-
-    input.addEventListener(
-      "change",
-      function(){
-
-        setStorage(
-          STORAGE.payment,
-          this.value
-        );
-
-        updateFormHiddenFields();
-      }
-    );
-
-  });
-
-document
-  .getElementById("cartFloating")
-  .addEventListener(
-    "click",
-    function(){
-      openPanel("cartPanel");
-    }
-  );
-
-document
-  .getElementById("openCartFromList")
-  .addEventListener(
-    "click",
-    function(){
-
-      closePanel("listPanel");
-      openPanel("cartPanel");
-
-    }
-  );
-
-document
-  .getElementById("clearCartBtn")
-  .addEventListener(
-    "click",
-    function(){
-      clearCart();
-    }
-  );
-
-document
-  .getElementById("checkoutBtn")
-  .addEventListener(
-    "click",
-    function(){
-
-      if(selectedProducts.length === 0){
-
-        alert(
-          "Please select at least one product."
-        );
-
-        return;
-      }
-
-      const shipping =
-        document.querySelector(
-          'input[name="shipping"]:checked'
-        );
-
-      if(!shipping){
-
-        alert(
-          "Please select a shipping option."
-        );
-
-        return;
-      }
-
-      if(
-        shipping.value === "free" &&
-        subtotal() < 200
-      ){
-
-        alert(
-          "Free Shipping is available only for orders of $200 or more."
-        );
-
-        return;
-      }
-
-      const payment =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        );
-
-      if(!payment){
-
-        alert(
-          "Please select a payment method."
-        );
-
-        return;
-      }
-
-      prepareInformationForm();
-
-      closePanel("cartPanel");
-      openPanel("informationPanel");
-    }
-  );
+prepareInformationForm();
+closePanel("cartPanel");
+openPanel("informationPanel");
+};
 
 function generateReference(){
-
-  return String(
-    Math.floor(
-      1000 +
-      Math.random() * 9000
-    )
-  );
+return String(Math.floor(1000+Math.random()*9000));
 }
 
 function prepareInformationForm(){
-
-  const code =
-    generateReference();
-
-  document
-    .getElementById(
-      "referenceDisplay"
-    )
-    .textContent = code;
-
-  document
-    .getElementById(
-      "formReference"
-    )
-    .value = code;
-
-  updateFormHiddenFields();
+const code=generateReference();
+document.getElementById("referenceDisplay").textContent=code;
+document.getElementById("formReference").value=code;
+updateFormHiddenFields();
 }
 
 function updateFormHiddenFields(){
+const products=selectedProducts.map(item=>
+`${item.name} x${item.quantity} - $${(item.price*item.quantity).toFixed(2)}`
+).join("\n");
 
-  const productsText =
-    selectedProducts
-      .map(
-        item =>
-          `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
-      )
-      .join("\n");
+const sub=subtotal();
+const shipping=getShippingCost();
 
-  const sub =
-    subtotal();
-
-  const shippingCost =
-    getShippingCost();
-
-  const total =
-    sub + shippingCost;
-
-  document
-    .getElementById("formProducts")
-    .value =
-      productsText;
-
-  document
-    .getElementById("formSubtotal")
-    .value =
-      "$" + sub.toFixed(2);
-
-  document
-    .getElementById("formShipping")
-    .value =
-      getShippingName();
-
-  document
-    .getElementById("formShippingCost")
-    .value =
-      "$" + shippingCost.toFixed(2);
-
-  document
-    .getElementById("formTotal")
-    .value =
-      "$" + total.toFixed(2);
-
-  document
-    .getElementById("formPayment")
-    .value =
-      getPayment();
+document.getElementById("formProducts").value=products;
+document.getElementById("formSubtotal").value="$"+sub.toFixed(2);
+document.getElementById("formShipping").value=getShippingName();
+document.getElementById("formShippingCost").value="$"+shipping.toFixed(2);
+document.getElementById("formTotal").value="$"+(sub+shipping).toFixed(2);
+document.getElementById("formPayment").value=getPayment();
 }
 
 function saveLastOrder(reference){
+const shipping=getShippingCost();
+const sub=subtotal();
 
-  const shippingCost =
-    getShippingCost();
+const order={
+reference,
+products:selectedProducts.map(item=>({...item})),
+subtotal:sub,
+shipping:getShippingName(),
+shippingCost:shipping,
+total:sub+shipping,
+payment:getPayment(),
+createdAt:new Date().toISOString()
+};
 
-  const sub =
-    subtotal();
-
-  const order = {
-
-    reference:reference,
-
-    products:selectedProducts,
-
-    subtotal:sub,
-
-    shipping:
-      getShippingName(),
-
-    shippingCost:
-      shippingCost,
-
-    total:
-      sub + shippingCost,
-
-    payment:
-      getPayment(),
-
-    createdAt:
-      new Date().toISOString()
-  };
-
-  setStorage(
-    STORAGE.lastOrder,
-    order
-  );
-
-  return order;
+setStorage(STORAGE.lastOrder,order);
+return order;
 }
 
 function showPaymentInformation(order){
 
-  const box =
-    document.getElementById(
-      "paymentFinal"
-    );
+const box=document.getElementById("paymentFinal");
 
-  let html = `
-    <p>
-      <strong>Order number:</strong>
-      ${escapeHtml(order.reference)}
-    </p>
+let html=`
+<p><strong>Order number:</strong> ${escapeHtml(order.reference)}</p>
+<p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+`;
 
-    <p>
-      <strong>Amount:</strong>
-      $${order.total.toFixed(2)}
-    </p>
-  `;
+if(order.payment==="venmo"){
 
-  if(order.payment === "zelle"){
+const amount=encodeURIComponent(order.total.toFixed(2));
+const note=encodeURIComponent("NovaPeps Order "+order.reference);
+const url=`https://venmo.com/novapeps22?txn=pay&amount=${amount}&note=${note}`;
 
-    html += `
-      <div class="payment zelle">
+html+=`
+<div class="payment venmo">
+<h3>Venmo</h3>
+<p><strong>Venmo:</strong> @novapeps22</p>
+<p><strong>Amount:</strong> $${order.total.toFixed(2)}</p>
+<p><strong>Order:</strong> ${escapeHtml(order.reference)}</p>
 
-        <h3>Zelle</h3>
+<a
+class="pay-now-btn venmo-pay"
+href="${url}"
+target="_blank"
+rel="noopener noreferrer"
+>
+PAY WITH VENMO
+</a>
 
-        <p>
-          <strong>Name:</strong>
-          Araceli Hernández
-        </p>
+<button class="copy-btn" onclick="copyText('@novapeps22')">
+COPY VENMO
+</button>
 
-        <p>
-          <strong>Phone:</strong>
-          (832) 273-9625
-        </p>
-
-        <p>
-          Send the amount shown above through Zelle.
-        </p>
-
-        <p>
-          Please place your order number in the memo.
-        </p>
-
-      </div>
-    `;
-  }
-
-  if(order.payment === "venmo"){
-
-    html += `
-      <div class="payment venmo">
-
-        <h3>Venmo</h3>
-
-        <p>
-          <strong>Venmo:</strong>
-          @novapeps22
-        </p>
-
-        <p>
-          <strong>Name:</strong>
-          Araceli Hernández
-        </p>
-
-        <p>
-          Send the amount shown above through Venmo.
-        </p>
-
-        <p>
-          Please place your order number in the memo.
-        </p>
-
-        <button
-          class="copy-btn"
-          type="button"
-          onclick="copyText('@novapeps22')"
-        >
-          Copy Venmo
-        </button>
-
-      </div>
-    `;
-  }
-
-  if(order.payment === "paypal"){
-
-    html += `
-      <div class="payment paypal">
-
-        <h3>PayPal</h3>
-
-        <p>
-          <strong>PayPal:</strong>
-          Add your PayPal information here.
-        </p>
-
-        <p>
-          <strong>Amount:</strong>
-          $${order.total.toFixed(2)}
-        </p>
-
-        <p>
-          Please use your order number as the payment reference.
-        </p>
-
-      </div>
-    `;
-  }
-
-  box.innerHTML = html;
+<p class="payment-note">
+Your order is already saved. Tap the button above to continue to Venmo.
+</p>
+</div>
+`;
 }
 
-/* =====================================================
-   CORRECCIÓN 2 Y 3:
-   EMAIL + PHONE
-===================================================== */
+if(order.payment==="zelle"){
 
-const checkoutForm =
-  document.getElementById(
-    "informationForm"
-  );
+html+=`
+<div class="payment zelle">
+<h3>Zelle</h3>
 
-const checkoutEmail =
-  checkoutForm.querySelector(
-    'input[name="email"]'
-  );
+<p><strong>Name:</strong> Araceli Hernández</p>
+<p><strong>Phone:</strong> (832) 273-9625</p>
+<p><strong>Amount:</strong> $${order.total.toFixed(2)}</p>
+<p><strong>Order:</strong> ${escapeHtml(order.reference)}</p>
 
-const checkoutPhone =
-  checkoutForm.querySelector(
-    'input[name="phone"]'
-  );
+<button
+class="pay-now-btn zelle-pay"
+onclick="openZellePayment()"
+>
+CONTINUE WITH ZELLE
+</button>
+
+<button
+class="copy-btn"
+onclick="copyText('8322739625')"
+>
+COPY ZELLE NUMBER
+</button>
+
+<p class="payment-note">
+Your order is already saved. Zelle payment is completed through your bank.
+</p>
+</div>
+`;
+}
+
+if(order.payment==="paypal"){
+
+html+=`
+<div class="payment paypal">
+<h3>PayPal</h3>
+
+<p><strong>Amount:</strong> $${order.total.toFixed(2)}</p>
+<p><strong>Order:</strong> ${escapeHtml(order.reference)}</p>
+
+<button
+class="pay-now-btn paypal-pay"
+onclick="alert('Your PayPal payment link still needs to be added.')"
+>
+PAY WITH PAYPAL
+</button>
+
+<p class="payment-note">
+Your order is already saved.
+</p>
+</div>
+`;
+}
+
+box.innerHTML=html;
+}
+
+function openZellePayment(){
+copyText("8322739625");
+
+setTimeout(function(){
+alert(
+"Zelle number copied: (832) 273-9625. Open your bank app and select Zelle to complete payment."
+);
+},300);
+}
+
+/* EMAIL / PHONE VALIDATION */
+
+const checkoutForm=document.getElementById("informationForm");
+const checkoutEmail=checkoutForm.querySelector('input[name="email"]');
+const checkoutPhone=checkoutForm.querySelector('input[name="phone"]');
 
 function addValidationMessage(field){
-
-  const message =
-    document.createElement(
-      "div"
-    );
-
-  message.className =
-    "field-error-message";
-
-  field.insertAdjacentElement(
-    "afterend",
-    message
-  );
-
-  return message;
+const message=document.createElement("div");
+message.className="field-error-message";
+field.insertAdjacentElement("afterend",message);
+return message;
 }
 
-const emailMessage =
-  addValidationMessage(
-    checkoutEmail
-  );
-
-const phoneMessage =
-  addValidationMessage(
-    checkoutPhone
-  );
+const emailMessage=addValidationMessage(checkoutEmail);
+const phoneMessage=addValidationMessage(checkoutPhone);
 
 function validateCheckoutEmail(){
+const value=checkoutEmail.value.trim();
+const valid=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
 
-  const value =
-    checkoutEmail.value.trim();
+checkoutEmail.classList.remove("field-error","field-valid");
+emailMessage.classList.remove("show");
 
-  const valid =
-    /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(
-      value
-    );
+if(!valid){
+checkoutEmail.classList.add("field-error");
+emailMessage.textContent="Please enter a valid email address.";
+emailMessage.classList.add("show");
+return false;
+}
 
-  checkoutEmail.classList.remove(
-    "field-error",
-    "field-valid"
-  );
-
-  emailMessage.classList.remove(
-    "show"
-  );
-
-  if(!valid){
-
-    checkoutEmail.classList.add(
-      "field-error"
-    );
-
-    emailMessage.textContent =
-      "Please enter a valid email address.";
-
-    emailMessage.classList.add(
-      "show"
-    );
-
-    return false;
-  }
-
-  checkoutEmail.classList.add(
-    "field-valid"
-  );
-
-  return true;
+checkoutEmail.classList.add("field-valid");
+return true;
 }
 
 function validateCheckoutPhone(){
+const digits=checkoutPhone.value.replace(/\D/g,"");
 
-  const digits =
-    checkoutPhone.value.replace(
-      /\D/g,
-      ""
-    );
+checkoutPhone.classList.remove("field-error","field-valid");
+phoneMessage.classList.remove("show");
 
-  checkoutPhone.classList.remove(
-    "field-error",
-    "field-valid"
-  );
-
-  phoneMessage.classList.remove(
-    "show"
-  );
-
-  if(
-    digits.length < 10 ||
-    digits.length > 15
-  ){
-
-    checkoutPhone.classList.add(
-      "field-error"
-    );
-
-    phoneMessage.textContent =
-      "Please enter a valid phone number.";
-
-    phoneMessage.classList.add(
-      "show"
-    );
-
-    return false;
-  }
-
-  checkoutPhone.classList.add(
-    "field-valid"
-  );
-
-  return true;
+if(digits.length<10 || digits.length>15){
+checkoutPhone.classList.add("field-error");
+phoneMessage.textContent="Please enter a valid phone number.";
+phoneMessage.classList.add("show");
+return false;
 }
 
-checkoutEmail.addEventListener(
-  "blur",
-  validateCheckoutEmail
+checkoutPhone.classList.add("field-valid");
+return true;
+}
+
+checkoutEmail.addEventListener("blur",validateCheckoutEmail);
+
+checkoutPhone.addEventListener("input",function(){
+
+let digits=this.value.replace(/\D/g,"").substring(0,15);
+
+if(digits.length<=10){
+
+if(digits.length<=3){
+this.value=digits;
+}else if(digits.length<=6){
+this.value="("+digits.substring(0,3)+") "+digits.substring(3);
+}else{
+this.value="("+digits.substring(0,3)+") "+digits.substring(3,6)+"-"+digits.substring(6);
+}
+
+}else{
+this.value=digits;
+}
+
+});
+
+checkoutPhone.addEventListener("blur",validateCheckoutPhone);
+
+checkoutForm.addEventListener("submit",async function(event){
+
+event.preventDefault();
+
+if(!validateCheckoutEmail() || !validateCheckoutPhone()){
+return;
+}
+
+const button=this.querySelector('button[type="submit"]');
+
+if(!document.getElementById("formReference").value){
+prepareInformationForm();
+}
+
+updateFormHiddenFields();
+
+button.disabled=true;
+button.textContent="SENDING...";
+
+try{
+
+const response=await fetch(this.action,{
+method:"POST",
+body:new FormData(this),
+headers:{"Accept":"application/json"}
+});
+
+if(!response.ok){
+throw new Error("Submission failed");
+}
+
+const order=saveLastOrder(
+document.getElementById("formReference").value
 );
 
-checkoutEmail.addEventListener(
-  "input",
-  function(){
+this.style.display="none";
+document.getElementById("finalConfirmation").style.display="block";
 
-    if(
-      this.classList.contains(
-        "field-error"
-      )
-    ){
-      validateCheckoutEmail();
-    }
+showPaymentInformation(order);
 
-  }
-);
+}catch(error){
 
-checkoutPhone.addEventListener(
-  "blur",
-  validateCheckoutPhone
-);
+alert("There was a problem sending the information. Please try again.");
 
-checkoutPhone.addEventListener(
-  "input",
-  function(){
+button.disabled=false;
+button.textContent="SEND INFORMATION";
 
-    let digits =
-      this.value.replace(
-        /\D/g,
-        ""
-      );
-
-    if(digits.length <= 10){
-
-      digits =
-        digits.substring(
-          0,
-          10
-        );
-
-      if(digits.length <= 3){
-
-        this.value =
-          digits;
-
-      }else if(digits.length <= 6){
-
-        this.value =
-          "(" +
-          digits.substring(0,3) +
-          ") " +
-          digits.substring(3);
-
-      }else{
-
-        this.value =
-          "(" +
-          digits.substring(0,3) +
-          ") " +
-          digits.substring(3,6) +
-          "-" +
-          digits.substring(6);
-      }
-    }
-
-    if(
-      this.classList.contains(
-        "field-error"
-      )
-    ){
-      validateCheckoutPhone();
-    }
-
-  }
-);
-
-document
-  .getElementById("informationForm")
-  .addEventListener(
-    "submit",
-    async function(event){
-
-      event.preventDefault();
-
-      const form = this;
-
-      const emailOK =
-        validateCheckoutEmail();
-
-      const phoneOK =
-        validateCheckoutPhone();
-
-      if(!emailOK || !phoneOK){
-
-        const firstError =
-          form.querySelector(
-            ".field-error"
-          );
-
-        if(firstError){
-
-          firstError.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-          });
-
-          firstError.focus();
-        }
-
-        return;
-      }
-
-      const button =
-        form.querySelector(
-          'button[type="submit"]'
-        );
-
-      const reference =
-        document
-          .getElementById(
-            "formReference"
-          )
-          .value;
-
-      if(!reference){
-        prepareInformationForm();
-      }
-
-      updateFormHiddenFields();
-
-      button.disabled = true;
-
-      button.textContent =
-        "SENDING...";
-
-      try{
-
-        const response =
-          await fetch(
-            form.action,
-            {
-              method:"POST",
-              body:new FormData(form),
-              headers:{
-                "Accept":"application/json"
-              }
-            }
-          );
-
-        if(!response.ok){
-          throw new Error(
-            "Submission failed"
-          );
-        }
-
-        const order =
-          saveLastOrder(
-            document
-              .getElementById(
-                "formReference"
-              )
-              .value
-          );
-
-        form.style.display =
-          "none";
-
-        document
-          .getElementById(
-            "finalConfirmation"
-          )
-          .style.display =
-            "block";
-
-        showPaymentInformation(
-          order
-        );
-
-      }catch(error){
-
-        alert(
-          "There was a problem sending the information. Please try again."
-        );
-
-        button.disabled =
-          false;
-
-        button.textContent =
-          "SEND INFORMATION";
-      }
-
-    }
-  );
+}
+});
 
 function copyText(text){
 
-  if(
-    navigator.clipboard &&
-    navigator.clipboard.writeText
-  ){
+if(navigator.clipboard && navigator.clipboard.writeText){
 
-    navigator.clipboard
-      .writeText(text)
-      .then(function(){
-        alert(
-          "Information copied"
-        );
-      })
-      .catch(function(){
-        fallbackCopy(text);
-      });
+navigator.clipboard.writeText(text).then(function(){
+alert("Information copied");
+}).catch(function(){
+fallbackCopy(text);
+});
 
-  }else{
-
-    fallbackCopy(text);
-  }
+}else{
+fallbackCopy(text);
+}
 }
 
 function fallbackCopy(text){
 
-  const textarea =
-    document.createElement(
-      "textarea"
-    );
+const textarea=document.createElement("textarea");
+textarea.value=text;
+document.body.appendChild(textarea);
+textarea.select();
 
-  textarea.value = text;
+try{
+document.execCommand("copy");
+alert("Information copied");
+}catch(e){}
 
-  document.body.appendChild(
-    textarea
-  );
-
-  textarea.select();
-
-  try{
-
-    document.execCommand(
-      "copy"
-    );
-
-    alert(
-      "Information copied"
-    );
-
-  }catch(error){
-
-    alert(
-      "Could not copy the information."
-    );
-  }
-
-  document.body.removeChild(
-    textarea
-  );
+document.body.removeChild(textarea);
 }
+
+/* FAVORITES */
 
 function loadFavorites(){
 
-  favorites =
-    getStorage(
-      STORAGE.favorites,
-      []
-    );
+favorites=getStorage(STORAGE.favorites,[]);
 
-  document
-    .querySelectorAll(
-      ".favorite-btn"
-    )
-    .forEach(button => {
+document.querySelectorAll(".favorite-btn").forEach(button=>{
 
-      const name =
-        button.dataset.favorite;
+const name=button.dataset.favorite;
 
-      if(
-        favorites.includes(name)
-      ){
-
-        button.classList.add(
-          "active"
-        );
-
-        button.textContent =
-          "♥";
-      }
-
-    });
+if(favorites.includes(name)){
+button.classList.add("active");
+button.textContent="♥";
 }
 
-document
-  .querySelectorAll(
-    ".favorite-btn"
-  )
-  .forEach(button => {
+button.onclick=function(event){
 
-    button.addEventListener(
-      "click",
-      function(event){
+event.stopPropagation();
 
-        event.stopPropagation();
+if(favorites.includes(name)){
+favorites=favorites.filter(item=>item!==name);
+this.classList.remove("active");
+this.textContent="♡";
+}else{
+favorites.push(name);
+this.classList.add("active");
+this.textContent="♥";
+}
 
-        const name =
-          this.dataset.favorite;
+setStorage(STORAGE.favorites,favorites);
+};
 
-        if(
-          favorites.includes(name)
-        ){
+});
+}
 
-          favorites =
-            favorites.filter(
-              item =>
-                item !== name
-            );
-
-          this.classList.remove(
-            "active"
-          );
-
-          this.textContent =
-            "♡";
-
-        }else{
-
-          favorites.push(name);
-
-          this.classList.add(
-            "active"
-          );
-
-          this.textContent =
-            "♥";
-        }
-
-        setStorage(
-          STORAGE.favorites,
-          favorites
-        );
-      }
-    );
-
-  });
+/* MODAL */
 
 function openProductModal(product){
 
-  modalProduct =
-    product;
+modalProduct=product;
+modalQuantity=1;
 
-  modalQuantity =
-    1;
-
-  document
-    .getElementById(
-      "modalImage"
-    )
-    .src =
-      product.image;
-
-  document
-    .getElementById(
-      "modalImage"
-    )
-    .alt =
-      product.name;
-
-  document
-    .getElementById(
-      "modalName"
-    )
-    .textContent =
-      product.name;
-
-  document
-    .getElementById(
-      "modalPrice"
-    )
-    .textContent =
-      "$" +
-      product.price.toFixed(2);
-
-  document
-    .getElementById(
-      "modalQuantity"
-    )
-    .textContent =
-      modalQuantity;
-
-  document
-    .getElementById(
-      "productModal"
-    )
-    .classList.add(
-      "open"
-    );
+document.getElementById("modalImage").src=product.image;
+document.getElementById("modalImage").alt=product.name;
+document.getElementById("modalName").textContent=product.name;
+document.getElementById("modalPrice").textContent="$"+product.price.toFixed(2);
+document.getElementById("modalQuantity").textContent=1;
+document.getElementById("productModal").classList.add("open");
 }
 
 function closeProductModal(){
-
-  document
-    .getElementById(
-      "productModal"
-    )
-    .classList.remove(
-      "open"
-    );
-
-  modalProduct =
-    null;
+document.getElementById("productModal").classList.remove("open");
+modalProduct=null;
 }
 
-function changeModalQuantity(change){
+document.getElementById("modalClose").onclick=closeProductModal;
 
-  modalQuantity += change;
+document.getElementById("modalMinus").onclick=function(){
+modalQuantity=Math.max(1,modalQuantity-1);
+document.getElementById("modalQuantity").textContent=modalQuantity;
+};
 
-  if(modalQuantity < 1){
-    modalQuantity = 1;
-  }
+document.getElementById("modalPlus").onclick=function(){
+modalQuantity++;
+document.getElementById("modalQuantity").textContent=modalQuantity;
+};
 
-  document
-    .getElementById(
-      "modalQuantity"
-    )
-    .textContent =
-      modalQuantity;
+document.getElementById("modalAdd").onclick=function(){
+if(!modalProduct)return;
+addToList(modalProduct,modalQuantity);
+closeProductModal();
+openPanel("listPanel");
+};
+
+document.getElementById("modalGoCart").onclick=function(){
+if(modalProduct)addToList(modalProduct,modalQuantity);
+closeProductModal();
+openPanel("cartPanel");
+};
+
+/* SEARCH */
+
+const searchInput=document.getElementById("searchInput");
+const searchResults=document.getElementById("searchResults");
+
+searchInput.oninput=function(){
+
+const query=this.value.trim().toLowerCase();
+
+if(!query){
+searchResults.innerHTML="";
+return;
 }
 
-document
-  .getElementById("modalClose")
-  .addEventListener(
-    "click",
-    closeProductModal
-  );
-
-document
-  .getElementById("modalMinus")
-  .addEventListener(
-    "click",
-    () =>
-      changeModalQuantity(-1)
-  );
-
-document
-  .getElementById("modalPlus")
-  .addEventListener(
-    "click",
-    () =>
-      changeModalQuantity(1)
-  );
-
-document
-  .getElementById("modalAdd")
-  .addEventListener(
-    "click",
-    function(){
-
-      if(!modalProduct){
-        return;
-      }
-
-      addToList(
-        modalProduct,
-        modalQuantity
-      );
-
-      closeProductModal();
-
-      openPanel(
-        "listPanel"
-      );
-    }
-  );
-
-document
-  .getElementById("modalGoCart")
-  .addEventListener(
-    "click",
-    function(){
-
-      if(modalProduct){
-
-        addToList(
-          modalProduct,
-          modalQuantity
-        );
-      }
-
-      closeProductModal();
-
-      openPanel(
-        "cartPanel"
-      );
-    }
-  );
-
-document
-  .getElementById("productModal")
-  .addEventListener(
-    "click",
-    function(event){
-
-      if(event.target === this){
-        closeProductModal();
-      }
-
-    }
-  );
-
-document
-  .querySelectorAll(
-    ".product-card"
-  )
-  .forEach(card => {
-
-    const image =
-      card.querySelector(
-        ".product-image"
-      );
-
-    const addButton =
-      card.querySelector(
-        ".add-list-btn"
-      );
-
-    const product = {
-      name:card.dataset.name,
-      price:Number(
-        card.dataset.price
-      ),
-      image:card.dataset.image
-    };
-
-    image.addEventListener(
-      "click",
-      function(){
-        openProductModal(
-          product
-        );
-      }
-    );
-
-    addButton.addEventListener(
-      "click",
-      function(){
-
-        addToList(
-          product,
-          1
-        );
-
-        this.textContent =
-          "ADDED ✓";
-
-        setTimeout(
-          () => {
-            this.textContent =
-              "ADD TO LIST";
-          },
-          1200
-        );
-      }
-    );
-
-  });
-
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
-const searchResults =
-  document.getElementById(
-    "searchResults"
-  );
-
-function renderSearchResults(){
-
-  const query =
-    normalize(
-      searchInput
-        .value
-        .trim()
-    );
-
-  if(!query){
-
-    searchResults.innerHTML =
-      "";
-
-    return;
-  }
-
-  const results =
-    PRODUCTS.filter(
-      product =>
-        normalize(
-          product.name
-        ).includes(query)
-    );
-
-  if(results.length === 0){
-
-    searchResults.innerHTML =
-      '<div class="notice">No products found.</div>';
-
-    return;
-  }
-
-  searchResults.innerHTML =
-    results.map(product => `
-      <div
-        class="search-result"
-        data-search-name="${escapeHtml(product.name)}"
-      >
-        <strong>
-          ${escapeHtml(product.name)}
-        </strong>
-        —
-        $${product.price.toFixed(2)}
-      </div>
-    `).join("");
-}
-
-searchInput.addEventListener(
-  "input",
-  renderSearchResults
+const results=PRODUCTS.filter(product=>
+product.name.toLowerCase().includes(query)
 );
 
-searchResults.addEventListener(
-  "click",
-  function(event){
+searchResults.innerHTML=results.map(product=>`
+<div class="search-result" onclick="addProductByName('${escapeJs(product.name)}')">
+<strong>${escapeHtml(product.name)}</strong> — $${product.price}
+</div>
+`).join("");
+};
 
-    const item =
-      event.target.closest(
-        ".search-result"
-      );
+/* MENU LINKS */
 
-    if(!item){
-      return;
-    }
+document.querySelectorAll(".menu-link").forEach(link=>{
 
-    const product =
-      findProduct(
-        item.dataset.searchName
-      );
+link.addEventListener("click",function(){
 
-    if(product){
+const href=this.getAttribute("href");
 
-      addToList(
-        product,
-        1
-      );
+if(href && href.startsWith("#")){
 
-      searchInput.value =
-        "";
+closeAllPanels();
 
-      searchResults.innerHTML =
-        "";
+setTimeout(function(){
+const element=document.querySelector(href);
+if(element)element.scrollIntoView({behavior:"smooth"});
+},50);
 
-      openPanel(
-        "listPanel"
-      );
-    }
+}
+});
 
-  }
-);
+});
 
-document
-  .querySelectorAll(
-    ".menu-link"
-  )
-  .forEach(link => {
+/* RESTORE */
 
-    link.addEventListener(
-      "click",
-      function(){
+function restoreOptions(){
 
-        const href =
-          this.getAttribute(
-            "href"
-          );
+const shipping=getStorage(STORAGE.shipping,null);
+const payment=getStorage(STORAGE.payment,null);
 
-        if(
-          href &&
-          href.startsWith("#")
-        ){
-
-          closeAllPanels();
-
-          setTimeout(
-            () => {
-
-              const element =
-                document.querySelector(
-                  href
-                );
-
-              if(element){
-
-                element.scrollIntoView({
-                  behavior:"smooth"
-                });
-              }
-
-            },
-            50
-          );
-        }
-      }
-    );
-
-  });
-
-document
-  .querySelector(
-    ".brand-logo"
-  )
-  .addEventListener(
-    "click",
-    function(){
-      closeAllPanels();
-    }
-  );
-
-function escapeHtml(text){
-
-  return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+if(shipping){
+const input=document.querySelector(`input[name="shipping"][value="${shipping}"]`);
+if(input)input.checked=true;
 }
 
-function escapeJs(text){
-
-  return String(text)
-    .replace(/\\/g,"\\\\")
-    .replace(/'/g,"\\'");
+if(payment){
+const input=document.querySelector(`input[name="payment"][value="${payment}"]`);
+if(input)input.checked=true;
+}
 }
 
-selectedProducts =
-  getStorage(
-    STORAGE.selected,
-    []
-  );
+selectedProducts=getStorage(STORAGE.selected,[]);
 
 initializeAgeGate();
+renderProducts();
 restoreOptions();
-loadFavorites();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
 
 </script>
+
 </body>
 </html>
