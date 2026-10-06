@@ -134,15 +134,16 @@ body.locked{
 }
 
 /* =====================================================
-   HERO
+   HERO - PORTADA COMPLETA
 ===================================================== */
 
 .hero{
-  height:250px;
+  width:100%;
+  aspect-ratio:3 / 1;
   position:relative;
   background-image:url("./B3FD9D4A-A915-48AD-A552-E618979DD352.PNG");
-  background-size:cover;
-  background-position:center;
+  background-size:100% 100%;
+  background-position:center center;
   background-repeat:no-repeat;
 }
 
@@ -950,8 +951,6 @@ body.locked{
 
 .age-gate.hidden{
   display:none !important;
-  visibility:hidden !important;
-  pointer-events:none !important;
 }
 
 .age-card{
@@ -985,8 +984,6 @@ body.locked{
   border-radius:10px;
   font-weight:900;
   cursor:pointer;
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
 }
 
 .age-enter{
@@ -1047,10 +1044,15 @@ footer p{
     width:34px;
   }
 
+  /* PORTADA COMPLETA EN CELULAR */
   .hero{
-    height:225px;
-    min-height:225px;
-    background-position:center;
+    width:100%;
+    height:auto;
+    min-height:0;
+    aspect-ratio:3 / 1;
+    background-size:100% 100%;
+    background-position:center center;
+    background-repeat:no-repeat;
   }
 
   .benefits{
@@ -1572,139 +1574,48 @@ let favorites=[];
 let modalProduct=null;
 let modalQuantity=1;
 
-/* =====================================================
-   STORAGE
-===================================================== */
-
 function getStorage(key,fallback){
 try{
 const value=localStorage.getItem(key);
 if(value===null)return fallback;
 return JSON.parse(value);
-}catch(error){
-return fallback;
-}
+}catch(error){return fallback;}
 }
 
 function setStorage(key,value){
-try{
-localStorage.setItem(key,JSON.stringify(value));
-}catch(error){}
+try{localStorage.setItem(key,JSON.stringify(value));}catch(error){}
 }
-
-/* =====================================================
-   AGE CONFIRMATION - FIXED
-===================================================== */
 
 function enterSite(){
-
-const gate=document.getElementById("ageGate");
-
-if(gate){
-gate.classList.add("hidden");
-gate.style.display="none";
-gate.style.visibility="hidden";
-gate.style.pointerEvents="none";
-}
-
+try{localStorage.setItem(STORAGE.age,"true");}catch(error){}
+document.getElementById("ageGate").classList.add("hidden");
 document.body.classList.remove("locked");
-document.documentElement.style.overflow="";
-document.body.style.overflow="";
-
-try{
-localStorage.setItem(STORAGE.age,"true");
-}catch(error){}
-
 }
 
 function leaveSite(){
-
-try{
-localStorage.removeItem(STORAGE.age);
-}catch(error){}
-
-window.location.href="https://www.google.com/";
-
+try{localStorage.removeItem(STORAGE.age);}catch(error){}
+document.body.innerHTML='<div style="height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Arial;padding:30px;"><div><h1>Thank you.</h1><p>You have chosen to exit this website.</p></div></div>';
 }
 
 function initializeAgeGate(){
-
 const gate=document.getElementById("ageGate");
-const enterButton=document.getElementById("ageEnterBtn");
-const exitButton=document.getElementById("ageExitBtn");
-
-if(!gate)return;
-
 let confirmed=false;
 
 try{
 confirmed=localStorage.getItem(STORAGE.age)==="true";
-}catch(error){
-confirmed=false;
-}
+}catch(error){}
 
 if(confirmed){
-
 gate.classList.add("hidden");
-gate.style.display="none";
-gate.style.visibility="hidden";
-gate.style.pointerEvents="none";
-
 document.body.classList.remove("locked");
-
 }else{
-
 gate.classList.remove("hidden");
-gate.style.display="flex";
-gate.style.visibility="visible";
-gate.style.pointerEvents="auto";
-
 document.body.classList.add("locked");
-
 }
 
-if(enterButton){
-
-enterButton.onclick=function(event){
-
-event.preventDefault();
-event.stopPropagation();
-
-enterSite();
-
-return false;
-
-};
-
-enterButton.addEventListener("touchend",function(event){
-
-event.preventDefault();
-
-enterSite();
-
-},{passive:false});
-
+document.getElementById("ageEnterBtn").addEventListener("click",enterSite);
+document.getElementById("ageExitBtn").addEventListener("click",leaveSite);
 }
-
-if(exitButton){
-
-exitButton.onclick=function(event){
-
-event.preventDefault();
-
-leaveSite();
-
-return false;
-
-};
-
-}
-
-}
-
-/* =====================================================
-   MENU
-===================================================== */
 
 function openMenu(){
 document.getElementById("sideMenu").classList.add("open");
@@ -1718,115 +1629,58 @@ document.getElementById("sideMenu").classList.remove("open");
 document.getElementById("menuBtn").addEventListener("click",openMenu);
 document.getElementById("sideClose").addEventListener("click",closeMenu);
 
-/* =====================================================
-   PANELS
-===================================================== */
-
 function openPanel(id){
-
 closeMenu();
-
-const panel=document.getElementById(id);
-
-if(!panel)return;
-
-panel.classList.add("open");
-
+document.getElementById(id).classList.add("open");
 document.getElementById("overlay").classList.add("show");
-
-if(id==="listPanel"){
-renderSelectedProducts();
-}
-
-if(id==="cartPanel"){
-renderCart();
-}
-
+if(id==="listPanel")renderSelectedProducts();
+if(id==="cartPanel")renderCart();
 }
 
 function closePanel(id){
-
-const panel=document.getElementById(id);
-
-if(panel){
-panel.classList.remove("open");
-}
-
+document.getElementById(id).classList.remove("open");
 const anyPanel=document.querySelector(".panel.open");
 
-if(
-!anyPanel &&
-!document.getElementById("sideMenu").classList.contains("open")
-){
+if(!anyPanel&&!document.getElementById("sideMenu").classList.contains("open")){
 document.getElementById("overlay").classList.remove("show");
 }
-
 }
 
 function closeAllPanels(){
-
-document.querySelectorAll(".panel.open").forEach(panel=>{
-panel.classList.remove("open");
-});
-
+document.querySelectorAll(".panel.open").forEach(panel=>panel.classList.remove("open"));
 document.getElementById("sideMenu").classList.remove("open");
 document.getElementById("overlay").classList.remove("show");
-
 closeProductModal();
-
 }
 
 document.getElementById("overlay").addEventListener("click",closeAllPanels);
 
 document.querySelectorAll("[data-open-panel]").forEach(button=>{
-
 button.addEventListener("click",function(){
 openPanel(this.dataset.openPanel);
 });
-
 });
 
 document.querySelectorAll("[data-close-panel]").forEach(button=>{
-
 button.addEventListener("click",function(){
 closePanel(this.dataset.closePanel);
 });
-
 });
 
 document.getElementById("headerSearchBtn").addEventListener("click",function(){
-
 openMenu();
-
-setTimeout(()=>{
-document.getElementById("searchInput").focus();
-},250);
-
+setTimeout(()=>document.getElementById("searchInput").focus(),250);
 });
 
-document.getElementById("headerCartBtn").addEventListener("click",()=>{
-openPanel("cartPanel");
-});
-
-document.getElementById("cartFloating").addEventListener("click",()=>{
-openPanel("cartPanel");
-});
-
-/* =====================================================
-   PRODUCTS
-===================================================== */
+document.getElementById("headerCartBtn").addEventListener("click",()=>openPanel("cartPanel"));
+document.getElementById("cartFloating").addEventListener("click",()=>openPanel("cartPanel"));
 
 function findProduct(name){
 return PRODUCTS.find(product=>product.name===name);
 }
 
 function normalize(text){
-
-return String(text)
-.toLowerCase()
-.normalize("NFD")
-.replace(/[\u0300-\u036f]/g,"");
-
+return String(text).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 }
 
 function saveSelected(){
@@ -1834,78 +1688,56 @@ setStorage(STORAGE.selected,selectedProducts);
 }
 
 function subtotal(){
-
-return selectedProducts.reduce(
-(total,item)=>total+item.price*item.quantity,
-0
-);
-
+return selectedProducts.reduce((total,item)=>total+item.price*item.quantity,0);
 }
 
 function addToList(product,quantity=1){
 
-const existing=selectedProducts.find(
-item=>item.name===product.name
-);
+const existing=selectedProducts.find(item=>item.name===product.name);
 
 if(existing){
-
 existing.quantity+=quantity;
-
 }else{
-
 selectedProducts.push({
 name:product.name,
 price:product.price,
 image:product.image,
 quantity
 });
-
 }
 
 saveSelected();
 updateCartCount();
 renderSelectedProducts();
 renderCart();
-
 }
 
 function changeQuantity(name,change){
 
-const item=selectedProducts.find(
-product=>product.name===name
-);
+const item=selectedProducts.find(product=>product.name===name);
 
 if(!item)return;
 
 item.quantity+=change;
 
 if(item.quantity<=0){
-
-selectedProducts=selectedProducts.filter(
-product=>product.name!==name
-);
-
+selectedProducts=selectedProducts.filter(product=>product.name!==name);
 }
 
 saveSelected();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
-
 }
 
 function removeProduct(name){
 
-selectedProducts=selectedProducts.filter(
-item=>item.name!==name
-);
+selectedProducts=selectedProducts.filter(item=>item.name!==name);
 
 saveSelected();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
-
 }
 
 function clearCart(){
@@ -1916,12 +1748,7 @@ saveSelected();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
-
 }
-
-/* =====================================================
-   SELECTED PRODUCTS
-===================================================== */
 
 function renderSelectedProducts(){
 
@@ -1930,103 +1757,70 @@ const total=document.getElementById("listTotal");
 
 if(selectedProducts.length===0){
 
-container.innerHTML=
-'<p class="notice">No products selected.</p>';
-
+container.innerHTML='<p class="notice">No products selected.</p>';
 total.textContent="$0.00";
-
 return;
 
 }
 
 container.innerHTML=selectedProducts.map(item=>`
-
 <div class="selected-item">
-
-<img
-src="${item.image}"
-alt="${escapeHtml(item.name)}"
->
+<img src="${item.image}" alt="${escapeHtml(item.name)}">
 
 <div class="selected-info">
-
 <strong>${escapeHtml(item.name)}</strong>
-
 <div>$${item.price.toFixed(2)}</div>
 
 <div class="qty-controls">
 
-<button
-type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',-1)">
-−
-</button>
+<button type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
 
 <strong>${item.quantity}</strong>
 
-<button
-type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',1)">
-+
-</button>
+<button type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
 
-<button
-class="remove-btn"
+<button class="remove-btn"
 type="button"
 onclick="removeProduct('${escapeJs(item.name)}')">
 Remove
 </button>
 
 </div>
-
 </div>
-
 </div>
-
 `).join("");
 
 total.textContent="$"+subtotal().toFixed(2);
-
 }
 
 function updateCartCount(){
 
 const count=selectedProducts.reduce(
-(sum,item)=>sum+item.quantity,
-0
+(sum,item)=>sum+item.quantity,0
 );
 
 document.getElementById("cartCount").textContent=count;
 document.getElementById("headerCartCount").textContent=count;
-
 }
-
-/* =====================================================
-   SHIPPING
-===================================================== */
 
 function getShippingCost(){
 
-const selected=
-document.querySelector('input[name="shipping"]:checked');
+const selected=document.querySelector('input[name="shipping"]:checked');
 
 if(!selected)return 0;
 
 if(selected.value==="standard")return 9;
 if(selected.value==="express")return 15;
-
-if(selected.value==="free"){
-return subtotal()>=200 ? 0 : 9;
-}
+if(selected.value==="free")return subtotal()>=200?0:9;
 
 return 0;
-
 }
 
 function getShippingName(){
 
-const selected=
-document.querySelector('input[name="shipping"]:checked');
+const selected=document.querySelector('input[name="shipping"]:checked');
 
 if(!selected)return "";
 
@@ -2035,21 +1829,14 @@ if(selected.value==="express")return "Express";
 if(selected.value==="free")return "Free Shipping";
 
 return "";
-
 }
 
 function getPayment(){
 
-const selected=
-document.querySelector('input[name="payment"]:checked');
+const selected=document.querySelector('input[name="payment"]:checked');
 
-return selected ? selected.value : "";
-
+return selected?selected.value:"";
 }
-
-/* =====================================================
-   CART
-===================================================== */
 
 function renderCart(){
 
@@ -2057,8 +1844,7 @@ const container=document.getElementById("cartItems");
 
 if(selectedProducts.length===0){
 
-container.innerHTML=
-'<p class="notice">Your cart is empty.</p>';
+container.innerHTML='<p class="notice">Your cart is empty.</p>';
 
 }else{
 
@@ -2066,10 +1852,7 @@ container.innerHTML=selectedProducts.map(item=>`
 
 <div class="selected-item">
 
-<img
-src="${item.image}"
-alt="${escapeHtml(item.name)}"
->
+<img src="${item.image}" alt="${escapeHtml(item.name)}">
 
 <div class="selected-info">
 
@@ -2079,22 +1862,15 @@ alt="${escapeHtml(item.name)}"
 
 <div class="qty-controls">
 
-<button
-type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',-1)">
-−
-</button>
+<button type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
 
 <strong>${item.quantity}</strong>
 
-<button
-type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',1)">
-+
-</button>
+<button type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
 
-<button
-class="remove-btn"
+<button class="remove-btn"
 type="button"
 onclick="removeProduct('${escapeJs(item.name)}')">
 Remove
@@ -2111,7 +1887,6 @@ Remove
 }
 
 updateTotals();
-
 }
 
 function updateTotals(){
@@ -2120,22 +1895,12 @@ const sub=subtotal();
 const shipping=getShippingCost();
 const total=sub+shipping;
 
-document.getElementById("subtotal").textContent=
-"$"+sub.toFixed(2);
-
-document.getElementById("shippingCost").textContent=
-"$"+shipping.toFixed(2);
-
-document.getElementById("grandTotal").textContent=
-"$"+total.toFixed(2);
+document.getElementById("subtotal").textContent="$"+sub.toFixed(2);
+document.getElementById("shippingCost").textContent="$"+shipping.toFixed(2);
+document.getElementById("grandTotal").textContent="$"+total.toFixed(2);
 
 updateFormHiddenFields();
-
 }
-
-/* =====================================================
-   RESTORE OPTIONS
-===================================================== */
 
 function restoreOptions(){
 
@@ -2144,122 +1909,86 @@ const payment=getStorage(STORAGE.payment,null);
 
 if(shipping){
 
-const input=
-document.querySelector(
+const input=document.querySelector(
 `input[name="shipping"][value="${shipping}"]`
 );
 
-if(input){
-input.checked=true;
-}
+if(input)input.checked=true;
 
 }
 
 if(payment){
 
-const input=
-document.querySelector(
+const input=document.querySelector(
 `input[name="payment"][value="${payment}"]`
 );
 
-if(input){
-input.checked=true;
-}
+if(input)input.checked=true;
 
 }
-
 }
 
-document.querySelectorAll(
-'input[name="shipping"]'
-).forEach(input=>{
+document.querySelectorAll('input[name="shipping"]').forEach(input=>{
 
 input.addEventListener("change",function(){
 
 setStorage(STORAGE.shipping,this.value);
-
 updateTotals();
 
 });
 
 });
 
-document.querySelectorAll(
-'input[name="payment"]'
-).forEach(input=>{
+document.querySelectorAll('input[name="payment"]').forEach(input=>{
 
 input.addEventListener("change",function(){
 
 setStorage(STORAGE.payment,this.value);
-
 updateFormHiddenFields();
 
 });
 
 });
 
-/* =====================================================
-   CART BUTTONS
-===================================================== */
-
-document.getElementById("openCartFromList")
-.addEventListener("click",function(){
+document.getElementById("openCartFromList").addEventListener("click",function(){
 
 closePanel("listPanel");
-
 openPanel("cartPanel");
 
 });
 
-document.getElementById("clearCartBtn")
-.addEventListener("click",clearCart);
+document.getElementById("clearCartBtn").addEventListener("click",clearCart);
 
-document.getElementById("checkoutBtn")
-.addEventListener("click",function(){
+document.getElementById("checkoutBtn").addEventListener("click",function(){
 
 if(selectedProducts.length===0){
 
 alert("Please select at least one product.");
-
 return;
 
 }
 
-const shipping=
-document.querySelector(
-'input[name="shipping"]:checked'
-);
+const shipping=document.querySelector('input[name="shipping"]:checked');
 
 if(!shipping){
 
 alert("Please select a shipping option.");
-
 return;
 
 }
 
-if(
-shipping.value==="free" &&
-subtotal()<200
-){
+if(shipping.value==="free"&&subtotal()<200){
 
-alert(
-"Free Shipping is available only for orders of $200 or more."
-);
-
+alert("Free Shipping is available only for orders of $200 or more.");
 return;
 
 }
 
-const payment=
-document.querySelector(
-'input[name="payment"]:checked'
-);
+const payment=document.querySelector('input[name="payment"]:checked');
 
 if(!payment){
 
 alert("Please select a payment method.");
-
 return;
 
 }
@@ -2267,14 +1996,9 @@ return;
 prepareInformationForm();
 
 closePanel("cartPanel");
-
 openPanel("informationPanel");
 
 });
-
-/* =====================================================
-   INFORMATION FORM
-===================================================== */
 
 function generateReference(){
 
@@ -2288,54 +2012,28 @@ function prepareInformationForm(){
 
 const code=generateReference();
 
-document.getElementById(
-"referenceDisplay"
-).textContent=code;
-
-document.getElementById(
-"formReference"
-).value=code;
+document.getElementById("referenceDisplay").textContent=code;
+document.getElementById("formReference").value=code;
 
 updateFormHiddenFields();
-
 }
 
 function updateFormHiddenFields(){
 
-const productsText=
-selectedProducts.map(item=>
-
+const productsText=selectedProducts.map(item=>
 `${item.name} x${item.quantity} - $${(item.price*item.quantity).toFixed(2)}`
-
 ).join("\n");
 
 const sub=subtotal();
 const shippingCost=getShippingCost();
 const total=sub+shippingCost;
 
-document.getElementById(
-"formProducts"
-).value=productsText;
-
-document.getElementById(
-"formSubtotal"
-).value="$"+sub.toFixed(2);
-
-document.getElementById(
-"formShipping"
-).value=getShippingName();
-
-document.getElementById(
-"formShippingCost"
-).value="$"+shippingCost.toFixed(2);
-
-document.getElementById(
-"formTotal"
-).value="$"+total.toFixed(2);
-
-document.getElementById(
-"formPayment"
-).value=getPayment();
+document.getElementById("formProducts").value=productsText;
+document.getElementById("formSubtotal").value="$"+sub.toFixed(2);
+document.getElementById("formShipping").value=getShippingName();
+document.getElementById("formShippingCost").value="$"+shippingCost.toFixed(2);
+document.getElementById("formTotal").value="$"+total.toFixed(2);
+document.getElementById("formPayment").value=getPayment();
 
 }
 
@@ -2347,19 +2045,12 @@ const sub=subtotal();
 const order={
 
 reference,
-
 products:selectedProducts,
-
 subtotal:sub,
-
 shipping:getShippingName(),
-
 shippingCost,
-
 total:sub+shippingCost,
-
 payment:getPayment(),
-
 createdAt:new Date().toISOString()
 
 };
@@ -2367,35 +2058,20 @@ createdAt:new Date().toISOString()
 setStorage(STORAGE.lastOrder,order);
 
 return order;
-
 }
-
-/* =====================================================
-   PAYMENT INFORMATION
-===================================================== */
 
 function showPaymentInformation(order){
 
-const box=
-document.getElementById("paymentFinal");
+const box=document.getElementById("paymentFinal");
 
-const amount=
-order.total.toFixed(2);
-
-const reference=
-order.reference;
+const amount=order.total.toFixed(2);
+const reference=order.reference;
 
 let html=`
 
-<p>
-<strong>Order number:</strong>
-${escapeHtml(reference)}
-</p>
+<p><strong>Order number:</strong> ${escapeHtml(reference)}</p>
 
-<p>
-<strong>Amount:</strong>
-$${amount}
-</p>
+<p><strong>Amount:</strong> $${amount}</p>
 
 `;
 
@@ -2407,28 +2083,17 @@ html+=`
 
 <div class="payment-title">
 
-<span class="payment-logo zelle-logo">
-Z
-</span>
+<span class="payment-logo zelle-logo">Z</span>
 
 <h3>Zelle</h3>
 
 </div>
 
-<p>
-<strong>Name:</strong>
-Araceli Hernández
-</p>
+<p><strong>Name:</strong> Araceli Hernández</p>
 
-<p>
-<strong>Phone:</strong>
-(832) 273-9625
-</p>
+<p><strong>Phone:</strong> (832) 273-9625</p>
 
-<p>
-<strong>Amount:</strong>
-$${amount}
-</p>
+<p><strong>Amount:</strong> $${amount}</p>
 
 <p>
 Please include order number
@@ -2453,8 +2118,7 @@ COPY ZELLE NUMBER
 
 if(order.payment==="venmo"){
 
-const venmoNote=
-encodeURIComponent(
+const venmoNote=encodeURIComponent(
 "NovaPeps Order "+reference
 );
 
@@ -2470,28 +2134,17 @@ html+=`
 
 <div class="payment-title">
 
-<span class="payment-logo venmo-logo">
-V
-</span>
+<span class="payment-logo venmo-logo">V</span>
 
 <h3>Venmo</h3>
 
 </div>
 
-<p>
-<strong>Venmo:</strong>
-@novapeps22
-</p>
+<p><strong>Venmo:</strong> @novapeps22</p>
 
-<p>
-<strong>Name:</strong>
-Araceli Hernández
-</p>
+<p><strong>Name:</strong> Araceli Hernández</p>
 
-<p>
-<strong>Amount:</strong>
-$${amount}
-</p>
+<p><strong>Amount:</strong> $${amount}</p>
 
 <p>
 Order number:
@@ -2536,28 +2189,17 @@ html+=`
 
 <div class="payment-title">
 
-<span class="payment-logo paypal-logo">
-P
-</span>
+<span class="payment-logo paypal-logo">P</span>
 
 <h3>PayPal</h3>
 
 </div>
 
-<p>
-<strong>PayPal.Me:</strong>
-@novapeps22
-</p>
+<p><strong>PayPal.Me:</strong> @novapeps22</p>
 
-<p>
-<strong>Name:</strong>
-Araceli Hernández
-</p>
+<p><strong>Name:</strong> Araceli Hernández</p>
 
-<p>
-<strong>Amount:</strong>
-$${amount}
-</p>
+<p><strong>Amount:</strong> $${amount}</p>
 
 <p>
 Order number:
@@ -2584,30 +2226,17 @@ box.innerHTML=html;
 
 }
 
-/* =====================================================
-   SUBMIT
-===================================================== */
-
-document.getElementById(
-"informationForm"
-).addEventListener(
-"submit",
-async function(event){
+document.getElementById("informationForm").addEventListener("submit",async function(event){
 
 event.preventDefault();
 
 const form=this;
 
-const button=
-form.querySelector(
+const button=form.querySelector(
 'button[type="submit"]'
 );
 
-if(
-!document.getElementById(
-"formReference"
-).value
-){
+if(!document.getElementById("formReference").value){
 
 prepareInformationForm();
 
@@ -2620,10 +2249,7 @@ button.textContent="SENDING...";
 
 try{
 
-const response=
-await fetch(
-form.action,
-{
+const response=await fetch(form.action,{
 
 method:"POST",
 
@@ -2633,25 +2259,21 @@ headers:{
 "Accept":"application/json"
 }
 
-}
-);
+});
 
 if(!response.ok){
+
 throw new Error("Submission failed");
+
 }
 
-const order=
-saveLastOrder(
-document.getElementById(
-"formReference"
-).value
+const order=saveLastOrder(
+document.getElementById("formReference").value
 );
 
 form.style.display="none";
 
-document.getElementById(
-"finalConfirmation"
-).style.display="block";
+document.getElementById("finalConfirmation").style.display="block";
 
 showPaymentInformation(order);
 
@@ -2663,17 +2285,11 @@ alert(
 
 button.disabled=false;
 
-button.textContent=
-"SEND INFORMATION";
+button.textContent="SEND INFORMATION";
 
 }
 
-}
-);
-
-/* =====================================================
-   COPY
-===================================================== */
+});
 
 function copyText(text){
 
@@ -2682,18 +2298,11 @@ navigator.clipboard &&
 navigator.clipboard.writeText
 ){
 
-navigator.clipboard
-.writeText(text)
-.then(()=>{
+navigator.clipboard.writeText(text)
 
-alert("Information copied");
+.then(()=>alert("Information copied"))
 
-})
-.catch(()=>{
-
-fallbackCopy(text);
-
-});
+.catch(()=>fallbackCopy(text));
 
 }else{
 
@@ -2705,8 +2314,7 @@ fallbackCopy(text);
 
 function fallbackCopy(text){
 
-const textarea=
-document.createElement("textarea");
+const textarea=document.createElement("textarea");
 
 textarea.value=text;
 
@@ -2722,9 +2330,7 @@ alert("Information copied");
 
 }catch(error){
 
-alert(
-"Could not copy the information."
-);
+alert("Could not copy the information.");
 
 }
 
@@ -2732,28 +2338,18 @@ document.body.removeChild(textarea);
 
 }
 
-/* =====================================================
-   FAVORITES
-===================================================== */
-
 function loadFavorites(){
 
-favorites=
-getStorage(
+favorites=getStorage(
 STORAGE.favorites,
 []
 );
 
-document.querySelectorAll(
-".favorite-btn"
-).forEach(button=>{
+document.querySelectorAll(".favorite-btn").forEach(button=>{
 
-const name=
-button.dataset.favorite;
+const name=button.dataset.favorite;
 
-if(
-favorites.includes(name)
-){
+if(favorites.includes(name)){
 
 button.classList.add("active");
 
@@ -2765,25 +2361,17 @@ button.textContent="♥";
 
 }
 
-document.querySelectorAll(
-".favorite-btn"
-).forEach(button=>{
+document.querySelectorAll(".favorite-btn").forEach(button=>{
 
-button.addEventListener(
-"click",
-function(event){
+button.addEventListener("click",function(event){
 
 event.stopPropagation();
 
-const name=
-this.dataset.favorite;
+const name=this.dataset.favorite;
 
-if(
-favorites.includes(name)
-){
+if(favorites.includes(name)){
 
-favorites=
-favorites.filter(
+favorites=favorites.filter(
 item=>item!==name
 );
 
@@ -2806,53 +2394,35 @@ STORAGE.favorites,
 favorites
 );
 
-}
-);
-
 });
 
-/* =====================================================
-   PRODUCT MODAL
-===================================================== */
+});
 
 function openProductModal(product){
 
 modalProduct=product;
+
 modalQuantity=1;
 
-document.getElementById(
-"modalImage"
-).src=product.image;
+document.getElementById("modalImage").src=product.image;
 
-document.getElementById(
-"modalImage"
-).alt=product.name;
+document.getElementById("modalImage").alt=product.name;
 
-document.getElementById(
-"modalName"
-).textContent=product.name;
+document.getElementById("modalName").textContent=product.name;
 
-document.getElementById(
-"modalPrice"
-).textContent=
+document.getElementById("modalPrice").textContent=
 "$"+product.price.toFixed(2);
 
-document.getElementById(
-"modalQuantity"
-).textContent=
+document.getElementById("modalQuantity").textContent=
 modalQuantity;
 
-document.getElementById(
-"productModal"
-).classList.add("open");
+document.getElementById("productModal").classList.add("open");
 
 }
 
 function closeProductModal(){
 
-document.getElementById(
-"productModal"
-).classList.remove("open");
+document.getElementById("productModal").classList.remove("open");
 
 modalProduct=null;
 
@@ -2863,50 +2433,34 @@ function changeModalQuantity(change){
 modalQuantity+=change;
 
 if(modalQuantity<1){
+
 modalQuantity=1;
+
 }
 
-document.getElementById(
-"modalQuantity"
-).textContent=
+document.getElementById("modalQuantity").textContent=
 modalQuantity;
 
 }
 
-document.getElementById(
-"modalClose"
-).addEventListener(
+document.getElementById("modalClose").addEventListener(
 "click",
 closeProductModal
 );
 
-document.getElementById(
-"modalMinus"
-).addEventListener(
-"click",
-()=>{
+document.getElementById("modalMinus").addEventListener("click",()=>{
 
 changeModalQuantity(-1);
 
-}
-);
+});
 
-document.getElementById(
-"modalPlus"
-).addEventListener(
-"click",
-()=>{
+document.getElementById("modalPlus").addEventListener("click",()=>{
 
 changeModalQuantity(1);
 
-}
-);
+});
 
-document.getElementById(
-"modalAdd"
-).addEventListener(
-"click",
-function(){
+document.getElementById("modalAdd").addEventListener("click",function(){
 
 if(!modalProduct)return;
 
@@ -2919,14 +2473,9 @@ closeProductModal();
 
 openPanel("listPanel");
 
-}
-);
+});
 
-document.getElementById(
-"modalGoCart"
-).addEventListener(
-"click",
-function(){
+document.getElementById("modalGoCart").addEventListener("click",function(){
 
 if(modalProduct){
 
@@ -2941,14 +2490,9 @@ closeProductModal();
 
 openPanel("cartPanel");
 
-}
-);
+});
 
-document.getElementById(
-"productModal"
-).addEventListener(
-"click",
-function(event){
+document.getElementById("productModal").addEventListener("click",function(event){
 
 if(event.target===this){
 
@@ -2956,92 +2500,56 @@ closeProductModal();
 
 }
 
-}
-);
+});
 
-/* =====================================================
-   PRODUCT CARDS
-===================================================== */
+document.querySelectorAll(".product-card").forEach(card=>{
 
-document.querySelectorAll(
-".product-card"
-).forEach(card=>{
+const image=card.querySelector(".product-image");
 
-const image=
-card.querySelector(
-".product-image"
-);
-
-const addButton=
-card.querySelector(
-".add-list-btn"
-);
+const addButton=card.querySelector(".add-list-btn");
 
 const product={
 
 name:card.dataset.name,
 
-price:Number(
-card.dataset.price
-),
+price:Number(card.dataset.price),
 
 image:card.dataset.image
 
 };
 
-image.addEventListener(
-"click",
-function(){
+image.addEventListener("click",function(){
 
 openProductModal(product);
 
-}
-);
+});
 
-addButton.addEventListener(
-"click",
-function(){
+addButton.addEventListener("click",function(){
 
-addToList(
-product,
-1
-);
+addToList(product,1);
 
-this.textContent=
-"ADDED ✓";
+this.textContent="ADDED ✓";
 
 setTimeout(()=>{
 
-this.textContent=
-"ADD TO LIST";
+this.textContent="ADD TO LIST";
 
 },1200);
 
-}
-);
+});
 
 });
 
-/* =====================================================
-   SEARCH
-===================================================== */
-
 const searchInput=
-document.getElementById(
-"searchInput"
-);
+document.getElementById("searchInput");
 
 const searchResults=
-document.getElementById(
-"searchResults"
-);
+document.getElementById("searchResults");
 
 function renderSearchResults(){
 
 const query=
-normalize(
-searchInput.value.trim()
-);
+normalize(searchInput.value.trim());
 
 if(!query){
 
@@ -3051,13 +2559,9 @@ return;
 
 }
 
-const results=
-PRODUCTS.filter(
-product=>
+const results=PRODUCTS.filter(product=>
 
-normalize(
-product.name
-).includes(query)
+normalize(product.name).includes(query)
 
 );
 
@@ -3070,16 +2574,13 @@ return;
 
 }
 
-searchResults.innerHTML=
-results.map(product=>`
+searchResults.innerHTML=results.map(product=>`
 
 <div
 class="search-result"
 data-search-name="${escapeHtml(product.name)}">
 
-<strong>
-${escapeHtml(product.name)}
-</strong>
+<strong>${escapeHtml(product.name)}</strong>
 
 — $${product.price.toFixed(2)}
 
@@ -3094,28 +2595,19 @@ searchInput.addEventListener(
 renderSearchResults
 );
 
-searchResults.addEventListener(
-"click",
-function(event){
+searchResults.addEventListener("click",function(event){
 
 const item=
-event.target.closest(
-".search-result"
-);
+event.target.closest(".search-result");
 
 if(!item)return;
 
 const product=
-findProduct(
-item.dataset.searchName
-);
+findProduct(item.dataset.searchName);
 
 if(product){
 
-addToList(
-product,
-1
-);
+addToList(product,1);
 
 searchInput.value="";
 
@@ -3125,25 +2617,14 @@ openPanel("listPanel");
 
 }
 
-}
-);
+});
 
-/* =====================================================
-   MENU LINKS
-===================================================== */
+document.querySelectorAll(".menu-link").forEach(link=>{
 
-document.querySelectorAll(
-".menu-link"
-).forEach(link=>{
-
-link.addEventListener(
-"click",
-function(){
+link.addEventListener("click",function(){
 
 const href=
-this.getAttribute(
-"href"
-);
+this.getAttribute("href");
 
 if(
 href &&
@@ -3155,9 +2636,7 @@ closeAllPanels();
 setTimeout(()=>{
 
 const element=
-document.querySelector(
-href
-);
+document.querySelector(href);
 
 if(element){
 
@@ -3171,25 +2650,15 @@ behavior:"smooth"
 
 }
 
-}
-);
+});
 
 });
 
-document.querySelector(
-".brand-logo"
-).addEventListener(
-"click",
-function(){
+document.querySelector(".brand-logo").addEventListener("click",function(){
 
 closeAllPanels();
 
-}
-);
-
-/* =====================================================
-   ESCAPE
-===================================================== */
+});
 
 function escapeHtml(text){
 
@@ -3216,10 +2685,6 @@ return String(text)
 .replace(/'/g,"\\'");
 
 }
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
 
 selectedProducts=
 getStorage(
