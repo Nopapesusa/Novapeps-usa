@@ -27,6 +27,7 @@ padding:0;
 --soft:#f8f8f9;
 --border:#e9e9eb;
 --muted:#747474;
+--nova-blue:#0d3477;
 }
 
 html{
@@ -170,6 +171,69 @@ margin:0;
 }
 
 /* =========================
+FEATURE STRIP
+========================= */
+
+.feature-strip{
+width:100%;
+background:linear-gradient(180deg,#ffffff 0%,#f3f6fa 100%);
+border-top:1px solid #e3e8ef;
+border-bottom:1px solid #dce2e9;
+box-shadow:0 5px 18px rgba(0,0,0,.04);
+}
+
+.feature-strip-inner{
+max-width:1100px;
+margin:auto;
+min-height:92px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+align-items:center;
+padding:13px 20px;
+}
+
+.feature-item{
+min-height:62px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+padding:5px 24px;
+color:#0b2e68;
+}
+
+.feature-item + .feature-item{
+border-left:1px solid #aebdce;
+}
+
+.feature-icon{
+width:48px;
+height:48px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+}
+
+.feature-icon svg{
+width:43px;
+height:43px;
+fill:none;
+stroke:#0b3475;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+.feature-text{
+font-size:14px;
+font-weight:900;
+line-height:1.12;
+letter-spacing:.4px;
+color:#0b2860;
+}
+
+/* =========================
 GENERAL
 ========================= */
 
@@ -233,7 +297,7 @@ box-shadow:0 8px 20px rgba(0,0,0,.06),0 20px 45px rgba(0,0,0,.09);
 
 .product-image-wrap{
 position:relative;
-background:linear-gradient(180deg,#fbfbfb,#f8f8f8);
+background:linear-gradient(180deg,#fff,#fafafa);
 padding:22px;
 overflow:hidden;
 }
@@ -1077,6 +1141,42 @@ background-position:center -10px;
 background-color:#fff;
 }
 
+/* Feature bar mobile */
+.feature-strip-inner{
+min-height:76px;
+padding:8px 4px;
+grid-template-columns:repeat(3,1fr);
+}
+
+.feature-item{
+min-width:0;
+min-height:58px;
+padding:4px 6px;
+gap:5px;
+flex-direction:column;
+text-align:center;
+}
+
+.feature-item + .feature-item{
+border-left:1px solid #cbd4df;
+}
+
+.feature-icon{
+width:29px;
+height:29px;
+}
+
+.feature-icon svg{
+width:28px;
+height:28px;
+}
+
+.feature-text{
+font-size:9px;
+line-height:1.08;
+letter-spacing:.15px;
+}
+
 .products-grid{
 grid-template-columns:1fr;
 }
@@ -1125,6 +1225,7 @@ Please confirm that you are of legal age to enter this website.
 </div>
 
 <header>
+
 <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
 <div class="header-logo">
@@ -1135,12 +1236,15 @@ Please confirm that you are of legal age to enter this website.
 🛒
 <span class="header-cart-count" id="headerCartCount">0</span>
 </button>
+
 </header>
 
 <div class="overlay" id="overlay"></div>
 
 <nav class="side-menu" id="sideMenu">
+
 <button class="side-close" id="sideClose" type="button">×</button>
+
 <h2>NOVAPEPS USA</h2>
 
 <div class="search-box">
@@ -1156,116 +1260,387 @@ Please confirm that you are of legal age to enter this website.
 <a href="#about" class="menu-link">ABOUT US</a>
 <a href="#compare" class="menu-link">COMPARE</a>
 <a href="#login" class="menu-link">LOGIN / REGISTER</a>
+
 </nav>
 
+<!-- PORTADA -->
 <section class="hero" id="home"></section>
 
+<!-- FRANJA DEBAJO DE LA PORTADA -->
+<section class="feature-strip">
+
+<div class="feature-strip-inner">
+
+<div class="feature-item">
+
+<div class="feature-icon">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+<path d="M18 5l8 5-4 7-8-5z"/>
+<path d="M18 15l-5 8"/>
+<path d="M25 17l6 7"/>
+<path d="M12 23c-5 4-7 10-4 15"/>
+<path d="M8 38h26"/>
+<path d="M13 43h24"/>
+<path d="M29 25c5 1 9 5 10 10"/>
+<path d="M18 31h13"/>
+</svg>
+</div>
+
+<div class="feature-text">
+RESEARCH<br>USE ONLY
+</div>
+
+</div>
+
+<div class="feature-item">
+
+<div class="feature-icon">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+<path d="M24 4l15 6v11c0 10-6 18-15 23C15 39 9 31 9 21V10z"/>
+<path d="M17 24l5 5 10-11"/>
+</svg>
+</div>
+
+<div class="feature-text">
+QUALITY<br>FOCUSED
+</div>
+
+</div>
+
+<div class="feature-item">
+
+<div class="feature-icon">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+<circle cx="24" cy="24" r="19"/>
+<path d="M5 24h38"/>
+<path d="M24 5c6 6 9 12 9 19s-3 13-9 19"/>
+<path d="M24 5c-6 6-9 12-9 19s3 13 9 19"/>
+<path d="M9 14h30"/>
+<path d="M9 34h30"/>
+</svg>
+</div>
+
+<div class="feature-text">
+INTERNATIONAL<br>SHIPPING
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 <section class="section" id="products">
+
 <h2 class="section-title">Featured Products</h2>
 
 <div class="products-grid">
 
-<article class="product-card" data-name="MOTS-C 10 MG" data-price="60" data-old-price="70" data-image="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png">
+<!-- MOTS-C -->
+<article class="product-card"
+data-name="MOTS-C 10 MG"
+data-price="60"
+data-old-price="70"
+data-image="./25BAD52D-CE6D-497C-898E-70448C534E31.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="MOTS-C 10 MG" type="button">♡</button>
-<img class="product-image" src="./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png" alt="MOTS-C 10 MG">
+
+<img class="product-image"
+src="./25BAD52D-CE6D-497C-898E-70448C534E31.png"
+alt="MOTS-C 10 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$70.00</span><span class="image-new-price">$60.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$70.00</span>
+<span class="image-new-price">$60.00</span>
+</div>
+
 <h3>MOTS-C 10 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="GLP-2 10 MG" data-price="90" data-old-price="100" data-image="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png">
+<!-- GLP-2 10 -->
+<article class="product-card"
+data-name="GLP-2 10 MG"
+data-price="90"
+data-old-price="100"
+data-image="./89E739CC-041E-4FAE-A417-91B04205538F.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="GLP-2 10 MG" type="button">♡</button>
-<img class="product-image" src="./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png" alt="GLP-2 10 MG">
+
+<img class="product-image"
+src="./89E739CC-041E-4FAE-A417-91B04205538F.png"
+alt="GLP-2 10 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$100.00</span><span class="image-new-price">$90.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$100.00</span>
+<span class="image-new-price">$90.00</span>
+</div>
+
 <h3>GLP-2 10 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="GHK-CU 100 MG" data-price="55" data-old-price="70" data-image="./6747079A-BB69-4F51-A792-565688C6BC86.png">
+<!-- GHK-CU -->
+<article class="product-card"
+data-name="GHK-CU 100 MG"
+data-price="55"
+data-old-price="70"
+data-image="./E5957939-2A35-4106-B59E-118EE61FCD6B.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="GHK-CU 100 MG" type="button">♡</button>
-<img class="product-image" src="./6747079A-BB69-4F51-A792-565688C6BC86.png" alt="GHK-CU 100 MG">
+
+<img class="product-image"
+src="./E5957939-2A35-4106-B59E-118EE61FCD6B.png"
+alt="GHK-CU 100 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$70.00</span><span class="image-new-price">$55.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$70.00</span>
+<span class="image-new-price">$55.00</span>
+</div>
+
 <h3>GHK-CU 100 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="GLP-3 10 MG" data-price="95" data-old-price="110" data-image="./713BA234-721B-4580-94DF-6677375C7826.png">
+<!-- GLP-3 10 -->
+<article class="product-card"
+data-name="GLP-3 10 MG"
+data-price="95"
+data-old-price="110"
+data-image="./4370627F-46AF-488D-9877-BB42B9C9AF90.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="GLP-3 10 MG" type="button">♡</button>
-<img class="product-image" src="./713BA234-721B-4580-94DF-6677375C7826.png" alt="GLP-3 10 MG">
+
+<img class="product-image"
+src="./4370627F-46AF-488D-9877-BB42B9C9AF90.png"
+alt="GLP-3 10 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$110.00</span><span class="image-new-price">$95.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$110.00</span>
+<span class="image-new-price">$95.00</span>
+</div>
+
 <h3>GLP-3 10 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="GLP-2 20 MG" data-price="120" data-old-price="130" data-image="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png">
+<!-- GLP-2 20 -->
+<article class="product-card"
+data-name="GLP-2 20 MG"
+data-price="120"
+data-old-price="130"
+data-image="./9130C144-577C-4B9A-8DCD-2918ED68069D.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="GLP-2 20 MG" type="button">♡</button>
-<img class="product-image" src="./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png" alt="GLP-2 20 MG">
+
+<img class="product-image"
+src="./9130C144-577C-4B9A-8DCD-2918ED68069D.png"
+alt="GLP-2 20 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$130.00</span><span class="image-new-price">$120.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$130.00</span>
+<span class="image-new-price">$120.00</span>
+</div>
+
 <h3>GLP-2 20 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="GLP-3 20 MG" data-price="130" data-old-price="140" data-image="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png">
+<!-- GLP-3 20 -->
+<article class="product-card"
+data-name="GLP-3 20 MG"
+data-price="130"
+data-old-price="140"
+data-image="./065B33AF-7FEA-45A7-B5BF-9634422FF905.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="GLP-3 20 MG" type="button">♡</button>
-<img class="product-image" src="./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png" alt="GLP-3 20 MG">
+
+<img class="product-image"
+src="./065B33AF-7FEA-45A7-B5BF-9634422FF905.png"
+alt="GLP-3 20 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$140.00</span><span class="image-new-price">$130.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$140.00</span>
+<span class="image-new-price">$130.00</span>
+</div>
+
 <h3>GLP-3 20 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="GLUTATHIONE 1500 MG" data-price="60" data-old-price="75" data-image="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png">
+<!-- GLUTATHIONE -->
+<article class="product-card"
+data-name="GLUTATHIONE 1500 MG"
+data-price="60"
+data-old-price="75"
+data-image="./12A73595-5804-4602-987C-58FF1FFB7880.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="GLUTATHIONE 1500 MG" type="button">♡</button>
-<img class="product-image" src="./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png" alt="GLUTATHIONE 1500 MG">
+
+<img class="product-image"
+src="./12A73595-5804-4602-987C-58FF1FFB7880.png"
+alt="GLUTATHIONE 1500 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$75.00</span><span class="image-new-price">$60.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$75.00</span>
+<span class="image-new-price">$60.00</span>
+</div>
+
 <h3>GLUTATHIONE 1500 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
-<article class="product-card" data-name="NAD+ 500 MG" data-price="50" data-old-price="60" data-image="./EB389E57-904B-4E57-953C-407C50FA216A.png">
+<!-- NAD+ -->
+<article class="product-card"
+data-name="NAD+ 500 MG"
+data-price="50"
+data-old-price="60"
+data-image="./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png">
+
 <div class="product-image-wrap">
 <button class="favorite-btn" data-favorite="NAD+ 500 MG" type="button">♡</button>
-<img class="product-image" src="./EB389E57-904B-4E57-953C-407C50FA216A.png" alt="NAD+ 500 MG">
+
+<img class="product-image"
+src="./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png"
+alt="NAD+ 500 MG">
 </div>
+
 <div class="product-info">
-<div class="image-sale-price"><span class="image-old-price">$60.00</span><span class="image-new-price">$50.00</span></div>
+
+<div class="image-sale-price">
+<span class="image-old-price">$60.00</span>
+<span class="image-new-price">$50.00</span>
+</div>
+
 <h3>NAD+ 500 MG</h3>
+
 <div class="research">FOR RESEARCH USE ONLY</div>
+
 <button class="add-list-btn" type="button">ADD TO LIST</button>
+
+</div>
+</article>
+
+<!-- BAC WATER 3 ML - NO DISCOUNT -->
+<article class="product-card"
+data-name="BAC WATER 3 ML"
+data-price="9"
+data-old-price=""
+data-image="./E4370B97-70C9-4B17-9023-60083931F3B4.png">
+
+<div class="product-image-wrap">
+<button class="favorite-btn" data-favorite="BAC WATER 3 ML" type="button">♡</button>
+
+<img class="product-image"
+src="./E4370B97-70C9-4B17-9023-60083931F3B4.png"
+alt="BAC WATER 3 ML">
+</div>
+
+<div class="product-info">
+
+<div class="image-sale-price">
+<span class="image-new-price">$9.00</span>
+</div>
+
+<h3>BAC WATER 3 ML</h3>
+
+<div class="research">FOR RESEARCH USE ONLY</div>
+
+<button class="add-list-btn" type="button">ADD TO LIST</button>
+
+</div>
+</article>
+
+<!-- BAC WATER 10 ML - NO DISCOUNT -->
+<article class="product-card"
+data-name="BAC WATER 10 ML"
+data-price="15"
+data-old-price=""
+data-image="./6D52B73F-52C0-481E-8F93-000189F46DF8.png">
+
+<div class="product-image-wrap">
+<button class="favorite-btn" data-favorite="BAC WATER 10 ML" type="button">♡</button>
+
+<img class="product-image"
+src="./6D52B73F-52C0-481E-8F93-000189F46DF8.png"
+alt="BAC WATER 10 ML">
+</div>
+
+<div class="product-info">
+
+<div class="image-sale-price">
+<span class="image-new-price">$15.00</span>
+</div>
+
+<h3>BAC WATER 10 ML</h3>
+
+<div class="research">FOR RESEARCH USE ONLY</div>
+
+<button class="add-list-btn" type="button">ADD TO LIST</button>
+
 </div>
 </article>
 
@@ -1273,45 +1648,70 @@ Please confirm that you are of legal age to enter this website.
 </section>
 
 <section class="section" id="shipping">
+
 <h2 class="section-title">🚚 Shipping</h2>
+
 <div class="info-card">
+
 <h3>Shipping Options</h3>
+
 <p>🚚 <strong>Standard Shipping:</strong> $9</p>
 <p>🚚 <strong>Express Shipping:</strong> $15</p>
 <p>🚚 <strong>Free Shipping:</strong> Orders $200+</p>
+
 <p class="notice">Shipping options are displayed during checkout.</p>
+
 </div>
 </section>
 
 <section class="section" id="contact">
+
 <h2 class="section-title">Contact</h2>
+
 <div class="info-card contact-info">
 <p>Email: <strong>novapeps22@gmail.com</strong></p>
 <p>Phone: <strong>(832) 273-9625</strong></p>
 </div>
+
 </section>
 
 <section class="section" id="about">
+
 <h2 class="section-title">About Us</h2>
+
 <div class="info-card">
+
 <p>
 NovaPeps USA provides products presented for research purposes only.
 The information displayed on this website is informational and is not
 intended to diagnose, treat, cure, or prevent any disease.
 </p>
+
 <br>
+
 <p>All products are presented for research use only.</p>
+
 </div>
 </section>
 
 <section class="section" id="compare">
+
 <h2 class="section-title">Compare</h2>
+
 <div class="compare-wrap">
+
 <table class="compare-table">
+
 <thead>
-<tr><th>Product</th><th>Amount</th><th>Price</th></tr>
+<tr>
+<th>Product</th>
+<th>Amount</th>
+<th>Price</th>
+</tr>
 </thead>
+
 <tbody>
+
 <tr><td>MOTS-C</td><td>10 MG</td><td>$60</td></tr>
 <tr><td>GLP-2</td><td>10 MG</td><td>$90</td></tr>
 <tr><td>GHK-CU</td><td>100 MG</td><td>$55</td></tr>
@@ -1320,14 +1720,22 @@ intended to diagnose, treat, cure, or prevent any disease.
 <tr><td>GLP-3</td><td>20 MG</td><td>$130</td></tr>
 <tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
 <tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
+<tr><td>BAC WATER</td><td>3 ML</td><td>$9</td></tr>
+<tr><td>BAC WATER</td><td>10 ML</td><td>$15</td></tr>
+
 </tbody>
+
 </table>
+
 </div>
 </section>
 
 <section class="section" id="login">
+
 <h2 class="section-title">Login / Register</h2>
+
 <div class="login-box">
+
 <input type="email" placeholder="Email">
 <input type="password" placeholder="Password">
 
@@ -1338,6 +1746,7 @@ LOGIN
 <button class="secondary-btn" type="button" onclick="alert('Registration is not connected yet.')">
 REGISTER
 </button>
+
 </div>
 </section>
 
@@ -1347,6 +1756,7 @@ REGISTER
 </button>
 
 <div class="panel" id="listPanel">
+
 <div class="panel-header">
 <h2>Selected Products</h2>
 <button class="panel-close" data-close-panel="listPanel" type="button">×</button>
@@ -1355,15 +1765,21 @@ REGISTER
 <div id="selectedProducts"></div>
 
 <div class="cart-summary">
+
 <div class="summary-row">
 <span>Informational Total</span>
 <strong id="listTotal">$0.00</strong>
 </div>
-<button class="primary-btn" id="openCartFromList" type="button">GO TO CART</button>
+
+<button class="primary-btn" id="openCartFromList" type="button">
+GO TO CART
+</button>
+
 </div>
 </div>
 
 <div class="panel" id="cartPanel">
+
 <div class="panel-header">
 <h2>Your Cart</h2>
 <button class="panel-close" data-close-panel="cartPanel" type="button">×</button>
@@ -1372,6 +1788,7 @@ REGISTER
 <div id="cartItems"></div>
 
 <div class="option-box">
+
 <h3>🚚 Shipping</h3>
 
 <label class="option-label">
@@ -1388,9 +1805,11 @@ REGISTER
 <input type="radio" name="shipping" value="free">
 🚚 Free Shipping — $200+
 </label>
+
 </div>
 
 <div class="option-box">
+
 <h3>Payment Method</h3>
 
 <label class="option-label">
@@ -1410,9 +1829,11 @@ REGISTER
 <span class="payment-logo paypal-logo">P</span>
 <strong>PayPal</strong>
 </label>
+
 </div>
 
 <div class="cart-summary">
+
 <div class="summary-row">
 <span>Subtotal</span>
 <strong id="subtotal">$0.00</strong>
@@ -1427,27 +1848,40 @@ REGISTER
 <span>Total</span>
 <strong id="grandTotal">$0.00</strong>
 </div>
+
 </div>
 
-<button class="primary-btn" id="checkoutBtn" type="button">CONTINUE</button>
-<button class="secondary-btn" id="clearCartBtn" type="button">CLEAR CART</button>
+<button class="primary-btn" id="checkoutBtn" type="button">
+CONTINUE
+</button>
 
-<p class="notice">This list is informational only. No payment is processed here.</p>
+<button class="secondary-btn" id="clearCartBtn" type="button">
+CLEAR CART
+</button>
+
+<p class="notice">
+This list is informational only. No payment is processed here.
+</p>
+
 </div>
 
 <div class="panel" id="informationPanel">
+
 <div class="panel-header">
 <h2>Information Request</h2>
 <button class="panel-close" data-close-panel="informationPanel" type="button">×</button>
 </div>
 
 <div id="formArea">
+
 <div class="reference-box">
 <div>Order / Reference Code</div>
 <div class="reference-code" id="referenceDisplay">----</div>
 </div>
 
-<form id="informationForm" action="https://formspree.io/f/myezrady" method="POST">
+<form id="informationForm"
+action="https://formspree.io/f/myezrady"
+method="POST">
 
 <input type="hidden" name="subject" value="NovaPeps USA Information Request">
 <input type="hidden" name="reference_code" id="formReference">
@@ -1459,29 +1893,77 @@ REGISTER
 <input type="hidden" name="payment_method" id="formPayment">
 <input type="hidden" name="informational_notice" value="This information request does not process payment.">
 
-<div class="form-group"><label>Name</label><input type="text" name="name" required></div>
-<div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-<div class="form-group"><label>Phone</label><input type="tel" name="phone" required></div>
-<div class="form-group"><label>Address</label><input type="text" name="address" required></div>
-<div class="form-group"><label>Apt / Unit</label><input type="text" name="apt_unit"></div>
-<div class="form-group"><label>City</label><input type="text" name="city" required></div>
-<div class="form-group"><label>State</label><input type="text" name="state" required></div>
-<div class="form-group"><label>ZIP</label><input type="text" name="zip" required></div>
-<div class="form-group"><label>Message</label><textarea name="message"></textarea></div>
+<div class="form-group">
+<label>Name</label>
+<input type="text" name="name" required>
+</div>
 
-<button class="primary-btn" type="submit">SEND INFORMATION</button>
+<div class="form-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="form-group">
+<label>Phone</label>
+<input type="tel" name="phone" required>
+</div>
+
+<div class="form-group">
+<label>Address</label>
+<input type="text" name="address" required>
+</div>
+
+<div class="form-group">
+<label>Apt / Unit</label>
+<input type="text" name="apt_unit">
+</div>
+
+<div class="form-group">
+<label>City</label>
+<input type="text" name="city" required>
+</div>
+
+<div class="form-group">
+<label>State</label>
+<input type="text" name="state" required>
+</div>
+
+<div class="form-group">
+<label>ZIP</label>
+<input type="text" name="zip" required>
+</div>
+
+<div class="form-group">
+<label>Message</label>
+<textarea name="message"></textarea>
+</div>
+
+<button class="primary-btn" type="submit">
+SEND INFORMATION
+</button>
+
 </form>
+
 </div>
 
-<div id="finalConfirmation" class="thank-you" style="display:none;">
+<div id="finalConfirmation"
+class="thank-you"
+style="display:none;">
+
 <h2>THANK YOU!</h2>
+
 <p>Your information has been submitted.</p>
+
 <div class="payment-final" id="paymentFinal"></div>
+
 </div>
+
 </div>
 
 <div class="modal" id="productModal">
+
 <div class="modal-content">
+
 <button class="modal-close" id="modalClose" type="button">×</button>
 
 <img class="modal-image" id="modalImage" src="" alt="">
@@ -1496,34 +1978,110 @@ REGISTER
 <div class="research">FOR RESEARCH USE ONLY</div>
 
 <div class="qty-controls">
+
 <button id="modalMinus" type="button">−</button>
 <strong id="modalQuantity">1</strong>
 <button id="modalPlus" type="button">+</button>
+
 </div>
 
-<button class="primary-btn" id="modalAdd" type="button">ADD TO CART</button>
-<button class="secondary-btn" id="modalGoCart" type="button">GO TO CART / CHECKOUT</button>
+<button class="primary-btn" id="modalAdd" type="button">
+ADD TO CART
+</button>
+
+<button class="secondary-btn" id="modalGoCart" type="button">
+GO TO CART / CHECKOUT
+</button>
+
 </div>
 </div>
 
 <footer>
+
 <p>© 2026 NovaPeps USA</p>
 <p>novapeps22@gmail.com</p>
 <p>(832) 273-9625</p>
-<p class="notice" style="color:#aaa;">All products are presented for research use only.</p>
+
+<p class="notice" style="color:#aaa;">
+All products are presented for research use only.
+</p>
+
 </footer>
 
 <script>
 
 const PRODUCTS = [
-{name:"MOTS-C 10 MG",price:60,oldPrice:70,image:"./55A6F8D2-C2C2-4582-BFB3-B93DACC10C28.png"},
-{name:"GLP-2 10 MG",price:90,oldPrice:100,image:"./5B460B8F-14FC-4B9A-9D17-339565C8ED0B.png"},
-{name:"GHK-CU 100 MG",price:55,oldPrice:70,image:"./6747079A-BB69-4F51-A792-565688C6BC86.png"},
-{name:"GLP-3 10 MG",price:95,oldPrice:110,image:"./713BA234-721B-4580-94DF-6677375C7826.png"},
-{name:"GLP-2 20 MG",price:120,oldPrice:130,image:"./7855AC8E-4FC3-47C9-B16B-B62AD1C36BF0.png"},
-{name:"GLP-3 20 MG",price:130,oldPrice:140,image:"./96BEC651-AA03-4D8D-9254-3FB8C8E85104.png"},
-{name:"GLUTATHIONE 1500 MG",price:60,oldPrice:75,image:"./A6F31BD7-FD7A-4EBD-B2F8-080DF7896871.png"},
-{name:"NAD+ 500 MG",price:50,oldPrice:60,image:"./EB389E57-904B-4E57-953C-407C50FA216A.png"}
+
+{
+name:"MOTS-C 10 MG",
+price:60,
+oldPrice:70,
+image:"./25BAD52D-CE6D-497C-898E-70448C534E31.png"
+},
+
+{
+name:"GLP-2 10 MG",
+price:90,
+oldPrice:100,
+image:"./89E739CC-041E-4FAE-A417-91B04205538F.png"
+},
+
+{
+name:"GHK-CU 100 MG",
+price:55,
+oldPrice:70,
+image:"./E5957939-2A35-4106-B59E-118EE61FCD6B.png"
+},
+
+{
+name:"GLP-3 10 MG",
+price:95,
+oldPrice:110,
+image:"./4370627F-46AF-488D-9877-BB42B9C9AF90.png"
+},
+
+{
+name:"GLP-2 20 MG",
+price:120,
+oldPrice:130,
+image:"./9130C144-577C-4B9A-8DCD-2918ED68069D.png"
+},
+
+{
+name:"GLP-3 20 MG",
+price:130,
+oldPrice:140,
+image:"./065B33AF-7FEA-45A7-B5BF-9634422FF905.png"
+},
+
+{
+name:"GLUTATHIONE 1500 MG",
+price:60,
+oldPrice:75,
+image:"./12A73595-5804-4602-987C-58FF1FFB7880.png"
+},
+
+{
+name:"NAD+ 500 MG",
+price:50,
+oldPrice:60,
+image:"./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png"
+},
+
+{
+name:"BAC WATER 3 ML",
+price:9,
+oldPrice:null,
+image:"./E4370B97-70C9-4B17-9023-60083931F3B4.png"
+},
+
+{
+name:"BAC WATER 10 ML",
+price:15,
+oldPrice:null,
+image:"./6D52B73F-52C0-481E-8F93-000189F46DF8.png"
+}
+
 ];
 
 const STORAGE = {
@@ -1557,20 +2115,28 @@ localStorage.setItem(key,JSON.stringify(value));
 }
 
 function enterSite(){
-try{localStorage.setItem(STORAGE.age,"true");}catch(error){}
+try{
+localStorage.setItem(STORAGE.age,"true");
+}catch(error){}
+
 document.getElementById("ageGate").classList.add("hidden");
 document.body.classList.remove("locked");
 }
 
 function leaveSite(){
-try{localStorage.removeItem(STORAGE.age);}catch(error){}
+
+try{
+localStorage.removeItem(STORAGE.age);
+}catch(error){}
 
 document.body.innerHTML=
 '<div style="height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Arial;padding:30px;"><div><h1>Thank you.</h1><p>You have chosen to exit this website.</p></div></div>';
 }
 
 function initializeAgeGate(){
+
 const gate=document.getElementById("ageGate");
+
 let confirmed=false;
 
 try{
@@ -1578,23 +2144,34 @@ confirmed=localStorage.getItem(STORAGE.age)==="true";
 }catch(error){}
 
 if(confirmed){
+
 gate.classList.add("hidden");
 document.body.classList.remove("locked");
+
 }else{
+
 gate.classList.remove("hidden");
 document.body.classList.add("locked");
-}
+
 }
 
-document.getElementById("ageEnterBtn").addEventListener("click",enterSite);
-document.getElementById("ageExitBtn").addEventListener("click",leaveSite);
+}
+
+document.getElementById("ageEnterBtn")
+.addEventListener("click",enterSite);
+
+document.getElementById("ageExitBtn")
+.addEventListener("click",leaveSite);
 
 function openMenu(){
+
 document.getElementById("sideMenu").classList.add("open");
 document.getElementById("overlay").classList.add("show");
+
 }
 
 function closeMenu(){
+
 document.getElementById("sideMenu").classList.remove("open");
 
 const anyPanel=document.querySelector(".panel.open");
@@ -1602,60 +2179,90 @@ const anyPanel=document.querySelector(".panel.open");
 if(!anyPanel){
 document.getElementById("overlay").classList.remove("show");
 }
+
 }
 
-document.getElementById("menuBtn").addEventListener("click",openMenu);
-document.getElementById("sideClose").addEventListener("click",closeMenu);
+document.getElementById("menuBtn")
+.addEventListener("click",openMenu);
+
+document.getElementById("sideClose")
+.addEventListener("click",closeMenu);
 
 function openPanel(id){
+
 closeMenu();
+
 document.getElementById(id).classList.add("open");
 document.getElementById("overlay").classList.add("show");
 
 if(id==="listPanel")renderSelectedProducts();
 if(id==="cartPanel")renderCart();
+
 }
 
 function closePanel(id){
+
 document.getElementById(id).classList.remove("open");
 
 const anyPanel=document.querySelector(".panel.open");
 
-if(!anyPanel&&!document.getElementById("sideMenu").classList.contains("open")){
+if(
+!anyPanel &&
+!document.getElementById("sideMenu").classList.contains("open")
+){
 document.getElementById("overlay").classList.remove("show");
 }
+
 }
 
 function closeAllPanels(){
-document.querySelectorAll(".panel.open").forEach(panel=>panel.classList.remove("open"));
+
+document.querySelectorAll(".panel.open")
+.forEach(panel=>panel.classList.remove("open"));
+
 document.getElementById("sideMenu").classList.remove("open");
 document.getElementById("overlay").classList.remove("show");
+
 closeProductModal();
+
 }
 
-document.getElementById("overlay").addEventListener("click",closeAllPanels);
+document.getElementById("overlay")
+.addEventListener("click",closeAllPanels);
 
-document.querySelectorAll("[data-open-panel]").forEach(button=>{
+document.querySelectorAll("[data-open-panel]")
+.forEach(button=>{
+
 button.addEventListener("click",function(){
 openPanel(this.dataset.openPanel);
 });
+
 });
 
-document.querySelectorAll("[data-close-panel]").forEach(button=>{
+document.querySelectorAll("[data-close-panel]")
+.forEach(button=>{
+
 button.addEventListener("click",function(){
 closePanel(this.dataset.closePanel);
 });
+
 });
 
 function findProduct(name){
-return PRODUCTS.find(product=>product.name===name);
+
+return PRODUCTS.find(
+product=>product.name===name
+);
+
 }
 
 function normalize(text){
+
 return String(text)
 .toLowerCase()
 .normalize("NFD")
 .replace(/[\u0300-\u036f]/g,"");
+
 }
 
 function saveSelected(){
@@ -1663,254 +2270,435 @@ setStorage(STORAGE.selected,selectedProducts);
 }
 
 function subtotal(){
+
 return selectedProducts.reduce(
 (total,item)=>total+(item.price*item.quantity),
 0
 );
+
 }
 
 function addToList(product,quantity=1){
-const existing=selectedProducts.find(item=>item.name===product.name);
+
+const existing=selectedProducts.find(
+item=>item.name===product.name
+);
 
 if(existing){
+
 existing.quantity+=quantity;
 existing.price=product.price;
+
 }else{
+
 selectedProducts.push({
 name:product.name,
 price:product.price,
 image:product.image,
 quantity:quantity
 });
+
 }
 
 saveSelected();
 updateCartCount();
 renderSelectedProducts();
+
 }
 
 function changeQuantity(name,change){
-const item=selectedProducts.find(product=>product.name===name);
+
+const item=selectedProducts.find(
+product=>product.name===name
+);
+
 if(!item)return;
 
 item.quantity+=change;
 
 if(item.quantity<=0){
-selectedProducts=selectedProducts.filter(product=>product.name!==name);
+
+selectedProducts=selectedProducts.filter(
+product=>product.name!==name
+);
+
 }
 
 saveSelected();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
+
 }
 
 function removeProduct(name){
-selectedProducts=selectedProducts.filter(item=>item.name!==name);
+
+selectedProducts=selectedProducts.filter(
+item=>item.name!==name
+);
+
 saveSelected();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
+
 }
 
 function clearCart(){
+
 selectedProducts=[];
+
 saveSelected();
 renderSelectedProducts();
 renderCart();
 updateCartCount();
+
 }
 
 function renderSelectedProducts(){
+
 const container=document.getElementById("selectedProducts");
 const total=document.getElementById("listTotal");
 
 if(selectedProducts.length===0){
-container.innerHTML='<p class="notice">No products selected.</p>';
+
+container.innerHTML=
+'<p class="notice">No products selected.</p>';
+
 total.textContent="$0.00";
+
 return;
+
 }
 
 container.innerHTML=selectedProducts.map(item=>`
+
 <div class="selected-item">
+
 <img src="${item.image}" alt="${item.name}">
+
 <div class="selected-info">
+
 <strong>${item.name}</strong>
+
 <div>$${item.price.toFixed(2)}</div>
+
 <div class="qty-controls">
-<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
+
+<button
+type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',-1)">
+−
+</button>
+
 <strong>${item.quantity}</strong>
-<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-<button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
+
+<button
+type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',1)">
++
+</button>
+
+<button
+class="remove-btn"
+type="button"
+onclick="removeProduct('${escapeJs(item.name)}')">
+Remove
+</button>
+
 </div>
+
 </div>
+
 </div>
+
 `).join("");
 
 total.textContent="$"+subtotal().toFixed(2);
+
 }
 
 function updateCartCount(){
-const count=selectedProducts.reduce((sum,item)=>sum+item.quantity,0);
+
+const count=selectedProducts.reduce(
+(sum,item)=>sum+item.quantity,
+0
+);
+
 document.getElementById("cartCount").textContent=count;
 document.getElementById("headerCartCount").textContent=count;
+
 }
 
 function getShippingCost(){
-const selected=document.querySelector('input[name="shipping"]:checked');
+
+const selected=
+document.querySelector('input[name="shipping"]:checked');
 
 if(!selected)return 0;
+
 if(selected.value==="standard")return 9;
 if(selected.value==="express")return 15;
 if(selected.value==="free")return subtotal()>=200?0:9;
 
 return 0;
+
 }
 
 function getShippingName(){
-const selected=document.querySelector('input[name="shipping"]:checked');
+
+const selected=
+document.querySelector('input[name="shipping"]:checked');
 
 if(!selected)return "";
+
 if(selected.value==="standard")return "Standard";
 if(selected.value==="express")return "Express";
 if(selected.value==="free")return "Free Shipping";
 
 return "";
+
 }
 
 function getPayment(){
-const selected=document.querySelector('input[name="payment"]:checked');
+
+const selected=
+document.querySelector('input[name="payment"]:checked');
+
 return selected?selected.value:"";
+
 }
 
 function renderCart(){
+
 const container=document.getElementById("cartItems");
 
 if(selectedProducts.length===0){
-container.innerHTML='<p class="notice">Your cart is empty.</p>';
+
+container.innerHTML=
+'<p class="notice">Your cart is empty.</p>';
+
 }else{
+
 container.innerHTML=selectedProducts.map(item=>`
+
 <div class="selected-item">
+
 <img src="${item.image}" alt="${item.name}">
+
 <div class="selected-info">
+
 <strong>${item.name}</strong>
+
 <div>$${item.price.toFixed(2)}</div>
+
 <div class="qty-controls">
-<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
+
+<button
+type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',-1)">
+−
+</button>
+
 <strong>${item.quantity}</strong>
-<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-<button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
+
+<button
+type="button"
+onclick="changeQuantity('${escapeJs(item.name)}',1)">
++
+</button>
+
+<button
+class="remove-btn"
+type="button"
+onclick="removeProduct('${escapeJs(item.name)}')">
+Remove
+</button>
+
 </div>
+
 </div>
+
 </div>
+
 `).join("");
+
 }
 
 updateTotals();
+
 }
 
 function updateTotals(){
+
 const sub=subtotal();
 const shipping=getShippingCost();
 const total=sub+shipping;
 
-document.getElementById("subtotal").textContent="$"+sub.toFixed(2);
-document.getElementById("shippingCost").textContent="$"+shipping.toFixed(2);
-document.getElementById("grandTotal").textContent="$"+total.toFixed(2);
+document.getElementById("subtotal").textContent=
+"$"+sub.toFixed(2);
+
+document.getElementById("shippingCost").textContent=
+"$"+shipping.toFixed(2);
+
+document.getElementById("grandTotal").textContent=
+"$"+total.toFixed(2);
 
 updateFormHiddenFields();
+
 }
 
 function restoreOptions(){
+
 const shipping=getStorage(STORAGE.shipping,null);
 const payment=getStorage(STORAGE.payment,null);
 
 if(shipping){
-const input=document.querySelector(`input[name="shipping"][value="${shipping}"]`);
+
+const input=document.querySelector(
+`input[name="shipping"][value="${shipping}"]`
+);
+
 if(input)input.checked=true;
+
 }
 
 if(payment){
-const input=document.querySelector(`input[name="payment"][value="${payment}"]`);
+
+const input=document.querySelector(
+`input[name="payment"][value="${payment}"]`
+);
+
 if(input)input.checked=true;
-}
+
 }
 
-document.querySelectorAll('input[name="shipping"]').forEach(input=>{
+}
+
+document.querySelectorAll('input[name="shipping"]')
+.forEach(input=>{
+
 input.addEventListener("change",function(){
+
 setStorage(STORAGE.shipping,this.value);
 updateTotals();
-});
+
 });
 
-document.querySelectorAll('input[name="payment"]').forEach(input=>{
+});
+
+document.querySelectorAll('input[name="payment"]')
+.forEach(input=>{
+
 input.addEventListener("change",function(){
+
 setStorage(STORAGE.payment,this.value);
-});
+
 });
 
-document.getElementById("cartFloating").addEventListener("click",function(){
+});
+
+document.getElementById("cartFloating")
+.addEventListener("click",function(){
+
 openPanel("cartPanel");
+
 });
 
-document.getElementById("headerCart").addEventListener("click",function(){
+document.getElementById("headerCart")
+.addEventListener("click",function(){
+
 openPanel("cartPanel");
+
 });
 
-document.getElementById("openCartFromList").addEventListener("click",function(){
+document.getElementById("openCartFromList")
+.addEventListener("click",function(){
+
 closePanel("listPanel");
 openPanel("cartPanel");
+
 });
 
-document.getElementById("clearCartBtn").addEventListener("click",clearCart);
+document.getElementById("clearCartBtn")
+.addEventListener("click",clearCart);
 
-document.getElementById("checkoutBtn").addEventListener("click",function(){
+document.getElementById("checkoutBtn")
+.addEventListener("click",function(){
 
 if(selectedProducts.length===0){
+
 alert("Please select at least one product.");
 return;
+
 }
 
-const shipping=document.querySelector('input[name="shipping"]:checked');
+const shipping=
+document.querySelector('input[name="shipping"]:checked');
 
 if(!shipping){
+
 alert("Please select a shipping option.");
 return;
+
 }
 
-if(shipping.value==="free"&&subtotal()<200){
-alert("Free Shipping is available only for orders of $200 or more.");
+if(
+shipping.value==="free" &&
+subtotal()<200
+){
+
+alert(
+"Free Shipping is available only for orders of $200 or more."
+);
+
 return;
+
 }
 
-const payment=document.querySelector('input[name="payment"]:checked');
+const payment=
+document.querySelector('input[name="payment"]:checked');
 
 if(!payment){
+
 alert("Please select a payment method.");
 return;
+
 }
 
 prepareInformationForm();
+
 closePanel("cartPanel");
 openPanel("informationPanel");
+
 });
 
 function generateReference(){
-return String(Math.floor(1000+Math.random()*9000));
+
+return String(
+Math.floor(1000+Math.random()*9000)
+);
+
 }
 
 function prepareInformationForm(){
+
 const code=generateReference();
 
 document.getElementById("referenceDisplay").textContent=code;
 document.getElementById("formReference").value=code;
 
 updateFormHiddenFields();
+
 }
 
 function updateFormHiddenFields(){
-const productsText=selectedProducts.map(item=>
+
+const productsText=
+selectedProducts.map(item=>
+
 `${item.name} x${item.quantity} - $${(item.price*item.quantity).toFixed(2)}`
+
 ).join("\n");
 
 const sub=subtotal();
@@ -1918,18 +2706,31 @@ const shippingCost=getShippingCost();
 const total=sub+shippingCost;
 
 document.getElementById("formProducts").value=productsText;
-document.getElementById("formSubtotal").value="$"+sub.toFixed(2);
-document.getElementById("formShipping").value=getShippingName();
-document.getElementById("formShippingCost").value="$"+shippingCost.toFixed(2);
-document.getElementById("formTotal").value="$"+total.toFixed(2);
-document.getElementById("formPayment").value=getPayment();
+
+document.getElementById("formSubtotal").value=
+"$"+sub.toFixed(2);
+
+document.getElementById("formShipping").value=
+getShippingName();
+
+document.getElementById("formShippingCost").value=
+"$"+shippingCost.toFixed(2);
+
+document.getElementById("formTotal").value=
+"$"+total.toFixed(2);
+
+document.getElementById("formPayment").value=
+getPayment();
+
 }
 
 function saveLastOrder(reference){
+
 const shippingCost=getShippingCost();
 const sub=subtotal();
 
 const order={
+
 reference:reference,
 products:selectedProducts,
 subtotal:sub,
@@ -1938,97 +2739,223 @@ shippingCost:shippingCost,
 total:sub+shippingCost,
 payment:getPayment(),
 createdAt:new Date().toISOString()
+
 };
 
 setStorage(STORAGE.lastOrder,order);
+
 return order;
+
 }
 
 function showPaymentInformation(order){
+
 const box=document.getElementById("paymentFinal");
 
 let html=`
-<p><strong>Order Code:</strong> ${order.reference}</p>
-<p><strong>Total Amount:</strong> $${order.total.toFixed(2)}</p>
+
+<p>
+<strong>Order Code:</strong>
+${order.reference}
+</p>
+
+<p>
+<strong>Total Amount:</strong>
+$${order.total.toFixed(2)}
+</p>
+
 `;
 
 if(order.payment==="zelle"){
+
 html+=`
+
 <div class="payment zelle">
+
 <div class="payment-title">
-<span class="payment-logo zelle-logo">Z</span>
+
+<span class="payment-logo zelle-logo">
+Z
+</span>
+
 <h3>Zelle</h3>
+
 </div>
-<p><strong>Name:</strong> Araceli Hernández</p>
-<p><strong>Phone:</strong> (832) 273-9625</p>
-<p>Send the total amount shown above through Zelle.</p>
+
 <p>
-<strong>IMPORTANT:</strong>
-In the <strong>NOTE</strong> section, please enter your
-<strong>Order Code: ${order.reference}</strong>.
-This allows us to identify your payment and match it to your order.
+<strong>Name:</strong>
+Araceli Hernández
 </p>
+
+<p>
+<strong>Phone:</strong>
+(832) 273-9625
+</p>
+
+<p>
+Send the total amount shown above through Zelle.
+</p>
+
+<p>
+
+<strong>IMPORTANT:</strong>
+
+In the <strong>NOTE</strong> section,
+please enter your
+
+<strong>
+Order Code: ${order.reference}
+</strong>.
+
+This allows us to identify your payment
+and match it to your order.
+
+</p>
+
 </div>
+
 `;
+
 }
 
 if(order.payment==="venmo"){
+
 html+=`
+
 <div class="payment venmo">
+
 <div class="payment-title">
-<span class="payment-logo venmo-logo">V</span>
+
+<span class="payment-logo venmo-logo">
+V
+</span>
+
 <h3>Venmo</h3>
+
 </div>
-<p><strong>Venmo:</strong> @novapeps22</p>
-<p><strong>Name:</strong> Araceli Hernández</p>
-<p>Send the total amount shown above through Venmo.</p>
+
 <p>
-<strong>IMPORTANT:</strong>
-In the <strong>payment note / "What's this for?"</strong> section,
-please enter your
-<strong>Order Code: ${order.reference}</strong>.
-This allows us to identify your payment and match it to your order.
+<strong>Venmo:</strong>
+@novapeps22
 </p>
-<button class="copy-btn" type="button" onclick="copyText('@novapeps22')">
+
+<p>
+<strong>Name:</strong>
+Araceli Hernández
+</p>
+
+<p>
+Send the total amount shown above through Venmo.
+</p>
+
+<p>
+
+<strong>IMPORTANT:</strong>
+
+In the
+<strong>
+payment note / "What's this for?"
+</strong>
+section, please enter your
+
+<strong>
+Order Code: ${order.reference}
+</strong>.
+
+This allows us to identify your payment
+and match it to your order.
+
+</p>
+
+<button
+class="copy-btn"
+type="button"
+onclick="copyText('@novapeps22')">
+
 Copy Venmo
+
 </button>
+
 </div>
+
 `;
+
 }
 
 if(order.payment==="paypal"){
+
 html+=`
+
 <div class="payment paypal">
+
 <div class="payment-title">
-<span class="payment-logo paypal-logo">P</span>
+
+<span class="payment-logo paypal-logo">
+P
+</span>
+
 <h3>PayPal</h3>
+
 </div>
-<p><strong>PayPal:</strong> Add your PayPal information here.</p>
-<p><strong>Total Amount:</strong> $${order.total.toFixed(2)}</p>
-<p>Send the total amount shown above through PayPal.</p>
+
 <p>
-<strong>IMPORTANT:</strong>
-In the <strong>payment note/message</strong> section,
-please enter your
-<strong>Order Code: ${order.reference}</strong>.
-This allows us to identify your payment and match it to your order.
+<strong>PayPal:</strong>
+Add your PayPal information here.
 </p>
+
+<p>
+<strong>Total Amount:</strong>
+$${order.total.toFixed(2)}
+</p>
+
+<p>
+Send the total amount shown above through PayPal.
+</p>
+
+<p>
+
+<strong>IMPORTANT:</strong>
+
+In the
+<strong>payment note/message</strong>
+section, please enter your
+
+<strong>
+Order Code: ${order.reference}
+</strong>.
+
+This allows us to identify your payment
+and match it to your order.
+
+</p>
+
 </div>
+
 `;
+
 }
 
 box.innerHTML=html;
+
 }
 
-document.getElementById("informationForm").addEventListener("submit",async function(event){
+document.getElementById("informationForm")
+.addEventListener("submit",async function(event){
+
 event.preventDefault();
 
 const form=this;
-const button=form.querySelector('button[type="submit"]');
-const reference=document.getElementById("formReference").value;
+
+const button=
+form.querySelector('button[type="submit"]');
+
+const reference=
+document.getElementById("formReference").value;
 
 if(!reference){
+
 prepareInformationForm();
+
 }
 
 updateFormHiddenFields();
@@ -2037,16 +2964,23 @@ button.disabled=true;
 button.textContent="SENDING...";
 
 try{
+
 const response=await fetch(form.action,{
+
 method:"POST",
+
 body:new FormData(form),
+
 headers:{
 "Accept":"application/json"
 }
+
 });
 
 if(!response.ok){
+
 throw new Error("Submission failed");
+
 }
 
 const order=saveLastOrder(
@@ -2054,188 +2988,349 @@ document.getElementById("formReference").value
 );
 
 form.style.display="none";
-document.getElementById("finalConfirmation").style.display="block";
+
+document.getElementById("finalConfirmation")
+.style.display="block";
 
 showPaymentInformation(order);
 
 }catch(error){
-alert("There was a problem sending the information. Please try again.");
+
+alert(
+"There was a problem sending the information. Please try again."
+);
+
 button.disabled=false;
 button.textContent="SEND INFORMATION";
+
 }
+
 });
 
 function copyText(text){
-if(navigator.clipboard&&navigator.clipboard.writeText){
-navigator.clipboard.writeText(text).then(function(){
+
+if(
+navigator.clipboard &&
+navigator.clipboard.writeText
+){
+
+navigator.clipboard.writeText(text)
+.then(function(){
+
 alert("Information copied");
-}).catch(function(){
+
+})
+.catch(function(){
+
 fallbackCopy(text);
+
 });
+
 }else{
+
 fallbackCopy(text);
+
 }
+
 }
 
 function fallbackCopy(text){
+
 const textarea=document.createElement("textarea");
+
 textarea.value=text;
+
 document.body.appendChild(textarea);
+
 textarea.select();
 
 try{
+
 document.execCommand("copy");
 alert("Information copied");
+
 }catch(error){
+
 alert("Could not copy the information.");
+
 }
 
 document.body.removeChild(textarea);
+
 }
 
 function loadFavorites(){
+
 favorites=getStorage(STORAGE.favorites,[]);
 
-document.querySelectorAll(".favorite-btn").forEach(button=>{
+document.querySelectorAll(".favorite-btn")
+.forEach(button=>{
+
 const name=button.dataset.favorite;
 
 if(favorites.includes(name)){
+
 button.classList.add("active");
 button.textContent="♥";
-}
-});
+
 }
 
-document.querySelectorAll(".favorite-btn").forEach(button=>{
+});
+
+}
+
+document.querySelectorAll(".favorite-btn")
+.forEach(button=>{
+
 button.addEventListener("click",function(event){
+
 event.stopPropagation();
 
 const name=this.dataset.favorite;
 
 if(favorites.includes(name)){
-favorites=favorites.filter(item=>item!==name);
+
+favorites=favorites.filter(
+item=>item!==name
+);
+
 this.classList.remove("active");
 this.textContent="♡";
+
 }else{
+
 favorites.push(name);
+
 this.classList.add("active");
 this.textContent="♥";
+
 }
 
 setStorage(STORAGE.favorites,favorites);
+
 });
+
 });
 
 function openProductModal(product){
+
 modalProduct=product;
 modalQuantity=1;
 
-document.getElementById("modalImage").src=product.image;
-document.getElementById("modalImage").alt=product.name;
-document.getElementById("modalName").textContent=product.name;
+document.getElementById("modalImage").src=
+product.image;
 
-document.getElementById("modalOldPrice").textContent=
-"$"+product.oldPrice.toFixed(2);
+document.getElementById("modalImage").alt=
+product.name;
+
+document.getElementById("modalName").textContent=
+product.name;
+
+const oldPriceElement=
+document.getElementById("modalOldPrice");
+
+if(
+product.oldPrice !== null &&
+product.oldPrice !== undefined &&
+product.oldPrice !== ""
+){
+
+oldPriceElement.style.display="";
+oldPriceElement.textContent=
+"$"+Number(product.oldPrice).toFixed(2);
+
+}else{
+
+oldPriceElement.style.display="none";
+oldPriceElement.textContent="";
+
+}
 
 document.getElementById("modalNewPrice").textContent=
 "$"+product.price.toFixed(2);
 
-document.getElementById("modalQuantity").textContent=modalQuantity;
-document.getElementById("productModal").classList.add("open");
+document.getElementById("modalQuantity").textContent=
+modalQuantity;
+
+document.getElementById("productModal")
+.classList.add("open");
+
 }
 
 function closeProductModal(){
-document.getElementById("productModal").classList.remove("open");
+
+document.getElementById("productModal")
+.classList.remove("open");
+
 modalProduct=null;
+
 }
 
 function changeModalQuantity(change){
+
 modalQuantity+=change;
 
 if(modalQuantity<1){
 modalQuantity=1;
 }
 
-document.getElementById("modalQuantity").textContent=modalQuantity;
+document.getElementById("modalQuantity")
+.textContent=modalQuantity;
+
 }
 
-document.getElementById("modalClose").addEventListener("click",closeProductModal);
-document.getElementById("modalMinus").addEventListener("click",()=>changeModalQuantity(-1));
-document.getElementById("modalPlus").addEventListener("click",()=>changeModalQuantity(1));
+document.getElementById("modalClose")
+.addEventListener("click",closeProductModal);
 
-document.getElementById("modalAdd").addEventListener("click",function(){
+document.getElementById("modalMinus")
+.addEventListener(
+"click",
+()=>changeModalQuantity(-1)
+);
+
+document.getElementById("modalPlus")
+.addEventListener(
+"click",
+()=>changeModalQuantity(1)
+);
+
+document.getElementById("modalAdd")
+.addEventListener("click",function(){
+
 if(!modalProduct)return;
 
-addToList(modalProduct,modalQuantity);
+addToList(
+modalProduct,
+modalQuantity
+);
+
 closeProductModal();
+
 openPanel("listPanel");
+
 });
 
-document.getElementById("modalGoCart").addEventListener("click",function(){
+document.getElementById("modalGoCart")
+.addEventListener("click",function(){
+
 if(modalProduct){
-addToList(modalProduct,modalQuantity);
+
+addToList(
+modalProduct,
+modalQuantity
+);
+
 }
 
 closeProductModal();
+
 openPanel("cartPanel");
+
 });
 
-document.getElementById("productModal").addEventListener("click",function(event){
+document.getElementById("productModal")
+.addEventListener("click",function(event){
+
 if(event.target===this){
+
 closeProductModal();
+
 }
+
 });
 
-document.querySelectorAll(".product-card").forEach(card=>{
-const image=card.querySelector(".product-image");
-const addButton=card.querySelector(".add-list-btn");
+document.querySelectorAll(".product-card")
+.forEach(card=>{
+
+const image=
+card.querySelector(".product-image");
+
+const addButton=
+card.querySelector(".add-list-btn");
+
+const rawOldPrice=
+card.dataset.oldPrice;
 
 const product={
+
 name:card.dataset.name,
-price:Number(card.dataset.price),
-oldPrice:Number(card.dataset.oldPrice),
+
+price:Number(
+card.dataset.price
+),
+
+oldPrice:
+rawOldPrice === "" ?
+null :
+Number(rawOldPrice),
+
 image:card.dataset.image
+
 };
 
 image.addEventListener("click",function(){
+
 openProductModal(product);
+
 });
 
 addButton.addEventListener("click",function(){
+
 addToList(product,1);
 
 this.textContent="ADDED ✓";
 
 setTimeout(()=>{
+
 this.textContent="ADD TO LIST";
+
 },1200);
-});
+
 });
 
-const searchInput=document.getElementById("searchInput");
-const searchResults=document.getElementById("searchResults");
+});
+
+const searchInput=
+document.getElementById("searchInput");
+
+const searchResults=
+document.getElementById("searchResults");
 
 function renderSearchResults(){
-const query=normalize(searchInput.value.trim());
+
+const query=
+normalize(
+searchInput.value.trim()
+);
 
 if(!query){
+
 searchResults.innerHTML="";
 return;
+
 }
 
-/* BÚSQUEDA MEJORADA */
-const results=PRODUCTS.filter(product=>
+const results=
+PRODUCTS.filter(product=>
+
 normalize(product.name).includes(query)
+
 );
 
 if(results.length===0){
+
 searchResults.innerHTML=
 '<div class="notice">No products found.</div>';
+
 return;
+
 }
 
-searchResults.innerHTML=results.map(product=>`
+searchResults.innerHTML=
+results.map(product=>`
+
 <div class="search-result">
+
 <img
 class="search-result-image"
 src="${escapeHtml(product.image)}"
@@ -2243,8 +3338,15 @@ alt="${escapeHtml(product.name)}"
 >
 
 <div class="search-result-info">
-<div class="search-result-name">${escapeHtml(product.name)}</div>
-<div class="search-result-price">$${product.price.toFixed(2)}</div>
+
+<div class="search-result-name">
+${escapeHtml(product.name)}
+</div>
+
+<div class="search-result-price">
+$${product.price.toFixed(2)}
+</div>
+
 </div>
 
 <button
@@ -2252,20 +3354,33 @@ class="search-add-btn"
 type="button"
 data-search-add="${escapeHtml(product.name)}"
 >
+
 ADD TO LIST
+
 </button>
+
 </div>
+
 `).join("");
+
 }
 
-searchInput.addEventListener("input",renderSearchResults);
+searchInput.addEventListener(
+"input",
+renderSearchResults
+);
 
-searchResults.addEventListener("click",function(event){
-const button=event.target.closest(".search-add-btn");
+searchResults.addEventListener(
+"click",
+function(event){
+
+const button=
+event.target.closest(".search-add-btn");
 
 if(!button)return;
 
-const product=findProduct(button.dataset.searchAdd);
+const product=
+findProduct(button.dataset.searchAdd);
 
 if(!product)return;
 
@@ -2274,68 +3389,110 @@ addToList(product,1);
 button.textContent="ADDED ✓";
 
 setTimeout(()=>{
+
 button.textContent="ADD TO LIST";
+
 },1200);
-});
 
-document.querySelectorAll(".menu-link").forEach(link=>{
+}
+);
+
+document.querySelectorAll(".menu-link")
+.forEach(link=>{
+
 link.addEventListener("click",function(){
-const href=this.getAttribute("href");
 
-if(href&&href.startsWith("#")){
+const href=
+this.getAttribute("href");
+
+if(
+href &&
+href.startsWith("#")
+){
+
 closeAllPanels();
 
 setTimeout(()=>{
-const element=document.querySelector(href);
+
+const element=
+document.querySelector(href);
 
 if(element){
+
 element.scrollIntoView({
 behavior:"smooth"
 });
+
 }
+
 },50);
+
 }
+
 });
+
 });
 
 function escapeHtml(text){
+
 return String(text)
+
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
+
 }
 
 function escapeJs(text){
+
 return String(text)
+
 .replace(/\\/g,"\\\\")
 .replace(/'/g,"\\'");
+
 }
 
-selectedProducts=getStorage(STORAGE.selected,[]);
+selectedProducts=
+getStorage(STORAGE.selected,[]);
 
-selectedProducts=selectedProducts.map(item=>{
-const currentProduct=findProduct(item.name);
+selectedProducts=
+selectedProducts.map(item=>{
+
+const currentProduct=
+findProduct(item.name);
 
 if(currentProduct){
+
 return{
+
 ...item,
+
 price:currentProduct.price,
+
 image:currentProduct.image
+
 };
+
 }
 
 return item;
+
 });
 
 saveSelected();
 
 initializeAgeGate();
+
 restoreOptions();
+
 loadFavorites();
+
 renderSelectedProducts();
+
 renderCart();
+
 updateCartCount();
 
 </script>
