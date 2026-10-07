@@ -134,16 +134,15 @@ body.locked{
 }
 
 /* =====================================================
-   HERO - PORTADA COMPLETA
+   HERO
 ===================================================== */
 
 .hero{
-  width:100%;
-  aspect-ratio:3 / 1;
+  height:250px;
   position:relative;
   background-image:url("./B3FD9D4A-A915-48AD-A552-E618979DD352.PNG");
-  background-size:100% 100%;
-  background-position:center center;
+  background-size:cover;
+  background-position:center;
   background-repeat:no-repeat;
 }
 
@@ -1044,15 +1043,10 @@ footer p{
     width:34px;
   }
 
-  /* PORTADA COMPLETA EN CELULAR */
   .hero{
-    width:100%;
-    height:auto;
-    min-height:0;
-    aspect-ratio:3 / 1;
-    background-size:100% 100%;
-    background-position:center center;
-    background-repeat:no-repeat;
+    height:225px;
+    min-height:225px;
+    background-position:center;
   }
 
   .benefits{
@@ -1320,6 +1314,34 @@ INTERNATIONAL SHIPPING
 </div>
 </article>
 
+<!-- BAC WATER 3 ML -->
+<article class="product-card" data-name="BAC WATER 3 ML" data-price="9" data-image="./E4370B97-70C9-4B17-9023-60083931F3B4.png">
+<div class="product-image-wrap">
+<button class="favorite-btn" data-favorite="BAC WATER 3 ML" type="button">♡</button>
+<img class="product-image" src="./E4370B97-70C9-4B17-9023-60083931F3B4.png" alt="BAC WATER 3 ML">
+</div>
+<div class="product-info">
+<h3>BAC WATER 3 ML</h3>
+<div class="product-price">$9</div>
+<div class="research">FOR RESEARCH USE ONLY</div>
+<button class="add-list-btn" type="button">ADD TO LIST</button>
+</div>
+</article>
+
+<!-- BAC WATER 10 ML -->
+<article class="product-card" data-name="BAC WATER 10 ML" data-price="15" data-image="./6D52B73F-52C0-481E-8F93-000189F46DF8.png">
+<div class="product-image-wrap">
+<button class="favorite-btn" data-favorite="BAC WATER 10 ML" type="button">♡</button>
+<img class="product-image" src="./6D52B73F-52C0-481E-8F93-000189F46DF8.png" alt="BAC WATER 10 ML">
+</div>
+<div class="product-info">
+<h3>BAC WATER 10 ML</h3>
+<div class="product-price">$15</div>
+<div class="research">FOR RESEARCH USE ONLY</div>
+<button class="add-list-btn" type="button">ADD TO LIST</button>
+</div>
+</article>
+
 </div>
 </section>
 
@@ -1367,6 +1389,8 @@ INTERNATIONAL SHIPPING
 <tr><td>GLP-3</td><td>20 MG</td><td>$135</td></tr>
 <tr><td>GLUTATHIONE</td><td>1500 MG</td><td>$60</td></tr>
 <tr><td>NAD+</td><td>500 MG</td><td>$50</td></tr>
+<tr><td>BAC WATER</td><td>3 ML</td><td>$9</td></tr>
+<tr><td>BAC WATER</td><td>10 ML</td><td>$15</td></tr>
 </tbody>
 </table>
 </div>
@@ -1557,7 +1581,9 @@ const PRODUCTS=[
 {name:"GLP-2 20 MG",price:110,image:"./9130C144-577C-4B9A-8DCD-2918ED68069D.png"},
 {name:"GLP-3 20 MG",price:135,image:"./065B33AF-7FEA-45A7-B5BF-9634422FF905.png"},
 {name:"GLUTATHIONE 1500 MG",price:60,image:"./12A73595-5804-4602-987C-58FF1FFB7880.png"},
-{name:"NAD+ 500 MG",price:50,image:"./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png"}
+{name:"NAD+ 500 MG",price:50,image:"./D58B8EF1-172B-4AE6-9BD8-C725DF4BB7F7.png"},
+{name:"BAC WATER 3 ML",price:9,image:"./E4370B97-70C9-4B17-9023-60083931F3B4.png"},
+{name:"BAC WATER 10 ML",price:15,image:"./6D52B73F-52C0-481E-8F93-000189F46DF8.png"}
 ];
 
 const STORAGE={
@@ -1600,10 +1626,7 @@ document.body.innerHTML='<div style="height:100vh;display:flex;align-items:cente
 function initializeAgeGate(){
 const gate=document.getElementById("ageGate");
 let confirmed=false;
-
-try{
-confirmed=localStorage.getItem(STORAGE.age)==="true";
-}catch(error){}
+try{confirmed=localStorage.getItem(STORAGE.age)==="true";}catch(error){}
 
 if(confirmed){
 gate.classList.add("hidden");
@@ -1640,7 +1663,6 @@ if(id==="cartPanel")renderCart();
 function closePanel(id){
 document.getElementById(id).classList.remove("open");
 const anyPanel=document.querySelector(".panel.open");
-
 if(!anyPanel&&!document.getElementById("sideMenu").classList.contains("open")){
 document.getElementById("overlay").classList.remove("show");
 }
@@ -1656,15 +1678,11 @@ closeProductModal();
 document.getElementById("overlay").addEventListener("click",closeAllPanels);
 
 document.querySelectorAll("[data-open-panel]").forEach(button=>{
-button.addEventListener("click",function(){
-openPanel(this.dataset.openPanel);
-});
+button.addEventListener("click",function(){openPanel(this.dataset.openPanel);});
 });
 
 document.querySelectorAll("[data-close-panel]").forEach(button=>{
-button.addEventListener("click",function(){
-closePanel(this.dataset.closePanel);
-});
+button.addEventListener("click",function(){closePanel(this.dataset.closePanel);});
 });
 
 document.getElementById("headerSearchBtn").addEventListener("click",function(){
@@ -1683,16 +1701,13 @@ function normalize(text){
 return String(text).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 }
 
-function saveSelected(){
-setStorage(STORAGE.selected,selectedProducts);
-}
+function saveSelected(){setStorage(STORAGE.selected,selectedProducts);}
 
 function subtotal(){
 return selectedProducts.reduce((total,item)=>total+item.price*item.quantity,0);
 }
 
 function addToList(product,quantity=1){
-
 const existing=selectedProducts.find(item=>item.name===product.name);
 
 if(existing){
@@ -1713,9 +1728,7 @@ renderCart();
 }
 
 function changeQuantity(name,change){
-
 const item=selectedProducts.find(product=>product.name===name);
-
 if(!item)return;
 
 item.quantity+=change;
@@ -1731,9 +1744,7 @@ updateCartCount();
 }
 
 function removeProduct(name){
-
 selectedProducts=selectedProducts.filter(item=>item.name!==name);
-
 saveSelected();
 renderSelectedProducts();
 renderCart();
@@ -1741,9 +1752,7 @@ updateCartCount();
 }
 
 function clearCart(){
-
 selectedProducts=[];
-
 saveSelected();
 renderSelectedProducts();
 renderCart();
@@ -1756,37 +1765,22 @@ const container=document.getElementById("selectedProducts");
 const total=document.getElementById("listTotal");
 
 if(selectedProducts.length===0){
-
 container.innerHTML='<p class="notice">No products selected.</p>';
 total.textContent="$0.00";
 return;
-
 }
 
 container.innerHTML=selectedProducts.map(item=>`
 <div class="selected-item">
 <img src="${item.image}" alt="${escapeHtml(item.name)}">
-
 <div class="selected-info">
 <strong>${escapeHtml(item.name)}</strong>
 <div>$${item.price.toFixed(2)}</div>
-
 <div class="qty-controls">
-
-<button type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
-
+<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
 <strong>${item.quantity}</strong>
-
-<button type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-
-<button class="remove-btn"
-type="button"
-onclick="removeProduct('${escapeJs(item.name)}')">
-Remove
-</button>
-
+<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
+<button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
 </div>
 </div>
 </div>
@@ -1796,45 +1790,31 @@ total.textContent="$"+subtotal().toFixed(2);
 }
 
 function updateCartCount(){
-
-const count=selectedProducts.reduce(
-(sum,item)=>sum+item.quantity,0
-);
-
+const count=selectedProducts.reduce((sum,item)=>sum+item.quantity,0);
 document.getElementById("cartCount").textContent=count;
 document.getElementById("headerCartCount").textContent=count;
 }
 
 function getShippingCost(){
-
 const selected=document.querySelector('input[name="shipping"]:checked');
-
 if(!selected)return 0;
-
 if(selected.value==="standard")return 9;
 if(selected.value==="express")return 15;
 if(selected.value==="free")return subtotal()>=200?0:9;
-
 return 0;
 }
 
 function getShippingName(){
-
 const selected=document.querySelector('input[name="shipping"]:checked');
-
 if(!selected)return "";
-
 if(selected.value==="standard")return "Standard";
 if(selected.value==="express")return "Express";
 if(selected.value==="free")return "Free Shipping";
-
 return "";
 }
 
 function getPayment(){
-
 const selected=document.querySelector('input[name="payment"]:checked');
-
 return selected?selected.value:"";
 }
 
@@ -1843,54 +1823,29 @@ function renderCart(){
 const container=document.getElementById("cartItems");
 
 if(selectedProducts.length===0){
-
 container.innerHTML='<p class="notice">Your cart is empty.</p>';
-
 }else{
-
 container.innerHTML=selectedProducts.map(item=>`
-
 <div class="selected-item">
-
 <img src="${item.image}" alt="${escapeHtml(item.name)}">
-
 <div class="selected-info">
-
 <strong>${escapeHtml(item.name)}</strong>
-
 <div>$${item.price.toFixed(2)}</div>
-
 <div class="qty-controls">
-
-<button type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
-
+<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',-1)">−</button>
 <strong>${item.quantity}</strong>
-
-<button type="button"
-onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
-
-<button class="remove-btn"
-type="button"
-onclick="removeProduct('${escapeJs(item.name)}')">
-Remove
-</button>
-
+<button type="button" onclick="changeQuantity('${escapeJs(item.name)}',1)">+</button>
+<button class="remove-btn" type="button" onclick="removeProduct('${escapeJs(item.name)}')">Remove</button>
 </div>
-
 </div>
-
 </div>
-
 `).join("");
-
 }
 
 updateTotals();
 }
 
 function updateTotals(){
-
 const sub=subtotal();
 const shipping=getShippingCost();
 const total=sub+shipping;
@@ -1908,53 +1863,33 @@ const shipping=getStorage(STORAGE.shipping,null);
 const payment=getStorage(STORAGE.payment,null);
 
 if(shipping){
-
-const input=document.querySelector(
-`input[name="shipping"][value="${shipping}"]`
-);
-
+const input=document.querySelector(`input[name="shipping"][value="${shipping}"]`);
 if(input)input.checked=true;
-
 }
 
 if(payment){
-
-const input=document.querySelector(
-`input[name="payment"][value="${payment}"]`
-);
-
+const input=document.querySelector(`input[name="payment"][value="${payment}"]`);
 if(input)input.checked=true;
-
 }
 }
 
 document.querySelectorAll('input[name="shipping"]').forEach(input=>{
-
 input.addEventListener("change",function(){
-
 setStorage(STORAGE.shipping,this.value);
 updateTotals();
-
 });
-
 });
 
 document.querySelectorAll('input[name="payment"]').forEach(input=>{
-
 input.addEventListener("change",function(){
-
 setStorage(STORAGE.payment,this.value);
 updateFormHiddenFields();
-
 });
-
 });
 
 document.getElementById("openCartFromList").addEventListener("click",function(){
-
 closePanel("listPanel");
 openPanel("cartPanel");
-
 });
 
 document.getElementById("clearCartBtn").addEventListener("click",clearCart);
@@ -1962,59 +1897,43 @@ document.getElementById("clearCartBtn").addEventListener("click",clearCart);
 document.getElementById("checkoutBtn").addEventListener("click",function(){
 
 if(selectedProducts.length===0){
-
 alert("Please select at least one product.");
 return;
-
 }
 
 const shipping=document.querySelector('input[name="shipping"]:checked');
 
 if(!shipping){
-
 alert("Please select a shipping option.");
 return;
-
 }
 
 if(shipping.value==="free"&&subtotal()<200){
-
 alert("Free Shipping is available only for orders of $200 or more.");
 return;
-
 }
 
 const payment=document.querySelector('input[name="payment"]:checked');
 
 if(!payment){
-
 alert("Please select a payment method.");
 return;
-
 }
 
 prepareInformationForm();
-
 closePanel("cartPanel");
 openPanel("informationPanel");
 
 });
 
 function generateReference(){
-
-return String(
-Math.floor(1000+Math.random()*9000)
-);
-
+return String(Math.floor(1000+Math.random()*9000));
 }
 
 function prepareInformationForm(){
-
 const code=generateReference();
-
 document.getElementById("referenceDisplay").textContent=code;
 document.getElementById("formReference").value=code;
-
 updateFormHiddenFields();
 }
 
@@ -2034,7 +1953,6 @@ document.getElementById("formShipping").value=getShippingName();
 document.getElementById("formShippingCost").value="$"+shippingCost.toFixed(2);
 document.getElementById("formTotal").value="$"+total.toFixed(2);
 document.getElementById("formPayment").value=getPayment();
-
 }
 
 function saveLastOrder(reference){
@@ -2043,7 +1961,6 @@ const shippingCost=getShippingCost();
 const sub=subtotal();
 
 const order={
-
 reference,
 products:selectedProducts,
 subtotal:sub,
@@ -2052,75 +1969,49 @@ shippingCost,
 total:sub+shippingCost,
 payment:getPayment(),
 createdAt:new Date().toISOString()
-
 };
 
 setStorage(STORAGE.lastOrder,order);
-
 return order;
 }
 
 function showPaymentInformation(order){
 
 const box=document.getElementById("paymentFinal");
-
 const amount=order.total.toFixed(2);
 const reference=order.reference;
 
 let html=`
-
 <p><strong>Order number:</strong> ${escapeHtml(reference)}</p>
-
 <p><strong>Amount:</strong> $${amount}</p>
-
 `;
 
 if(order.payment==="zelle"){
 
 html+=`
-
 <div class="payment zelle">
 
 <div class="payment-title">
-
 <span class="payment-logo zelle-logo">Z</span>
-
 <h3>Zelle</h3>
-
 </div>
 
 <p><strong>Name:</strong> Araceli Hernández</p>
-
 <p><strong>Phone:</strong> (832) 273-9625</p>
-
 <p><strong>Amount:</strong> $${amount}</p>
+<p>Please include order number <strong>${escapeHtml(reference)}</strong> in the memo.</p>
 
-<p>
-Please include order number
-<strong>${escapeHtml(reference)}</strong>
-in the memo.
-</p>
-
-<button
-class="copy-btn"
-type="button"
-onclick="copyText('8322739625')">
-
+<button class="copy-btn" type="button" onclick="copyText('8322739625')">
 COPY ZELLE NUMBER
-
 </button>
 
 </div>
-
 `;
-
 }
 
 if(order.payment==="venmo"){
 
-const venmoNote=encodeURIComponent(
-"NovaPeps Order "+reference
-);
+const venmoNote=encodeURIComponent("NovaPeps Order "+reference);
 
 const venmoUrl=
 "https://venmo.com/novapeps22"+
@@ -2129,51 +2020,33 @@ const venmoUrl=
 "&note="+venmoNote;
 
 html+=`
-
 <div class="payment venmo">
 
 <div class="payment-title">
-
 <span class="payment-logo venmo-logo">V</span>
-
 <h3>Venmo</h3>
-
 </div>
 
 <p><strong>Venmo:</strong> @novapeps22</p>
-
 <p><strong>Name:</strong> Araceli Hernández</p>
-
 <p><strong>Amount:</strong> $${amount}</p>
+<p>Order number: <strong>${escapeHtml(reference)}</strong></p>
 
-<p>
-Order number:
-<strong>${escapeHtml(reference)}</strong>
-</p>
-
-<a
-href="${venmoUrl}"
+<a href="${venmoUrl}"
 target="_blank"
 rel="noopener noreferrer"
 class="pay-link venmo-pay">
-
 PAY WITH VENMO
-
 </a>
 
-<button
-class="copy-btn"
+<button class="copy-btn"
 type="button"
 onclick="copyText('@novapeps22')">
-
 COPY VENMO
-
 </button>
 
 </div>
-
 `;
-
 }
 
 if(order.payment==="paypal"){
@@ -2184,46 +2057,30 @@ encodeURIComponent(amount)+
 "?currencyCode=USD";
 
 html+=`
-
 <div class="payment paypal">
 
 <div class="payment-title">
-
 <span class="payment-logo paypal-logo">P</span>
-
 <h3>PayPal</h3>
-
 </div>
 
 <p><strong>PayPal.Me:</strong> @novapeps22</p>
-
 <p><strong>Name:</strong> Araceli Hernández</p>
-
 <p><strong>Amount:</strong> $${amount}</p>
+<p>Order number: <strong>${escapeHtml(reference)}</strong></p>
 
-<p>
-Order number:
-<strong>${escapeHtml(reference)}</strong>
-</p>
-
-<a
-href="${paypalUrl}"
+<a href="${paypalUrl}"
 target="_blank"
 rel="noopener noreferrer"
 class="pay-link paypal-pay">
-
 PAY WITH PAYPAL
-
 </a>
 
 </div>
-
 `;
-
 }
 
 box.innerHTML=html;
-
 }
 
 document.getElementById("informationForm").addEventListener("submit",async function(event){
@@ -2231,15 +2088,10 @@ document.getElementById("informationForm").addEventListener("submit",async funct
 event.preventDefault();
 
 const form=this;
-
-const button=form.querySelector(
-'button[type="submit"]'
-);
+const button=form.querySelector('button[type="submit"]');
 
 if(!document.getElementById("formReference").value){
-
 prepareInformationForm();
-
 }
 
 updateFormHiddenFields();
@@ -2250,58 +2102,38 @@ button.textContent="SENDING...";
 try{
 
 const response=await fetch(form.action,{
-
 method:"POST",
-
 body:new FormData(form),
-
-headers:{
-"Accept":"application/json"
-}
-
+headers:{"Accept":"application/json"}
 });
 
-if(!response.ok){
-
-throw new Error("Submission failed");
-
-}
+if(!response.ok)throw new Error("Submission failed");
 
 const order=saveLastOrder(
 document.getElementById("formReference").value
 );
 
 form.style.display="none";
-
 document.getElementById("finalConfirmation").style.display="block";
 
 showPaymentInformation(order);
 
 }catch(error){
 
-alert(
-"There was a problem sending the information. Please try again."
-);
+alert("There was a problem sending the information. Please try again.");
 
 button.disabled=false;
-
 button.textContent="SEND INFORMATION";
 
 }
-
 });
 
 function copyText(text){
 
-if(
-navigator.clipboard &&
-navigator.clipboard.writeText
-){
+if(navigator.clipboard&&navigator.clipboard.writeText){
 
 navigator.clipboard.writeText(text)
-
 .then(()=>alert("Information copied"))
-
 .catch(()=>fallbackCopy(text));
 
 }else{
@@ -2309,56 +2141,39 @@ navigator.clipboard.writeText(text)
 fallbackCopy(text);
 
 }
-
 }
 
 function fallbackCopy(text){
 
 const textarea=document.createElement("textarea");
-
 textarea.value=text;
-
 document.body.appendChild(textarea);
-
 textarea.select();
 
 try{
-
 document.execCommand("copy");
-
 alert("Information copied");
-
 }catch(error){
-
 alert("Could not copy the information.");
-
 }
 
 document.body.removeChild(textarea);
-
 }
 
 function loadFavorites(){
 
-favorites=getStorage(
-STORAGE.favorites,
-[]
-);
+favorites=getStorage(STORAGE.favorites,[]);
 
 document.querySelectorAll(".favorite-btn").forEach(button=>{
 
 const name=button.dataset.favorite;
 
 if(favorites.includes(name)){
-
 button.classList.add("active");
-
 button.textContent="♥";
-
 }
 
 });
-
 }
 
 document.querySelectorAll(".favorite-btn").forEach(button=>{
@@ -2370,60 +2185,37 @@ event.stopPropagation();
 const name=this.dataset.favorite;
 
 if(favorites.includes(name)){
-
-favorites=favorites.filter(
-item=>item!==name
-);
-
+favorites=favorites.filter(item=>item!==name);
 this.classList.remove("active");
-
 this.textContent="♡";
-
 }else{
-
 favorites.push(name);
-
 this.classList.add("active");
-
 this.textContent="♥";
-
 }
 
-setStorage(
-STORAGE.favorites,
-favorites
-);
+setStorage(STORAGE.favorites,favorites);
 
 });
-
 });
 
 function openProductModal(product){
 
 modalProduct=product;
-
 modalQuantity=1;
 
 document.getElementById("modalImage").src=product.image;
-
 document.getElementById("modalImage").alt=product.name;
-
 document.getElementById("modalName").textContent=product.name;
-
-document.getElementById("modalPrice").textContent=
-"$"+product.price.toFixed(2);
-
-document.getElementById("modalQuantity").textContent=
-modalQuantity;
+document.getElementById("modalPrice").textContent="$"+product.price.toFixed(2);
+document.getElementById("modalQuantity").textContent=modalQuantity;
 
 document.getElementById("productModal").classList.add("open");
-
 }
 
 function closeProductModal(){
 
 document.getElementById("productModal").classList.remove("open");
-
 modalProduct=null;
 
 }
@@ -2432,45 +2224,29 @@ function changeModalQuantity(change){
 
 modalQuantity+=change;
 
-if(modalQuantity<1){
+if(modalQuantity<1)modalQuantity=1;
 
-modalQuantity=1;
-
-}
-
-document.getElementById("modalQuantity").textContent=
-modalQuantity;
+document.getElementById("modalQuantity").textContent=modalQuantity;
 
 }
 
-document.getElementById("modalClose").addEventListener(
-"click",
-closeProductModal
-);
+document.getElementById("modalClose").addEventListener("click",closeProductModal);
 
 document.getElementById("modalMinus").addEventListener("click",()=>{
-
 changeModalQuantity(-1);
-
 });
 
 document.getElementById("modalPlus").addEventListener("click",()=>{
-
 changeModalQuantity(1);
-
 });
 
 document.getElementById("modalAdd").addEventListener("click",function(){
 
 if(!modalProduct)return;
 
-addToList(
-modalProduct,
-modalQuantity
-);
+addToList(modalProduct,modalQuantity);
 
 closeProductModal();
-
 openPanel("listPanel");
 
 });
@@ -2478,16 +2254,10 @@ openPanel("listPanel");
 document.getElementById("modalGoCart").addEventListener("click",function(){
 
 if(modalProduct){
-
-addToList(
-modalProduct,
-modalQuantity
-);
-
+addToList(modalProduct,modalQuantity);
 }
 
 closeProductModal();
-
 openPanel("cartPanel");
 
 });
@@ -2495,9 +2265,7 @@ openPanel("cartPanel");
 document.getElementById("productModal").addEventListener("click",function(event){
 
 if(event.target===this){
-
 closeProductModal();
-
 }
 
 });
@@ -2505,23 +2273,16 @@ closeProductModal();
 document.querySelectorAll(".product-card").forEach(card=>{
 
 const image=card.querySelector(".product-image");
-
 const addButton=card.querySelector(".add-list-btn");
 
 const product={
-
 name:card.dataset.name,
-
 price:Number(card.dataset.price),
-
 image:card.dataset.image
-
 };
 
 image.addEventListener("click",function(){
-
 openProductModal(product);
-
 });
 
 addButton.addEventListener("click",function(){
@@ -2531,38 +2292,27 @@ addToList(product,1);
 this.textContent="ADDED ✓";
 
 setTimeout(()=>{
-
 this.textContent="ADD TO LIST";
-
 },1200);
 
 });
 
 });
 
-const searchInput=
-document.getElementById("searchInput");
-
-const searchResults=
-document.getElementById("searchResults");
+const searchInput=document.getElementById("searchInput");
+const searchResults=document.getElementById("searchResults");
 
 function renderSearchResults(){
 
-const query=
-normalize(searchInput.value.trim());
+const query=normalize(searchInput.value.trim());
 
 if(!query){
-
 searchResults.innerHTML="";
-
 return;
-
 }
 
 const results=PRODUCTS.filter(product=>
-
 normalize(product.name).includes(query)
-
 );
 
 if(results.length===0){
@@ -2571,46 +2321,33 @@ searchResults.innerHTML=
 '<div class="notice">No products found.</div>';
 
 return;
-
 }
 
 searchResults.innerHTML=results.map(product=>`
-
-<div
-class="search-result"
+<div class="search-result"
 data-search-name="${escapeHtml(product.name)}">
-
 <strong>${escapeHtml(product.name)}</strong>
-
 — $${product.price.toFixed(2)}
-
 </div>
-
 `).join("");
 
 }
 
-searchInput.addEventListener(
-"input",
-renderSearchResults
-);
+searchInput.addEventListener("input",renderSearchResults);
 
 searchResults.addEventListener("click",function(event){
 
-const item=
-event.target.closest(".search-result");
+const item=event.target.closest(".search-result");
 
 if(!item)return;
 
-const product=
-findProduct(item.dataset.searchName);
+const product=findProduct(item.dataset.searchName);
 
 if(product){
 
 addToList(product,1);
 
 searchInput.value="";
-
 searchResults.innerHTML="";
 
 openPanel("listPanel");
@@ -2623,27 +2360,18 @@ document.querySelectorAll(".menu-link").forEach(link=>{
 
 link.addEventListener("click",function(){
 
-const href=
-this.getAttribute("href");
+const href=this.getAttribute("href");
 
-if(
-href &&
-href.startsWith("#")
-){
+if(href&&href.startsWith("#")){
 
 closeAllPanels();
 
 setTimeout(()=>{
 
-const element=
-document.querySelector(href);
+const element=document.querySelector(href);
 
 if(element){
-
-element.scrollIntoView({
-behavior:"smooth"
-});
-
+element.scrollIntoView({behavior:"smooth"});
 }
 
 },50);
@@ -2655,23 +2383,16 @@ behavior:"smooth"
 });
 
 document.querySelector(".brand-logo").addEventListener("click",function(){
-
 closeAllPanels();
-
 });
 
 function escapeHtml(text){
 
 return String(text)
-
 .replace(/&/g,"&amp;")
-
 .replace(/</g,"&lt;")
-
 .replace(/>/g,"&gt;")
-
 .replace(/"/g,"&quot;")
-
 .replace(/'/g,"&#039;");
 
 }
@@ -2679,29 +2400,18 @@ return String(text)
 function escapeJs(text){
 
 return String(text)
-
 .replace(/\\/g,"\\\\")
-
 .replace(/'/g,"\\'");
 
 }
 
-selectedProducts=
-getStorage(
-STORAGE.selected,
-[]
-);
+selectedProducts=getStorage(STORAGE.selected,[]);
 
 initializeAgeGate();
-
 restoreOptions();
-
 loadFavorites();
-
 renderSelectedProducts();
-
 renderCart();
-
 updateCartCount();
 
 </script>
