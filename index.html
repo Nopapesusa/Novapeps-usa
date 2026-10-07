@@ -318,20 +318,66 @@ body.locked{
   margin-bottom:16px;
 }
 
+/* =====================================================
+   ADD TO LIST - NEGRO + BORDE ROSA ANIMADO
+===================================================== */
+
 .add-list-btn{
-  width:100%;
-  border:2px solid #000;
-  background:#fff;
-  color:#000;
-  padding:12px;
-  border-radius:8px;
+  position:relative;
+  isolation:isolate;
+  display:block;
+  width:145px;
+  max-width:100%;
+  margin:0 auto;
+  padding:11px 15px;
+  border:0;
+  border-radius:9px;
+  background:#000;
+  color:#fff;
   font-weight:900;
   cursor:pointer;
+  overflow:hidden;
+}
+
+.add-list-btn::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  width:220%;
+  height:420%;
+  left:-60%;
+  top:-160%;
+  background:conic-gradient(
+    transparent 0deg,
+    transparent 285deg,
+    #ff4fa3 315deg,
+    #ff4fa3 345deg,
+    transparent 360deg
+  );
+  animation:spinPinkBorder 3.5s linear infinite;
+}
+
+.add-list-btn::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:2px;
+  border-radius:7px;
+  background:#000;
 }
 
 .add-list-btn:hover{
-  background:#000;
   color:#fff;
+  background:#000;
+}
+
+@keyframes spinPinkBorder{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 /* =====================================================
@@ -470,14 +516,52 @@ body.locked{
   margin-top:10px;
 }
 
+/* =====================================================
+   BUSCADOR CON FOTO
+===================================================== */
+
 .search-result{
-  padding:11px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 4px;
   border-bottom:1px solid #eee;
   cursor:pointer;
 }
 
 .search-result:hover{
   background:#fff3f9;
+}
+
+.search-result-image{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  object-fit:contain;
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:9px;
+}
+
+.search-result-info{
+  flex:1;
+  min-width:0;
+}
+
+.search-result-name{
+  display:block;
+  font-size:14px;
+  font-weight:900;
+  color:#111;
+  line-height:1.25;
+}
+
+.search-result-price{
+  display:block;
+  margin-top:4px;
+  font-size:14px;
+  color:#555;
+  font-weight:700;
 }
 
 /* =====================================================
@@ -2309,6 +2393,11 @@ this.textContent="ADD TO LIST";
 
 });
 
+/* =====================================================
+   BUSCADOR
+   FILTRA DESDE LA PRIMERA LETRA + FOTO
+===================================================== */
+
 const searchInput=document.getElementById("searchInput");
 const searchResults=document.getElementById("searchResults");
 
@@ -2321,8 +2410,12 @@ searchResults.innerHTML="";
 return;
 }
 
+/* IMPORTANTE:
+   startsWith hace que solo aparezcan productos
+   que EMPIEZAN con las letras escritas.
+*/
 const results=PRODUCTS.filter(product=>
-normalize(product.name).includes(query)
+normalize(product.name).startsWith(query)
 );
 
 if(results.length===0){
@@ -2336,8 +2429,22 @@ return;
 searchResults.innerHTML=results.map(product=>`
 <div class="search-result"
 data-search-name="${escapeHtml(product.name)}">
-<strong>${escapeHtml(product.name)}</strong>
-— $${product.price.toFixed(2)}
+
+<img
+class="search-result-image"
+src="${product.image}"
+alt="${escapeHtml(product.name)}">
+
+<div class="search-result-info">
+<span class="search-result-name">
+${escapeHtml(product.name)}
+</span>
+
+<span class="search-result-price">
+$${product.price.toFixed(2)}
+</span>
+</div>
+
 </div>
 `).join("");
 
@@ -2355,12 +2462,15 @@ const product=findProduct(item.dataset.searchName);
 
 if(product){
 
-addToList(product,1);
-
+/* Al tocar el resultado abre el producto con su foto,
+   cantidad y opciones de carrito.
+*/
 searchInput.value="";
 searchResults.innerHTML="";
+closeMenu();
+document.getElementById("overlay").classList.remove("show");
 
-openPanel("listPanel");
+openProductModal(product);
 
 }
 
