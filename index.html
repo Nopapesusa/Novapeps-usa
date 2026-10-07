@@ -372,12 +372,8 @@ body.locked{
 }
 
 @keyframes spinPinkBorder{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 /* =====================================================
@@ -515,10 +511,6 @@ body.locked{
 .search-results{
   margin-top:10px;
 }
-
-/* =====================================================
-   BUSCADOR CON FOTO
-===================================================== */
 
 .search-result{
   display:flex;
@@ -2076,7 +2068,7 @@ const amount=order.total.toFixed(2);
 const reference=order.reference;
 
 let html=`
-<p><strong>Order number:</strong> ${escapeHtml(reference)}</p>
+<p><strong>Order number:</strong> #${escapeHtml(reference)}</p>
 <p><strong>Amount:</strong> $${amount}</p>
 `;
 
@@ -2093,7 +2085,7 @@ html+=`
 <p><strong>Name:</strong> Araceli Hernández</p>
 <p><strong>Phone:</strong> (832) 273-9625</p>
 <p><strong>Amount:</strong> $${amount}</p>
-<p>Please include order number <strong>${escapeHtml(reference)}</strong> in the memo.</p>
+<p>Please include <strong>#${escapeHtml(reference)}</strong> in the memo.</p>
 
 <button class="copy-btn" type="button" onclick="copyText('8322739625')">
 COPY ZELLE NUMBER
@@ -2105,7 +2097,7 @@ COPY ZELLE NUMBER
 
 if(order.payment==="venmo"){
 
-const venmoNote=encodeURIComponent("NovaPeps Order "+reference);
+const venmoNote=encodeURIComponent("#"+reference);
 
 const venmoUrl=
 "https://venmo.com/novapeps22"+
@@ -2124,7 +2116,7 @@ html+=`
 <p><strong>Venmo:</strong> @novapeps22</p>
 <p><strong>Name:</strong> Araceli Hernández</p>
 <p><strong>Amount:</strong> $${amount}</p>
-<p>Order number: <strong>${escapeHtml(reference)}</strong></p>
+<p><strong>#${escapeHtml(reference)}</strong></p>
 
 <a href="${venmoUrl}"
 target="_blank"
@@ -2161,7 +2153,7 @@ html+=`
 <p><strong>PayPal.Me:</strong> @novapeps22</p>
 <p><strong>Name:</strong> Araceli Hernández</p>
 <p><strong>Amount:</strong> $${amount}</p>
-<p>Order number: <strong>${escapeHtml(reference)}</strong></p>
+<p><strong>#${escapeHtml(reference)}</strong></p>
 
 <a href="${paypalUrl}"
 target="_blank"
@@ -2393,11 +2385,6 @@ this.textContent="ADD TO LIST";
 
 });
 
-/* =====================================================
-   BUSCADOR
-   FILTRA DESDE LA PRIMERA LETRA + FOTO
-===================================================== */
-
 const searchInput=document.getElementById("searchInput");
 const searchResults=document.getElementById("searchResults");
 
@@ -2410,10 +2397,6 @@ searchResults.innerHTML="";
 return;
 }
 
-/* IMPORTANTE:
-   startsWith hace que solo aparezcan productos
-   que EMPIEZAN con las letras escritas.
-*/
 const results=PRODUCTS.filter(product=>
 normalize(product.name).startsWith(query)
 );
@@ -2462,9 +2445,6 @@ const product=findProduct(item.dataset.searchName);
 
 if(product){
 
-/* Al tocar el resultado abre el producto con su foto,
-   cantidad y opciones de carrito.
-*/
 searchInput.value="";
 searchResults.innerHTML="";
 closeMenu();
