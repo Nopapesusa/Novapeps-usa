@@ -105,329 +105,377 @@ function openProductModal(p){modalProduct=p;modalQuantity=1;document.getElementB
 const searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults");function renderSearchResults(){const q=normalize(searchInput.value.trim());if(!q){searchResults.innerHTML="";return}const results=PRODUCTS.filter(p=>normalize(p.name).startsWith(q));if(!results.length){searchResults.innerHTML='<div class="notice">No products found.</div>';return}searchResults.innerHTML=results.map(p=>`<div class="search-result" data-search-name="${escapeHtml(p.name)}"><img class="search-result-image" src="${p.image}" alt="${escapeHtml(p.name)}"><div class="search-result-info"><span class="search-result-name">${escapeHtml(p.name)}</span><span class="search-result-price">$${p.price.toFixed(2)}</span></div></div>`).join("")}searchInput.addEventListener("input",renderSearchResults);searchResults.addEventListener("click",e=>{const el=e.target.closest(".search-result");if(!el)return;const p=findProduct(el.dataset.searchName);if(p){searchInput.value="";searchResults.innerHTML="";closeMenu();document.getElementById("overlay").classList.remove("show");openProductModal(p)}});document.querySelectorAll(".menu-link").forEach(link=>link.addEventListener("click",function(){const href=this.getAttribute("href");if(href?.startsWith("#")){closeAllPanels();setTimeout(()=>document.querySelector(href)?.scrollIntoView({behavior:"smooth"}),50)}}));document.querySelector(".brand-logo").addEventListener("click",closeAllPanels);
 selectedProducts=getStorage(STORAGE.selected,[]);initializeAgeGate();restoreOptions();loadFavorites();renderSelectedProducts();renderFavorites();renderCart();updateCartCount();
 </script>
-</body>
-</html>
-
-<!-- NOVAPEPS USA: OPTIONAL CUSTOMER ACCOUNTS -->
+  
+<!-- NOVAPEPS USA - CUSTOMER ACCOUNTS V2 -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-(function () {
-  "use strict";
+(function(){
+"use strict";
 
-  const URL = "https://emutjhhwyqrgaqszmchu.supabase.co";
-  const KEY = "sb_publishable_9FEsYZd8_rdCrfY6esuQEQ_lPr-SiJU";
+const SUPABASE_URL="https://emutjhhwyqrgaqszmchu.supabase.co";
+const SUPABASE_KEY="sb_publishable_9FEsYZd8_rdCrfY6esuQEQ_lPr-SiJU";
 
-  const loginSection = document.querySelector("#login .login-box");
+const host=document.querySelector("#login .login-box");
+if(!host)return;
 
-  if (!loginSection) return;
+const css=document.createElement("style");
+css.textContent=`
+.nova-account-heading{text-align:center;margin-bottom:18px}
+.nova-account-email{text-align:center;color:#666;font-size:13px;margin:8px 0 20px;overflow-wrap:anywhere}
+.nova-account-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.nova-account-tile{background:#fff;border:1px solid #ddd;border-radius:12px;padding:18px 8px;text-align:center;cursor:pointer;font-weight:800;font-size:13px;color:#111}
+.nova-account-tile:hover{border-color:#ff4fa3}
+.nova-account-tile span{display:block;font-size:25px;margin-bottom:10px}
+.nova-account-field{margin:12px 0}
+.nova-account-field label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+.nova-account-field input{margin:0;width:100%}
+.nova-account-message{text-align:center;font-size:13px;line-height:1.5;margin-top:12px}
+.nova-account-back{background:none;border:0;color:#c2185b;font-weight:800;cursor:pointer;margin-bottom:17px}
+.nova-account-order{border:1px solid #ddd;background:#fff;border-radius:12px;padding:15px;margin:12px 0;line-height:1.8}
+.nova-account-order strong{color:#111}
+`;
+document.head.appendChild(css);
 
-  loginSection.innerHTML = `
-    <div id="novaGuestAccount">
-      <input id="novaEmail" type="email"
-        placeholder="Email" autocomplete="email">
+host.innerHTML=`
+<div id="novaAuthScreen">
+ <h3 class="nova-account-heading">LOGIN / REGISTER</h3>
+ <input id="novaEmail" type="email" placeholder="Email" autocomplete="email">
+ <input id="novaPassword" type="password" placeholder="Password" autocomplete="current-password" minlength="6">
+ <button class="primary-btn" id="novaLogin" type="button">LOGIN</button>
+ <button class="secondary-btn" id="novaRegister" type="button">REGISTER</button>
+ <p class="notice">Creating an account is optional. You may continue as a guest.</p>
+</div>
 
-      <input id="novaPassword" type="password"
-        placeholder="Password"
-        autocomplete="current-password">
+<div id="novaAccountScreen" hidden>
+ <h3 class="nova-account-heading">MY ACCOUNT</h3>
+ <p class="nova-account-email" id="novaWelcome"></p>
+ <div class="nova-account-grid">
+  <button class="nova-account-tile" type="button" data-nova-view="profile">
+   <span>👤</span>MY PROFILE
+  </button>
+  <button class="nova-account-tile" type="button" data-nova-view="address">
+   <span>📍</span>MY ADDRESS
+  </button>
+  <button class="nova-account-tile" type="button" data-nova-view="orders">
+   <span>📦</span>MY ORDERS
+  </button>
+  <button class="nova-account-tile" type="button" data-nova-view="details">
+   <span>⚙️</span>ACCOUNT DETAILS
+  </button>
+ </div>
+ <button class="secondary-btn" id="novaLogout" type="button">LOG OUT</button>
+</div>
 
-      <button class="primary-btn" id="novaLogin"
-        type="button">LOGIN</button>
+<div id="novaDetailScreen" hidden>
+ <button class="nova-account-back" id="novaBack" type="button">← MY ACCOUNT</button>
+ <h3 id="novaDetailTitle" class="nova-account-heading"></h3>
+ <div id="novaDetailContent"></div>
+</div>
 
-      <button class="secondary-btn" id="novaRegister"
-        type="button">REGISTER</button>
+<p id="novaMessage" class="nova-account-message" role="status" aria-live="polite"></p>
+`;
 
-      <p class="notice">
-        Creating an account is optional.
-        You may continue as a guest.
-      </p>
+const $=id=>document.getElementById(id);
+const fields=[
+ ["first_name","First Name","text"],
+ ["last_name","Last Name","text"],
+ ["phone","Phone Number","tel"],
+ ["address","Street Address","text"],
+ ["unit","Apartment / Unit","text"],
+ ["city","City","text"],
+ ["state","State","text"],
+ ["zip","ZIP Code","text"]
+];
+
+let db=null;
+let currentUser=null;
+
+function message(text,error=false){
+ $("novaMessage").textContent=text;
+ $("novaMessage").style.color=error?"#b42318":"#18794e";
+}
+
+function safe(value){
+ return String(value??"").replace(/[&<>"']/g,ch=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",
+ '"':"&quot;","'":"&#39;"
+ })[ch]);
+}
+
+function show(id){
+ ["novaAuthScreen","novaAccountScreen","novaDetailScreen"].forEach(x=>{
+  $(x).hidden=(x!==id);
+  $(x).style.display=x===id?"block":"none";
+ });
+}
+
+function showUser(user){
+ currentUser=user||null;
+ message("");
+ if(!user){
+  show("novaAuthScreen");
+  return;
+ }
+ const profile=user.user_metadata||{};
+ const name=[profile.first_name,profile.last_name].filter(Boolean).join(" ");
+ $("novaWelcome").textContent=
+ (name?"Welcome, "+name+"\n":"Welcome to NovaPeps USA\n")+
+ (user.email||"");
+ $("novaWelcome").style.whiteSpace="pre-line";
+ show("novaAccountScreen");
+}
+
+if(!window.supabase?.createClient){
+ message("Account service is unavailable. Please refresh.",true);
+ return;
+}
+
+db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{
+ auth:{
+  persistSession:true,
+  autoRefreshToken:true,
+  detectSessionInUrl:true
+ }
+});
+
+async function authenticate(register){
+ const email=$("novaEmail").value.trim();
+ const password=$("novaPassword").value;
+
+ if(!email||!$("novaEmail").checkValidity()){
+  message("Please enter a valid email.",true);
+  return;
+ }
+ if(password.length<6){
+  message("Password must contain at least 6 characters.",true);
+  return;
+ }
+
+ const buttons=[$("novaLogin"),$("novaRegister")];
+ buttons.forEach(b=>b.disabled=true);
+ message("Please wait...");
+
+ try{
+  const result=register
+   ?await db.auth.signUp({
+      email,password,
+      options:{emailRedirectTo:location.origin+"/"}
+    })
+   :await db.auth.signInWithPassword({email,password});
+
+  if(result.error)throw result.error;
+  $("novaPassword").value="";
+
+  if(register&&!result.data.session){
+   message("Check your email to confirm your account.");
+  }else{
+   showUser(result.data.user);
+   message(register?"Account created successfully.":"Welcome back!");
+  }
+ }catch(error){
+  message(error.message||"Unable to continue.",true);
+ }finally{
+  buttons.forEach(b=>b.disabled=false);
+ }
+}
+
+$("novaLogin").onclick=()=>authenticate(false);
+$("novaRegister").onclick=()=>authenticate(true);
+
+$("novaLogout").onclick=async()=>{
+ const {error}=await db.auth.signOut();
+ if(error){
+  message(error.message,true);
+  return;
+ }
+ showUser(null);
+ message("You have logged out.");
+};
+
+$("novaBack").onclick=()=>showUser(currentUser);
+
+function profileForm(section){
+ const keys=section==="profile"
+  ?["first_name","last_name","phone"]
+  :["address","unit","city","state","zip"];
+
+ const profile=currentUser?.user_metadata||{};
+
+ $("novaDetailContent").innerHTML=`
+  <form id="novaProfileForm">
+   ${fields.filter(f=>keys.includes(f[0])).map(f=>`
+    <div class="nova-account-field">
+     <label for="nova-field-${f[0]}">${f[1]}</label>
+     <input id="nova-field-${f[0]}" name="${f[0]}"
+      type="${f[2]}" value="${safe(profile[f[0]]||"")}"
+      ${f[0]==="phone"?'autocomplete="tel"':""}>
     </div>
+   `).join("")}
+   <button class="primary-btn" type="submit">SAVE CHANGES</button>
+  </form>`;
 
-    <div id="novaMemberAccount"
-      style="display:none;text-align:center">
-
-      <h3>MY ACCOUNT</h3>
-
-      <p id="novaMemberEmail"
-        style="margin:15px 0;overflow-wrap:anywhere"></p>
-
-      <button class="primary-btn" id="novaMyOrders"
-        type="button">MY ORDERS</button>
-
-      <button class="secondary-btn" id="novaLogout"
-        type="button">LOG OUT</button>
-    </div>
-
-    <p id="novaAccountMessage"
-      role="status"
-      aria-live="polite"
-      style="text-align:center;margin-top:15px;line-height:1.5">
-    </p>
-  `;
-
-  const ordersPanel = document.createElement("div");
-  ordersPanel.className = "panel";
-  ordersPanel.id = "novaOrdersPanel";
-  ordersPanel.innerHTML = `
-    <div class="panel-header">
-      <h2>My Orders</h2>
-      <button class="panel-close"
-        id="novaCloseOrders" type="button">×</button>
-    </div>
-    <div id="novaOrdersList">
-      <p class="notice">No orders loaded.</p>
-    </div>
-  `;
-  document.body.appendChild(ordersPanel);
-
-  const $ = id => document.getElementById(id);
-  const message = $("novaAccountMessage");
-
-  function notify(value, error = false) {
-    message.textContent = value;
-    message.style.color = error ? "#b42318" : "#18794e";
-  }
-
-  function escapeText(value) {
-    return String(value ?? "").replace(/[&<>"']/g, c => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[c]);
-  }
-
-  function showMember(user) {
-    $("novaGuestAccount").style.display =
-      user ? "none" : "block";
-    $("novaMemberAccount").style.display =
-      user ? "block" : "none";
-    $("novaMemberEmail").textContent =
-      user ? user.email : "";
-  }
-
-  if (!window.supabase?.createClient) {
-    notify("Account service unavailable.", true);
-    return;
-  }
-
-  const db = window.supabase.createClient(URL, KEY);
-
-  function busy(value) {
-    ["novaLogin", "novaRegister", "novaLogout"]
-      .forEach(id => $(id).disabled = value);
-  }
-
-  async function authenticate(register) {
-    const email = $("novaEmail").value.trim();
-    const password = $("novaPassword").value;
-
-    if (!email || !$("novaEmail").checkValidity()) {
-      notify("Enter a valid email.", true);
-      return;
-    }
-
-    if (password.length < 6) {
-      notify("Password must have at least 6 characters.", true);
-      return;
-    }
-
-    busy(true);
-    notify("");
-
-    try {
-      const result = register
-        ? await db.auth.signUp({
-            email,
-            password,
-            options: {
-              emailRedirectTo: location.origin + "/"
-            }
-          })
-        : await db.auth.signInWithPassword({
-            email,
-            password
-          });
-
-      if (result.error) throw result.error;
-
-      if (register && !result.data.session) {
-        notify("Check your email to confirm your account.");
-      } else {
-        showMember(result.data.user);
-        notify(register
-          ? "Account created successfully."
-          : "You are logged in.");
-      }
-
-      $("novaPassword").value = "";
-    } catch (error) {
-      notify(error.message || "Please try again.", true);
-    } finally {
-      busy(false);
-    }
-  }
-
-  $("novaLogin").addEventListener("click",
-    () => authenticate(false));
-
-  $("novaRegister").addEventListener("click",
-    () => authenticate(true));
-
-  $("novaLogout").addEventListener("click", async () => {
-    busy(true);
-    const {error} = await db.auth.signOut();
-    busy(false);
-
-    if (error) {
-      notify(error.message, true);
-      return;
-    }
-
-    showMember(null);
-    notify("Logged out.");
+ $("novaProfileForm").onsubmit=async event=>{
+  event.preventDefault();
+  const button=event.target.querySelector('button[type="submit"]');
+  const changes={};
+  keys.forEach(key=>{
+   changes[key]=$("nova-field-"+key).value.trim();
   });
 
-  db.auth.getUser().then(({data, error}) => {
-    if (!error) showMember(data.user);
-  });
+  button.disabled=true;
+  message("Saving...");
 
-  db.auth.onAuthStateChange((_event, session) => {
-    showMember(session?.user || null);
-  });
-
-  function closeOrders() {
-    ordersPanel.classList.remove("open");
-    if (!document.querySelector(".panel.open") &&
-        !document.getElementById("sideMenu")
-          .classList.contains("open")) {
-      document.getElementById("overlay")
-        .classList.remove("show");
-    }
+  try{
+   const {data,error}=await db.auth.updateUser({
+    data:changes
+   });
+   if(error)throw error;
+   currentUser=data.user;
+   message("Your information has been saved.");
+  }catch(error){
+   message(error.message||"Unable to save changes.",true);
+  }finally{
+   button.disabled=false;
   }
+ };
+}
 
-  $("novaCloseOrders").addEventListener("click", closeOrders);
+async function loadOrders(){
+ const area=$("novaDetailContent");
+ area.textContent="Loading your orders...";
 
-  document.getElementById("overlay")
-    .addEventListener("click", closeOrders);
+ const {data:identity,error:identityError}=await db.auth.getUser();
 
-  $("novaMyOrders").addEventListener("click", async () => {
-    ordersPanel.classList.add("open");
-    document.getElementById("overlay")
-      .classList.add("show");
+ if(identityError||!identity.user){
+  area.textContent="Please log in.";
+  return;
+ }
 
-    const container = $("novaOrdersList");
-    container.textContent = "Loading orders...";
+ const {data,error}=await db.from("customer_orders")
+  .select("reference_code,products,total,status,created_at,shipping_method,payment_method")
+  .eq("user_id",identity.user.id)
+  .order("created_at",{ascending:false});
 
-    const {data: account, error: authError} =
-      await db.auth.getUser();
+ if(error){
+  area.textContent="Could not load orders: "+error.message;
+  return;
+ }
 
-    if (authError || !account.user) {
-      container.textContent = "Please log in.";
-      return;
-    }
+ if(!data||data.length===0){
+  area.innerHTML='<p class="notice">No saved orders yet.</p>';
+  return;
+ }
 
-    const {data, error} = await db
-      .from("customer_orders")
-      .select(
-        "reference_code,products,total,status,created_at,shipping_method,payment_method"
-      )
-      .eq("user_id", account.user.id)
-      .order("created_at", {ascending: false});
+ area.innerHTML=data.map(order=>{
+  const products=Array.isArray(order.products)?order.products:[];
+  const date=order.created_at
+   ?new Date(order.created_at).toLocaleDateString("en-US")
+   :"";
+  const amount=Number(order.total||0).toFixed(2);
 
-    if (error) {
-      container.textContent =
-        "Unable to load orders. Please try again.";
-      return;
-    }
+  return `<div class="nova-account-order">
+   <p><strong>Order:</strong> ${safe(order.reference_code)}</p>
+   <p><strong>Date:</strong> ${safe(date)}</p>
+   <p><strong>Status:</strong> ${safe(order.status||"pending_payment")}</p>
+   ${products.map(p=>`
+    <p>${safe(p.name)} × ${Number(p.quantity)||1}</p>
+   `).join("")}
+   <p><strong>Shipping:</strong> ${safe(order.shipping_method)}</p>
+   <p><strong>Payment:</strong> ${safe(order.payment_method)}</p>
+   <p><strong>Total:</strong> $${amount}</p>
+  </div>`;
+ }).join("");
+}
 
-    if (!data.length) {
-      container.innerHTML =
-        '<p class="notice">No saved orders yet.</p>';
-      return;
-    }
+host.querySelectorAll("[data-nova-view]").forEach(button=>{
+ button.onclick=async()=>{
+  const view=button.dataset.novaView;
+  const labels={
+   profile:"MY PROFILE",
+   address:"MY ADDRESS",
+   orders:"MY ORDERS",
+   details:"ACCOUNT DETAILS"
+  };
+  $("novaDetailTitle").textContent=labels[view];
+  show("novaDetailScreen");
 
-    container.innerHTML = data.map(order => {
-      const products = Array.isArray(order.products)
-        ? order.products : [];
+  if(view==="orders"){
+   await loadOrders();
+  }else if(view==="details"){
+   $("novaDetailContent").innerHTML=`
+    <div class="nova-account-order">
+     <p><strong>Email:</strong> ${safe(currentUser?.email)}</p>
+     <p><strong>Account ID:</strong> ${safe(currentUser?.id)}</p>
+     <p>Your email is used to log in to your account.</p>
+    </div>`;
+  }else{
+   profileForm(view);
+  }
+ };
+});
 
-      return `
-        <div class="payment">
-          <p><strong>Reference:</strong>
-            ${escapeText(order.reference_code)}</p>
+// Restore previous login automatically.
+db.auth.getUser().then(({data,error})=>{
+ if(!error)showUser(data.user);
+ else showUser(null);
+}).catch(()=>{
+ showUser(null);
+});
 
-          <p><strong>Date:</strong>
-            ${escapeText(new Date(order.created_at)
-              .toLocaleDateString())}</p>
+db.auth.onAuthStateChange((_event,session)=>{
+ const user=session?.user||null;
+ if(user?.id!==currentUser?.id){
+  showUser(user);
+ }else{
+  currentUser=user;
+ }
+});
 
-          <p><strong>Status:</strong>
-            ${escapeText(order.status || "pending_payment")}</p>
+// Save a registered customer's order after the existing
+// Formspree request succeeds. Guest checkout is unchanged.
+if(typeof saveLastOrder==="function"){
+ const originalSaveLastOrder=saveLastOrder;
 
-          ${products.map(p => `
-            <p>${escapeText(p.name)} ×
-              ${Number(p.quantity) || 1}</p>
-          `).join("")}
+ saveLastOrder=function(reference){
+  const order=originalSaveLastOrder(reference);
 
-          <p><strong>Shipping:</strong>
-            ${escapeText(order.shipping_method)}</p>
+  db.auth.getUser().then(async({data,error})=>{
+   if(error||!data.user)return;
 
-          <p><strong>Payment:</strong>
-            ${escapeText(order.payment_method)}</p>
+   const row={
+    user_id:data.user.id,
+    reference_code:order.reference,
+    products:order.products.map(item=>({
+     name:item.name,
+     price:item.price,
+     quantity:item.quantity,
+     image:item.image
+    })),
+    subtotal:order.subtotal,
+    shipping_method:order.shipping,
+    shipping_cost:order.shippingCost,
+    total:order.total,
+    payment_method:order.payment
+   };
 
-          <p><strong>Total:</strong>
-            $${Number(order.total).toFixed(2)}</p>
-        </div>
-      `;
-    }).join("");
+   const result=await db.from("customer_orders").insert(row);
+
+   if(result.error){
+    console.error("NovaPeps order history:",result.error);
+    alert("Your request was sent, but saving it to your account history failed. Please keep your reference code.");
+   }
+  }).catch(error=>{
+   console.error("NovaPeps order save:",error);
   });
 
-  // Save registered customers' requests after Formspree
-  // confirms receipt. Guest checkout remains unchanged.
-  if (typeof saveLastOrder === "function") {
-    const originalSaveLastOrder = saveLastOrder;
+  return order;
+ };
+}
 
-    saveLastOrder = function(reference) {
-      const order = originalSaveLastOrder(reference);
-
-      db.auth.getUser().then(async ({data, error}) => {
-        if (error || !data.user) return;
-
-        const record = {
-          user_id: data.user.id,
-          reference_code: order.reference,
-          products: order.products.map(p => ({
-            name: p.name,
-            price: p.price,
-            quantity: p.quantity,
-            image: p.image
-          })),
-          subtotal: order.subtotal,
-          shipping_method: order.shipping,
-          shipping_cost: order.shippingCost,
-          total: order.total,
-          payment_method: order.payment
-        };
-
-        const result = await db
-          .from("customer_orders")
-          .insert(record);
-
-        if (result.error) {
-          console.error("Order history error:",
-            result.error.message);
-          alert(
-            "Your request was sent, but it could not be saved " +
-            "to your account history. Keep your reference code."
-          );
-        }
-      }).catch(error => {
-        console.error("Order save error:", error);
-      });
-
-      return order;
-    };
-  }
 })();
 </script>
-<!-- END OPTIONAL CUSTOMER ACCOUNTS -->
+<!-- END NOVAPEPS USA - CUSTOMER ACCOUNTS V2 -->
+
+</body>
+</html>
 
