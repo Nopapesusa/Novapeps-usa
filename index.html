@@ -474,7 +474,640 @@ if(typeof saveLastOrder==="function"){
 
 })();
 </script>
-<!-- END NOVAPEPS USA - CUSTOMER ACCOUNTS V2 -->
+<!-- END NOVAPEPS USA - CUSTOMER
+  ACCOUNTS V2 -->
+
+<!-- NOVAPEPS USA - ACTUALIZACION -->
+<style>
+.nova-language{background:#000;color:#fff;border:1px solid #777;border-radius:7px;padding:6px 3px;font-weight:bold;font-size:12px;max-width:50px}
+.nova-old-price{font-size:17px;color:#888;text-decoration:line-through;margin-right:8px}
+.nova-sale{color:#d21862;font-size:12px;font-weight:bold}
+.nova-gallery{width:100%;margin-bottom:15px}
+.nova-gallery img{width:100%;height:290px;object-fit:contain;border-radius:12px;background:#fafafa}
+.nova-gallery-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin:9px 0}
+.nova-gallery-controls button{border:1px solid #ddd;background:#fff;border-radius:50%;width:36px;height:36px;font-size:23px;cursor:pointer}
+.nova-dots{display:flex;justify-content:center;gap:7px;margin-bottom:12px}
+.nova-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#ccc;cursor:pointer}
+.nova-dots button.active{background:#ff4fa3}
+.nova-account-popup{position:fixed;inset:0;background:#000b;z-index:9500;display:none;align-items:center;justify-content:center;padding:17px}
+.nova-account-popup.open{display:flex}
+.nova-popup-box{position:relative;background:#fff;color:#111;border-radius:18px;padding:26px;width:440px;max-width:100%;max-height:90vh;overflow:auto}
+.nova-popup-box h2{text-align:center;margin:15px 30px 22px}
+.nova-popup-box label{display:block;font-size:13px;font-weight:bold;margin:12px 0 6px}
+.nova-popup-box input{width:100%;padding:13px;border:1px solid #ccc;border-radius:9px;font:inherit}
+.nova-popup-close{position:absolute;right:12px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:#000;color:#fff;font-size:23px}
+.nova-popup-links{text-align:center;margin-top:18px}
+.nova-popup-links button{display:block;margin:9px auto;border:0;background:transparent;color:#b9215f;text-decoration:underline;font-weight:bold;cursor:pointer}
+.nova-popup-message{text-align:center;margin-top:15px;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.nova-guest{font-size:13px;text-align:center;color:#777;margin:15px 0}
+@media(max-width:700px){
+.nova-language{font-size:11px}
+.header-actions{gap:3px}
+.nova-gallery img{height:260px}
+}
+</style>
+
+<div class="nova-account-popup" id="novaPopup" aria-hidden="true">
+ <div class="nova-popup-box" role="dialog" aria-modal="true" aria-labelledby="novaPopupTitle">
+  <button class="nova-popup-close" id="novaPopupClose" type="button">×</button>
+  <h2 id="novaPopupTitle"></h2>
+
+  <form id="novaPopupForm">
+   <div id="novaPopupNames" hidden>
+    <label for="novaPopupFirst" data-en="First name" data-es="Nombre">First name</label>
+    <input id="novaPopupFirst" autocomplete="given-name">
+    <label for="novaPopupLast" data-en="Last name" data-es="Apellido">Last name</label>
+    <input id="novaPopupLast" autocomplete="family-name">
+   </div>
+
+   <div id="novaPopupEmailBlock">
+    <label for="novaPopupEmail" data-en="Email" data-es="Correo electrónico">Email</label>
+    <input type="email" id="novaPopupEmail" autocomplete="email">
+   </div>
+
+   <div id="novaPopupPasswordBlock">
+    <label for="novaPopupPassword" data-en="Password" data-es="Contraseña">Password</label>
+    <input type="password" id="novaPopupPassword" minlength="8">
+   </div>
+
+   <div id="novaPopupConfirmBlock" hidden>
+    <label for="novaPopupConfirm" data-en="Confirm password" data-es="Confirmar contraseña">Confirm password</label>
+    <input type="password" id="novaPopupConfirm" minlength="8">
+   </div>
+
+   <button class="primary-btn" type="submit" id="novaPopupSubmit"></button>
+  </form>
+
+  <div class="nova-popup-links" id="novaPopupLinks"></div>
+  <p class="nova-guest" id="novaGuestMessage"></p>
+  <p class="nova-popup-message" id="novaPopupMessage" role="status" aria-live="polite"></p>
+ </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* NUEVO PRODUCTO */
+const SERUM_NAME="GHK-CU + SNAP-8 PEPTIDE SERUM";
+const SERUM_IMAGES=[
+ "./32863605-859F-44A5-9DAE-C1D2A7953DC1.png",
+ "./78B8E95D-76B5-4F06-9013-6D45DC19EF72.png",
+ "./4D9FB5CB-CAB4-490D-9359-E4E8CFD79269.png",
+ "./F8B57F4F-7165-4667-B0B5-4FF3909400CB.png",
+ "./IMG_9520.jpeg",
+ "./3F337B3A-3CB3-457F-A110-6FEE424AF2A6.png"
+];
+
+const serum={
+ name:SERUM_NAME,
+ price:19.99,
+ image:SERUM_IMAGES[0]
+};
+
+if(!PRODUCTS.some(p=>p.name===SERUM_NAME)){
+ PRODUCTS.push(serum);
+}
+
+/* IDIOMA */
+const $=id=>document.getElementById(id);
+let novaLang="en";
+try{
+ novaLang=localStorage.getItem("novaLanguage")==="es"?"es":"en";
+}catch(e){}
+
+const translations={
+ "Featured Products":"Productos destacados",
+ "HOME":"INICIO",
+ "PRODUCTS":"PRODUCTOS",
+ "LIST":"LISTA",
+ "FAVORITES":"FAVORITOS",
+ "SHIPPING":"ENVÍOS",
+ "CONTACT PAGE":"CONTACTO",
+ "ABOUT US":"SOBRE NOSOTROS",
+ "COMPARE":"COMPARAR",
+ "POLICIES":"POLÍTICAS",
+ "LOGIN / REGISTER":"INICIAR SESIÓN / REGISTRARSE",
+ "Login / Register":"Iniciar sesión / Registrarse",
+ "ADD TO LIST":"AGREGAR A LISTA",
+ "ADD TO CART":"AGREGAR AL CARRITO",
+ "GO TO CART":"IR AL CARRITO",
+ "GO TO CART / CHECKOUT":"IR AL CARRITO",
+ "FOR RESEARCH USE ONLY":"SOLO PARA INVESTIGACIÓN",
+ "Selected Products":"Productos seleccionados",
+ "Favorite Products":"Productos favoritos",
+ "Your Cart":"Tu carrito",
+ "Payment Method":"Método de pago",
+ "Subtotal":"Subtotal",
+ "Shipping":"Envío",
+ "Total":"Total",
+ "CONTINUE":"CONTINUAR",
+ "CLEAR CART":"VACIAR CARRITO",
+ "Information Request":"Solicitud de información",
+ "Name":"Nombre",
+ "Email":"Correo electrónico",
+ "Phone":"Teléfono",
+ "Address":"Dirección",
+ "Apt / Unit":"Apartamento",
+ "City":"Ciudad",
+ "State":"Estado",
+ "ZIP":"Código postal",
+ "Message":"Mensaje",
+ "SEND INFORMATION":"ENVIAR SOLICITUD",
+ "Search products...":"Buscar productos...",
+ "Remove":"Quitar",
+ "REMOVE FAVORITE":"QUITAR FAVORITO",
+ "MY ACCOUNT":"MI CUENTA",
+ "MY PROFILE":"MI PERFIL",
+ "MY ADDRESS":"MI DIRECCIÓN",
+ "MY ORDERS":"MIS PEDIDOS",
+ "ACCOUNT DETAILS":"DATOS DE CUENTA",
+ "LOG OUT":"CERRAR SESIÓN",
+ "LOGIN":"INICIAR SESIÓN",
+ "REGISTER":"REGISTRARSE",
+ "SALE":"OFERTA",
+ "Quantity":"Cantidad",
+ "THANK YOU!":"¡GRACIAS!",
+ "RESEARCH USE ONLY":"SOLO INVESTIGACIÓN",
+ "QUALITY FOCUSED":"CALIDAD PRIMERO",
+ "INTERNATIONAL SHIPPING":"ENVÍOS INTERNACIONALES",
+ "Laboratory research products":"Productos para investigación de laboratorio",
+ "Quality-focused sourcing":"Selección enfocada en la calidad",
+ "Shipping options available":"Opciones de envío disponibles"
+};
+
+function novaText(en,es){
+ return novaLang==="es"?es:en;
+}
+
+function translateNode(el){
+ if(el.children.length>0)return;
+ if(!el.dataset.novaOriginal){
+  el.dataset.novaOriginal=el.textContent.trim();
+ }
+ const key=el.dataset.novaOriginal;
+ el.textContent=novaLang==="es"?(translations[key]||key):key;
+}
+
+function novaTranslate(){
+ document.documentElement.lang=novaLang;
+
+ const selectors=[
+ ".side-menu .menu-link",
+ ".section-title",
+ ".product-card .add-list-btn",
+ ".product-card .research",
+ ".panel h2",
+ ".panel h3",
+ ".panel .primary-btn",
+ ".panel .secondary-btn",
+ ".panel .summary-row span",
+ ".modal .primary-btn",
+ ".modal .secondary-btn",
+ ".modal .research",
+ ".form-group label",
+ ".nova-account-tile"
+ ].join(",");
+
+ document.querySelectorAll(selectors).forEach(translateNode);
+
+ const search=$("searchInput");
+ if(search){
+  search.placeholder=novaText("Search products...","Buscar productos...");
+ }
+
+ document.querySelectorAll(".nova-translate").forEach(el=>{
+  el.textContent=novaText(el.dataset.en,el.dataset.es);
+ });
+
+ document.querySelectorAll(".nova-popup-box label[data-en]").forEach(el=>{
+  el.textContent=novaLang==="es"?el.dataset.es:el.dataset.en;
+ });
+
+ const count=$("novaGalleryCount");
+ if(count){
+  count.textContent=(galleryIndex+1)+
+  " / "+SERUM_IMAGES.length+
+  novaText(" images"," imágenes");
+ }
+
+ language.value=novaLang;
+}
+
+const language=document.createElement("select");
+language.className="nova-language";
+language.id="novaLanguage";
+language.setAttribute("aria-label","Language / Idioma");
+language.innerHTML='<option value="en">EN</option><option value="es">ES</option>';
+document.querySelector(".header-actions").prepend(language);
+
+language.addEventListener("change",()=>{
+ novaLang=language.value;
+ try{localStorage.setItem("novaLanguage",novaLang)}catch(e){}
+ novaTranslate();
+ renderAuth();
+});
+
+/* TARJETA DEL SUERO */
+const card=document.createElement("article");
+card.className="product-card";
+card.dataset.name=SERUM_NAME;
+card.dataset.price="19.99";
+card.dataset.image=SERUM_IMAGES[0];
+
+card.innerHTML=`
+ <div class="product-image-wrap">
+  <button class="favorite-btn" type="button" data-favorite="${SERUM_NAME}">♡</button>
+  <img class="product-image" src="${SERUM_IMAGES[0]}" alt="${SERUM_NAME}" loading="lazy">
+ </div>
+ <div class="product-info">
+  <h3>${SERUM_NAME}</h3>
+  <p class="nova-sale nova-translate" data-en="SALE" data-es="OFERTA">SALE</p>
+  <div class="product-price">
+   <span class="nova-old-price">$26.00</span>
+   $19.99
+  </div>
+  <div class="research">30 ML / 1 FL. OZ</div>
+  <button class="add-list-btn" type="button">ADD TO LIST</button>
+ </div>
+`;
+
+document.querySelector("#products .products-grid").appendChild(card);
+
+card.querySelector(".favorite-btn").addEventListener("click",e=>{
+ e.stopPropagation();
+ toggleFavorite(SERUM_NAME);
+});
+
+card.querySelector(".product-image").addEventListener("click",()=>{
+ openProductModal(serum);
+});
+
+card.querySelector(".add-list-btn").addEventListener("click",e=>{
+ addToList(serum,1);
+ const b=e.currentTarget;
+ b.textContent=novaText("ADDED ✓","AGREGADO ✓");
+ setTimeout(()=>{
+  b.textContent=novaText("ADD TO LIST","AGREGAR A LISTA");
+ },1200);
+});
+
+/* GALERÍA DE 6 IMÁGENES */
+let galleryIndex=0;
+let touchStart=0;
+const originalOpenModal=openProductModal;
+const originalCloseModal=closeProductModal;
+
+const gallery=document.createElement("div");
+gallery.id="novaSerumGallery";
+gallery.className="nova-gallery";
+gallery.hidden=true;
+
+gallery.innerHTML=`
+ <img id="novaGalleryPhoto" alt="GHK-CU + SNAP-8">
+ <div class="nova-gallery-controls">
+  <button id="novaGalleryPrevious" type="button" aria-label="Previous image">‹</button>
+  <strong id="novaGalleryCount">1 / 6 images</strong>
+  <button id="novaGalleryNext" type="button" aria-label="Next image">›</button>
+ </div>
+ <div class="nova-dots" id="novaGalleryDots"></div>
+`;
+
+$("modalImage").insertAdjacentElement("afterend",gallery);
+
+function renderGallery(){
+ $("novaGalleryPhoto").src=SERUM_IMAGES[galleryIndex];
+
+ const dots=$("novaGalleryDots");
+ dots.innerHTML="";
+
+ SERUM_IMAGES.forEach((img,i)=>{
+  const dot=document.createElement("button");
+  dot.type="button";
+  dot.classList.toggle("active",i===galleryIndex);
+  dot.setAttribute("aria-label","Image "+(i+1));
+  dot.addEventListener("click",()=>{
+   galleryIndex=i;
+   renderGallery();
+  });
+  dots.appendChild(dot);
+ });
+
+ novaTranslate();
+}
+
+function changeGallery(d){
+ galleryIndex=(galleryIndex+d+SERUM_IMAGES.length)%SERUM_IMAGES.length;
+ renderGallery();
+}
+
+$("novaGalleryPrevious").onclick=()=>changeGallery(-1);
+$("novaGalleryNext").onclick=()=>changeGallery(1);
+
+gallery.addEventListener("touchstart",e=>{
+ touchStart=e.touches[0].clientX;
+},{passive:true});
+
+gallery.addEventListener("touchend",e=>{
+ const diff=e.changedTouches[0].clientX-touchStart;
+ if(Math.abs(diff)>45)changeGallery(diff<0?1:-1);
+},{passive:true});
+
+openProductModal=function(p){
+ originalOpenModal(p);
+
+ const isSerum=p.name===SERUM_NAME;
+ gallery.hidden=!isSerum;
+ gallery.style.display=isSerum?"block":"none";
+ $("modalImage").style.display=isSerum?"none":"block";
+
+ if(isSerum){
+  galleryIndex=0;
+  renderGallery();
+  $("modalPrice").innerHTML=
+  '<span class="nova-old-price">$26.00</span> $19.99 <span class="nova-sale">SALE</span>';
+ }
+
+ novaTranslate();
+};
+
+closeProductModal=function(){
+ originalCloseModal();
+ gallery.style.display="none";
+ $("modalImage").style.display="block";
+};
+
+/* AGREGAR AL COMPARADOR */
+const compareBody=document.querySelector(".compare-table tbody");
+
+if(compareBody){
+ const tr=document.createElement("tr");
+ tr.innerHTML=
+ '<td>GHK-CU + SNAP-8 SERUM</td>'+
+ '<td>30 ML</td>'+
+ '<td><s>$26.00</s> $19.99</td>';
+ compareBody.appendChild(tr);
+}
+
+/* VENTANAS DE REGISTRO Y LOGIN */
+const popup=$("novaPopup");
+const popupForm=$("novaPopupForm");
+const popupMessage=$("novaPopupMessage");
+let authMode="login";
+
+function authStatus(text,error=false){
+ popupMessage.textContent=text;
+ popupMessage.style.color=error?"#b42318":"#18794e";
+}
+
+function closeAuth(){
+ popup.classList.remove("open");
+ popup.setAttribute("aria-hidden","true");
+ popupForm.reset();
+ authStatus("");
+}
+
+function openAuth(mode){
+ authMode=mode;
+ renderAuth();
+ authStatus("");
+ popup.classList.add("open");
+ popup.setAttribute("aria-hidden","false");
+
+ const focus=mode==="set"?$("novaPopupPassword"):$("novaPopupEmail");
+ focus.focus();
+}
+
+$("novaPopupClose").onclick=closeAuth;
+
+popup.addEventListener("click",e=>{
+ if(e.target===popup)closeAuth();
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeAuth();
+});
+
+function renderAuth(){
+ const reg=authMode==="register";
+ const login=authMode==="login";
+ const reset=authMode==="reset";
+ const set=authMode==="set";
+
+ $("novaPopupNames").hidden=!reg;
+ $("novaPopupEmailBlock").hidden=set;
+ $("novaPopupPasswordBlock").hidden=reset;
+ $("novaPopupConfirmBlock").hidden=!(reg||set);
+
+ $("novaPopupFirst").required=reg;
+ $("novaPopupLast").required=reg;
+ $("novaPopupEmail").required=!set;
+ $("novaPopupPassword").required=!reset;
+ $("novaPopupConfirm").required=reg||set;
+
+ $("novaPopupPassword").autocomplete=login?"current-password":"new-password";
+
+ let en="",es="";
+
+ if(reg){en="CREATE ACCOUNT";es="CREAR CUENTA";}
+ else if(login){en="LOGIN";es="INICIAR SESIÓN";}
+ else if(reset){en="RESET PASSWORD";es="RECUPERAR CONTRASEÑA";}
+ else{en="SET NEW PASSWORD";es="GUARDAR NUEVA CONTRASEÑA";}
+
+ $("novaPopupTitle").textContent=novaText(en,es);
+ $("novaPopupSubmit").textContent=novaText(en,es);
+
+ $("novaGuestMessage").textContent=novaText(
+  "Creating an account is optional. You may continue as a guest.",
+  "Crear una cuenta es opcional. Puedes continuar como invitado."
+ );
+
+ const links=$("novaPopupLinks");
+ links.innerHTML="";
+
+ function link(mode,en,es){
+  const b=document.createElement("button");
+  b.type="button";
+  b.textContent=novaText(en,es);
+  b.onclick=()=>{
+   authMode=mode;
+   authStatus("");
+   renderAuth();
+  };
+  links.appendChild(b);
+ }
+
+ if(login){
+  link("register","CREATE ACCOUNT","CREAR CUENTA");
+  link("reset","FORGOT PASSWORD?","¿OLVIDASTE TU CONTRASEÑA?");
+ }else if(reg||reset){
+  link("login","BACK TO LOGIN","VOLVER A INICIAR SESIÓN");
+ }
+
+ novaTranslate();
+}
+
+/* CAMBIAR LOS BOTONES EXISTENTES */
+function replaceAccountButton(id,mode){
+ const old=$(id);
+ if(!old)return;
+
+ const fresh=old.cloneNode(true);
+ old.replaceWith(fresh);
+ fresh.addEventListener("click",()=>openAuth(mode));
+}
+
+replaceAccountButton("novaLogin","login");
+replaceAccountButton("novaRegister","register");
+
+const authScreen=$("novaAuthScreen");
+
+if(authScreen){
+ const forgot=document.createElement("button");
+ forgot.type="button";
+ forgot.className="nova-account-back";
+ forgot.textContent="FORGOT PASSWORD?";
+ forgot.addEventListener("click",()=>openAuth("reset"));
+ authScreen.appendChild(forgot);
+}
+
+/* SUPABASE AUTH */
+const SUPABASE_URL_NOVA="https://emutjhhwyqrgaqszmchu.supabase.co";
+const SUPABASE_PUBLIC_NOVA="sb_publishable_9FEsYZd8_rdCrfY6esuQEQ_lPr-SiJU";
+
+let authClient=null;
+
+if(window.supabase&&window.supabase.createClient){
+ authClient=window.supabase.createClient(
+  SUPABASE_URL_NOVA,
+  SUPABASE_PUBLIC_NOVA,
+  {
+   auth:{
+    persistSession:true,
+    autoRefreshToken:true,
+    detectSessionInUrl:true,
+    storageKey:"sb-emutjhhwyqrgaqszmchu-auth-token"
+   }
+  }
+ );
+}
+
+popupForm.addEventListener("submit",async e=>{
+ e.preventDefault();
+ if(!popupForm.reportValidity())return;
+
+ if(!authClient){
+  authStatus(novaText(
+   "Account service unavailable. Try again.",
+   "El servicio de cuentas no está disponible."
+  ),true);
+  return;
+ }
+
+ const email=$("novaPopupEmail").value.trim();
+ const password=$("novaPopupPassword").value;
+ const confirm=$("novaPopupConfirm").value;
+
+ if(authMode!=="reset"&&password.length<8){
+  authStatus(novaText(
+   "Use at least 8 characters.",
+   "La contraseña necesita al menos 8 caracteres."
+  ),true);
+  return;
+ }
+
+ if((authMode==="register"||authMode==="set")&&password!==confirm){
+  authStatus(novaText(
+   "Passwords do not match.",
+   "Las contraseñas no coinciden."
+  ),true);
+  return;
+ }
+
+ const button=$("novaPopupSubmit");
+ button.disabled=true;
+
+ authStatus(novaText("Please wait...","Procesando..."));
+
+ try{
+  let result;
+
+  if(authMode==="register"){
+   result=await authClient.auth.signUp({
+    email,
+    password,
+    options:{
+     emailRedirectTo:location.origin+location.pathname,
+     data:{
+      first_name:$("novaPopupFirst").value.trim(),
+      last_name:$("novaPopupLast").value.trim()
+     }
+    }
+   });
+  }
+
+  else if(authMode==="login"){
+   result=await authClient.auth.signInWithPassword({
+    email,password
+   });
+  }
+
+  else if(authMode==="reset"){
+   result=await authClient.auth.resetPasswordForEmail(
+    email,{
+     redirectTo:location.origin+location.pathname
+    }
+   );
+  }
+
+  else if(authMode==="set"){
+   result=await authClient.auth.updateUser({
+    password
+   });
+  }
+
+  if(result.error)throw result.error;
+
+  if(authMode==="register"){
+   authStatus(novaText(
+    "Check your email for account confirmation.",
+    "Revisa tu correo para confirmar tu cuenta."
+   ));
+  }
+
+  else if(authMode==="reset"){
+   authStatus(novaText(
+    "If an account exists, a recovery email will be sent.",
+    "Si existe una cuenta, recibirás un correo de recuperación."
+   ));
+  }
+
+  else{
+   closeAuth();
+   location.reload();
+  }
+
+ }catch(err){
+  authStatus(err.message||"Please try again.",true);
+ }finally{
+  button.disabled=false;
+ }
+});
+
+if(authClient){
+ authClient.auth.onAuthStateChange((event)=>{
+  if(event==="PASSWORD_RECOVERY"){
+   openAuth("set");
+  }
+ });
+}
+
+/* INICIAR IDIOMA */
+novaTranslate();
+
+})();
+</script>
+<!-- FIN ACTUALIZACION NOVAPEPS USA -->
 
 </body>
 </html>
